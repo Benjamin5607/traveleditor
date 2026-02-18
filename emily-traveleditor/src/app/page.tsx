@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { getEmilyWorkers, askEmily } from "@/lib/groqMarket";
+import { getEmilyWorkers, askEmily } from "../lib/groqMarket";
 
 export default function Home() {
   const [apiKey, setApiKey] = useState("");
