@@ -14,10 +14,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm install
-      - run: npm run build
+      
+      # 1. 폴더 안으로 이동해서 설치 및 빌드
+      - name: Install and Build
+        run: |
+          cd emily-traveleditor
+          npm install
+          npm run build
+          
       - uses: actions/configure-pages@v4
+      
+      # 2. 배포할 결과물(out) 경로 정확히 지정
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./emily-traveleditor/out # 폴더 구조가 중첩되어 있다면 이 경로가 중요합니다!
+          path: ./emily-traveleditor/out
+          
       - uses: actions/deploy-pages@v4
