@@ -2,12 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  // 깃허브 페이지 배포를 위한 경로 설정
   basePath: '/traveleditor',
-  assetPrefix: '/traveleditor',
+  trailingSlash: true, // 경로 끝에 / 붙여서 인식률 높임
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
