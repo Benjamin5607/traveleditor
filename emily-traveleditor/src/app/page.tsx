@@ -1,46 +1,49 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getEmilyWorkers, askEmily } from "../lib/groqMarket";
 
 export default function Home() {
-  const [apiKey, setApiKey] = useState("");
-  const [workers, setWorkers] = useState([]);
+  const [workers, setWorkers] = useState<any[]>([]);
   const [selectedWorker, setSelectedWorker] = useState("");
   const [result, setResult] = useState("");
 
-  const loadWorkers = async () => {
-    const data = await getEmilyWorkers(apiKey);
+  // 페이지 로드 시 바로 인력시장 체크 (환경변수 키가 있다면)
+  useEffect(() => {
+    const init = async () => {
+      const data = await getEmilyWorkers();
+      if (data.length > 0) {
+        setWorkers(data);
+        setSelectedWorker(data[0].id);
+      }
+    };
+    init();
+  }, []);
+
+  const loadManual = async () => {
+    const data = await getEmilyWorkers();
     setWorkers(data);
     if (data.length > 0) setSelectedWorker(data[0].id);
+    else alert("모델을 못 불러왔어. 키 확인해봐!");
   };
 
   return (
-    <main className="p-8 font-sans">
-      <h1 className="text-3xl font-bold mb-6">Emily's Traveleditor</h1>
+    <main className="p-10 text-white bg-black min-h-screen">
+      <h1 className="text-4xl font-bold mb-10 text-yellow-400">Emily's Traveleditor</h1>
       
-      {/* 설정 영역 */}
-      <div className="mb-8 p-4 border rounded">
-        <input 
-          type="password" 
-          placeholder="Groq API Key 입력"
-          className="border p-2 mr-2 text-black"
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
-        />
-        <button onClick={loadWorkers} className="bg-blue-500 text-white p-2 rounded">
-          지금 일할 놈들 다 나와 (인력시장 로딩)
+      <div className="mb-10">
+        <button onClick={loadManual} className="bg-blue-600 p-3 rounded">
+          인력시장 다시 부르기
         </button>
       </div>
 
-      {/* 모델 선택 및 카테고리 */}
-      {workers.length > 0 && (
-        <div className="space-y-4">
+      {workers.length > 0 ? (
+        <div className="space-y-6">
           <select 
             value={selectedWorker} 
             onChange={(e) => setSelectedWorker(e.target.value)}
-            className="block border p-2 text-black"
+            className="text-black p-2 w-full max-w-md"
           >
-            {workers.map((w: any) => <option key={w.id} value={w.id}>{w.id}</option>)}
+            {workers.map((w) => <option key={w.id} value={w.id}>{w.id}</option>)}
           </select>
 
           <div className="grid grid-cols-2 gap-4">
@@ -48,24 +51,21 @@ export default function Home() {
               <button 
                 key={cat}
                 onClick={async () => {
-                  const res = await askEmily(apiKey, selectedWorker, cat, "오늘 나의 여행 운세와 장소를 추천해줘.");
+                  const res = await askEmily(selectedWorker, cat, "추천해줘.");
                   setResult(res.choices[0].message.content);
                 }}
-                className="bg-gray-800 text-white p-4 rounded hover:bg-black"
+                className="border border-yellow-400 p-5 hover:bg-yellow-400 hover:text-black transition"
               >
                 {cat}
               </button>
             ))}
           </div>
         </div>
+      ) : (
+        <p className="animate-pulse">Emily가 인력시장에서 애들 모으는 중...</p>
       )}
 
-      {/* 결과 화면 */}
-      {result && (
-        <div className="mt-8 p-6 bg-yellow-50 border-l-4 border-yellow-400 text-black">
-          <p className="whitespace-pre-wrap">{result}</p>
-        </div>
-      )}
+      {result && <div className="mt-10 p-5 bg-white text-black rounded">{result}</div>}
     </main>
   );
 }
