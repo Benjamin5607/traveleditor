@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "20"
       
-      # 1. 하위 폴더로 이동해서 의존성 설치 및 빌드
+      # 1. 하위 폴더로 이동해서 의존성 설치 및  빌드
       - name: Install and Build
         run: |
           cd emily-traveleditor
