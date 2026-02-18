@@ -1,0 +1,24 @@
+name: Daily Data Update
+on:
+  schedule:
+    - cron: '0 0 * * *' # 매일 한국시간 오전 9시 실행
+  workflow_dispatch: # 수동 실행 버튼 활성화
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Data Scraper
+        run: |
+          cd emily-traveleditor
+          # 나중에 만들 스크래퍼 실행 (지금은 빈 파일 생성 테스트)
+          echo '{"last_update": "'$(date)'", "beer_price": {"London": 7.5, "Seoul": 4.0}}' > public/market.json
+      
+      - name: Commit and Push
+        run: |
+          git config --global user.name "Emily-Bot"
+          git config --global user.email "emily@bot.com"
+          git add .
+          git commit -m "data: daily market info update [skip ci]" || exit 0
+          git push
