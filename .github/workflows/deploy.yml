@@ -15,18 +15,23 @@ jobs:
         with:
           node-version: "20"
       
-      # 1. 하위 폴더로 이동해서 의존성 설치 및  빌드
       - name: Install and Build
         run: |
           cd emily-traveleditor
           npm install
           npm run build
+        env:
+          # 시크릿의 키를 빌드 시 주입 (NEXT_PUBLIC 접두사 필수)
+          NEXT_PUBLIC_GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           
-      - uses: actions/configure-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
       
-      # 2. 배포할 결과물(out) 경로를 하위 폴더 기준으로 지정
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./emily-traveleditor/out
           
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
