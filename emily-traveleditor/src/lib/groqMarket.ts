@@ -44,9 +44,10 @@ export async function askEmily(modelId: string, category: string, city: string, 
     ? `현재 ${city} 날씨: ${weather.weather[0].description}, 기온: ${weather.main.temp}도.`
     : "날씨 정보는 비밀이야.";
 
-  // B. 자동화 스크립트가 생성한 마켓 DB 호출
+  // B. 자동화 스크립트가 생성할 예정인 마켓 DB 호출
   let marketContext = "";
   try {
+    // 깃허브 페이지의 정적 경로 (/traveleditor/data/...)
     const dbRes = await fetch("/traveleditor/data/market_db.json");
     if (dbRes.ok) {
       const db = await dbRes.json();
@@ -64,27 +65,31 @@ export async function askEmily(modelId: string, category: string, city: string, 
     "절제와 신앙": "엄격한 수도승. '욕망을 버려라, 네가 가는 곳은 결국 고행길이다'라고 꾸짖어."
   };
 
-  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: modelId,
-      messages: [
-        { 
-          role: "system", 
-          content: `너는 여행 에디터 Emily다. ${personas[category]} 
-          데이터 정보: ${weatherContext} ${marketContext} 
-          말투는 건방지고 도도하게, 반말과 존댓말을 섞어서 해줘.` 
-        },
-        { role: "user", content: `나 지금 ${city}로 떠나고 싶은데 짧고 강렬하게 한마디 해줘.` }
-      ],
-    }),
-  });
+  try {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: modelId,
+        messages: [
+          { 
+            role: "system", 
+            content: `너는 여행 에디터 Emily다. ${personas[category]} 
+            데이터 정보: ${weatherContext} ${marketContext} 
+            말투는 건방지고 도도하게, 반말과 존댓말을 섞어서 해줘.` 
+          },
+          { role: "user", content: `나 지금 ${city}로 떠나고 싶은데 짧고 강렬하게 한마디 해줘.` }
+        ],
+      }),
+    });
 
-  const data = await response.json();
-  if (!response.ok) return "에밀리가 지금 바빠서 대답 안 한대. (에러 났어)";
-  return data.choices[0].message.content;
+    const data = await response.json();
+    if (!response.ok) return "에밀리가 지금 바빠서 대답 안 한대. (에러 났어)";
+    return data.choices[0].message.content;
+  } catch (error) {
+    return "연결 상태가 안 좋아. 인력시장에 문제가 생긴 듯?";
+  }
 }
