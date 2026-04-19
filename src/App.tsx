@@ -8,7 +8,7 @@ const App = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch('https://example.com/api/data');
+      const response = await fetch('/api/data');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
