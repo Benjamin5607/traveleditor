@@ -1,7 +1,7 @@
 # Zerro AI Project
 
 ### 🎯 목표
-> **데이터 수집 및 처리**: `emily-traveleditor/src/lib/dataScraper.ts`와 `emily-traveleditor/src/lib/groqMarket.ts`를 분석하여 데이터 수집 및 처리 로직을 이해하고, 필요에 따라 최적화하거나 수정
+> 2. **UI/UX 개선**: `emily-traveleditor/emily-traveleditor/app/layout.tsx`와 `emily-traveleditor/emily-traveleditor/app/page.tsx`를 분석하여 현재의 UI/UX를 평가하고, 사용자 경험을 개선하기 위한 디자인 및 구현 변경을 제안합니다.
 
 ### 🛡️ QA Report
 PASS
