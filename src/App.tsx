@@ -54,27 +54,31 @@ const App = () => {
     return (
       <div className="max-w-4xl mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4">Data Collection and Processing</h1>
-        <ul>
-          {layoutData.map((item) => (
-            <li key={item.id} className="py-2 border-b border-gray-200">
-              {item.goalMatched ? (
-                <span className="text-green-500">Goal matched</span>
-              ) : (
-                <span className="text-red-500">Goal not matched</span>
-              )}
-              {item.nullDefenses ? (
-                <span className="text-orange-500">Null defenses found</span>
-              ) : (
-                <span className="text-blue-500">No null defenses found</span>
-              )}
-              {item.ghostFunctions ? (
-                <span className="text-pink-500">Ghost functions found</span>
-              ) : (
-                <span className="text-purple-500">No ghost functions found</span>
-              )}
-            </li>
-          ))}
-        </ul>
+        {layoutData.length > 0 ? (
+          <ul>
+            {layoutData.map((item) => (
+              <li key={item.id} className="py-2 border-b border-gray-200">
+                {item.goalMatched ? (
+                  <span className="text-green-500">Goal matched</span>
+                ) : (
+                  <span className="text-red-500">Goal not matched</span>
+                )}
+                {item.nullDefenses ? (
+                  <span className="text-orange-500">Null defenses found</span>
+                ) : (
+                  <span className="text-blue-500">No null defenses found</span>
+                )}
+                {item.ghostFunctions ? (
+                  <span className="text-pink-500">Ghost functions found</span>
+                ) : (
+                  <span className="text-purple-500">No ghost functions found</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No data available</p>
+        )}
       </div>
     );
   };
@@ -103,25 +107,29 @@ const App = () => {
     return (
       <div className="max-w-4xl mx-auto p-4">
         <h2 className="text-2xl font-bold mb-4">Data Visualization</h2>
-        <ul>
-          {data.map((item, index) => (
-            <li key={index} className="py-2 border-b border-gray-200">
-              {item}
-            </li>
-          ))}
-        </ul>
+        {data.length > 0 ? (
+          <ul>
+            {data.map((item, index) => (
+              <li key={index} className="py-2 border-b border-gray-200">
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No data available</p>
+        )}
       </div>
     );
   };
 
   const UserInteraction = () => {
-    const handleClick = () => {
+    const handleClick = useCallback(() => {
       try {
         // 사용자 인터랙션 로직
       } catch (error) {
         console.error(error);
       }
-    };
+    }, []);
 
     return (
       <div className="max-w-4xl mx-auto p-4">

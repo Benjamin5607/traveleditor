@@ -1,7 +1,7 @@
 # Zerro AI Project
 
 ### 🎯 목표
-> 2. **UI/UX 개선**: `emily-traveleditor/emily-traveleditor/app/layout.tsx`와 `emily-traveleditor/emily-traveleditor/app/page.tsx`를 분석하여 현재의 UI/UX를 평가하고, 사용자 경험을 개선하기 위한 디자인 및 구현 변경을 제안합니다.
+> 3. **배포 및 자동화**: `.github/workflows/deploy.yml`을 분석하여 현재의 배포 프로세스를 이해하고, 자동화된 테스트 및 배포 파이프라인을 구축하여 프로젝트의 안정성과 효율성을 높이는 것을 제안합니다.
 
 ### 🛡️ QA Report
 PASS
