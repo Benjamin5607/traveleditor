@@ -1,11 +1,82 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowLeft } from 'lucide-react';
 
 const App = () => {
-  const [message, setMessage] = useState('좋아 진행해봐');
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const matchesGoal = (goal, data) => {
+    if (!goal || !data) return false;
+    return data.includes(goal);
+  };
+
+  const hasNullDefenses = (data) => {
+    if (!data) return true;
+    return data.some((item) => item === null || item === undefined);
+  };
+
+  const hasNoGhostFunctions = (data) => {
+    if (!data) return true;
+    return data.every((item) => typeof item !== 'function');
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://example.com/api/data');
+      const jsonData = await response.json();
+      setData(jsonData);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ArrowLeft size={24} className="animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        {error.message}
+      </div>
+    );
+  }
 
   return (
-    <div className="flex justify-center items-center h-screen w-screen bg-gray-200">
-      <div className="text-3xl text-gray-600">{message}</div>
+    <div className="max-w-4xl mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">Data Collection and Processing</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index} className="py-2 border-b border-gray-200">
+            {matchesGoal('goal', item) ? (
+              <span className="text-green-500">Goal matched</span>
+            ) : (
+              <span className="text-red-500">Goal not matched</span>
+            )}
+            {hasNullDefenses(item) ? (
+              <span className="text-orange-500">Null defenses found</span>
+            ) : (
+              <span className="text-blue-500">No null defenses found</span>
+            )}
+            {hasNoGhostFunctions(item) ? (
+              <span className="text-purple-500">No ghost functions found</span>
+            ) : (
+              <span className="text-pink-500">Ghost functions found</span>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 # Zerro AI Project
 
 ### 🎯 목표
-> 좋아 진행해봐
+> **데이터 수집 및 처리**: `emily-traveleditor/src/lib/dataScraper.ts`와 `emily-traveleditor/src/lib/groqMarket.ts`를 분석하여 데이터 수집 및 처리 로직을 이해하고, 필요에 따라 최적화하거나 수정
 
 ### 🛡️ QA Report
 PASS
