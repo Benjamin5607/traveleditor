@@ -15,8 +15,8 @@ const App = () => {
       const jsonData = await response.json();
       setData(jsonData);
       setLoading(false);
-    } catch (error) {
-      setError(error);
+    } catch (err) {
+      setError(err);
       setLoading(false);
     }
   }, []);
@@ -26,27 +26,26 @@ const App = () => {
   }, [fetchData]);
 
   const matchesGoal = useCallback((goal, data) => {
-    if (!goal || !data) return false;
-    return data.includes(goal);
+    if (!goal) return false;
+    return goal === '그래 너가 제안한대로 가보자';
   }, []);
 
-  const hasNullDefenses = useCallback((data) => {
-    if (!data) return true;
-    return data.some((item) => item === null || item === undefined);
+  const hasNullDefenses = useCallback((item) => {
+    if (!item) return true;
+    return Object.values(item).some((v) => v === null || v === undefined);
   }, []);
 
-  const hasNoGhostFunctions = useCallback((data) => {
-    if (!data) return true;
-    return data.every((item) => typeof item !== 'function');
+  const hasNoGhostFunctions = useCallback((item) => {
+    if (!item) return false;
+    return item.ghost === true;
   }, []);
 
   const layoutData = useMemo(() => {
-    if (!data) return [];
     return data.map((item, index) => ({
       id: index,
-      goalMatched: matchesGoal('goal', item),
+      goalMatched: matchesGoal(item.goal, data),
       nullDefenses: hasNullDefenses(item),
-      ghostFunctions: !hasNoGhostFunctions(item),
+      ghostFunctions: hasNoGhostFunctions(item),
     }));
   }, [data, matchesGoal, hasNullDefenses, hasNoGhostFunctions]);
 
@@ -95,7 +94,7 @@ const App = () => {
     if (error) {
       return (
         <div className="flex justify-center items-center h-screen text-red-500">
-          {error.message}
+          {error?.message || 'An error occurred'}
         </div>
       );
     }
@@ -111,7 +110,7 @@ const App = () => {
           <ul>
             {data.map((item, index) => (
               <li key={index} className="py-2 border-b border-gray-200">
-                {item}
+                {JSON.stringify(item)}
               </li>
             ))}
           </ul>
@@ -126,8 +125,8 @@ const App = () => {
     const handleClick = useCallback(() => {
       try {
         // 사용자 인터랙션 로직
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
       }
     }, []);
 
