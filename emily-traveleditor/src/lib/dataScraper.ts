@@ -17,6 +17,7 @@ export async function getExchangeRate() {
 
 // 2. 날씨 정보 (OpenWeatherMap 무료 키가 없다면 일단 샘플 데이터로 틀만 잡습니다)
 export async function getTravelWeather(city: string) {
+  void city;
   // 실제 서비스 시에는 사장님의 OpenWeatherMap API 키를 사용하세요.
   // 지금은 로직 확인을 위해 '말레이시아'와 '베트남' 날씨를 타겟팅합니다.
   try {
@@ -26,7 +27,7 @@ export async function getTravelWeather(city: string) {
       temp: data.current_weather.temperature,
       status: data.current_weather.weathercode, // 이 코드를 에밀리식 언어로 치환할 예정
     };
-  } catch (e) {
+  } catch {
     return { temp: "알 수 없음", status: "데이터 안 옴" };
   }
 }

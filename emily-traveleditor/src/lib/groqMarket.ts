@@ -1,5 +1,14 @@
 import { getEmilyTheme } from "./themes";
 
+export type EmilyWorker = {
+  id: string;
+  [key: string]: unknown;
+};
+
+type GroqModelsResponse = {
+  data?: EmilyWorker[];
+};
+
 // 1. 실시간 날씨 정보를 가져오는 함수
 export async function getWeatherData(city: string) {
   const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
@@ -11,7 +20,7 @@ export async function getWeatherData(city: string) {
     );
     if (!res.ok) return null;
     return await res.json();
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -26,8 +35,8 @@ export async function getEmilyWorkers(userApiKey?: string) {
       headers: { "Authorization": `Bearer ${apiKey}` }
     });
     if (!response.ok) return [];
-    const result = await response.json();
-    return result.data.filter((m: any) => 
+    const result = (await response.json()) as GroqModelsResponse;
+    return (result.data ?? []).filter((m) =>
       m.id.includes('llama') || m.id.includes('mixtral') || m.id.includes('gemma')
     );
   } catch (e) {
@@ -59,7 +68,7 @@ export async function askEmily(modelId: string, category: string, city: string, 
       const db = await dbRes.json();
       marketContext = `참고로 오늘 엔화 환율은 100엔당 ${db.rates?.JPY || '??'}원이고, ${city} 맥주값은 ${db.beer_index?.[city] || '비싸'}.`;
     }
-  } catch (e) {
+  } catch {
     marketContext = "물가 정보는 귀찮아서 안 알아왔어.";
   }
 
@@ -96,7 +105,7 @@ export async function askEmily(modelId: string, category: string, city: string, 
     const data = await response.json();
     if (!response.ok) return "에밀리가 지금 바빠서 대답 안 한대. (에러 났어)";
     return data.choices[0].message.content;
-  } catch (error) {
+  } catch {
     return "연결 상태가 안 좋아. 인력시장에 문제가 생긴 듯?";
   }
 }

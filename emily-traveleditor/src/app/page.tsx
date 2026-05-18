@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getEmilyWorkers, askEmily } from "../lib/groqMarket";
+import type { EmilyWorker } from "../lib/groqMarket";
 import { EMILY_THEMES } from "../lib/themes";
 
 export default function Home() {
-  const [workers, setWorkers] = useState<any[]>([]);
+  const [workers, setWorkers] = useState<EmilyWorker[]>([]);
   const [selectedWorker, setSelectedWorker] = useState("");
   const [city, setCity] = useState("Seoul"); // 도시 추가
   const [result, setResult] = useState("");
@@ -29,7 +30,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 p-6 flex flex-col items-center">
-      <h1 className="text-3xl font-black text-yellow-500 my-8">EMILY'S PANTHEON</h1>
+      <h1 className="text-3xl font-black text-yellow-500 my-8">EMILY&apos;S PANTHEON</h1>
       
       <div className="w-full max-w-md space-y-4">
         <input 
