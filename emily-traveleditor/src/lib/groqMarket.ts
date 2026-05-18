@@ -15,6 +15,8 @@ type ThemeTravelRecommendation = {
   why?: string;
   source_titles?: string[];
   source_urls?: string[];
+  official_url?: string;
+  reservation_hint?: string;
 };
 
 type ThemeTravelDb = {
@@ -108,7 +110,10 @@ export async function askEmily(modelId: string, category: string, city: string, 
       if (recommendations.length > 0) {
         themeTravelContext = recommendations
           .slice(0, 3)
-          .map((item) => `${item.title}: ${item.angle || item.why || "테마 후보"}`)
+          .map((item) => {
+            const link = item.official_url || item.source_urls?.[0] || "링크 없음";
+            return `${item.title}: ${item.angle || item.why || "테마 후보"} (확인 링크: ${link})`;
+          })
           .join(" / ");
       }
     }

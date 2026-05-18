@@ -11,6 +11,7 @@ DATA_DIR = PROJECT_ROOT / 'public' / 'data'
 WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php"
 WIKIPEDIA_SUMMARY_URL = "https://en.wikipedia.org/api/rest_v1/page/summary"
 WIKIVOYAGE_API_URL = "https://en.wikivoyage.org/w/api.php"
+WIKIDATA_ENTITY_URL = "https://www.wikidata.org/wiki/Special:EntityData"
 GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
 CRAWLER_HEADERS = {
     "User-Agent": os.environ.get(
@@ -97,13 +98,33 @@ def get_wikipedia_summary(title: str) -> dict[str, str] | None:
         extract = data.get("extract") or ""
         if not extract:
             return None
+        official_urls = get_wikidata_official_urls(data.get("wikibase_item"))
         return {
             "title": data.get("title") or title,
             "extract": extract[:700],
             "url": data.get("content_urls", {}).get("desktop", {}).get("page", ""),
+            "official_url": official_urls[0] if official_urls else "",
         }
     except requests.RequestException:
         return None
+
+
+def get_wikidata_official_urls(entity_id: str | None) -> list[str]:
+    if not entity_id:
+        return []
+
+    try:
+        data = request_json(f"{WIKIDATA_ENTITY_URL}/{entity_id}.json")
+        entity = data.get("entities", {}).get(entity_id, {})
+        claims = entity.get("claims", {}).get("P856", [])
+        urls = []
+        for claim in claims:
+            value = claim.get("mainsnak", {}).get("datavalue", {}).get("value")
+            if isinstance(value, str) and value.startswith("http"):
+                urls.append(value)
+        return urls
+    except requests.RequestException:
+        return []
 
 
 def get_wikivoyage_city_source(city: str) -> dict[str, str] | None:
@@ -130,6 +151,7 @@ def get_wikivoyage_city_source(city: str) -> dict[str, str] | None:
             "title": f"Wikivoyage: {page_title}",
             "extract": extract[:1600],
             "url": f"https://en.wikivoyage.org/wiki/{quote(page_title.replace(' ', '_'))}",
+            "official_url": "",
         }
     except (requests.RequestException, StopIteration):
         return None
@@ -183,6 +205,8 @@ def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dic
                 "why": source["extract"][:180],
                 "source_titles": [source["title"]],
                 "source_urls": [source["url"]],
+                "official_url": source.get("official_url", ""),
+                "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요." if source.get("official_url") else "출처 링크에서 운영 정보를 먼저 확인하세요.",
             }
             for source in sources[:3]
         ]
@@ -208,6 +232,10 @@ def sanitize_groq_summary(
         sources = city_sources.get(city, [])
         source_titles = {source["title"] for source in sources}
         source_urls = {source["url"] for source in sources if source.get("url")}
+        official_urls_by_title = {
+            source["title"]: source.get("official_url", "")
+            for source in sources
+        }
         fallback_items = fallback_theme_summary(theme, config, {city: sources})["cities"].get(city, [])
         items = parsed_cities.get(city) if isinstance(parsed_cities, dict) else None
 
@@ -244,6 +272,8 @@ def sanitize_groq_summary(
                 "why": str(item.get("why") or config["brief"]),
                 "source_titles": valid_titles,
                 "source_urls": valid_urls,
+                "official_url": next((official_urls_by_title.get(title, "") for title in valid_titles if official_urls_by_title.get(title)), ""),
+                "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요." if any(official_urls_by_title.get(title) for title in valid_titles) else "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             })
 
         cities[city] = cleaned_items or fallback_items
@@ -267,6 +297,7 @@ def summarize_theme_with_groq(theme: str, config: dict[str, Any], city_sources: 
                 "title": source["title"],
                 "extract": source["extract"],
                 "url": source["url"],
+                "official_url": source.get("official_url", ""),
             }
             for source in sources
         ]
@@ -280,6 +311,7 @@ def summarize_theme_with_groq(theme: str, config: dict[str, Any], city_sources: 
 각 도시마다 테마에 맞는 여행 후보 2~3개를 골라 한국어 JSON으로만 답해.
 도시 키는 반드시 다음 영문 표기를 그대로 써: {json.dumps(TARGET_CITIES, ensure_ascii=False)}
 source_titles와 source_urls는 크롤링 소스에 있는 값만 그대로 써. 새 URL을 만들지 마.
+official_url은 크롤링 소스의 official_url 값이 있을 때만 써. 새 공식/예약 URL을 만들지 마.
 스키마:
 {{
   "theme": "{theme}",
@@ -291,7 +323,9 @@ source_titles와 source_urls는 크롤링 소스에 있는 값만 그대로 써.
         "angle": "테마와 맞는 이유 한 줄",
         "why": "여행자에게 줄 짧은 설명",
         "source_titles": ["참고한 소스 제목"],
-        "source_urls": ["참고한 URL"]
+        "source_urls": ["참고한 URL"],
+        "official_url": "공식 사이트 URL 또는 빈 문자열",
+        "reservation_hint": "예약/운영 확인 방법"
       }}
     ]
   }},
