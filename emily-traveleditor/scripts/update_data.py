@@ -10,12 +10,22 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / 'public' / 'data'
 WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php"
 WIKIPEDIA_SUMMARY_URL = "https://en.wikipedia.org/api/rest_v1/page/summary"
+WIKIVOYAGE_API_URL = "https://en.wikivoyage.org/w/api.php"
 GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
+CRAWLER_HEADERS = {
+    "User-Agent": os.environ.get(
+        "EMILY_CRAWLER_USER_AGENT",
+        "EmilyTravelEditor/1.0 (https://github.com/Benjamin5607/traveleditor)",
+    )
+}
 TARGET_CITIES = [
     city.strip()
     for city in os.environ.get("EMILY_CRAWL_CITIES", "Seoul,Tokyo,London,Paris,DaNang").split(",")
     if city.strip()
 ]
+CITY_PAGE_TITLES = {
+    "DaNang": "Da Nang",
+}
 THEME_CRAWL_CONFIG = {
     "마음의 평화": {
         "keywords": ["tea house", "coffee roastery", "botanical garden", "quiet walk"],
@@ -37,7 +47,8 @@ THEME_CRAWL_CONFIG = {
 
 
 def request_json(url: str, **kwargs: Any) -> dict[str, Any]:
-    response = requests.get(url, timeout=15, **kwargs)
+    headers = {**CRAWLER_HEADERS, **kwargs.pop("headers", {})}
+    response = requests.get(url, timeout=15, headers=headers, **kwargs)
     response.raise_for_status()
     return response.json()
 
@@ -95,21 +106,63 @@ def get_wikipedia_summary(title: str) -> dict[str, str] | None:
         return None
 
 
+def get_wikivoyage_city_source(city: str) -> dict[str, str] | None:
+    title = CITY_PAGE_TITLES.get(city, city)
+    try:
+        data = request_json(
+            WIKIVOYAGE_API_URL,
+            params={
+                "action": "query",
+                "format": "json",
+                "prop": "extracts",
+                "explaintext": 1,
+                "titles": title,
+                "redirects": 1,
+            },
+        )
+        pages = data.get("query", {}).get("pages", {})
+        page = next(iter(pages.values()))
+        extract = page.get("extract") or ""
+        if not extract:
+            return None
+        page_title = page.get("title") or title
+        return {
+            "title": f"Wikivoyage: {page_title}",
+            "extract": extract[:1600],
+            "url": f"https://en.wikivoyage.org/wiki/{quote(page_title.replace(' ', '_'))}",
+        }
+    except (requests.RequestException, StopIteration):
+        return None
+
+
+def is_city_relevant(source: dict[str, str], city: str) -> bool:
+    title = CITY_PAGE_TITLES.get(city, city)
+    haystack = f"{source.get('title', '')} {source.get('extract', '')} {source.get('url', '')}".lower()
+    aliases = {city.lower(), title.lower(), title.lower().replace(" ", "")}
+    return any(alias in haystack.replace(" ", "") or alias in haystack for alias in aliases)
+
+
 def crawl_theme_sources(city: str, keywords: list[str], max_sources: int = 5) -> list[dict[str, str]]:
     sources = []
     seen_titles = set()
+    city_title = CITY_PAGE_TITLES.get(city, city)
+    city_source = get_wikivoyage_city_source(city)
+
+    if city_source:
+        sources.append(city_source)
+        seen_titles.add(city_source["title"])
 
     for keyword in keywords:
         if len(sources) >= max_sources:
             break
 
-        for result in search_wikipedia(f"{city} {keyword} travel", limit=2):
+        for result in search_wikipedia(f'"{city_title}" "{keyword}" travel', limit=3):
             title = result.get("title")
             if not title or title in seen_titles:
                 continue
 
             summary = get_wikipedia_summary(title)
-            if not summary:
+            if not summary or not is_city_relevant(summary, city):
                 continue
 
             seen_titles.add(title)
@@ -142,9 +195,70 @@ def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dic
     }
 
 
+def sanitize_groq_summary(
+    theme: str,
+    config: dict[str, Any],
+    parsed: dict[str, Any],
+    city_sources: dict[str, list[dict[str, str]]],
+) -> dict[str, Any]:
+    parsed_cities = parsed.get("cities", {})
+    cities = {}
+
+    for city in TARGET_CITIES:
+        sources = city_sources.get(city, [])
+        source_titles = {source["title"] for source in sources}
+        source_urls = {source["url"] for source in sources if source.get("url")}
+        fallback_items = fallback_theme_summary(theme, config, {city: sources})["cities"].get(city, [])
+        items = parsed_cities.get(city) if isinstance(parsed_cities, dict) else None
+
+        if not isinstance(items, list) or not items:
+            cities[city] = fallback_items
+            continue
+
+        cleaned_items = []
+        for index, item in enumerate(items[:3]):
+            if not isinstance(item, dict):
+                continue
+
+            raw_titles = item.get("source_titles", [])
+            raw_urls = item.get("source_urls", [])
+            raw_titles = raw_titles if isinstance(raw_titles, list) else []
+            raw_urls = raw_urls if isinstance(raw_urls, list) else []
+            valid_titles = [
+                title for title in raw_titles
+                if isinstance(title, str) and title in source_titles
+            ]
+            valid_urls = [
+                url for url in raw_urls
+                if isinstance(url, str) and url in source_urls
+            ]
+
+            fallback_source = sources[min(index, len(sources) - 1)] if sources else None
+            if fallback_source and (not valid_titles or not valid_urls):
+                valid_titles = [fallback_source["title"]]
+                valid_urls = [fallback_source["url"]]
+
+            cleaned_items.append({
+                "title": str(item.get("title") or (fallback_source or {}).get("title") or city),
+                "angle": str(item.get("angle") or config["brief"]),
+                "why": str(item.get("why") or config["brief"]),
+                "source_titles": valid_titles,
+                "source_urls": valid_urls,
+            })
+
+        cities[city] = cleaned_items or fallback_items
+
+    return {
+        "theme": theme,
+        "keywords": config["keywords"],
+        "cities": cities,
+        "generated_by": "groq",
+    }
+
+
 def summarize_theme_with_groq(theme: str, config: dict[str, Any], city_sources: dict[str, list[dict[str, str]]]) -> dict[str, Any]:
     api_key = os.environ.get("GROQ_API_KEY")
-    if not api_key:
+    if not api_key or not any(city_sources.values()):
         return fallback_theme_summary(theme, config, city_sources)
 
     source_payload = {
@@ -164,6 +278,8 @@ def summarize_theme_with_groq(theme: str, config: dict[str, Any], city_sources: 
 테마 기준: {config["brief"]}
 
 각 도시마다 테마에 맞는 여행 후보 2~3개를 골라 한국어 JSON으로만 답해.
+도시 키는 반드시 다음 영문 표기를 그대로 써: {json.dumps(TARGET_CITIES, ensure_ascii=False)}
+source_titles와 source_urls는 크롤링 소스에 있는 값만 그대로 써. 새 URL을 만들지 마.
 스키마:
 {{
   "theme": "{theme}",
@@ -210,7 +326,7 @@ def summarize_theme_with_groq(theme: str, config: dict[str, Any], city_sources: 
         parsed = json.loads(content)
         if not isinstance(parsed.get("cities"), dict):
             raise ValueError("Groq response did not include cities")
-        return parsed
+        return sanitize_groq_summary(theme, config, parsed, city_sources)
     except (requests.RequestException, KeyError, json.JSONDecodeError, ValueError):
         return fallback_theme_summary(theme, config, city_sources)
 
@@ -230,7 +346,7 @@ def collect_theme_travel_data() -> dict[str, Any]:
     return {
         "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "source": {
-            "crawl": "Wikipedia search and summary APIs",
+            "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
             "enrichment": "Groq chat completions when GROQ_API_KEY is available",
             "cities": TARGET_CITIES,
         },
