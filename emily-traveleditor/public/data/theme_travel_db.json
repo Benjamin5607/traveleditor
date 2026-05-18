@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-18 00:31",
+  "last_updated": "2026-05-18 00:38",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -24,99 +24,102 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차와 예술을 즐길 수 있는 곳",
-            "why": "인사동의 전통 차집과 갤러리를 방문하여 마음의 평화를 찾을 수 있습니다.",
+            "angle": "전통 차집과 현대적인 카페가 함께 있는 곳",
+            "why": "인사동의 전통적인 분위기와 차, 커피를 즐길 수 있는 다양한 카페",
             "source_titles": [
               "Insa-dong"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Insa-dong"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           },
           {
             "title": "어린이대공원",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로를 따라 마음의 평화를 찾을 수 있습니다.",
+            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있는 공간",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Children's_Grand_Park%2C_Seoul"
-            ]
+            ],
+            "official_url": "https://www.sisul.or.kr/open_content/childrenpark",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "예술과 자연의 조화",
-            "why": "고토 미술관의 아름다운 정원과 예술 작품을 감상하여 마음의 평화를 찾을 수 있습니다.",
+            "angle": "고토 미술관의 정물과 차를 즐기는 공간",
+            "why": "고토 미술관의 아름다운 정원과 전통적인 차 집에서 마음을 진정시킬 수 있는 공간",
             "source_titles": [
               "Gotoh Museum"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Gotoh_Museum"
-            ]
+            ],
+            "official_url": "https://www.gotoh-museum.or.jp/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
             "title": "유메노시마 열대 식물 온실",
-            "angle": "자연의 아름다움을 감상",
-            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 자연을 감상하여 마음의 평화를 찾을 수 있습니다.",
+            "angle": "아름다운 식물과 평화로운 분위기",
+            "why": "유메노시마 열대 식물 온실의 다양한 식물과 아름다운 정원에서 마음을 진정시킬 수 있는 공간",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
-            ]
+            ],
+            "official_url": "https://www.yumenoshima.jp/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "London": [
           {
-            "title": "런던의 공원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "런던의 아름다운 공원과 산책로를 따라 마음의 평화를 찾을 수 있습니다.",
+            "title": "학교 오브 필로소피 앤 이코노믹 사이언스",
+            "angle": "평화로운 분위기와 차를 즐기는 공간",
+            "why": "학교 오브 필로소피 앤 이코노믹 사이언스의 아름다운 정원과 전통적인 차 집에서 마음을 진정시킬 수 있는 공간",
             "source_titles": [
-              "Wikivoyage: London"
+              "School of Philosophy and Economic Science"
             ],
             "source_urls": [
-              "https://en.wikivoyage.org/wiki/London"
-            ]
+              "https://en.wikipedia.org/wiki/School_of_Philosophy_and_Economic_Science"
+            ],
+            "official_url": "https://www.schooleconomicscience.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "Paris": [
           {
-            "title": "파리의 정원",
-            "angle": "자연의 아름다움을 감상",
-            "why": "파리의 아름다운 정원과 자연을 감상하여 마음의 평화를 찾을 수 있습니다.",
-            "source_titles": [
-              "Wikivoyage: Paris"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Paris"
-            ]
-          },
-          {
-            "title": "메나제리 뒤 자르뎅 데 플랑트",
+            "title": "메나제리 뒤 자르댕 데 플란트",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "메나제리 뒤 자르뎅 데 플랑트의 아름다운 정원과 동물원을 방문하여 마음의 평화를 찾을 수 있습니다.",
+            "why": "메나제리 뒤 자르댕 데 플란트의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있는 공간",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_plantes"
-            ]
+            ],
+            "official_url": "http://www.mnhn.fr/fr/visitez/lieux/menagerie-zoo-jardin-plantes",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "DaNang": [
           {
-            "title": "다낭의 해변",
-            "angle": "자연의 아름다움을 감상",
-            "why": "다낭의 아름다운 해변과 자연을 감상하여 마음의 평화를 찾을 수 있습니다.",
+            "title": "다낭",
+            "angle": "아름다운 해변과 평화로운 분위기",
+            "why": "다낭의 아름다운 해변과 산책로에서 마음을 진정시킬 수 있는 공간",
             "source_titles": [
               "Wikivoyage: Da Nang"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Da_Nang"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           }
         ]
       },
@@ -133,122 +136,142 @@
       "cities": {
         "Seoul": [
           {
-            "title": "마포와인터널",
-            "angle": "와인 생산지와 체험 공간",
-            "why": "서울에서 와인 생산지와 체험 공간을 경험할 수 있는 곳",
+            "title": "서울의 와인 양조장",
+            "angle": "서울의 와인 양조장을 방문하여 와인 생산 과정을 경험할 수 있습니다.",
+            "why": "서울의 와인 양조장을 방문하여 와인 생산 과정을 경험하고 다양한 와인을 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Seoul"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Seoul"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           },
           {
-            "title": "서울 크래프트 비어",
-            "angle": "수제 맥주 양조장",
-            "why": "서울에서 다양한 수제 맥주를 맛볼 수 있는 곳",
+            "title": "서울의 맥주 양조장",
+            "angle": "서울의 맥주 양조장을 방문하여 맥주 생산 과정을 경험할 수 있습니다.",
+            "why": "서울의 맥주 양조장을 방문하여 맥주 생산 과정을 경험하고 다양한 맥주를 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Seoul"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Seoul"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           }
         ],
         "Tokyo": [
           {
-            "title": "도쿄 와인 아카데미",
-            "angle": "와인 교육과 체험",
-            "why": "도쿄에서 와인 교육과 체험을 할 수 있는 곳",
+            "title": "도쿄의 와인 양조장",
+            "angle": "도쿄의 와인 양조장을 방문하여 와인 생산 과정을 경험할 수 있습니다.",
+            "why": "도쿄의 와인 양조장을 방문하여 와인 생산 과정을 경험하고 다양한 와인을 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Tokyo"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Tokyo"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           },
           {
-            "title": "요코하마 크래프트 비어",
-            "angle": "수제 맥주 양조장",
-            "why": "도쿄 근교 요코하마에서 다양한 수제 맥주를 맛볼 수 있는 곳",
+            "title": "도쿄의 위스키 증류소",
+            "angle": "도쿄의 위스키 증류소를 방문하여 위스키 생산 과정을 경험할 수 있습니다.",
+            "why": "도쿄의 위스키 증류소를 방문하여 위스키 생산 과정을 경험하고 다양한 위스키를 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Tokyo"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Tokyo"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           }
         ],
         "London": [
           {
-            "title": "런던 와인 교회",
-            "angle": "와인 교육과 체험",
-            "why": "런던에서 와인 교육과 체험을 할 수 있는 곳",
+            "title": "런던의 와인 양조장",
+            "angle": "런던의 와인 양조장을 방문하여 와인 생산 과정을 경험할 수 있습니다.",
+            "why": "런던의 와인 양조장을 방문하여 와인 생산 과정을 경험하고 다양한 와인을 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: London"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/London"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           },
           {
-            "title": "브릭스턴 크래프트 비어",
-            "angle": "수제 맥주 양조장",
-            "why": "런던에서 다양한 수제 맥주를 맛볼 수 있는 곳",
+            "title": "런던의 맥주 양조장",
+            "angle": "런던의 맥주 양조장을 방문하여 맥주 생산 과정을 경험할 수 있습니다.",
+            "why": "런던의 맥주 양조장을 방문하여 맥주 생산 과정을 경험하고 다양한 맥주를 맛볼 수 있습니다.",
             "source_titles": [
-              "Aldborough Hatch"
+              "Wikivoyage: London"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Aldborough_Hatch"
-            ]
+              "https://en.wikivoyage.org/wiki/London"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           }
         ],
         "Paris": [
           {
-            "title": "파리 와인 아카데미",
-            "angle": "와인 교육과 체험",
-            "why": "파리에서 와인 교육과 체험을 할 수 있는 곳",
+            "title": "파리의 와인 양조장",
+            "angle": "파리의 와인 양조장을 방문하여 와인 생산 과정을 경험할 수 있습니다.",
+            "why": "파리의 와인 양조장을 방문하여 와인 생산 과정을 경험하고 다양한 와인을 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Paris"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Paris"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           },
           {
-            "title": "몽마르트 크래프트 비어",
-            "angle": "수제 맥주 양조장",
-            "why": "파리에서 다양한 수제 맥주를 맛볼 수 있는 곳",
+            "title": "파리의 맥주 양조장",
+            "angle": "파리의 맥주 양조장을 방문하여 맥주 생산 과정을 경험할 수 있습니다.",
+            "why": "파리의 맥주 양조장을 방문하여 맥주 생산 과정을 경험하고 다양한 맥주를 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Paris"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Paris"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           }
         ],
         "DaNang": [
           {
-            "title": "다낭 와인 하우스",
-            "angle": "와인 판매와 교육",
-            "why": "다낭에서 와인 판매와 교육을 할 수 있는 곳",
+            "title": "다낭의 와인 양조장",
+            "angle": "다낭의 와인 양조장을 방문하여 와인 생산 과정을 경험할 수 있습니다.",
+            "why": "다낭의 와인 양조장을 방문하여 와인 생산 과정을 경험하고 다양한 와인을 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Da Nang"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Da_Nang"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           },
           {
-            "title": "다낭 크래프트 비어",
-            "angle": "수제 맥주 양조장",
-            "why": "다낭에서 다양한 수제 맥주를 맛볼 수 있는 곳",
+            "title": "다낭의 맥주 양조장",
+            "angle": "다낭의 맥주 양조장을 방문하여 맥주 생산 과정을 경험할 수 있습니다.",
+            "why": "다낭의 맥주 양조장을 방문하여 맥주 생산 과정을 경험하고 다양한 맥주를 맛볼 수 있습니다.",
             "source_titles": [
               "Wikivoyage: Da Nang"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Da_Nang"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
           }
         ]
       },
@@ -265,82 +288,172 @@
       "cities": {
         "Seoul": [
           {
-            "title": "이태원",
-            "angle": "다양한 바와 클럽이 모여있는 이태원은 밤의 에너지가 넘치는 곳입니다.",
-            "why": "이태원에서 밤을 즐기며 다양한 문화를 경험해 보세요.",
+            "title": "Wikivoyage: Seoul",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and ",
             "source_titles": [
-              "Itaewon"
+              "Wikivoyage: Seoul"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Itaewon"
-            ]
+              "https://en.wikivoyage.org/wiki/Seoul"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           },
           {
-            "title": "강남",
-            "angle": "강남은 서울의 남부에 위치한 부유한 지역으로 밤의 에너지가 넘칩니다.",
-            "why": "강남에서 밤을 즐기며 다양한 엔터테인먼트를 경험해 보세요.",
+            "title": "Burning Sun scandal",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "The Burning Sun scandal, also known as Burning Sun gate, was a 2019 entertainment and sex scandal in Seoul, South Korea, which involved several celebrities, including Korean idols ",
             "source_titles": [
               "Burning Sun scandal"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Burning_Sun_scandal"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Indians in Korea",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Indians in Korea include the migrant diaspora from India to Korea and their locally-born descendants. A majority of them live in Seoul and Busan, and smaller populations live in ot",
+            "source_titles": [
+              "Indians in Korea"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Indians_in_Korea"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Tokyo": [
           {
-            "title": "로пп롱기",
-            "angle": "로пп롱기는 도쿄의 밤문화를 대표하는 지역으로 다양한 바와 클럽이 있습니다.",
-            "why": "로пп롱기에서 밤을 즐기며 도쿄의 밤문화를 경험해 보세요.",
+            "title": "Wikivoyage: Tokyo",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of ",
+            "source_titles": [
+              "Wikivoyage: Tokyo"
+            ],
+            "source_urls": [
+              "https://en.wikivoyage.org/wiki/Tokyo"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Carl Randall",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Carl Randall, born Carlo Lombardi, is a British figurative painter, whose work is based on images of modern Japan, resulting from the artist living for a decade in Tokyo. These wor",
+            "source_titles": [
+              "Carl Randall"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Carl_Randall"
+            ],
+            "official_url": "http://www.carlrandall.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+          },
+          {
+            "title": "Roppongi",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign",
             "source_titles": [
               "Roppongi"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Roppongi"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "London": [
           {
-            "title": "차이納화이트",
-            "angle": "차이納화이트는 런던의 대표적인 나이트클럽 중 하나입니다.",
-            "why": "차이納화이트에서 런던의 밤을 즐기며 다양한 엔터테인먼트를 경험해 보세요.",
+            "title": "Wikivoyage: London",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Vibrant and truly multicultural, London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom sits on the River Thames in South-",
             "source_titles": [
-              "Chinawhite (nightclub)"
+              "Wikivoyage: London"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Chinawhite_(nightclub)"
-            ]
+              "https://en.wikivoyage.org/wiki/London"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Milk & Honey (bar)",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Milk & Honey was a cocktail bar originally founded in New York City on 31 December 1999, with another location in Soho, London, founded by Sasha Petraske. The New York location was",
+            "source_titles": [
+              "Milk & Honey (bar)"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Milk_%26_Honey_(bar)"
+            ],
+            "official_url": "http://www.mlkhny.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "Paris": [
           {
-            "title": "몽마르트르",
-            "angle": "몽마르트르은 파리의 대표적인 밤문화 지역으로 다양한 바와 클럽이 있습니다.",
-            "why": "몽마르트르에서 파리의 밤을 즐기며 다양한 문화를 경험해 보세요.",
+            "title": "Wikivoyage: Paris",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Paris, the cosmopolitan capital of France, has the reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influ",
             "source_titles": [
               "Wikivoyage: Paris"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Paris"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Servair",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Servair is a French airline catering company. It is a majority-owned subsidiary of the Swiss catering company Gategroup (70%), with Air France being a reference shareholder. Servai",
+            "source_titles": [
+              "Servair"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Servair"
+            ],
+            "official_url": "http://www.servair.fr",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "DaNang": [
           {
-            "title": "미케 비치",
-            "angle": "미케 비치는 다낭의 대표적인 해변으로 밤의 에너지가 넘칩니다.",
-            "why": "미케 비치에서 밤을 즐기며 다양한 엔터테인먼트를 경험해 보세요.",
+            "title": "Wikivoyage: Da Nang",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Da Nang (Đà Nẵng) is Vietnam's fifth largest city. It's in Central Vietnam on the South China Sea coast, midway between Hanoi and Ho Chi Minh City.\nThe city has neither the ambianc",
             "source_titles": [
               "Wikivoyage: Da Nang"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Da_Nang"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "List of China Beach episodes",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "\n\n\n\nChina Beach is an American dramatic television series set at a military evacuation hospital during the Vietnam War. The title refers to the Western nickname for My Khe beach, l",
+            "source_titles": [
+              "List of China Beach episodes"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/List_of_China_Beach_episodes"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ]
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
     },
     "신앙": {
       "theme": "신앙",
@@ -354,115 +467,185 @@
       "cities": {
         "Seoul": [
           {
-            "title": "명동성당",
-            "angle": "서울의 대표적인 성당",
-            "why": "서울의 대표적인 관광지 중 하나로 다양한 예술 활동이 이루어지는 곳",
+            "title": "Wikivoyage: Seoul",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and ",
             "source_titles": [
-              "Myeong-dong"
+              "Wikivoyage: Seoul"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Myeong-dong"
-            ]
+              "https://en.wikivoyage.org/wiki/Seoul"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           },
           {
-            "title": "이슬람교",
-            "angle": "서울의 이슬람교 문화",
-            "why": "서울의 이슬람교 문화를 경험할 수 있는 곳",
+            "title": "Islam in Korea",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Islam (Korean: 이슬람교) is a minor religion in South Korea and North Korea. The Muslim community is centered in Seoul and Busan and there are a few mosques around the country. Accordi",
             "source_titles": [
               "Islam in Korea"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Islam_in_Korea"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Yongsan District",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Yongsan District is one of the 25 districts of Seoul, South Korea. It has a population of 231,685 (2020) and has a geographic area of 21.87 km2 (8.44 sq mi), and is divided into 19",
+            "source_titles": [
+              "Yongsan District"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Yongsan_District"
+            ],
+            "official_url": "http://www.yongsan.go.kr",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "Tokyo": [
           {
-            "title": "센소지",
-            "angle": "도쿄의 대표적인 사원",
-            "why": "도쿄의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "Wikivoyage: Tokyo",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of ",
+            "source_titles": [
+              "Wikivoyage: Tokyo"
+            ],
+            "source_urls": [
+              "https://en.wikivoyage.org/wiki/Tokyo"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Sensō-ji",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Sensō-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisat",
             "source_titles": [
               "Sensō-ji"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Sens%C5%8D-ji"
-            ]
+            ],
+            "official_url": "https://www.senso-ji.jp/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
-            "title": "아사쿠사",
-            "angle": "도쿄의 대표적인 사원가",
-            "why": "도쿄의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "Iranians in Japan",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Iranians in Japan are a minority group, with official statistics recording about 5,000 Iranian migrants in the country. Part of the Iranian diaspora, most live in the Greater Tokyo",
             "source_titles": [
-              "Asakusa"
+              "Iranians in Japan"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Asakusa"
-            ]
+              "https://en.wikipedia.org/wiki/Iranians_in_Japan"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "London": [
           {
-            "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 사원",
-            "why": "런던의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "Wikivoyage: London",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Vibrant and truly multicultural, London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom sits on the River Thames in South-",
+            "source_titles": [
+              "Wikivoyage: London"
+            ],
+            "source_urls": [
+              "https://en.wikivoyage.org/wiki/London"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Westminster",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Westminster is the main settlement of the City of Westminster in Central London, England. It extends from the River Thames to Oxford Street and has many famous landmarks, including",
             "source_titles": [
               "Westminster"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Westminster"
-            ]
+            ],
+            "official_url": "http://www.westminster.gov.uk/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
-            "title": "시티 오브 런던",
-            "angle": "런던의 대표적인 역사 지구",
-            "why": "런던의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "City of London",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The City of London is a city, ceremonial county and local government district in England. Established by the Romans around 47 AD as Londinium, it forms the historic centre of the w",
             "source_titles": [
               "City of London"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/City_of_London"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Paris": [
           {
-            "title": "파리 대모스크",
-            "angle": "파리의 대표적인 모스크",
-            "why": "파리의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "Wikivoyage: Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Paris, the cosmopolitan capital of France, has the reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influ",
+            "source_titles": [
+              "Wikivoyage: Paris"
+            ],
+            "source_urls": [
+              "https://en.wikivoyage.org/wiki/Paris"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Grand Mosque of Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Grand Mosque of Paris, also known as the Great Mosque of Paris or simply the Paris Mosque, located in the 5th arrondissement of Paris, is one of the largest mosques in France. ",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris"
-            ]
+            ],
+            "official_url": "https://www.grandemosqueedeparis.fr",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
-            "title": "노트르담 대성당",
-            "angle": "파리의 대표적인 성당",
-            "why": "파리의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "Notre-Dame de Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral",
             "source_titles": [
               "Notre-Dame de Paris"
             ],
             "source_urls": [
               "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
-            ]
+            ],
+            "official_url": "https://www.notredamedeparis.fr/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "DaNang": [
           {
-            "title": "다낭",
-            "angle": "베트남의 대표적인 해변 도시",
-            "why": "다낭의 대표적인 관광지 중 하나로 다양한 문화와 역사를 경험할 수 있는 곳",
+            "title": "Wikivoyage: Da Nang",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Da Nang (Đà Nẵng) is Vietnam's fifth largest city. It's in Central Vietnam on the South China Sea coast, midway between Hanoi and Ho Chi Minh City.\nThe city has neither the ambianc",
             "source_titles": [
               "Wikivoyage: Da Nang"
             ],
             "source_urls": [
               "https://en.wikivoyage.org/wiki/Da_Nang"
-            ]
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ]
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
     }
   },
   "raw_sources": {
@@ -471,80 +654,94 @@
         {
           "title": "Wikivoyage: Seoul",
           "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul"
+          "url": "https://en.wikivoyage.org/wiki/Seoul",
+          "official_url": ""
         },
         {
           "title": "Insa-dong",
           "extract": "Insa-dong (Korean: 인사동) is a dong, or neighborhood, in Jongno District, Seoul, South Korea. Its main street is Insadong-gil, which is connected to a number of alleys that lead deeper into the district, with modern galleries and tea shops. Historically, it was the largest market for antiques and artwork in Korea.",
-          "url": "https://en.wikipedia.org/wiki/Insa-dong"
+          "url": "https://en.wikipedia.org/wiki/Insa-dong",
+          "official_url": ""
         },
         {
           "title": "Children's Grand Park, Seoul",
           "extract": "Children's Grand Park (Korean: 어린이대공원) or Seoul Children's Grand Park is a park complex in Gwangjin District, Seoul, South Korea. Facilities at Children's Grand Park include hills and hiking trails, Zoo, garden, and an amusement park. Children's Grand Park is a leisure facility for families, offering a botanical garden, amusement facilities, and diverse performance events. The facility first opened on Children's Day, 1975.",
-          "url": "https://en.wikipedia.org/wiki/Children's_Grand_Park%2C_Seoul"
+          "url": "https://en.wikipedia.org/wiki/Children's_Grand_Park%2C_Seoul",
+          "official_url": "https://www.sisul.or.kr/open_content/childrenpark"
         },
         {
           "title": "Ansan",
           "extract": "Ansan is a city in Gyeonggi Province, South Korea. It lies southwest of Seoul and is part of the Seoul Metropolitan Area. It is connected to Seoul by rail via Seoul Subway Line 4. It is situated on the Yellow Sea coast and some islands lie within its jurisdiction. The largest and best-known of these is Daebu Island.",
-          "url": "https://en.wikipedia.org/wiki/Ansan"
+          "url": "https://en.wikipedia.org/wiki/Ansan",
+          "official_url": "https://www.ansan.go.kr/www/main/main.do"
         }
       ],
       "Tokyo": [
         {
           "title": "Wikivoyage: Tokyo",
           "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo"
+          "url": "https://en.wikivoyage.org/wiki/Tokyo",
+          "official_url": ""
         },
         {
           "title": "Gotoh Museum",
           "extract": "The Gotoh Museum  is a private museum in the Kaminoge district of Setagaya on the southwest periphery of Tokyo, Japan. It was opened in 1960, displaying the private collection of Keita Gotō, chairman of the Tokyu Group. Today's collection is centered on the original selection of classical Japanese and Chinese art, such as paintings, writings, crafts, and archaeological objects, completed by a small selection of Korean art. It features several objects designated as National Treasures or Important Cultural Properties. The exhibition changes several times each year with special openings in spring and fall.",
-          "url": "https://en.wikipedia.org/wiki/Gotoh_Museum"
+          "url": "https://en.wikipedia.org/wiki/Gotoh_Museum",
+          "official_url": "https://www.gotoh-museum.or.jp/"
         },
         {
           "title": "Chōfu",
           "extract": "Chōfu  is a city in the western side of Tokyo Metropolis, Japan. As of 1 April 2021, the city had an estimated population of 238,087, and a population density of 11,000 per km2. the total area of the city is 21.58 square kilometres (8.33 sq mi).",
-          "url": "https://en.wikipedia.org/wiki/Ch%C5%8Dfu"
+          "url": "https://en.wikipedia.org/wiki/Ch%C5%8Dfu",
+          "official_url": "https://www.city.chofu.lg.jp/"
         },
         {
           "title": "Yumenoshima Tropical Greenhouse Dome",
           "extract": "The Yumenoshima Tropical Greenhouse Dome , also sometimes called the Yumenoshima Tropical Plant Dome, is a botanical garden located at 3-2, Yumenoshima, Kōtō, Tokyo, Japan. It is operated by the Tokyo Metropolitan Park Association and is open daily except on Mondays; an admission fee is charged.",
-          "url": "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
+          "url": "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome",
+          "official_url": "https://www.yumenoshima.jp/"
         }
       ],
       "London": [
         {
           "title": "Wikivoyage: London",
           "extract": "Vibrant and truly multicultural, London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom sits on the River Thames in South-East England. Greater London has a population of a little over 9 million. Considered one of the world's leading \"global cities\", London remains an international capital of culture, music, education, fashion, politics, finance and trade.  \nFor the visitor, there is a seemingly endless choice of historical sites, shopping, museums, food, art galleries, nightlife, and activities. Once a Celtic settlement, London is a bustling city, where visitors come to experience the urban heritage and see its specific royal-themed attractions.\n\n\n== Districts ==\nThe name \"London\" used to refer only to the once-walled \"Square Mile\" of the original Roman and later medieval city; this is now confusingly called the \"City of London\" or just \"The City\". Today, London has taken on a much larger meaning to include all of the vast central parts of the modern metropolis, with the city having absorbed numerous surrounding towns and villages over the centuries, including large portions of the surrounding \"home counties\", one of which - Middlesex - being completely consumed by the growing metropolis. The term Greater London embraces Central London together with all the outlying suburbs that lie in one continuous urban sprawl within the lower Thames Valley. Though densely populated, London retains large swathes of green parkland and open space, even within the city centre.\nGreater London is most of the area surrounded by the M25",
-          "url": "https://en.wikivoyage.org/wiki/London"
+          "url": "https://en.wikivoyage.org/wiki/London",
+          "official_url": ""
         },
         {
           "title": "School of Philosophy and Economic Science",
           "extract": "The School of Philosophy and Economic Science (SPES), also operating under the names the School of Philosophy and the School of Practical Philosophy and legally named the School of Economic Science (SES), is a worldwide organisation based in London. It offers non-academic courses for adults, primarily influenced by Advaita Vedanta, an orthodox philosophical system of Hinduism. The SES has a history of criminal child abuse that started in the 1970s and lasted at least two decades in its two associated schools, St James Independent Schools and St Vedast's.. The organisation advocates conservative values with traditional gender roles and sexual ethics. It has been described as a cult, sect, or ",
-          "url": "https://en.wikipedia.org/wiki/School_of_Philosophy_and_Economic_Science"
+          "url": "https://en.wikipedia.org/wiki/School_of_Philosophy_and_Economic_Science",
+          "official_url": "https://www.schooleconomicscience.org/"
         }
       ],
       "Paris": [
         {
           "title": "Wikivoyage: Paris",
           "extract": "Paris, the cosmopolitan capital of France, has the reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influential in the realms of culture, art, fashion, food and design.\nDubbed the City of Light (la ville lumière) and the City of Love (la ville de l'amour), Paris is home to some of the world's finest and most luxurious fashion designers and cosmetics, such as Chanel, Christian Dior, Yves Saint-Laurent, Guerlain, Lancôme, L'Oréal, and Clarins. A large part of the city, including the banks of the River Seine, is a UNESCO World Heritage Site. The city has the second highest number of Michelin-starred restaurants in the world (after Tokyo, which is much larger) and contains numerous iconic landmarks such as the Eiffel Tower, the Arc de Triomphe, Notre-Dame de Paris, the Louvre, the Moulin Rouge and the Basilique du Sacré-Cœur, making it one of the most popular international tourist destinations in the world, with around 14 million visitors annually. \n\n\n== Districts ==\nThe city of Paris is divided into 20 districts called arrondissements, numbered from 1 to 20 in a clockwise spiral from the centre of the city (which is known as Kilomètre zéro and is located at the front of Notre Dame). Arrondissements are named according to their number. You might, for example, stay in the \"5th\", which would be written as 5e in French. The 12th and 16th arrondissements include large parks: the Bois de Vincennes and the Bois de Boulogne respectively.\nThe very best map you can get for Paris is called \"Paris Pratique par Arro",
-          "url": "https://en.wikivoyage.org/wiki/Paris"
+          "url": "https://en.wikivoyage.org/wiki/Paris",
+          "official_url": ""
         },
         {
           "title": "List of restaurants in Paris",
           "extract": "This is a list of notable restaurants in Paris, France. It includes a listing of notable cafés.",
-          "url": "https://en.wikipedia.org/wiki/List_of_restaurants_in_Paris"
+          "url": "https://en.wikipedia.org/wiki/List_of_restaurants_in_Paris",
+          "official_url": ""
         },
         {
           "title": "Ménagerie du Jardin des plantes",
           "extract": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zoo of the Palace of Versailles, abandoned because of the French Revolution, it is the second oldest zoological garden in the world. Today, the zoo contains many rare smaller and medium-sized mammals, and a variety of birds and reptiles.",
-          "url": "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_plantes"
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_plantes",
+          "official_url": "http://www.mnhn.fr/fr/visitez/lieux/menagerie-zoo-jardin-plantes"
         }
       ],
       "DaNang": [
         {
           "title": "Wikivoyage: Da Nang",
           "extract": "Da Nang (Đà Nẵng) is Vietnam's fifth largest city. It's in Central Vietnam on the South China Sea coast, midway between Hanoi and Ho Chi Minh City.\nThe city has neither the ambiance of Hanoi nor the hustle-bustle of Ho Chi Minh City, but has its share of sights. It is also close to the charms of Hoi An, the Cham ruins of My Son and the imperial capital of Hue, making it a popular vacation spot for those looking to explore the attractions of central Vietnam or soak up some sun while hanging out on the city's beaches.\n\n\n== Understand ==\nThe regions surrounding Da Nang (My Son, Quang Nam) were founded by the Cham Hindus perhaps 3,000 years ago, serving as the capital city and centre of the Hindu Champa Dynasty. Vietnamese invasions into the region in the 17th century significantly halted Cham development.\nGiven that Da Nang was the first point of colonial invasion, many vestiges of French architecture are present in the historic buildings. Da Nang was also where American combat troops first landed during the Vietnam War, and there are also many remnants of that era left over in Da Nang. During the war, many monuments and buildings were destroyed. On the way to My Khe Beach, the ruins of a military base remain in the form of helicopter hangars; however, these are now more easily spotted at the airport, which serves both civil and military flights.\nSince the early 1990s, the government has been enthusiastically pursuing foreign investment and infrastructure development, and a tourism boom exploded in the mid-2010s with rustic backpacker lodges giving way to highrise hotels. Init",
-          "url": "https://en.wikivoyage.org/wiki/Da_Nang"
+          "url": "https://en.wikivoyage.org/wiki/Da_Nang",
+          "official_url": ""
         }
       ]
     },
@@ -553,40 +750,46 @@
         {
           "title": "Wikivoyage: Seoul",
           "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul"
+          "url": "https://en.wikivoyage.org/wiki/Seoul",
+          "official_url": ""
         }
       ],
       "Tokyo": [
         {
           "title": "Wikivoyage: Tokyo",
           "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo"
+          "url": "https://en.wikivoyage.org/wiki/Tokyo",
+          "official_url": ""
         }
       ],
       "London": [
         {
           "title": "Wikivoyage: London",
           "extract": "Vibrant and truly multicultural, London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom sits on the River Thames in South-East England. Greater London has a population of a little over 9 million. Considered one of the world's leading \"global cities\", London remains an international capital of culture, music, education, fashion, politics, finance and trade.  \nFor the visitor, there is a seemingly endless choice of historical sites, shopping, museums, food, art galleries, nightlife, and activities. Once a Celtic settlement, London is a bustling city, where visitors come to experience the urban heritage and see its specific royal-themed attractions.\n\n\n== Districts ==\nThe name \"London\" used to refer only to the once-walled \"Square Mile\" of the original Roman and later medieval city; this is now confusingly called the \"City of London\" or just \"The City\". Today, London has taken on a much larger meaning to include all of the vast central parts of the modern metropolis, with the city having absorbed numerous surrounding towns and villages over the centuries, including large portions of the surrounding \"home counties\", one of which - Middlesex - being completely consumed by the growing metropolis. The term Greater London embraces Central London together with all the outlying suburbs that lie in one continuous urban sprawl within the lower Thames Valley. Though densely populated, London retains large swathes of green parkland and open space, even within the city centre.\nGreater London is most of the area surrounded by the M25",
-          "url": "https://en.wikivoyage.org/wiki/London"
+          "url": "https://en.wikivoyage.org/wiki/London",
+          "official_url": ""
         },
         {
           "title": "Aldborough Hatch",
           "extract": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a semi-rural locality situated to the east of Barkingside and Newbury Park.",
-          "url": "https://en.wikipedia.org/wiki/Aldborough_Hatch"
+          "url": "https://en.wikipedia.org/wiki/Aldborough_Hatch",
+          "official_url": ""
         }
       ],
       "Paris": [
         {
           "title": "Wikivoyage: Paris",
           "extract": "Paris, the cosmopolitan capital of France, has the reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influential in the realms of culture, art, fashion, food and design.\nDubbed the City of Light (la ville lumière) and the City of Love (la ville de l'amour), Paris is home to some of the world's finest and most luxurious fashion designers and cosmetics, such as Chanel, Christian Dior, Yves Saint-Laurent, Guerlain, Lancôme, L'Oréal, and Clarins. A large part of the city, including the banks of the River Seine, is a UNESCO World Heritage Site. The city has the second highest number of Michelin-starred restaurants in the world (after Tokyo, which is much larger) and contains numerous iconic landmarks such as the Eiffel Tower, the Arc de Triomphe, Notre-Dame de Paris, the Louvre, the Moulin Rouge and the Basilique du Sacré-Cœur, making it one of the most popular international tourist destinations in the world, with around 14 million visitors annually. \n\n\n== Districts ==\nThe city of Paris is divided into 20 districts called arrondissements, numbered from 1 to 20 in a clockwise spiral from the centre of the city (which is known as Kilomètre zéro and is located at the front of Notre Dame). Arrondissements are named according to their number. You might, for example, stay in the \"5th\", which would be written as 5e in French. The 12th and 16th arrondissements include large parks: the Bois de Vincennes and the Bois de Boulogne respectively.\nThe very best map you can get for Paris is called \"Paris Pratique par Arro",
-          "url": "https://en.wikivoyage.org/wiki/Paris"
+          "url": "https://en.wikivoyage.org/wiki/Paris",
+          "official_url": ""
         }
       ],
       "DaNang": [
         {
           "title": "Wikivoyage: Da Nang",
           "extract": "Da Nang (Đà Nẵng) is Vietnam's fifth largest city. It's in Central Vietnam on the South China Sea coast, midway between Hanoi and Ho Chi Minh City.\nThe city has neither the ambiance of Hanoi nor the hustle-bustle of Ho Chi Minh City, but has its share of sights. It is also close to the charms of Hoi An, the Cham ruins of My Son and the imperial capital of Hue, making it a popular vacation spot for those looking to explore the attractions of central Vietnam or soak up some sun while hanging out on the city's beaches.\n\n\n== Understand ==\nThe regions surrounding Da Nang (My Son, Quang Nam) were founded by the Cham Hindus perhaps 3,000 years ago, serving as the capital city and centre of the Hindu Champa Dynasty. Vietnamese invasions into the region in the 17th century significantly halted Cham development.\nGiven that Da Nang was the first point of colonial invasion, many vestiges of French architecture are present in the historic buildings. Da Nang was also where American combat troops first landed during the Vietnam War, and there are also many remnants of that era left over in Da Nang. During the war, many monuments and buildings were destroyed. On the way to My Khe Beach, the ruins of a military base remain in the form of helicopter hangars; however, these are now more easily spotted at the airport, which serves both civil and military flights.\nSince the early 1990s, the government has been enthusiastically pursuing foreign investment and infrastructure development, and a tourism boom exploded in the mid-2010s with rustic backpacker lodges giving way to highrise hotels. Init",
-          "url": "https://en.wikivoyage.org/wiki/Da_Nang"
+          "url": "https://en.wikivoyage.org/wiki/Da_Nang",
+          "official_url": ""
         }
       ]
     },
@@ -595,85 +798,94 @@
         {
           "title": "Wikivoyage: Seoul",
           "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul"
+          "url": "https://en.wikivoyage.org/wiki/Seoul",
+          "official_url": ""
         },
         {
           "title": "Burning Sun scandal",
           "extract": "The Burning Sun scandal, also known as Burning Sun gate, was a 2019 entertainment and sex scandal in Seoul, South Korea, which involved several celebrities, including Korean idols of popular K-pop groups, and police officials. It began on January 27, 2019, when MBC Newsdesk reported a November 2018 alleged assault of a male clubgoer at the Burning Sun, a prominent nightclub in Gangnam, by a staff member. The Seoul Metropolitan Police Agency investigation soon turned to one concerning the club's alleged involvement in sexual assault or 'date rape', prostitution, drug trafficking and police corruption.",
-          "url": "https://en.wikipedia.org/wiki/Burning_Sun_scandal"
+          "url": "https://en.wikipedia.org/wiki/Burning_Sun_scandal",
+          "official_url": ""
         },
         {
           "title": "Indians in Korea",
           "extract": "Indians in Korea include the migrant diaspora from India to Korea and their locally-born descendants. A majority of them live in Seoul and Busan, and smaller populations live in other parts of South Korea. The Indian population in North Korea is negligible, consisting of embassy staff and NGO members.",
-          "url": "https://en.wikipedia.org/wiki/Indians_in_Korea"
+          "url": "https://en.wikipedia.org/wiki/Indians_in_Korea",
+          "official_url": ""
         },
         {
           "title": "Itaewon",
           "extract": "Itaewon is a commercial area within the Itaewon-dong neighborhood of Yongsan District in Seoul, South Korea, known for its nightlife and multi-ethnic population.",
-          "url": "https://en.wikipedia.org/wiki/Itaewon"
+          "url": "https://en.wikipedia.org/wiki/Itaewon",
+          "official_url": ""
         }
       ],
       "Tokyo": [
         {
           "title": "Wikivoyage: Tokyo",
           "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo"
+          "url": "https://en.wikivoyage.org/wiki/Tokyo",
+          "official_url": ""
         },
         {
           "title": "Carl Randall",
           "extract": "Carl Randall, born Carlo Lombardi, is a British figurative painter, whose work is based on images of modern Japan, resulting from the artist living for a decade in Tokyo. These works came to prominence after they were exhibited at the National Portrait Gallery in London, and other exhibitions in the UK and Japan. He also subsequently made a series of paintings based on contemporary London.",
-          "url": "https://en.wikipedia.org/wiki/Carl_Randall"
+          "url": "https://en.wikipedia.org/wiki/Carl_Randall",
+          "official_url": "http://www.carlrandall.com/"
         },
         {
           "title": "Roppongi",
           "extract": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign embassies are located in or near Roppongi. The district is in central Tokyo, situated south of Akasaka and north of Azabu and is noted for its night life, attracting both local residents and visitors from abroad.",
-          "url": "https://en.wikipedia.org/wiki/Roppongi"
+          "url": "https://en.wikipedia.org/wiki/Roppongi",
+          "official_url": ""
         },
         {
           "title": "Tokyo",
           "extract": "Tokyo, officially the Tokyo Metropolis, is the capital and most populous city of Japan. With a population of over 14 million in the city proper in 2023, it is one of the most populous urban areas in the world. The Greater Tokyo Area, which includes Tokyo and parts of six neighboring prefectures, is the most populous metropolitan area in the world, with 41 million residents as of 2024.",
-          "url": "https://en.wikipedia.org/wiki/Tokyo"
+          "url": "https://en.wikipedia.org/wiki/Tokyo",
+          "official_url": "https://www.english.metro.tokyo.lg.jp/"
         }
       ],
       "London": [
         {
           "title": "Wikivoyage: London",
           "extract": "Vibrant and truly multicultural, London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom sits on the River Thames in South-East England. Greater London has a population of a little over 9 million. Considered one of the world's leading \"global cities\", London remains an international capital of culture, music, education, fashion, politics, finance and trade.  \nFor the visitor, there is a seemingly endless choice of historical sites, shopping, museums, food, art galleries, nightlife, and activities. Once a Celtic settlement, London is a bustling city, where visitors come to experience the urban heritage and see its specific royal-themed attractions.\n\n\n== Districts ==\nThe name \"London\" used to refer only to the once-walled \"Square Mile\" of the original Roman and later medieval city; this is now confusingly called the \"City of London\" or just \"The City\". Today, London has taken on a much larger meaning to include all of the vast central parts of the modern metropolis, with the city having absorbed numerous surrounding towns and villages over the centuries, including large portions of the surrounding \"home counties\", one of which - Middlesex - being completely consumed by the growing metropolis. The term Greater London embraces Central London together with all the outlying suburbs that lie in one continuous urban sprawl within the lower Thames Valley. Though densely populated, London retains large swathes of green parkland and open space, even within the city centre.\nGreater London is most of the area surrounded by the M25",
-          "url": "https://en.wikivoyage.org/wiki/London"
-        },
-        {
-          "title": "Chinawhite (nightclub)",
-          "extract": "Chinawhite was a nightclub in central London. The original club was located in Air Street, between Piccadilly Circus and Soho, but the club closed in December 2008 due to the building being sold. It re-opened at a new location in London on 20 October 2009 at 4 Winsley Street, in Fitzrovia. In 2012 there was a partial re-brand and name change to \"Libertine by Chinawhite\". It is part of the wider Chinawhite group which owns and operates a selection of nightclubs, including in Manchester, Birmingham, and Newcastle.",
-          "url": "https://en.wikipedia.org/wiki/Chinawhite_(nightclub)"
+          "url": "https://en.wikivoyage.org/wiki/London",
+          "official_url": ""
         },
         {
           "title": "Milk & Honey (bar)",
           "extract": "Milk & Honey was a cocktail bar originally founded in New York City on 31 December 1999, with another location in Soho, London, founded by Sasha Petraske. The New York location was first located on the Lower East Side and later moved to the Flatiron District.",
-          "url": "https://en.wikipedia.org/wiki/Milk_%26_Honey_(bar)"
+          "url": "https://en.wikipedia.org/wiki/Milk_%26_Honey_(bar)",
+          "official_url": "http://www.mlkhny.com/"
         }
       ],
       "Paris": [
         {
           "title": "Wikivoyage: Paris",
           "extract": "Paris, the cosmopolitan capital of France, has the reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influential in the realms of culture, art, fashion, food and design.\nDubbed the City of Light (la ville lumière) and the City of Love (la ville de l'amour), Paris is home to some of the world's finest and most luxurious fashion designers and cosmetics, such as Chanel, Christian Dior, Yves Saint-Laurent, Guerlain, Lancôme, L'Oréal, and Clarins. A large part of the city, including the banks of the River Seine, is a UNESCO World Heritage Site. The city has the second highest number of Michelin-starred restaurants in the world (after Tokyo, which is much larger) and contains numerous iconic landmarks such as the Eiffel Tower, the Arc de Triomphe, Notre-Dame de Paris, the Louvre, the Moulin Rouge and the Basilique du Sacré-Cœur, making it one of the most popular international tourist destinations in the world, with around 14 million visitors annually. \n\n\n== Districts ==\nThe city of Paris is divided into 20 districts called arrondissements, numbered from 1 to 20 in a clockwise spiral from the centre of the city (which is known as Kilomètre zéro and is located at the front of Notre Dame). Arrondissements are named according to their number. You might, for example, stay in the \"5th\", which would be written as 5e in French. The 12th and 16th arrondissements include large parks: the Bois de Vincennes and the Bois de Boulogne respectively.\nThe very best map you can get for Paris is called \"Paris Pratique par Arro",
-          "url": "https://en.wikivoyage.org/wiki/Paris"
+          "url": "https://en.wikivoyage.org/wiki/Paris",
+          "official_url": ""
         },
         {
           "title": "Servair",
           "extract": "Servair is a French airline catering company. It is a majority-owned subsidiary of the Swiss catering company Gategroup (70%), with Air France being a reference shareholder. Servair has its head office at Paris-Charles de Gaulle Airport.",
-          "url": "https://en.wikipedia.org/wiki/Servair"
+          "url": "https://en.wikipedia.org/wiki/Servair",
+          "official_url": "http://www.servair.fr"
         }
       ],
       "DaNang": [
         {
           "title": "Wikivoyage: Da Nang",
           "extract": "Da Nang (Đà Nẵng) is Vietnam's fifth largest city. It's in Central Vietnam on the South China Sea coast, midway between Hanoi and Ho Chi Minh City.\nThe city has neither the ambiance of Hanoi nor the hustle-bustle of Ho Chi Minh City, but has its share of sights. It is also close to the charms of Hoi An, the Cham ruins of My Son and the imperial capital of Hue, making it a popular vacation spot for those looking to explore the attractions of central Vietnam or soak up some sun while hanging out on the city's beaches.\n\n\n== Understand ==\nThe regions surrounding Da Nang (My Son, Quang Nam) were founded by the Cham Hindus perhaps 3,000 years ago, serving as the capital city and centre of the Hindu Champa Dynasty. Vietnamese invasions into the region in the 17th century significantly halted Cham development.\nGiven that Da Nang was the first point of colonial invasion, many vestiges of French architecture are present in the historic buildings. Da Nang was also where American combat troops first landed during the Vietnam War, and there are also many remnants of that era left over in Da Nang. During the war, many monuments and buildings were destroyed. On the way to My Khe Beach, the ruins of a military base remain in the form of helicopter hangars; however, these are now more easily spotted at the airport, which serves both civil and military flights.\nSince the early 1990s, the government has been enthusiastically pursuing foreign investment and infrastructure development, and a tourism boom exploded in the mid-2010s with rustic backpacker lodges giving way to highrise hotels. Init",
-          "url": "https://en.wikivoyage.org/wiki/Da_Nang"
+          "url": "https://en.wikivoyage.org/wiki/Da_Nang",
+          "official_url": ""
         },
         {
           "title": "List of China Beach episodes",
           "extract": "\n\n\n\nChina Beach is an American dramatic television series set at a military evacuation hospital during the Vietnam War. The title refers to the Western nickname for My Khe beach, located on the coast of Da Nang, Vietnam. The ABC TV drama aired for four seasons over three years, from 1988 to 1991.",
-          "url": "https://en.wikipedia.org/wiki/List_of_China_Beach_episodes"
+          "url": "https://en.wikipedia.org/wiki/List_of_China_Beach_episodes",
+          "official_url": ""
         }
       ]
     },
@@ -682,105 +894,124 @@
         {
           "title": "Wikivoyage: Seoul",
           "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul"
+          "url": "https://en.wikivoyage.org/wiki/Seoul",
+          "official_url": ""
         },
         {
           "title": "Islam in Korea",
           "extract": "Islam (Korean: 이슬람교) is a minor religion in South Korea and North Korea. The Muslim community is centered in Seoul and Busan and there are a few mosques around the country. According to the Korea Muslim Federation, there are about 200,000 Muslims living in South Korea, and about 70 to 80 percent are foreigners. Seoul alone has 40% of South Korea's total Muslim population. The Ministry of Foreign Affairs has hosted an Iftar dinner during the month of Ramadan every year since 2004.",
-          "url": "https://en.wikipedia.org/wiki/Islam_in_Korea"
+          "url": "https://en.wikipedia.org/wiki/Islam_in_Korea",
+          "official_url": ""
         },
         {
           "title": "Yongsan District",
           "extract": "Yongsan District is one of the 25 districts of Seoul, South Korea. It has a population of 231,685 (2020) and has a geographic area of 21.87 km2 (8.44 sq mi), and is divided into 19 dong. Yongsan is located near Downtown Seoul, on the northern bank of the Han River, bordering the city districts of Jung to the north, Mapo to the west, Yeongdeungpo and Dongjak to the southwest, Seocho and Gangnam District to the southeast, and Seongdong to the east.",
-          "url": "https://en.wikipedia.org/wiki/Yongsan_District"
+          "url": "https://en.wikipedia.org/wiki/Yongsan_District",
+          "official_url": "http://www.yongsan.go.kr"
         },
         {
           "title": "Jung District, Seoul",
           "extract": "Jung District is one of the 25 districts of Seoul, South Korea. It has a population of 131,452 (2013) and has a geographic area 9.96 km2 (3.85 mi2), making it both the least-populous and the smallest district of Seoul, and is divided into 15 dong. Jung is located at the centre of Seoul on the northern side of the Han River, bordering the city districts of Jongno to the north, Seodaemun to the northwest, Mapo to the west, Yongsan to the south, Seongdong to the southeast, and Dongdaemun to the northeast.",
-          "url": "https://en.wikipedia.org/wiki/Jung_District%2C_Seoul"
+          "url": "https://en.wikipedia.org/wiki/Jung_District%2C_Seoul",
+          "official_url": "http://tour.junggu.seoul.kr/english/"
         },
         {
           "title": "Myeong-dong",
           "extract": "Myeong-dong is a dong (neighborhood) in Jung District, Seoul, South Korea. It is between Chungmu-ro, Eulji-ro, and Namdaemun-ro.\nMyeongdong is known for being one of Seoul's main shopping, parade route, and tourism districts. In 2023, it was listed as the ninth most expensive shopping street in the world. The area is known for its two historically significant sites, namely the Myeongdong Cathedral and the Myeongdong Theater. Performances at Myeongdong Nanta Theater are popular.",
-          "url": "https://en.wikipedia.org/wiki/Myeong-dong"
+          "url": "https://en.wikipedia.org/wiki/Myeong-dong",
+          "official_url": "http://www.junggu.seoul.kr/content.do?cmsid=1432"
         }
       ],
       "Tokyo": [
         {
           "title": "Wikivoyage: Tokyo",
           "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo"
+          "url": "https://en.wikivoyage.org/wiki/Tokyo",
+          "official_url": ""
         },
         {
           "title": "Sensō-ji",
           "extract": "Sensō-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisattva of compassion. Structures in the temple complex include the main hall, a five-story pagoda and large gates. It is the most widely visited religious site in the world with over 30 million visitors annually. The temple is the 13th stop on the Bandō Sanjūsankasho pilgrimage route.",
-          "url": "https://en.wikipedia.org/wiki/Sens%C5%8D-ji"
+          "url": "https://en.wikipedia.org/wiki/Sens%C5%8D-ji",
+          "official_url": "https://www.senso-ji.jp/"
         },
         {
           "title": "Iranians in Japan",
           "extract": "Iranians in Japan are a minority group, with official statistics recording about 5,000 Iranian migrants in the country. Part of the Iranian diaspora, most live in the Greater Tokyo Area.",
-          "url": "https://en.wikipedia.org/wiki/Iranians_in_Japan"
+          "url": "https://en.wikipedia.org/wiki/Iranians_in_Japan",
+          "official_url": ""
         },
         {
           "title": "Asakusa",
           "extract": "Asakusa  is a district in Taitō, Tokyo, Japan. It is known for Sensō-ji, a Buddhist temple dedicated to the bodhisattva Kannon. There are several other temples in Asakusa, as well as various festivals, such as Sanja Matsuri.",
-          "url": "https://en.wikipedia.org/wiki/Asakusa"
+          "url": "https://en.wikipedia.org/wiki/Asakusa",
+          "official_url": ""
         },
         {
           "title": "Adachi, Tokyo",
           "extract": "Adachi  is a special ward in the Tokyo Metropolis in Japan. It is located to the north of the heart of Tokyo. The ward consists of two separate areas: a small strip of land between the Sumida River and Arakawa River and a larger area north of the Arakawa River. The ward is bordered by the cities of Kawaguchi, Sōka and Yashio in Saitama and Katsushika, Sumida, Arakawa and Kita in Tokyo. The ward is called Adachi City in English.",
-          "url": "https://en.wikipedia.org/wiki/Adachi%2C_Tokyo"
+          "url": "https://en.wikipedia.org/wiki/Adachi%2C_Tokyo",
+          "official_url": "https://www.city.adachi.tokyo.jp/"
         }
       ],
       "London": [
         {
           "title": "Wikivoyage: London",
           "extract": "Vibrant and truly multicultural, London is a megalopolis of people, ideas and frenetic energy. The capital and largest city of the United Kingdom sits on the River Thames in South-East England. Greater London has a population of a little over 9 million. Considered one of the world's leading \"global cities\", London remains an international capital of culture, music, education, fashion, politics, finance and trade.  \nFor the visitor, there is a seemingly endless choice of historical sites, shopping, museums, food, art galleries, nightlife, and activities. Once a Celtic settlement, London is a bustling city, where visitors come to experience the urban heritage and see its specific royal-themed attractions.\n\n\n== Districts ==\nThe name \"London\" used to refer only to the once-walled \"Square Mile\" of the original Roman and later medieval city; this is now confusingly called the \"City of London\" or just \"The City\". Today, London has taken on a much larger meaning to include all of the vast central parts of the modern metropolis, with the city having absorbed numerous surrounding towns and villages over the centuries, including large portions of the surrounding \"home counties\", one of which - Middlesex - being completely consumed by the growing metropolis. The term Greater London embraces Central London together with all the outlying suburbs that lie in one continuous urban sprawl within the lower Thames Valley. Though densely populated, London retains large swathes of green parkland and open space, even within the city centre.\nGreater London is most of the area surrounded by the M25",
-          "url": "https://en.wikivoyage.org/wiki/London"
+          "url": "https://en.wikivoyage.org/wiki/London",
+          "official_url": ""
         },
         {
           "title": "Westminster",
           "extract": "Westminster is the main settlement of the City of Westminster in Central London, England. It extends from the River Thames to Oxford Street and has many famous landmarks, including the Palace of Westminster, Buckingham Palace, Westminster Abbey, Westminster Cathedral, Trafalgar Square and much of the West End cultural centre including the entertainment area of West End theatre.",
-          "url": "https://en.wikipedia.org/wiki/Westminster"
+          "url": "https://en.wikipedia.org/wiki/Westminster",
+          "official_url": "http://www.westminster.gov.uk/"
         },
         {
           "title": "City of London",
           "extract": "The City of London is a city, ceremonial county and local government district in England. Established by the Romans around 47 AD as Londinium, it forms the historic centre of the wider London metropolis. Surrounded by the modern ceremonial county of Greater London, from which it remains separate, the City is a unique local authority area governed by the City of London Corporation, which is led by the Lord Mayor of London, though it is included as part of the region of England governed by the Greater London Authority.",
-          "url": "https://en.wikipedia.org/wiki/City_of_London"
+          "url": "https://en.wikipedia.org/wiki/City_of_London",
+          "official_url": ""
         },
         {
           "title": "Seoul",
           "extract": "Seoul, officially Seoul Special Metropolitan City, is the capital and largest city of South Korea, and the largest city in the whole of Korea. The broader Seoul Metropolitan Area, encompassing Seoul, Gyeonggi Province and Incheon, emerged as the world's sixth largest metropolitan economy in 2022, behind New York, Tokyo, Los Angeles, Paris, and London, and hosts more than half of South Korea's population. Although Seoul's population peaked at over 10 million, it has gradually decreased since 2014, standing at about 9.6 million residents as of 2024.",
-          "url": "https://en.wikipedia.org/wiki/Seoul"
+          "url": "https://en.wikipedia.org/wiki/Seoul",
+          "official_url": "http://www.seoul.go.kr"
         }
       ],
       "Paris": [
         {
           "title": "Wikivoyage: Paris",
           "extract": "Paris, the cosmopolitan capital of France, has the reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influential in the realms of culture, art, fashion, food and design.\nDubbed the City of Light (la ville lumière) and the City of Love (la ville de l'amour), Paris is home to some of the world's finest and most luxurious fashion designers and cosmetics, such as Chanel, Christian Dior, Yves Saint-Laurent, Guerlain, Lancôme, L'Oréal, and Clarins. A large part of the city, including the banks of the River Seine, is a UNESCO World Heritage Site. The city has the second highest number of Michelin-starred restaurants in the world (after Tokyo, which is much larger) and contains numerous iconic landmarks such as the Eiffel Tower, the Arc de Triomphe, Notre-Dame de Paris, the Louvre, the Moulin Rouge and the Basilique du Sacré-Cœur, making it one of the most popular international tourist destinations in the world, with around 14 million visitors annually. \n\n\n== Districts ==\nThe city of Paris is divided into 20 districts called arrondissements, numbered from 1 to 20 in a clockwise spiral from the centre of the city (which is known as Kilomètre zéro and is located at the front of Notre Dame). Arrondissements are named according to their number. You might, for example, stay in the \"5th\", which would be written as 5e in French. The 12th and 16th arrondissements include large parks: the Bois de Vincennes and the Bois de Boulogne respectively.\nThe very best map you can get for Paris is called \"Paris Pratique par Arro",
-          "url": "https://en.wikivoyage.org/wiki/Paris"
+          "url": "https://en.wikivoyage.org/wiki/Paris",
+          "official_url": ""
         },
         {
           "title": "Grand Mosque of Paris",
           "extract": "The Grand Mosque of Paris, also known as the Great Mosque of Paris or simply the Paris Mosque, located in the 5th arrondissement of Paris, is one of the largest mosques in France. It comprises prayer rooms, an outdoor garden, a small library, a gift shop, along with a cafe and restaurant. In all, the mosque plays an important role in promoting the visibility of Islam and Muslims in France. Completed in 1926, is the oldest mosque in metropolitan France.",
-          "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris"
+          "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris",
+          "official_url": "https://www.grandemosqueedeparis.fr"
         },
         {
           "title": "Notre-Dame de Paris",
           "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
-          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
+          "official_url": "https://www.notredamedeparis.fr/"
         },
         {
           "title": "Seoul",
           "extract": "Seoul, officially Seoul Special Metropolitan City, is the capital and largest city of South Korea, and the largest city in the whole of Korea. The broader Seoul Metropolitan Area, encompassing Seoul, Gyeonggi Province and Incheon, emerged as the world's sixth largest metropolitan economy in 2022, behind New York, Tokyo, Los Angeles, Paris, and London, and hosts more than half of South Korea's population. Although Seoul's population peaked at over 10 million, it has gradually decreased since 2014, standing at about 9.6 million residents as of 2024.",
-          "url": "https://en.wikipedia.org/wiki/Seoul"
+          "url": "https://en.wikipedia.org/wiki/Seoul",
+          "official_url": "http://www.seoul.go.kr"
         }
       ],
       "DaNang": [
         {
           "title": "Wikivoyage: Da Nang",
           "extract": "Da Nang (Đà Nẵng) is Vietnam's fifth largest city. It's in Central Vietnam on the South China Sea coast, midway between Hanoi and Ho Chi Minh City.\nThe city has neither the ambiance of Hanoi nor the hustle-bustle of Ho Chi Minh City, but has its share of sights. It is also close to the charms of Hoi An, the Cham ruins of My Son and the imperial capital of Hue, making it a popular vacation spot for those looking to explore the attractions of central Vietnam or soak up some sun while hanging out on the city's beaches.\n\n\n== Understand ==\nThe regions surrounding Da Nang (My Son, Quang Nam) were founded by the Cham Hindus perhaps 3,000 years ago, serving as the capital city and centre of the Hindu Champa Dynasty. Vietnamese invasions into the region in the 17th century significantly halted Cham development.\nGiven that Da Nang was the first point of colonial invasion, many vestiges of French architecture are present in the historic buildings. Da Nang was also where American combat troops first landed during the Vietnam War, and there are also many remnants of that era left over in Da Nang. During the war, many monuments and buildings were destroyed. On the way to My Khe Beach, the ruins of a military base remain in the form of helicopter hangars; however, these are now more easily spotted at the airport, which serves both civil and military flights.\nSince the early 1990s, the government has been enthusiastically pursuing foreign investment and infrastructure development, and a tourism boom exploded in the mid-2010s with rustic backpacker lodges giving way to highrise hotels. Init",
-          "url": "https://en.wikivoyage.org/wiki/Da_Nang"
+          "url": "https://en.wikivoyage.org/wiki/Da_Nang",
+          "official_url": ""
         }
       ]
     }
