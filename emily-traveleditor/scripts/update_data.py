@@ -2,6 +2,9 @@ import os
 import json
 import requests
 from datetime import datetime
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 def get_exchange_rates():
     # 무료 환율 API (KRW 기준)
@@ -34,8 +37,9 @@ def main():
     }
     
     # 결과를 public 폴더에 저장 (Next.js에서 바로 접근 가능하게)
-    os.makedirs('public/data', exist_ok=True)
-    with open('public/data/market_db.json', 'w', encoding='utf-8') as f:
+    data_dir = PROJECT_ROOT / 'public' / 'data'
+    os.makedirs(data_dir, exist_ok=True)
+    with open(data_dir / 'market_db.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":

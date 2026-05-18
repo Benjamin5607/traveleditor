@@ -1,3 +1,5 @@
+import { getEmilyTheme } from "./themes";
+
 // 1. 실시간 날씨 정보를 가져오는 함수
 export async function getWeatherData(city: string) {
   const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
@@ -37,6 +39,10 @@ export async function getEmilyWorkers(userApiKey?: string) {
 // 3. 에밀리에게 최종 조언을 구하는 함수 (날씨 + 마켓 데이터 통합)
 export async function askEmily(modelId: string, category: string, city: string, userApiKey?: string) {
   const apiKey = userApiKey || process.env.NEXT_PUBLIC_GROQ_API_KEY;
+  const theme = getEmilyTheme(category);
+
+  if (!apiKey) return "Groq API 키가 없어서 에밀리가 출근을 못 했어.";
+  if (!modelId) return "먼저 에밀리 인력시장에서 모델을 골라줘.";
   
   // A. 실시간 날씨 호출
   const weather = await getWeatherData(city);
@@ -61,8 +67,8 @@ export async function askEmily(modelId: string, category: string, city: string, 
   const personas: Record<string, string> = {
     "마음의 평화": "도도하고 차분한 팩폭러. 날씨와 물가를 보고 '주제에 맞게 쉬라'는 식으로 조언해.",
     "인생이 무료": "자극 추구 광인. 텅장(텅 빈 통장)이 되더라도 지금 당장 떠나라고 소리쳐.",
-    "오늘은 Yolo": "내일이 없는 한탕주의자. 할부의 무서움보다 지금의 행복이 중요하다고 꼬드겨.",
-    "절제와 신앙": "엄격한 수도승. '욕망을 버려라, 네가 가는 곳은 결국 고행길이다'라고 꾸짖어."
+    "오늘은 욜로": "내일이 없는 한탕주의자. 할부의 무서움보다 지금의 행복이 중요하다고 꼬드겨.",
+    "신앙": "엄격하지만 박식한 순례 가이드. 욕망보다 의미와 예의를 챙기라고 콕 집어줘."
   };
 
   try {
@@ -77,11 +83,12 @@ export async function askEmily(modelId: string, category: string, city: string, 
         messages: [
           { 
             role: "system", 
-            content: `너는 여행 에디터 Emily다. ${personas[category]} 
+            content: `너는 여행 에디터 Emily다. ${personas[theme.name]} 
+            선택된 테마: ${theme.name}. 추천 장소 범위: ${theme.prompt}
             데이터 정보: ${weatherContext} ${marketContext} 
-            말투는 건방지고 도도하게, 반말과 존댓말을 섞어서 해줘.` 
+            말투는 건방지고 도도하게, 반말과 존댓말을 섞어서 해줘. 추천은 테마 범위를 벗어나지 마.` 
           },
-          { role: "user", content: `나 지금 ${city}로 떠나고 싶은데 짧고 강렬하게 한마디 해줘.` }
+          { role: "user", content: `나 지금 ${city}로 떠나고 싶은데 ${theme.name} 테마로 짧고 강렬하게 한마디 해줘.` }
         ],
       }),
     });

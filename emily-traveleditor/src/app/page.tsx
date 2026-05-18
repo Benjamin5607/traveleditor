@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getEmilyWorkers, askEmily } from "../lib/groqMarket";
+import { EMILY_THEMES } from "../lib/themes";
 
 export default function Home() {
   const [workers, setWorkers] = useState<any[]>([]);
@@ -48,10 +49,11 @@ export default function Home() {
         </select>
 
         <div className="grid grid-cols-1 gap-4">
-          {["마음의 평화", "인생이 무료", "오늘은 Yolo", "절제와 신앙"].map(cat => (
-            <button key={cat} onClick={() => handleAsk(cat)} disabled={loading}
-              className="py-6 bg-zinc-800 border-b-4 border-zinc-600 rounded-2xl active:border-b-0 active:translate-y-1 transition-all text-xl font-bold">
-              {cat}
+          {EMILY_THEMES.map((theme) => (
+            <button key={theme.name} onClick={() => handleAsk(theme.name)} disabled={loading || !selectedWorker}
+              className="py-5 bg-zinc-800 border-b-4 border-zinc-600 rounded-2xl active:border-b-0 active:translate-y-1 transition-all text-xl font-bold disabled:cursor-not-allowed disabled:opacity-50">
+              <span className="block">{theme.name}</span>
+              <span className="mt-2 block text-sm font-medium text-zinc-400">{theme.shortLabel}</span>
             </button>
           ))}
         </div>
