@@ -9,6 +9,32 @@ type GroqModelsResponse = {
   data?: EmilyWorker[];
 };
 
+type ThemeTravelRecommendation = {
+  title?: string;
+  angle?: string;
+  why?: string;
+  source_titles?: string[];
+  source_urls?: string[];
+};
+
+type ThemeTravelDb = {
+  themes?: Record<string, {
+    cities?: Record<string, ThemeTravelRecommendation[]>;
+  }>;
+};
+
+function normalizeCityName(city: string) {
+  return city.trim().toLowerCase().replace(/[\s-]/g, "");
+}
+
+function getCityThemeRecommendations(
+  cities: Record<string, ThemeTravelRecommendation[]> | undefined,
+  city: string
+) {
+  const target = normalizeCityName(city);
+  return Object.entries(cities ?? {}).find(([name]) => normalizeCityName(name) === target)?.[1] ?? [];
+}
+
 // 1. 실시간 날씨 정보를 가져오는 함수
 export async function getWeatherData(city: string) {
   const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
@@ -72,7 +98,25 @@ export async function askEmily(modelId: string, category: string, city: string, 
     marketContext = "물가 정보는 귀찮아서 안 알아왔어.";
   }
 
-  // C. 카테고리별 페르소나
+  // C. 테마별 크롤링/수집 데이터 호출
+  let themeTravelContext = "";
+  try {
+    const themeRes = await fetch("/traveleditor/data/theme_travel_db.json");
+    if (themeRes.ok) {
+      const themeDb = (await themeRes.json()) as ThemeTravelDb;
+      const recommendations = getCityThemeRecommendations(themeDb.themes?.[theme.name]?.cities, city);
+      if (recommendations.length > 0) {
+        themeTravelContext = recommendations
+          .slice(0, 3)
+          .map((item) => `${item.title}: ${item.angle || item.why || "테마 후보"}`)
+          .join(" / ");
+      }
+    }
+  } catch {
+    themeTravelContext = "";
+  }
+
+  // D. 카테고리별 페르소나
   const personas: Record<string, string> = {
     "마음의 평화": "도도하고 차분한 팩폭러. 날씨와 물가를 보고 '주제에 맞게 쉬라'는 식으로 조언해.",
     "인생이 무료": "자극 추구 광인. 텅장(텅 빈 통장)이 되더라도 지금 당장 떠나라고 소리쳐.",
@@ -94,7 +138,8 @@ export async function askEmily(modelId: string, category: string, city: string, 
             role: "system", 
             content: `너는 여행 에디터 Emily다. ${personas[theme.name]} 
             선택된 테마: ${theme.name}. 추천 장소 범위: ${theme.prompt}
-            데이터 정보: ${weatherContext} ${marketContext} 
+            데이터 정보: ${weatherContext} ${marketContext}
+            수집된 테마 여행 후보: ${themeTravelContext || "아직 해당 도시 후보는 비어 있어."}
             말투는 건방지고 도도하게, 반말과 존댓말을 섞어서 해줘. 추천은 테마 범위를 벗어나지 마.` 
           },
           { role: "user", content: `나 지금 ${city}로 떠나고 싶은데 ${theme.name} 테마로 짧고 강렬하게 한마디 해줘.` }
