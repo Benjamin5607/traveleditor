@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Emily Travel Editor
+
+Groq-powered travel mood picker for Emily's themed recommendations. The active app lives in this directory and uses Next.js static export for GitHub Pages.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/traveleditor/](http://localhost:3000/traveleditor/) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `NEXT_PUBLIC_GROQ_API_KEY`: Groq key used by the static GitHub Pages build.
+- `NEXT_PUBLIC_OPENWEATHER_API_KEY`: optional OpenWeather key for live weather context.
 
-## Learn More
+For local testing with the existing secret name:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_GROQ_API_KEY="$GROQ_API_KEY" npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app/page.tsx`: main Emily UI.
+- `src/lib/themes.ts`: shared theme labels, descriptions, and prompt guidance.
+- `src/lib/groqMarket.ts`: Groq model loading and chat completion calls.
+- `scripts/update_data.py`: writes `public/data/market_db.json` and `public/data/theme_travel_db.json` for market, theme travel, official link, and reservation-check context.
 
-## Deploy on Vercel
+## Validation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+NEXT_PUBLIC_GROQ_API_KEY="$GROQ_API_KEY" npm run build
+python3 scripts/update_data.py
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The GitHub Pages workflow builds from this directory and uploads `out/`.
+The daily data workflow passes `GROQ_API_KEY` to enrich crawled theme travel candidates with Groq.
+Theme recommendations include source links, official links when Wikidata exposes them, and a reservation hint for the UI.
