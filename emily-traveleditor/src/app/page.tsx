@@ -196,14 +196,16 @@ export default function Home() {
         </section>
 
         <div className="no-print flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-zinc-500">수집 JSON이 없으면 무료 공개 API로 즉시 보강하고, 예산·지도·PDF는 항상 결과물을 만듭니다.</p>
+          <p className="text-sm text-zinc-500">
+            Groq 없이도 무료 규칙 일정·OSM 지도·검색 링크·PDF가 나옵니다. 키가 있으면 AI 일정으로 업그레이드됩니다.
+          </p>
           <button
             type="button"
             onClick={handleBuildGuidebook}
-            disabled={loading || !selectedWorker}
+            disabled={loading || !city.trim()}
             className="rounded-full bg-yellow-200 px-6 py-4 text-sm font-black text-zinc-950 transition hover:bg-yellow-100 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {loading ? "가이드북 생성 중..." : "가이드북 만들기"}
+            {loading ? "가이드북 생성 중..." : selectedWorker ? "가이드북 만들기 (AI)" : "가이드북 만들기 (무료)"}
           </button>
         </div>
 

@@ -1,7 +1,7 @@
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
 import { estimateFlightFromSeoul, flightMidpoint } from "./flightEstimates";
-import { fetchLivePlaces, geocodePlaces } from "./liveTravel";
+import { fetchLivePlaces, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { getEmilyTheme } from "./themes";
 import type {
@@ -77,11 +77,11 @@ function fallbackItinerary(prefs: TripPreferences, places: PlaceCandidate[]): Gu
 
   return {
     title: `${prefs.city} ${prefs.days}일 ${theme.name} 가이드`,
-    summary: `${prefs.city}에서 ${theme.shortLabel} 중심으로 짜는 ${prefs.days}일 일정입니다. 추천 장소는 수집 데이터만 사용했습니다.`,
+    summary: `${prefs.city}에서 ${theme.shortLabel} 중심으로 짜는 ${prefs.days}일 일정입니다. 추천 장소는 수집·무료 API 데이터만 사용했습니다.`,
     days,
     tips: [
       "공식 링크가 없는 장소는 출처 링크에서 운영 정보를 먼저 확인하세요.",
-      "예산은 물가 테이블 기준 추정치이며 항공권은 별도입니다.",
+      "예산은 물가 테이블·거리 추정 기준이며 항공권은 검색 링크로 확인하세요.",
     ],
     preferences: prefs,
     places,
@@ -142,35 +142,13 @@ function sanitizeItinerary(
   };
 }
 
-export async function buildTravelGuidebook(
+async function buildItineraryWithGroq(
   prefs: TripPreferences,
+  places: PlaceCandidate[],
   modelId: string,
-  apiKey?: string
-): Promise<TravelGuidebook | { error: string }> {
-  const key = apiKey || process.env.NEXT_PUBLIC_GROQ_API_KEY;
-  if (!key) return { error: "Groq API 키가 없어서 가이드북을 만들 수 없어." };
-  if (!modelId) return { error: "모델을 먼저 선택해줘." };
-
-  const themeDb = await loadThemeTravelDb();
-  const marketDb = await loadMarketDb();
+  apiKey: string
+): Promise<GuidebookCore> {
   const theme = getEmilyTheme(prefs.theme);
-  const rawItems = findCityRecommendations(themeDb?.themes?.[prefs.theme]?.cities, prefs.city);
-  let dataSource: "static" | "live" = "static";
-  let places = toPlaceCandidates(prefs.city, rawItems);
-
-  if (places.length === 0) {
-    places = await fetchLivePlaces(prefs.city, prefs.theme);
-    dataSource = "live";
-  }
-
-  if (places.length === 0) {
-    return {
-      error: `${prefs.city} 여행 정보를 무료 공개 API에서도 찾지 못했어. 도시명을 영문으로 바꿔 다시 시도해줘.`,
-    };
-  }
-
-  places = await geocodePlaces(prefs.city, places);
-
   const placePayload = places.map((place) => ({
     id: place.id,
     title: place.title,
@@ -222,13 +200,11 @@ ${JSON.stringify(placePayload, null, 2)}
 - 한국어로 작성
 `;
 
-  let itineraryCore: GuidebookCore;
-
   try {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${key}`,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -244,18 +220,51 @@ ${JSON.stringify(placePayload, null, 2)}
     });
 
     const data = await response.json();
-    if (!response.ok) {
-      itineraryCore = fallbackItinerary(prefs, places);
-    } else {
-      const parsed = JSON.parse(data.choices[0].message.content) as RawItineraryResponse;
-      itineraryCore = sanitizeItinerary(parsed, prefs, places);
-    }
+    if (!response.ok) return fallbackItinerary(prefs, places);
+    const parsed = JSON.parse(data.choices[0].message.content) as RawItineraryResponse;
+    return sanitizeItinerary(parsed, prefs, places);
   } catch {
-    itineraryCore = fallbackItinerary(prefs, places);
+    return fallbackItinerary(prefs, places);
+  }
+}
+
+export async function buildTravelGuidebook(
+  prefs: TripPreferences,
+  modelId?: string,
+  apiKey?: string
+): Promise<TravelGuidebook | { error: string }> {
+  const key = apiKey || process.env.NEXT_PUBLIC_GROQ_API_KEY;
+  const useGroq = Boolean(key && modelId);
+
+  const themeDb = await loadThemeTravelDb();
+  const marketDb = await loadMarketDb();
+  const cityGeo = await geocodeCity(prefs.city);
+  const rawItems = findCityRecommendations(themeDb?.themes?.[prefs.theme]?.cities, prefs.city);
+  let dataSource: "static" | "live" = "static";
+  let places = toPlaceCandidates(prefs.city, rawItems);
+
+  if (places.length === 0) {
+    places = await fetchLivePlaces(prefs.city, prefs.theme);
+    dataSource = "live";
   }
 
+  if (places.length === 0) {
+    return {
+      error: `${prefs.city} 여행 정보를 무료 공개 API에서도 찾지 못했어. 도시명을 영문으로 바꿔 다시 시도해줘.`,
+    };
+  }
+
+  places = await geocodePlaces(prefs.city, places);
+
+  const itineraryCore = useGroq
+    ? await buildItineraryWithGroq(prefs, places, modelId!, key!)
+    : fallbackItinerary(prefs, places);
+
   const stopCount = itineraryCore.days.reduce((sum, day) => sum + day.blocks.length, 0);
-  const budget = estimateBudget(prefs, marketDb, stopCount);
+  const budget = estimateBudget(prefs, marketDb, stopCount, {
+    countryCode: cityGeo?.countryCode,
+    cityCoords: cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined,
+  });
   const bookingLinks = buildBookingLinks(prefs.city, prefs.lodging);
   const mapStops = itineraryCore.days.flatMap((day) =>
     day.blocks.map((block) => {
@@ -264,14 +273,21 @@ ${JSON.stringify(placePayload, null, 2)}
     })
   );
   const mapUrl = buildRouteMapUrl(prefs.city, mapStops);
-  const mapEmbedUrl = buildOsmEmbedUrl(mapStops);
+  const cityCenter = cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined;
+  const mapEmbedUrl = buildOsmEmbedUrl(mapStops, cityCenter);
   const osmDirectionsUrl = buildOsmDirectionsUrl(mapStops);
-  const flightRaw = estimateFlightFromSeoul(prefs.city);
+  const flightRaw = estimateFlightFromSeoul(
+    prefs.city,
+    cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined
+  );
 
-  const tips =
-    dataSource === "live"
-      ? [...itineraryCore.tips, "수집 JSON이 없어 Wikivoyage/Wikipedia/Nominatim 무료 API로 장소를 보강했습니다."]
-      : itineraryCore.tips;
+  const tips = [...itineraryCore.tips];
+  if (dataSource === "live") {
+    tips.push("수집 JSON이 없어 Wikivoyage·Wikipedia·OSM Overpass·Nominatim 무료 API로 장소를 보강했습니다.");
+  }
+  if (!useGroq) {
+    tips.push("Groq 키 없이 무료 규칙 기반 일정으로 생성했습니다. AI 일정은 Groq 키 설정 시 사용됩니다.");
+  }
 
   return {
     ...itineraryCore,

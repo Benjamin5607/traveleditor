@@ -89,7 +89,9 @@ export type BudgetBreakdown = {
 export type BookingLinkSet = {
   flights: string;
   flightsSkyscanner: string;
+  kayakFlights: string;
   lodging: string;
+  googleHotels: string;
   restaurants: string;
   maps: string;
   osm: string;

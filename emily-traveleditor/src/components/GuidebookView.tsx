@@ -11,7 +11,9 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
   const bookingItems = [
     { label: "Google 항공권", href: bookingLinks.flights },
     { label: "Skyscanner 항공권", href: bookingLinks.flightsSkyscanner },
-    { label: "숙소 검색", href: bookingLinks.lodging },
+    { label: "Kayak 항공권", href: bookingLinks.kayakFlights },
+    { label: "숙소 검색 (Booking)", href: bookingLinks.lodging },
+    { label: "Google Hotels", href: bookingLinks.googleHotels },
     { label: "식당 검색", href: bookingLinks.restaurants },
     { label: "Google 지도", href: mapUrl },
     { label: "OpenStreetMap", href: bookingLinks.osm },
@@ -85,17 +87,24 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         </article>
       </section>
 
-      {mapEmbedUrl && (
-        <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950/80 p-4">
-          <p className="mb-3 px-2 text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Map</p>
+      <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950/80 p-4">
+        <p className="mb-3 px-2 text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Map</p>
+        {mapEmbedUrl ? (
           <iframe
             title="OpenStreetMap route preview"
             src={mapEmbedUrl}
             className="h-72 w-full rounded-2xl border-0 bg-zinc-900"
             loading="lazy"
           />
-        </section>
-      )}
+        ) : (
+          <div className="flex h-72 items-center justify-center rounded-2xl bg-zinc-900 text-sm text-zinc-400">
+            좌표가 부족해 도시 검색 링크로 대체합니다 —{" "}
+            <a href={bookingLinks.osm} target="_blank" rel="noreferrer" className="ml-1 font-bold text-yellow-200">
+              OSM에서 {preferences.city} 보기
+            </a>
+          </div>
+        )}
+      </section>
 
       <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
