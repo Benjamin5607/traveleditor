@@ -1,4 +1,9 @@
 import { getEmilyTheme } from "./themes";
+import {
+  findCityRecommendations,
+  loadMarketDb,
+  loadThemeTravelDb,
+} from "./travelData";
 
 export type EmilyWorker = {
   id: string;
@@ -8,34 +13,6 @@ export type EmilyWorker = {
 type GroqModelsResponse = {
   data?: EmilyWorker[];
 };
-
-type ThemeTravelRecommendation = {
-  title?: string;
-  angle?: string;
-  why?: string;
-  source_titles?: string[];
-  source_urls?: string[];
-  official_url?: string;
-  reservation_hint?: string;
-};
-
-type ThemeTravelDb = {
-  themes?: Record<string, {
-    cities?: Record<string, ThemeTravelRecommendation[]>;
-  }>;
-};
-
-function normalizeCityName(city: string) {
-  return city.trim().toLowerCase().replace(/[\s-]/g, "");
-}
-
-function getCityThemeRecommendations(
-  cities: Record<string, ThemeTravelRecommendation[]> | undefined,
-  city: string
-) {
-  const target = normalizeCityName(city);
-  return Object.entries(cities ?? {}).find(([name]) => normalizeCityName(name) === target)?.[1] ?? [];
-}
 
 // 1. 실시간 날씨 정보를 가져오는 함수
 export async function getWeatherData(city: string) {
@@ -90,10 +67,8 @@ export async function askEmily(modelId: string, category: string, city: string, 
   // B. 자동화 스크립트가 생성할 예정인 마켓 DB 호출
   let marketContext = "";
   try {
-    // 깃허브 페이지의 정적 경로 (/traveleditor/data/...)
-    const dbRes = await fetch("/traveleditor/data/market_db.json");
-    if (dbRes.ok) {
-      const db = await dbRes.json();
+    const db = await loadMarketDb();
+    if (db) {
       marketContext = `참고로 오늘 엔화 환율은 100엔당 ${db.rates?.JPY || '??'}원이고, ${city} 맥주값은 ${db.beer_index?.[city] || '비싸'}.`;
     }
   } catch {
@@ -103,10 +78,9 @@ export async function askEmily(modelId: string, category: string, city: string, 
   // C. 테마별 크롤링/수집 데이터 호출
   let themeTravelContext = "";
   try {
-    const themeRes = await fetch("/traveleditor/data/theme_travel_db.json");
-    if (themeRes.ok) {
-      const themeDb = (await themeRes.json()) as ThemeTravelDb;
-      const recommendations = getCityThemeRecommendations(themeDb.themes?.[theme.name]?.cities, city);
+    const themeDb = await loadThemeTravelDb();
+    if (themeDb) {
+      const recommendations = findCityRecommendations(themeDb.themes?.[theme.name]?.cities, city);
       if (recommendations.length > 0) {
         themeTravelContext = recommendations
           .slice(0, 3)

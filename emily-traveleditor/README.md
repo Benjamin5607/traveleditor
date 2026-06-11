@@ -26,10 +26,14 @@ NEXT_PUBLIC_GROQ_API_KEY="$GROQ_API_KEY" npm run dev
 
 ## Structure
 
-- `src/app/page.tsx`: main Emily UI.
+- `src/app/page.tsx`: trip setup UI and guidebook generation entry point.
+- `src/components/GuidebookView.tsx`: one-page travel guidebook (itinerary, budget, links, map).
+- `src/lib/tripPlanner.ts`: grounded Groq itinerary builder using collected places only.
+- `src/lib/budget.ts`: deterministic budget estimation from `market_db.json`.
+- `src/lib/bookingLinks.ts`: flight/lodging/restaurant/map search URLs.
 - `src/lib/themes.ts`: shared theme labels, descriptions, and prompt guidance.
 - `src/lib/groqMarket.ts`: Groq model loading and chat completion calls.
-- `scripts/update_data.py`: writes `public/data/market_db.json` and `public/data/theme_travel_db.json` for market, theme travel, official link, and reservation-check context.
+- `scripts/update_data.py`: writes `public/data/market_db.json` and `public/data/theme_travel_db.json`.
 
 ## Validation
 

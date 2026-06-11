@@ -11,9 +11,17 @@
     "동남아시아 건기 시작, 여행 최적기 진입"
   ],
   "beer_index": {
+    "Seoul": 7000,
     "Tokyo": 6500,
     "London": 9500,
     "Paris": 11000,
     "DaNang": 2500
+  },
+  "cost_index": {
+    "Seoul": { "hotel": 140000, "inn": 85000, "hostel": 42000, "meal": 38000, "bus_day": 10000, "car_day": 85000, "activity": 22000 },
+    "Tokyo": { "hotel": 180000, "inn": 110000, "hostel": 55000, "meal": 45000, "bus_day": 12000, "car_day": 95000, "activity": 28000 },
+    "London": { "hotel": 220000, "inn": 130000, "hostel": 60000, "meal": 52000, "bus_day": 15000, "car_day": 110000, "activity": 35000 },
+    "Paris": { "hotel": 210000, "inn": 125000, "hostel": 58000, "meal": 50000, "bus_day": 14000, "car_day": 105000, "activity": 32000 },
+    "DaNang": { "hotel": 90000, "inn": 55000, "hostel": 28000, "meal": 25000, "bus_day": 8000, "car_day": 65000, "activity": 18000 }
   }
 }

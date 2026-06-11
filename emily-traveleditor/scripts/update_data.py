@@ -92,21 +92,47 @@ def search_wikipedia(query: str, limit: int = 2) -> list[dict[str, Any]]:
         return []
 
 
-def get_wikipedia_summary(title: str) -> dict[str, str] | None:
+def get_wikipedia_summary(title: str) -> dict[str, str | float] | None:
     try:
         data = request_json(f"{WIKIPEDIA_SUMMARY_URL}/{quote(title)}")
         extract = data.get("extract") or ""
         if not extract:
             return None
-        official_urls = get_wikidata_official_urls(data.get("wikibase_item"))
-        return {
+        wikibase_item = data.get("wikibase_item")
+        official_urls = get_wikidata_official_urls(wikibase_item)
+        coordinates = data.get("coordinates") or {}
+        result = {
             "title": data.get("title") or title,
             "extract": extract[:700],
             "url": data.get("content_urls", {}).get("desktop", {}).get("page", ""),
             "official_url": official_urls[0] if official_urls else "",
         }
+        lat = coordinates.get("lat")
+        lng = coordinates.get("lon")
+        if lat is None or lng is None:
+            lat, lng = get_wikidata_coordinates(wikibase_item)
+        if lat is not None and lng is not None:
+            result["lat"] = lat
+            result["lng"] = lng
+        return result
     except requests.RequestException:
         return None
+
+
+def get_wikidata_coordinates(entity_id: str | None) -> tuple[float | None, float | None]:
+    if not entity_id:
+        return None, None
+
+    try:
+        data = request_json(f"{WIKIDATA_ENTITY_URL}/{entity_id}.json")
+        entity = data.get("entities", {}).get(entity_id, {})
+        claims = entity.get("claims", {}).get("P625", [])
+        if not claims:
+            return None, None
+        value = claims[0].get("mainsnak", {}).get("datavalue", {}).get("value", {})
+        return value.get("latitude"), value.get("longitude")
+    except requests.RequestException:
+        return None, None
 
 
 def get_wikidata_official_urls(entity_id: str | None) -> list[str]:
@@ -198,8 +224,9 @@ def crawl_theme_sources(city: str, keywords: list[str], max_sources: int = 5) ->
 def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dict[str, list[dict[str, str]]]) -> dict[str, Any]:
     cities = {}
     for city, sources in city_sources.items():
-        cities[city] = [
-            {
+        items = []
+        for source in sources[:3]:
+            item = {
                 "title": source["title"],
                 "angle": config["brief"],
                 "why": source["extract"][:180],
@@ -208,8 +235,11 @@ def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dic
                 "official_url": source.get("official_url", ""),
                 "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요." if source.get("official_url") else "출처 링크에서 운영 정보를 먼저 확인하세요.",
             }
-            for source in sources[:3]
-        ]
+            if source.get("lat") is not None and source.get("lng") is not None:
+                item["lat"] = source["lat"]
+                item["lng"] = source["lng"]
+            items.append(item)
+        cities[city] = items
 
     return {
         "theme": theme,
@@ -234,6 +264,10 @@ def sanitize_groq_summary(
         source_urls = {source["url"] for source in sources if source.get("url")}
         official_urls_by_title = {
             source["title"]: source.get("official_url", "")
+            for source in sources
+        }
+        coords_by_title = {
+            source["title"]: (source.get("lat"), source.get("lng"))
             for source in sources
         }
         fallback_items = fallback_theme_summary(theme, config, {city: sources})["cities"].get(city, [])
@@ -266,7 +300,12 @@ def sanitize_groq_summary(
                 valid_titles = [fallback_source["title"]]
                 valid_urls = [fallback_source["url"]]
 
-            cleaned_items.append({
+            coord_title = valid_titles[0] if valid_titles else (fallback_source or {}).get("title")
+            fallback_lat, fallback_lng = coords_by_title.get(coord_title, (None, None))
+            if fallback_lat is None and fallback_source:
+                fallback_lat = fallback_source.get("lat")
+                fallback_lng = fallback_source.get("lng")
+            cleaned_item = {
                 "title": str(item.get("title") or (fallback_source or {}).get("title") or city),
                 "angle": str(item.get("angle") or config["brief"]),
                 "why": str(item.get("why") or config["brief"]),
@@ -274,7 +313,11 @@ def sanitize_groq_summary(
                 "source_urls": valid_urls,
                 "official_url": next((official_urls_by_title.get(title, "") for title in valid_titles if official_urls_by_title.get(title)), ""),
                 "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요." if any(official_urls_by_title.get(title) for title in valid_titles) else "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            })
+            }
+            if fallback_lat is not None and fallback_lng is not None:
+                cleaned_item["lat"] = fallback_lat
+                cleaned_item["lng"] = fallback_lng
+            cleaned_items.append(cleaned_item)
 
         cities[city] = cleaned_items or fallback_items
 
@@ -388,14 +431,25 @@ def collect_theme_travel_data() -> dict[str, Any]:
         "raw_sources": raw_sources,
     }
 
+def get_cost_index():
+    return {
+        "Seoul": {"hotel": 140000, "inn": 85000, "hostel": 42000, "meal": 38000, "bus_day": 10000, "car_day": 85000, "activity": 22000},
+        "Tokyo": {"hotel": 180000, "inn": 110000, "hostel": 55000, "meal": 45000, "bus_day": 12000, "car_day": 95000, "activity": 28000},
+        "London": {"hotel": 220000, "inn": 130000, "hostel": 60000, "meal": 52000, "bus_day": 15000, "car_day": 110000, "activity": 35000},
+        "Paris": {"hotel": 210000, "inn": 125000, "hostel": 58000, "meal": 50000, "bus_day": 14000, "car_day": 105000, "activity": 32000},
+        "DaNang": {"hotel": 90000, "inn": 55000, "hostel": 28000, "meal": 25000, "bus_day": 8000, "car_day": 65000, "activity": 18000},
+    }
+
+
 def main():
     db = {
         "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "rates": get_exchange_rates(),
         "news": get_travel_news(),
-        "beer_index": { # 샘플 물가 데이터 (나중에 확장)
-            "Tokyo": 6500, "London": 9500, "Paris": 11000, "DaNang": 2500
-        }
+        "beer_index": {
+            "Tokyo": 6500, "London": 9500, "Paris": 11000, "DaNang": 2500, "Seoul": 7000
+        },
+        "cost_index": get_cost_index(),
     }
     
     theme_db = collect_theme_travel_data()
