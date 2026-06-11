@@ -1,4 +1,4 @@
-import { normalizeCityName } from "./travelData";
+import { normalizeCityName, type FlightIndexEntry, type MarketDb } from "./travelData";
 
 const ICN = { lat: 37.4602, lng: 126.4407 };
 
@@ -47,19 +47,49 @@ function haversineKm(a: { lat: number; lng: number }, b: { lat: number; lng: num
   return 6371 * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
 }
 
-/** 거리(km)만으로 왕복 항공 추정 — 무료 API 좌표가 있을 때 */
+/** 거리(km)만으로 왕복 항공 추정 — 단거리·중거리·장거리 구간 보정 */
 export function estimateFlightByDistanceKm(distanceKm: number): { low: number; high: number } {
   if (distanceKm < 50) return { low: 0, high: 0 };
-  const base = 80000 + distanceKm * 420;
-  const spread = Math.max(60000, distanceKm * 180);
-  return {
-    low: Math.round(Math.max(120000, base - spread)),
-    high: Math.round(base + spread),
-  };
+  let low: number;
+  let spreadRatio: number;
+  if (distanceKm < 1200) {
+    low = 90000 + distanceKm * 75;
+    spreadRatio = 0.85;
+  } else if (distanceKm < 3500) {
+    low = 160000 + distanceKm * 45;
+    spreadRatio = 0.55;
+  } else if (distanceKm < 7000) {
+    low = 220000 + distanceKm * 35;
+    spreadRatio = 0.5;
+  } else {
+    low = 400000 + distanceKm * 55;
+    spreadRatio = 0.4;
+  }
+  const spread = low * spreadRatio;
+  return { low: Math.round(low), high: Math.round(low + spread) };
 }
 
-export function estimateFlightFromSeoul(city: string, coords?: { lat: number; lng: number }): FlightEstimate {
+function flightFromIndex(entry: FlightIndexEntry, label: string, note: string): FlightEstimate {
+  return { low: entry.low, high: entry.high, label, note };
+}
+
+export function estimateFlightFromSeoul(
+  city: string,
+  coords?: { lat: number; lng: number },
+  market?: MarketDb | null
+): FlightEstimate {
   const key = normalizeCityName(city);
+  const indexed = market?.flight_index?.[key]
+    ?? Object.entries(market?.flight_index ?? {}).find(([name]) => normalizeCityName(name) === key)?.[1];
+  if (indexed) {
+    const kmNote = indexed.km ? ` (직선 ${Math.round(indexed.km)}km, CI 수집)` : " (CI 수집)";
+    return flightFromIndex(
+      indexed,
+      `${formatRange(indexed.low, indexed.high)} (서울 출발 추정${kmNote})`,
+      "GitHub Actions가 무료 거리 공식으로 수집한 항공 추정치입니다. 검색 링크에서 실가 확인하세요."
+    );
+  }
+
   if (key === "seoul") {
     return {
       low: 0,

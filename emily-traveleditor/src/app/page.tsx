@@ -102,7 +102,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-2xl text-base leading-7 text-zinc-300">
-                JSON 수집 데이터가 없어도 Wikivoyage·Wikipedia·OpenStreetMap 무료 API로 보강합니다. 항공·숙소는 추정치+무료 검색 링크, PDF 저장까지.
+                Wikidata·Photon·Wikivoyage 무료 체인으로 어떤 도시든 즉시 보강. 물가는 Wikivoyage 파싱, 항공은 거리 공식, 일정은 경로 최적화 엔진.
               </p>
             </div>
           </div>

@@ -17,12 +17,16 @@ const DEFAULT_COST: CityCostIndex = {
 function getCityCosts(
   market: MarketDb | null,
   city: string,
-  countryCode?: string
+  countryCode?: string,
+  liveHints?: Partial<CityCostIndex>
 ): CityCostIndex {
   const key = Object.keys(market?.cost_index ?? {}).find(
     (name) => normalizeCityName(name) === normalizeCityName(city)
   );
   if (key) return { ...DEFAULT_COST, ...market?.cost_index?.[key] };
+  if (liveHints && Object.keys(liveHints).length > 0) {
+    return { ...costsFromCountryCode(countryCode), ...liveHints };
+  }
   return costsFromCountryCode(countryCode);
 }
 
@@ -43,13 +47,18 @@ export function estimateBudget(
   prefs: TripPreferences,
   market: MarketDb | null,
   stopCount: number,
-  options?: { countryCode?: string; cityCoords?: { lat: number; lng: number } }
+  options?: {
+    countryCode?: string;
+    cityCoords?: { lat: number; lng: number };
+    liveCostHints?: Partial<CityCostIndex>;
+    priceSource?: string;
+  }
 ): BudgetBreakdown {
-  const costs = getCityCosts(market, prefs.city, options?.countryCode);
+  const costs = getCityCosts(market, prefs.city, options?.countryCode, options?.liveCostHints);
   const nights = prefs.lodging === "none" ? 0 : prefs.nights;
   const days = Math.max(prefs.days, 1);
 
-  const flightInfo = estimateFlightFromSeoul(prefs.city, options?.cityCoords);
+  const flightInfo = estimateFlightFromSeoul(prefs.city, options?.cityCoords, market);
   const flights = flightMidpoint(flightInfo);
   const lodging = lodgingRate(costs, prefs.lodging) * nights;
   const transport = transportRate(costs, prefs.transport) * days;
@@ -63,7 +72,9 @@ export function estimateBudget(
     "실제 예약 가격은 검색 링크에서 반드시 다시 확인하세요.",
   ];
 
-  if (!market?.cost_index?.[prefs.city] && options?.countryCode) {
+  if (options?.priceSource) {
+    notes.push(options.priceSource);
+  } else if (!market?.cost_index?.[prefs.city] && options?.countryCode) {
     notes.push(`수집 JSON에 없어 ${options.countryCode.toUpperCase()} 국가 물가 티어를 적용했습니다.`);
   }
 

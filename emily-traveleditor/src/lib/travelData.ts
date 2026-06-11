@@ -18,11 +18,24 @@ export type ThemeTravelDb = {
   }>;
 };
 
+export type FlightIndexEntry = { low: number; high: number; km?: number };
+
 export type MarketDb = {
   rates?: Record<string, number>;
   beer_index?: Record<string, number>;
   cost_index?: Record<string, CityCostIndex>;
+  flight_index?: Record<string, FlightIndexEntry>;
   news?: string[];
+};
+
+export type GeoCacheDb = {
+  last_updated?: string;
+  cities?: Record<string, {
+    lat: number;
+    lng: number;
+    countryCode?: string;
+    boundingBox?: [number, number, number, number];
+  }>;
 };
 
 export type CityCostIndex = {
@@ -63,6 +76,12 @@ export async function loadMarketDb() {
   const response = await fetch(`${DATA_BASE}/market_db.json`);
   if (!response.ok) return null;
   return (await response.json()) as MarketDb;
+}
+
+export async function loadGeoCacheDb() {
+  const response = await fetch(`${DATA_BASE}/geo_cache.json`);
+  if (!response.ok) return null;
+  return (await response.json()) as GeoCacheDb;
 }
 
 export function toPlaceCandidates(city: string, items: ThemeTravelRecommendation[]): PlaceCandidate[] {

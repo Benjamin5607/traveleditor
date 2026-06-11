@@ -1,7 +1,8 @@
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
 import { estimateFlightFromSeoul, flightMidpoint } from "./flightEstimates";
-import { fetchLivePlaces, geocodeCity, geocodePlaces } from "./liveTravel";
+import { buildSmartItinerary } from "./itineraryEngine";
+import { fetchLiveCostHints, fetchLivePlaces, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { getEmilyTheme } from "./themes";
 import type {
@@ -43,49 +44,13 @@ type GuidebookCore = Omit<
   "budget" | "bookingLinks" | "mapUrl" | "mapEmbedUrl" | "osmDirectionsUrl" | "flightEstimate" | "dataSource"
 >;
 
-function fallbackItinerary(prefs: TripPreferences, places: PlaceCandidate[]): GuidebookCore {
-  const theme = getEmilyTheme(prefs.theme);
-  const days: ItineraryDay[] = [];
-
-  for (let day = 1; day <= prefs.days; day += 1) {
-    const place = places[(day - 1) % places.length];
-    const blocks: ItineraryBlock[] = place
-      ? [
-          {
-            time: "10:00",
-            place_id: place.id,
-            place_title: place.title,
-            activity: place.angle || place.why || `${theme.name} 테마 체험`,
-            transport: prefs.transport,
-          },
-          {
-            time: "15:00",
-            place_id: place.id,
-            place_title: place.title,
-            activity: "주변 산책 및 휴식",
-            transport: "walk",
-          },
-        ]
-      : [];
-
-    days.push({
-      day,
-      label: prefs.nights === 0 ? `${day}일차 (무박)` : `${day}일차`,
-      blocks,
-    });
-  }
-
-  return {
-    title: `${prefs.city} ${prefs.days}일 ${theme.name} 가이드`,
-    summary: `${prefs.city}에서 ${theme.shortLabel} 중심으로 짜는 ${prefs.days}일 일정입니다. 추천 장소는 수집·무료 API 데이터만 사용했습니다.`,
-    days,
-    tips: [
-      "공식 링크가 없는 장소는 출처 링크에서 운영 정보를 먼저 확인하세요.",
-      "예산은 물가 테이블·거리 추정 기준이며 항공권은 검색 링크로 확인하세요.",
-    ],
-    preferences: prefs,
-    places,
-  };
+function smartItinerary(
+  prefs: TripPreferences,
+  places: PlaceCandidate[],
+  cityCenter?: { lat: number; lng: number }
+): GuidebookCore {
+  const smart = buildSmartItinerary(prefs, places, cityCenter);
+  return { ...smart, preferences: prefs, places };
 }
 
 function sanitizeItinerary(
@@ -127,7 +92,7 @@ function sanitizeItinerary(
   }
 
   if (days.length === 0) {
-    return fallbackItinerary(prefs, places);
+    return smartItinerary(prefs, places);
   }
 
   return {
@@ -220,11 +185,11 @@ ${JSON.stringify(placePayload, null, 2)}
     });
 
     const data = await response.json();
-    if (!response.ok) return fallbackItinerary(prefs, places);
+    if (!response.ok) return smartItinerary(prefs, places);
     const parsed = JSON.parse(data.choices[0].message.content) as RawItineraryResponse;
     return sanitizeItinerary(parsed, prefs, places);
   } catch {
-    return fallbackItinerary(prefs, places);
+    return smartItinerary(prefs, places);
   }
 }
 
@@ -256,14 +221,22 @@ export async function buildTravelGuidebook(
 
   places = await geocodePlaces(prefs.city, places);
 
+  const cityCenter = cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined;
+  const liveCostHints = await fetchLiveCostHints(prefs.city, marketDb?.rates);
+  const hasLiveCosts = Object.keys(liveCostHints).length > 0;
+
   const itineraryCore = useGroq
     ? await buildItineraryWithGroq(prefs, places, modelId!, key!)
-    : fallbackItinerary(prefs, places);
+    : smartItinerary(prefs, places, cityCenter);
 
   const stopCount = itineraryCore.days.reduce((sum, day) => sum + day.blocks.length, 0);
   const budget = estimateBudget(prefs, marketDb, stopCount, {
     countryCode: cityGeo?.countryCode,
-    cityCoords: cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined,
+    cityCoords: cityCenter,
+    liveCostHints: hasLiveCosts ? liveCostHints : undefined,
+    priceSource: hasLiveCosts
+      ? "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
+      : undefined,
   });
   const bookingLinks = buildBookingLinks(prefs.city, prefs.lodging);
   const mapStops = itineraryCore.days.flatMap((day) =>
@@ -273,20 +246,16 @@ export async function buildTravelGuidebook(
     })
   );
   const mapUrl = buildRouteMapUrl(prefs.city, mapStops);
-  const cityCenter = cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined;
   const mapEmbedUrl = buildOsmEmbedUrl(mapStops, cityCenter);
   const osmDirectionsUrl = buildOsmDirectionsUrl(mapStops);
-  const flightRaw = estimateFlightFromSeoul(
-    prefs.city,
-    cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined
-  );
+  const flightRaw = estimateFlightFromSeoul(prefs.city, cityCenter, marketDb);
 
   const tips = [...itineraryCore.tips];
   if (dataSource === "live") {
-    tips.push("수집 JSON이 없어 Wikivoyage·Wikipedia·OSM Overpass·Nominatim 무료 API로 장소를 보강했습니다.");
+    tips.push("수집 JSON 없음 → Wikidata·Photon·Wikivoyage·Wikipedia 무료 체인으로 즉시 보강했습니다.");
   }
   if (!useGroq) {
-    tips.push("Groq 키 없이 무료 규칙 기반 일정으로 생성했습니다. AI 일정은 Groq 키 설정 시 사용됩니다.");
+    tips.push("무료 경로 최적화 일정 엔진 사용 (거리·테마 시간대). Groq 키 있으면 AI 일정으로 업그레이드됩니다.");
   }
 
   return {
