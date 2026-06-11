@@ -1,5 +1,8 @@
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
+import { estimateFlightFromSeoul, flightMidpoint } from "./flightEstimates";
+import { fetchLivePlaces, geocodePlaces } from "./liveTravel";
+import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { getEmilyTheme } from "./themes";
 import type {
   ItineraryBlock,
@@ -35,7 +38,12 @@ type RawItineraryResponse = {
 
 const VALID_TRANSPORTS = new Set<TransportId>(["walk", "bus", "rental_car"]);
 
-function fallbackItinerary(prefs: TripPreferences, places: PlaceCandidate[]): Omit<TravelGuidebook, "budget" | "bookingLinks" | "mapUrl"> {
+type GuidebookCore = Omit<
+  TravelGuidebook,
+  "budget" | "bookingLinks" | "mapUrl" | "mapEmbedUrl" | "osmDirectionsUrl" | "flightEstimate" | "dataSource"
+>;
+
+function fallbackItinerary(prefs: TripPreferences, places: PlaceCandidate[]): GuidebookCore {
   const theme = getEmilyTheme(prefs.theme);
   const days: ItineraryDay[] = [];
 
@@ -84,7 +92,7 @@ function sanitizeItinerary(
   raw: RawItineraryResponse,
   prefs: TripPreferences,
   places: PlaceCandidate[]
-): Omit<TravelGuidebook, "budget" | "bookingLinks" | "mapUrl"> {
+): GuidebookCore {
   const allowedIds = new Set(places.map((place) => place.id));
   const days: ItineraryDay[] = [];
 
@@ -147,13 +155,21 @@ export async function buildTravelGuidebook(
   const marketDb = await loadMarketDb();
   const theme = getEmilyTheme(prefs.theme);
   const rawItems = findCityRecommendations(themeDb?.themes?.[prefs.theme]?.cities, prefs.city);
-  const places = toPlaceCandidates(prefs.city, rawItems);
+  let dataSource: "static" | "live" = "static";
+  let places = toPlaceCandidates(prefs.city, rawItems);
+
+  if (places.length === 0) {
+    places = await fetchLivePlaces(prefs.city, prefs.theme);
+    dataSource = "live";
+  }
 
   if (places.length === 0) {
     return {
-      error: `${prefs.city} / ${prefs.theme} 조합의 수집 데이터가 아직 없어. data-update 워크플로우 실행 후 다시 시도해줘.`,
+      error: `${prefs.city} 여행 정보를 무료 공개 API에서도 찾지 못했어. 도시명을 영문으로 바꿔 다시 시도해줘.`,
     };
   }
+
+  places = await geocodePlaces(prefs.city, places);
 
   const placePayload = places.map((place) => ({
     id: place.id,
@@ -206,7 +222,7 @@ ${JSON.stringify(placePayload, null, 2)}
 - 한국어로 작성
 `;
 
-  let itineraryCore: Omit<TravelGuidebook, "budget" | "bookingLinks" | "mapUrl">;
+  let itineraryCore: GuidebookCore;
 
   try {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -248,11 +264,30 @@ ${JSON.stringify(placePayload, null, 2)}
     })
   );
   const mapUrl = buildRouteMapUrl(prefs.city, mapStops);
+  const mapEmbedUrl = buildOsmEmbedUrl(mapStops);
+  const osmDirectionsUrl = buildOsmDirectionsUrl(mapStops);
+  const flightRaw = estimateFlightFromSeoul(prefs.city);
+
+  const tips =
+    dataSource === "live"
+      ? [...itineraryCore.tips, "수집 JSON이 없어 Wikivoyage/Wikipedia/Nominatim 무료 API로 장소를 보강했습니다."]
+      : itineraryCore.tips;
 
   return {
     ...itineraryCore,
+    tips,
     budget,
     bookingLinks,
     mapUrl,
+    mapEmbedUrl,
+    osmDirectionsUrl: osmDirectionsUrl || bookingLinks.osm,
+    flightEstimate: {
+      low: flightRaw.low,
+      high: flightRaw.high,
+      midpoint: flightMidpoint(flightRaw),
+      label: flightRaw.label,
+      note: flightRaw.note,
+    },
+    dataSource,
   };
 }

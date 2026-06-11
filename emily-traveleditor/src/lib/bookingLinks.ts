@@ -4,8 +4,27 @@ function encode(value: string) {
   return encodeURIComponent(value.trim());
 }
 
+function cityToIata(city: string) {
+  const map: Record<string, string> = {
+    seoul: "icn",
+    tokyo: "tyo",
+    london: "lon",
+    paris: "par",
+    danang: "dad",
+    bangkok: "bkk",
+    singapore: "sin",
+    taipei: "tpe",
+  };
+  return map[city.trim().toLowerCase().replace(/[\s-]/g, "")] ?? cityQueryFallback(city);
+}
+
+function cityQueryFallback(city: string) {
+  return encodeURIComponent(city.trim().toLowerCase());
+}
+
 export function buildBookingLinks(city: string, lodging: LodgingId): BookingLinkSet {
   const cityQuery = encode(city);
+  const dest = cityToIata(city);
 
   const lodgingUrl =
     lodging === "hostel"
@@ -15,10 +34,12 @@ export function buildBookingLinks(city: string, lodging: LodgingId): BookingLink
         : `https://www.booking.com/searchresults.html?ss=${cityQuery}`;
 
   return {
-    flights: `https://www.google.com/travel/flights?q=Flights%20to%20${cityQuery}`,
+    flights: `https://www.google.com/travel/flights?q=Flights%20from%20Seoul%20to%20${cityQuery}`,
+    flightsSkyscanner: `https://www.skyscanner.co.kr/transport/flights/icn/${dest}/`,
     lodging: lodgingUrl,
     restaurants: `https://www.google.com/maps/search/restaurants+in+${cityQuery}`,
     maps: `https://www.google.com/maps/search/${cityQuery}`,
+    osm: `https://www.openstreetmap.org/search?query=${cityQuery}`,
   };
 }
 

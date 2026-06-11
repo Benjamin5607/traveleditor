@@ -22,3 +22,29 @@ body {
   background: #fde68a;
   color: #18181b;
 }
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .guidebook-print {
+    color: #111111 !important;
+  }
+
+  .guidebook-print * {
+    color: #111111 !important;
+    background: transparent !important;
+    border-color: #cccccc !important;
+    box-shadow: none !important;
+  }
+
+  .guidebook-print iframe {
+    display: none !important;
+  }
+}

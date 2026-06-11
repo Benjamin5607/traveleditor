@@ -89,7 +89,7 @@ export default function Home() {
       <div className="pointer-events-none absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl" />
 
       <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-8">
-        <header className="grid gap-6 rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur md:grid-cols-[1.1fr_0.9fr] md:p-8">
+        <header className="no-print grid gap-6 rounded-[2rem] border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur md:grid-cols-[1.1fr_0.9fr] md:p-8">
           <div className="space-y-5">
             <div className="inline-flex rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.35em] text-yellow-200">
               Emily Travel Editor
@@ -102,7 +102,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-2xl text-base leading-7 text-zinc-300">
-                수집된 여행 데이터와 테마 후보만 사용해 일정, 예산, 예약 링크, 경로 지도를 한 장으로 만듭니다.
+                JSON 수집 데이터가 없어도 Wikivoyage·Wikipedia·OpenStreetMap 무료 API로 보강합니다. 항공·숙소는 추정치+무료 검색 링크, PDF 저장까지.
               </p>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
+        <section className="no-print rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Trip setup</p>
           <h2 className="mt-2 text-2xl font-black text-white">여행 조건</h2>
 
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-2">
+        <section className="no-print grid gap-4 md:grid-cols-2">
           {EMILY_THEMES.map((item) => (
             <button
               key={item.name}
@@ -195,8 +195,8 @@ export default function Home() {
           ))}
         </section>
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-zinc-500">일정은 수집 JSON의 장소만 사용하고, 예산·예약 링크·지도는 규칙 기반으로 계산합니다.</p>
+        <div className="no-print flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-zinc-500">수집 JSON이 없으면 무료 공개 API로 즉시 보강하고, 예산·지도·PDF는 항상 결과물을 만듭니다.</p>
           <button
             type="button"
             onClick={handleBuildGuidebook}
@@ -208,14 +208,14 @@ export default function Home() {
         </div>
 
         {loading && (
-          <div className="flex items-center gap-3 rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6 text-yellow-200">
+          <div className="no-print flex items-center gap-3 rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6 text-yellow-200">
             <span className="h-3 w-3 animate-pulse rounded-full bg-yellow-300" />
             <p className="font-bold">수집 데이터 확인 후 {theme} 테마 일정을 짜는 중...</p>
           </div>
         )}
 
         {error && (
-          <div className="rounded-[2rem] border border-rose-400/30 bg-rose-500/10 p-6 text-rose-100">
+          <div className="no-print rounded-[2rem] border border-rose-400/30 bg-rose-500/10 p-6 text-rose-100">
             {error}
           </div>
         )}

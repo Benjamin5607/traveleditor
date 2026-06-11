@@ -59,9 +59,22 @@ export type TravelGuidebook = {
   budget: BudgetBreakdown;
   bookingLinks: BookingLinkSet;
   mapUrl: string;
+  mapEmbedUrl: string;
+  osmDirectionsUrl: string;
+  flightEstimate: FlightEstimateInfo;
+  dataSource: "static" | "live";
+};
+
+export type FlightEstimateInfo = {
+  low: number;
+  high: number;
+  midpoint: number;
+  label: string;
+  note: string;
 };
 
 export type BudgetBreakdown = {
+  flights: number;
   lodging: number;
   transport: number;
   meals: number;
@@ -75,7 +88,9 @@ export type BudgetBreakdown = {
 
 export type BookingLinkSet = {
   flights: string;
+  flightsSkyscanner: string;
   lodging: string;
   restaurants: string;
   maps: string;
+  osm: string;
 };

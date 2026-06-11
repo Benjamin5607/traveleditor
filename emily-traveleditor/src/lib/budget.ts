@@ -1,3 +1,4 @@
+import { flightMidpoint, estimateFlightFromSeoul } from "./flightEstimates";
 import type { BudgetBreakdown, LodgingId, TransportId, TripPreferences } from "./tripTypes";
 import type { CityCostIndex, MarketDb } from "./travelData";
 import { normalizeCityName } from "./travelData";
@@ -41,15 +42,18 @@ export function estimateBudget(
   const nights = prefs.lodging === "none" ? 0 : prefs.nights;
   const days = Math.max(prefs.days, 1);
 
+  const flightInfo = estimateFlightFromSeoul(prefs.city);
+  const flights = flightMidpoint(flightInfo);
   const lodging = lodgingRate(costs, prefs.lodging) * nights;
   const transport = transportRate(costs, prefs.transport) * days;
   const meals = (costs.meal ?? DEFAULT_COST.meal!) * days;
   const activities = (costs.activity ?? DEFAULT_COST.activity!) * Math.min(stopCount, days * 2);
-  const total = lodging + transport + meals + activities;
+  const total = flights + lodging + transport + meals + activities;
 
   const notes = [
-    "숙박·교통·식비·체험비는 수집된 도시 물가 테이블 기준 추정치입니다.",
-    "항공권과 개별 예약 수수료는 포함되지 않았습니다.",
+    "항공권은 서울 출발 권역별 무료 추정 테이블 중간값입니다.",
+    "숙박·교통·식비·체험비는 도시 물가 테이블 기준 추정치입니다.",
+    "실제 예약 가격은 검색 링크에서 반드시 다시 확인하세요.",
   ];
 
   if (prefs.lodging === "none") {
@@ -57,6 +61,7 @@ export function estimateBudget(
   }
 
   return {
+    flights,
     lodging,
     transport,
     meals,
