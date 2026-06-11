@@ -29,3 +29,11 @@ GROQ_API_KEY="$GROQ_API_KEY" python3 scripts/update_data.py
 ```
 
 The old root-level React sample app was removed so the repository has a single app entry point.
+
+## What the app does
+
+1. Daily JSON collection via `.github/workflows/data-update.yml`
+2. Theme-based place recommendations with official/source links
+3. Trip guidebook generation from collected data (days/nights, transport, lodging, budget)
+4. Deterministic budget estimates and map/search booking links
+5. Groq is used only to arrange collected places into an itinerary JSON

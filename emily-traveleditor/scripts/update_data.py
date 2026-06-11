@@ -19,13 +19,17 @@ CRAWLER_HEADERS = {
         "EmilyTravelEditor/1.0 (https://github.com/Benjamin5607/traveleditor)",
     )
 }
+DEFAULT_CITIES = "Seoul,Tokyo,Osaka,London,Paris,DaNang,Bangkok,Singapore,Taipei,Barcelona,Rome,Berlin"
 TARGET_CITIES = [
     city.strip()
-    for city in os.environ.get("EMILY_CRAWL_CITIES", "Seoul,Tokyo,London,Paris,DaNang").split(",")
+    for city in os.environ.get("EMILY_CRAWL_CITIES", DEFAULT_CITIES).split(",")
     if city.strip()
 ]
 CITY_PAGE_TITLES = {
     "DaNang": "Da Nang",
+    "HongKong": "Hong Kong",
+    "NewYork": "New York",
+    "LosAngeles": "Los Angeles",
 }
 THEME_CRAWL_CONFIG = {
     "마음의 평화": {
@@ -92,21 +96,47 @@ def search_wikipedia(query: str, limit: int = 2) -> list[dict[str, Any]]:
         return []
 
 
-def get_wikipedia_summary(title: str) -> dict[str, str] | None:
+def get_wikipedia_summary(title: str) -> dict[str, str | float] | None:
     try:
         data = request_json(f"{WIKIPEDIA_SUMMARY_URL}/{quote(title)}")
         extract = data.get("extract") or ""
         if not extract:
             return None
-        official_urls = get_wikidata_official_urls(data.get("wikibase_item"))
-        return {
+        wikibase_item = data.get("wikibase_item")
+        official_urls = get_wikidata_official_urls(wikibase_item)
+        coordinates = data.get("coordinates") or {}
+        result = {
             "title": data.get("title") or title,
             "extract": extract[:700],
             "url": data.get("content_urls", {}).get("desktop", {}).get("page", ""),
             "official_url": official_urls[0] if official_urls else "",
         }
+        lat = coordinates.get("lat")
+        lng = coordinates.get("lon")
+        if lat is None or lng is None:
+            lat, lng = get_wikidata_coordinates(wikibase_item)
+        if lat is not None and lng is not None:
+            result["lat"] = lat
+            result["lng"] = lng
+        return result
     except requests.RequestException:
         return None
+
+
+def get_wikidata_coordinates(entity_id: str | None) -> tuple[float | None, float | None]:
+    if not entity_id:
+        return None, None
+
+    try:
+        data = request_json(f"{WIKIDATA_ENTITY_URL}/{entity_id}.json")
+        entity = data.get("entities", {}).get(entity_id, {})
+        claims = entity.get("claims", {}).get("P625", [])
+        if not claims:
+            return None, None
+        value = claims[0].get("mainsnak", {}).get("datavalue", {}).get("value", {})
+        return value.get("latitude"), value.get("longitude")
+    except requests.RequestException:
+        return None, None
 
 
 def get_wikidata_official_urls(entity_id: str | None) -> list[str]:
@@ -198,8 +228,9 @@ def crawl_theme_sources(city: str, keywords: list[str], max_sources: int = 5) ->
 def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dict[str, list[dict[str, str]]]) -> dict[str, Any]:
     cities = {}
     for city, sources in city_sources.items():
-        cities[city] = [
-            {
+        items = []
+        for source in sources[:3]:
+            item = {
                 "title": source["title"],
                 "angle": config["brief"],
                 "why": source["extract"][:180],
@@ -208,8 +239,11 @@ def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dic
                 "official_url": source.get("official_url", ""),
                 "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요." if source.get("official_url") else "출처 링크에서 운영 정보를 먼저 확인하세요.",
             }
-            for source in sources[:3]
-        ]
+            if source.get("lat") is not None and source.get("lng") is not None:
+                item["lat"] = source["lat"]
+                item["lng"] = source["lng"]
+            items.append(item)
+        cities[city] = items
 
     return {
         "theme": theme,
@@ -234,6 +268,10 @@ def sanitize_groq_summary(
         source_urls = {source["url"] for source in sources if source.get("url")}
         official_urls_by_title = {
             source["title"]: source.get("official_url", "")
+            for source in sources
+        }
+        coords_by_title = {
+            source["title"]: (source.get("lat"), source.get("lng"))
             for source in sources
         }
         fallback_items = fallback_theme_summary(theme, config, {city: sources})["cities"].get(city, [])
@@ -266,7 +304,12 @@ def sanitize_groq_summary(
                 valid_titles = [fallback_source["title"]]
                 valid_urls = [fallback_source["url"]]
 
-            cleaned_items.append({
+            coord_title = valid_titles[0] if valid_titles else (fallback_source or {}).get("title")
+            fallback_lat, fallback_lng = coords_by_title.get(coord_title, (None, None))
+            if fallback_lat is None and fallback_source:
+                fallback_lat = fallback_source.get("lat")
+                fallback_lng = fallback_source.get("lng")
+            cleaned_item = {
                 "title": str(item.get("title") or (fallback_source or {}).get("title") or city),
                 "angle": str(item.get("angle") or config["brief"]),
                 "why": str(item.get("why") or config["brief"]),
@@ -274,7 +317,11 @@ def sanitize_groq_summary(
                 "source_urls": valid_urls,
                 "official_url": next((official_urls_by_title.get(title, "") for title in valid_titles if official_urls_by_title.get(title)), ""),
                 "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요." if any(official_urls_by_title.get(title) for title in valid_titles) else "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            })
+            }
+            if fallback_lat is not None and fallback_lng is not None:
+                cleaned_item["lat"] = fallback_lat
+                cleaned_item["lng"] = fallback_lng
+            cleaned_items.append(cleaned_item)
 
         cities[city] = cleaned_items or fallback_items
 
@@ -388,24 +435,178 @@ def collect_theme_travel_data() -> dict[str, Any]:
         "raw_sources": raw_sources,
     }
 
+ICN_COORDS = (37.4602, 126.4407)
+NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+
+
+def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    from math import asin, cos, radians, sin, sqrt
+
+    dlat = radians(lat2 - lat1)
+    dlon = radians(lon2 - lon1)
+    a = sin(dlat / 2) ** 2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+    return 6371 * 2 * asin(sqrt(a))
+
+
+def estimate_flight_krw(distance_km: float) -> dict[str, int]:
+    if distance_km < 50:
+        return {"low": 0, "high": 0}
+    if distance_km < 1200:
+        low = 90000 + distance_km * 75
+        spread_ratio = 0.85
+    elif distance_km < 3500:
+        low = 160000 + distance_km * 45
+        spread_ratio = 0.55
+    elif distance_km < 7000:
+        low = 220000 + distance_km * 35
+        spread_ratio = 0.5
+    else:
+        low = 400000 + distance_km * 55
+        spread_ratio = 0.4
+    spread = low * spread_ratio
+    return {"low": int(low), "high": int(low + spread)}
+
+
+def geocode_city_server(city: str) -> dict[str, Any] | None:
+    title = CITY_PAGE_TITLES.get(city, city)
+    try:
+        response = requests.get(
+            NOMINATIM_URL,
+            params={"q": title, "format": "json", "limit": 1, "addressdetails": 1},
+            headers=CRAWLER_HEADERS,
+            timeout=15,
+        )
+        response.raise_for_status()
+        rows = response.json()
+        if not rows:
+            return None
+        row = rows[0]
+        bb = row.get("boundingbox")
+        return {
+            "lat": float(row["lat"]),
+            "lng": float(row["lon"]),
+            "countryCode": (row.get("address") or {}).get("country_code"),
+            "boundingBox": [float(bb[0]), float(bb[1]), float(bb[2]), float(bb[3])] if bb else None,
+        }
+    except requests.RequestException:
+        return None
+
+
+def parse_wikivoyage_costs(extract: str, rates: dict[str, float]) -> dict[str, int]:
+    import re
+
+    usd = rates.get("USD", 1400)
+    eur = rates.get("EUR", 1550)
+    hints: dict[str, int] = {}
+    text = extract[:8000]
+    amounts: list[int] = []
+
+    for match in re.finditer(r"(?:US\$|\$|€|£|¥)\s*(\d{1,4}(?:[.,]\d{1,2})?)", text, re.I):
+        sym = match.group(0)[:2] if match.group(0).startswith("US") else match.group(0)[0]
+        num = float(match.group(1).replace(",", ""))
+        if sym in ("€", "E"):
+            amounts.append(int(num * eur))
+        elif sym in ("£",):
+            amounts.append(int(num * (rates.get("GBP", 1850))))
+        elif sym in ("¥",):
+            amounts.append(int(num * (rates.get("JPY", 9.5))))
+        else:
+            amounts.append(int(num * usd))
+
+    if amounts:
+        lows = [n for n in amounts if 15000 <= n <= 90000]
+        highs = [n for n in amounts if 60000 <= n <= 400000]
+        meals = [n for n in amounts if 8000 <= n <= 80000]
+        if lows:
+            hints["hostel"] = min(lows)
+        if highs:
+            hints["hotel"] = int(sum(highs) / len(highs))
+            hints["inn"] = int(hints["hotel"] * 0.65)
+        if meals:
+            hints["meal"] = int(sum(meals) / len(meals))
+        hints.setdefault("bus_day", 12000)
+        hints.setdefault("car_day", int(hints.get("hotel", 120000) * 0.55))
+        hints.setdefault("activity", int(hints.get("meal", 35000) * 0.7))
+    return hints
+
+
+def build_geo_cache(cities: list[str]) -> dict[str, Any]:
+    import time
+
+    cache: dict[str, Any] = {}
+    for city in cities:
+        geo = geocode_city_server(city)
+        time.sleep(1.1)
+        if not geo:
+            continue
+        key = city.strip().lower().replace(" ", "").replace("-", "")
+        cache[key] = {k: v for k, v in geo.items() if v is not None}
+    return cache
+
+
+def build_flight_index(cities: list[str], geo_cache: dict[str, Any]) -> dict[str, Any]:
+    index: dict[str, Any] = {}
+    icn_lat, icn_lng = ICN_COORDS
+    for city in cities:
+        key = city.strip().lower().replace(" ", "").replace("-", "")
+        geo = geo_cache.get(key)
+        if not geo:
+            continue
+        km = haversine_km(icn_lat, icn_lng, geo["lat"], geo["lng"])
+        flight = estimate_flight_krw(km)
+        index[key] = {**flight, "km": round(km)}
+    return index
+
+
+def build_cost_index(cities: list[str], rates: dict[str, float]) -> dict[str, dict[str, int]]:
+    defaults = {
+        "Seoul": {"hotel": 140000, "inn": 85000, "hostel": 42000, "meal": 38000, "bus_day": 10000, "car_day": 85000, "activity": 22000},
+        "Tokyo": {"hotel": 180000, "inn": 110000, "hostel": 55000, "meal": 45000, "bus_day": 12000, "car_day": 95000, "activity": 28000},
+        "London": {"hotel": 220000, "inn": 130000, "hostel": 60000, "meal": 52000, "bus_day": 15000, "car_day": 110000, "activity": 35000},
+        "Paris": {"hotel": 210000, "inn": 125000, "hostel": 58000, "meal": 50000, "bus_day": 14000, "car_day": 105000, "activity": 32000},
+        "DaNang": {"hotel": 90000, "inn": 55000, "hostel": 28000, "meal": 25000, "bus_day": 8000, "car_day": 65000, "activity": 18000},
+    }
+    costs = dict(defaults)
+    for city in cities:
+        if city in costs:
+            continue
+        source = get_wikivoyage_city_source(city)
+        if source and source.get("extract"):
+            parsed = parse_wikivoyage_costs(source["extract"], rates)
+            if parsed:
+                costs[city] = parsed
+    return costs
+
+
 def main():
+    rates = get_exchange_rates()
+    geo_cache = build_geo_cache(TARGET_CITIES)
+    flight_index = build_flight_index(TARGET_CITIES, geo_cache)
+    cost_index = build_cost_index(TARGET_CITIES, rates if isinstance(rates, dict) else {})
+
     db = {
         "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "rates": get_exchange_rates(),
+        "rates": rates,
         "news": get_travel_news(),
-        "beer_index": { # 샘플 물가 데이터 (나중에 확장)
-            "Tokyo": 6500, "London": 9500, "Paris": 11000, "DaNang": 2500
-        }
+        "beer_index": {
+            "Tokyo": 6500, "London": 9500, "Paris": 11000, "DaNang": 2500, "Seoul": 7000
+        },
+        "cost_index": cost_index,
+        "flight_index": flight_index,
     }
-    
+
     theme_db = collect_theme_travel_data()
 
-    # 결과를 public 폴더에 저장 (Next.js에서 바로 접근 가능하게)
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(DATA_DIR / 'market_db.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
     with open(DATA_DIR / 'theme_travel_db.json', 'w', encoding='utf-8') as f:
         json.dump(theme_db, f, ensure_ascii=False, indent=2)
+    with open(DATA_DIR / 'geo_cache.json', 'w', encoding='utf-8') as f:
+        json.dump({
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "cities": geo_cache,
+        }, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
     main()

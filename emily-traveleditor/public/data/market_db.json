@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-05-18 00:00",
+  "last_updated": "2026-06-11 16:12",
   "rates": {
-    "JPY": 945.02,
-    "USD": 1497.01,
-    "EUR": 1745.2
+    "JPY": 948.97,
+    "USD": 1522.07,
+    "EUR": 1757.47
   },
   "news": [
     "엔저 현상 가속화, 일본 여행객 역대 최고",
@@ -14,6 +14,76 @@
     "Tokyo": 6500,
     "London": 9500,
     "Paris": 11000,
-    "DaNang": 2500
+    "DaNang": 2500,
+    "Seoul": 7000
+  },
+  "cost_index": {
+    "Seoul": {
+      "hotel": 140000,
+      "inn": 85000,
+      "hostel": 42000,
+      "meal": 38000,
+      "bus_day": 10000,
+      "car_day": 85000,
+      "activity": 22000
+    },
+    "Tokyo": {
+      "hotel": 180000,
+      "inn": 110000,
+      "hostel": 55000,
+      "meal": 45000,
+      "bus_day": 12000,
+      "car_day": 95000,
+      "activity": 28000
+    },
+    "London": {
+      "hotel": 220000,
+      "inn": 130000,
+      "hostel": 60000,
+      "meal": 52000,
+      "bus_day": 15000,
+      "car_day": 110000,
+      "activity": 35000
+    },
+    "Paris": {
+      "hotel": 210000,
+      "inn": 125000,
+      "hostel": 58000,
+      "meal": 50000,
+      "bus_day": 14000,
+      "car_day": 105000,
+      "activity": 32000
+    },
+    "DaNang": {
+      "hotel": 90000,
+      "inn": 55000,
+      "hostel": 28000,
+      "meal": 25000,
+      "bus_day": 8000,
+      "car_day": 65000,
+      "activity": 18000
+    }
+  },
+  "flight_index": {
+    "seoul": {
+      "low": 0,
+      "high": 0,
+      "km": 49
+    },
+    "tokyo": {
+      "low": 214233,
+      "high": 332061,
+      "km": 1205
+    },
+    "bangkok": {
+      "low": 348750,
+      "high": 523125,
+      "km": 3679
+    },
+    "singapore": {
+      "low": 382198,
+      "high": 573297,
+      "km": 4634
+    }
   }
 }
