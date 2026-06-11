@@ -33,6 +33,7 @@ export type PlaceCandidate = {
   source_urls?: string[];
   lat?: number;
   lng?: number;
+  maps_url?: string;
 };
 
 export type ItineraryBlock = {
@@ -41,6 +42,26 @@ export type ItineraryBlock = {
   place_title: string;
   activity: string;
   transport: TransportId;
+  rationale?: string;
+};
+
+export type LodgingRecommendation = {
+  name: string;
+  why: string;
+  category: string;
+  mapsUrl: string;
+  bookingUrl: string;
+  source: "wikivoyage" | "search";
+};
+
+export type FlightDetailInfo = {
+  routeLabel: string;
+  origin: { code: string; name: string; city: string };
+  destination: { code: string; name: string; city: string };
+  durationHours?: number;
+  carriers: string[];
+  whyThisEstimate: string;
+  wikivoyageNotes: string[];
 };
 
 export type ItineraryDay = {
@@ -52,16 +73,19 @@ export type ItineraryDay = {
 export type TravelGuidebook = {
   title: string;
   summary: string;
+  itineraryRationale: string;
   days: ItineraryDay[];
   tips: string[];
   preferences: TripPreferences;
   places: PlaceCandidate[];
+  lodgingRecommendations: LodgingRecommendation[];
   budget: BudgetBreakdown;
   bookingLinks: BookingLinkSet;
   mapUrl: string;
   mapEmbedUrl: string;
   osmDirectionsUrl: string;
   flightEstimate: FlightEstimateInfo;
+  flightDetail: FlightDetailInfo;
   dataSource: "static" | "live";
 };
 
