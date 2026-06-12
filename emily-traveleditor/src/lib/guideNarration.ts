@@ -1,4 +1,4 @@
-import { getBudgetTheme } from "./budgetThemes";
+import { localizeBudgetTheme } from "./budgetThemes";
 import { getEmilyTheme, localizeTheme } from "./themes";
 import type { ItineraryDay, PlaceCandidate, TripPreferences } from "./tripTypes";
 import { resolveSearchLanguages } from "./multilingualSearch";
@@ -19,7 +19,7 @@ export function buildGuideNarration(
 ): GuideNarration {
   const travelThemeMeta = getEmilyTheme(prefs.theme);
   const travelTheme = localizeTheme(travelThemeMeta, prefs.locale);
-  const budgetTheme = getBudgetTheme(prefs.budgetTheme);
+  const budgetTheme = localizeBudgetTheme(prefs.budgetTheme, prefs.locale);
   const langs = resolveSearchLanguages(countryCode, prefs.locale);
   const langLabels = langs.map((l) => l.label).join(" · ");
 

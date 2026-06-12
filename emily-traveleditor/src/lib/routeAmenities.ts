@@ -1,7 +1,7 @@
 import { buildGoogleMapsPlaceUrl } from "./placeLinks";
 import { isFastFood, isGlobalChain } from "./placeQuality";
 import { isGenericPlaceName, pickBestOsmName } from "./placeNaming";
-import { getBudgetTheme } from "./budgetThemes";
+import { localizeBudgetTheme } from "./budgetThemes";
 import type { BudgetThemeId, ItineraryBlockKind } from "./tripTypes";
 import type { AmenityStop, ItineraryDay, PlaceCandidate } from "./tripTypes";
 
@@ -66,18 +66,47 @@ function elementCoords(el: OsmElement) {
   return { lat, lng: lon };
 }
 
-function amenityWhy(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId, name: string) {
-  const theme = getBudgetTheme(budgetTheme);
-  if (kind === "meal") return `${theme.mealGuide} 근처 로컬 식당 '${name}' (체인·패스트푸드 제외).`;
-  if (kind === "cafe") return `이동 전후 휴식용. 루트 인근 로컬 카페 '${name}'.`;
-  return `${theme.restroomGuide} '${name || "공중화장실"}' — OSM 공개 데이터.`;
+function amenityWhy(
+  kind: AmenityStop["kind"],
+  budgetTheme: BudgetThemeId,
+  name: string,
+  locale: "ko" | "en"
+) {
+  const theme = localizeBudgetTheme(budgetTheme, locale);
+  if (kind === "meal") {
+    return locale === "en"
+      ? `${theme.mealGuide} Nearby local restaurant '${name}' (no chains or fast food).`
+      : `${theme.mealGuide} 근처 로컬 식당 '${name}' (체인·패스트푸드 제외).`;
+  }
+  if (kind === "cafe") {
+    return locale === "en"
+      ? `Break between stops. Local café '${name}' on the route.`
+      : `이동 전후 휴식용. 루트 인근 로컬 카페 '${name}'.`;
+  }
+  return locale === "en"
+    ? `${theme.restroomGuide} '${name}' — OSM data.`
+    : `${theme.restroomGuide} '${name}' — OSM 공개 데이터.`;
 }
 
-function amenityTip(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId) {
-  if (kind === "restroom") return "카페 미이용 시 역·백화점 화장실도 대안입니다.";
-  if (kind === "meal" && budgetTheme === "miser_backpack") return "점심 특선·세트 메뉴 가격을 먼저 확인하세요.";
-  if (kind === "meal" && budgetTheme === "yolo_luxury") return "인기 시간대면 예약 또는 웨이팅을 감안하세요.";
-  return "Google Maps에서 영업시간·리뷰를 확인한 뒤 방문하세요.";
+function amenityTip(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId, locale: "ko" | "en") {
+  if (kind === "restroom") {
+    return locale === "en"
+      ? "Station and mall restrooms work if you skip the café."
+      : "카페 미이용 시 역·백화점 화장실도 대안입니다.";
+  }
+  if (kind === "meal" && budgetTheme === "miser_backpack") {
+    return locale === "en"
+      ? "Check lunch sets and combo prices first."
+      : "점심 특선·세트 메뉴 가격을 먼저 확인하세요.";
+  }
+  if (kind === "meal" && budgetTheme === "yolo_luxury") {
+    return locale === "en"
+      ? "Book ahead or expect a wait at peak hours."
+      : "인기 시간대면 예약 또는 웨이팅을 감안하세요.";
+  }
+  return locale === "en"
+    ? "Confirm hours and reviews on Google Maps before visiting."
+    : "Google Maps에서 영업시간·리뷰를 확인한 뒤 방문하세요.";
 }
 
 const VENUE_SEARCH_RADII = [500, 800, 1200];
@@ -182,8 +211,8 @@ export async function attachRouteAmenities(
             amenities.push({
               kind: "restroom",
               name,
-              why: amenityWhy("restroom", budgetTheme, name),
-              tip: amenityTip("restroom", budgetTheme),
+              why: amenityWhy("restroom", budgetTheme, name, locale),
+              tip: amenityTip("restroom", budgetTheme, locale),
               mapsUrl: buildGoogleMapsPlaceUrl(city, {
                 title: name,
                 lat: coords?.lat,

@@ -6,7 +6,7 @@ import SegmentedControl from "../components/SegmentedControl";
 import { getEmilyWorkers } from "../lib/groqMarket";
 import type { EmilyWorker } from "../lib/groqMarket";
 import { buildTravelGuidebook } from "../lib/tripPlanner";
-import { BUDGET_THEMES } from "../lib/budgetThemes";
+import { BUDGET_THEMES, localizeBudgetTheme } from "../lib/budgetThemes";
 import { EMILY_THEMES, localizeTheme, type ThemeId } from "../lib/themes";
 import {
   airportLabel,
@@ -303,7 +303,9 @@ export default function Home() {
         <section className="no-print rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">{t(locale, "budget.section")}</p>
           <CardCarousel className="mt-5" itemClassName="py-1">
-            {BUDGET_THEMES.map((item) => (
+            {BUDGET_THEMES.map((item) => {
+              const loc = localizeBudgetTheme(item.id, locale);
+              return (
               <button
                 key={item.id}
                 type="button"
@@ -319,11 +321,12 @@ export default function Home() {
                 }`}
               >
                 <p className="text-2xl">{item.emoji}</p>
-                <p className="mt-2 font-black text-white">{item.name}</p>
-                <p className="mt-1 text-xs font-bold text-pink-200">{item.tagline}</p>
-                <p className="mt-2 line-clamp-2 text-sm text-zinc-400">{item.description}</p>
+                <p className="mt-2 font-black text-white">{loc.name}</p>
+                <p className="mt-1 text-xs font-bold text-pink-200">{loc.tagline}</p>
+                <p className="mt-2 line-clamp-2 text-sm text-zinc-400">{loc.description}</p>
               </button>
-            ))}
+            );
+            })}
           </CardCarousel>
         </section>
 
@@ -397,7 +400,7 @@ export default function Home() {
           </div>
         )}
 
-        {guidebook && <GuidebookView guidebook={guidebook} />}
+        {guidebook && <GuidebookView guidebook={guidebook} uiLocale={locale} />}
       </section>
     </main>
   );

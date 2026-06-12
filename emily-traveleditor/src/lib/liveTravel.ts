@@ -1,3 +1,9 @@
+import {
+  detectInputLanguages,
+  geocodeQueryVariants,
+  wikivoyageLangsForCity,
+  WIKIVOYAGE_LANGS,
+} from "./cityGeocoding";
 import { getCachedGeo, saveCachedGeo } from "./geoCache";
 import {
   filterPlacesInMetro,
@@ -92,9 +98,13 @@ function enqueueNominatim<T>(task: () => Promise<T>): Promise<T> {
   return run;
 }
 
-async function photonGeocode(query: string, near?: GeoResult): Promise<GeoResult | null> {
+async function photonGeocode(
+  query: string,
+  near?: GeoResult,
+  lang = "en"
+): Promise<GeoResult | null> {
   try {
-    const params: Record<string, string> = { q: query, limit: "3", lang: "en" };
+    const params: Record<string, string> = { q: query, limit: "3", lang };
     if (near) {
       params.lat = String(near.lat);
       params.lon = String(near.lng);
@@ -131,9 +141,13 @@ async function photonGeocode(query: string, near?: GeoResult): Promise<GeoResult
   }
 }
 
-async function wikiCityGeo(title: string): Promise<GeoResult | null> {
+async function wikiCityGeo(title: string, lang = "en"): Promise<GeoResult | null> {
   try {
-    const response = await fetch(`${WIKI_SUMMARY}/${encodeURIComponent(title)}`);
+    const base =
+      lang === "en"
+        ? WIKI_SUMMARY
+        : `https://${lang}.wikipedia.org/api/rest_v1/page/summary`;
+    const response = await fetch(`${base}/${encodeURIComponent(title)}`);
     if (!response.ok) return null;
     const data = await response.json();
     const lat = data.coordinates?.lat;
@@ -145,12 +159,13 @@ async function wikiCityGeo(title: string): Promise<GeoResult | null> {
   }
 }
 
-async function nominatimSearch(query: string, near?: GeoResult) {
+async function nominatimSearch(query: string, near?: GeoResult, acceptLangs: string[] = ["en"]) {
   const params: Record<string, string> = {
     q: query,
     format: "json",
     limit: "3",
     addressdetails: "1",
+    "accept-language": acceptLangs.join(","),
   };
   if (near?.countryCode) {
     params.countrycodes = near.countryCode.toLowerCase();
@@ -162,7 +177,11 @@ async function nominatimSearch(query: string, near?: GeoResult) {
   }
 
   const response = await fetch(`${NOMINATIM}?${new URLSearchParams(params)}`, {
-    headers: { Accept: "application/json", "User-Agent": USER_AGENT },
+    headers: {
+      Accept: "application/json",
+      "Accept-Language": acceptLangs.join(","),
+      "User-Agent": USER_AGENT,
+    },
   });
   if (!response.ok) return null;
   const results = (await response.json()) as Array<{
@@ -198,29 +217,50 @@ async function nominatimSearch(query: string, near?: GeoResult) {
 }
 
 export async function geocodeCity(city: string): Promise<GeoResult | null> {
-  const title = resolveCityTitle(city);
-  const key = cacheKey("city", title);
+  const raw = city.trim();
+  if (!raw) return null;
+
+  const key = cacheKey("city", raw.toLowerCase());
   const sessionCached = readCache<GeoResult>(key);
   if (sessionCached) return sessionCached;
 
-  const staticOrIdb = await getCachedGeo(title);
+  const staticOrIdb = (await getCachedGeo(raw)) ?? (await getCachedGeo(resolveCityTitle(raw)));
   if (staticOrIdb) {
     writeCache(key, staticOrIdb);
     return staticOrIdb;
   }
 
-  for (const attempt of [
-    () => photonGeocode(title),
-    () => wikiCityGeo(title),
-    () => enqueueNominatim(() => nominatimSearch(title)),
-  ]) {
-    const geo = await attempt();
-    if (geo && !Number.isNaN(geo.lat) && !Number.isNaN(geo.lng)) {
-      writeCache(key, geo);
-      await saveCachedGeo(title, geo);
-      return geo;
+  const inputLangs = detectInputLanguages(raw);
+  const queries = geocodeQueryVariants(raw, resolveCityTitle(raw));
+
+  for (const query of queries) {
+    for (const lang of inputLangs) {
+      const photon = await photonGeocode(query, undefined, lang);
+      if (photon && !Number.isNaN(photon.lat) && !Number.isNaN(photon.lng)) {
+        writeCache(key, photon);
+        await saveCachedGeo(raw, photon);
+        return photon;
+      }
+    }
+
+    const nominatim = await enqueueNominatim(() => nominatimSearch(query, undefined, inputLangs));
+    if (nominatim && !Number.isNaN(nominatim.lat) && !Number.isNaN(nominatim.lng)) {
+      writeCache(key, nominatim);
+      await saveCachedGeo(raw, nominatim);
+      return nominatim;
+    }
+
+    const wikiLangs = [...new Set([...inputLangs, "en"])];
+    for (const lang of wikiLangs) {
+      const wiki = await wikiCityGeo(query, lang);
+      if (wiki && !Number.isNaN(wiki.lat) && !Number.isNaN(wiki.lng)) {
+        writeCache(key, wiki);
+        await saveCachedGeo(raw, wiki);
+        return wiki;
+      }
     }
   }
+
   return null;
 }
 
@@ -281,35 +321,70 @@ export async function geocodePlaces(
   return enriched;
 }
 
+async function fetchWikivoyageExtractLang(
+  city: string,
+  lang: string
+): Promise<{ extract: string; url: string; title: string; lang: string } | null> {
+  const queries = geocodeQueryVariants(city, resolveCityTitle(city));
+  const api =
+    lang === "en" ? WIKIVOYAGE_API : `https://${lang}.wikivoyage.org/w/api.php`;
+
+  for (const title of queries) {
+    try {
+      const response = await fetch(`${api}?${wikiParams({
+        action: "query",
+        prop: "extracts",
+        explaintext: "1",
+        titles: title,
+        redirects: "1",
+      })}`);
+      if (!response.ok) continue;
+      const data = await response.json();
+      const page = Object.values(data.query?.pages ?? {})[0] as {
+        title?: string;
+        extract?: string;
+        missing?: string;
+      };
+      if (!page?.extract || page.missing !== undefined) continue;
+      const pageTitle = page.title ?? title;
+      return {
+        title: pageTitle,
+        extract: String(page.extract),
+        url: `https://${lang}.wikivoyage.org/wiki/${encodeURIComponent(pageTitle.replace(/ /g, "_"))}`,
+        lang,
+      };
+    } catch {
+      continue;
+    }
+  }
+  return null;
+}
+
 export async function fetchWikivoyageExtract(
-  city: string
-): Promise<{ extract: string; url: string; title: string } | null> {
-  const title = resolveCityTitle(city);
-  const cache = readCache<{ extract: string; url: string; title: string }>(cacheKey("voyage", title));
+  city: string,
+  countryCode?: string
+): Promise<{ extract: string; url: string; title: string; lang?: string } | null> {
+  const cacheKeyBase = `${city.trim().toLowerCase()}:${countryCode ?? "xx"}`;
+  const cache = readCache<{ extract: string; url: string; title: string; lang?: string }>(
+    cacheKey("voyage", cacheKeyBase)
+  );
   if (cache) return cache;
 
-  try {
-    const response = await fetch(`${WIKIVOYAGE_API}?${wikiParams({
-      action: "query",
-      prop: "extracts",
-      explaintext: "1",
-      titles: title,
-      redirects: "1",
-    })}`);
-    if (!response.ok) return null;
-    const data = await response.json();
-    const page = Object.values(data.query?.pages ?? {})[0] as { title?: string; extract?: string };
-    if (!page?.extract) return null;
-    const result = {
-      title: page.title ?? title,
-      extract: String(page.extract),
-      url: `https://en.wikivoyage.org/wiki/${encodeURIComponent((page.title ?? title).replace(/ /g, "_"))}`,
-    };
-    writeCache(cacheKey("voyage", title), result);
-    return result;
-  } catch {
-    return null;
+  const langsToTry = wikivoyageLangsForCity(city, countryCode).filter((l) =>
+    WIKIVOYAGE_LANGS.includes(l as (typeof WIKIVOYAGE_LANGS)[number])
+  );
+
+  for (const lang of langsToTry) {
+    const result = await fetchWikivoyageExtractLang(city, lang);
+    if (result) {
+      const { lang: foundLang, ...rest } = result;
+      const payload = { ...rest, lang: foundLang };
+      writeCache(cacheKey("voyage", cacheKeyBase), payload);
+      return payload;
+    }
   }
+
+  return null;
 }
 
 export async function fetchLiveCostHints(
@@ -324,20 +399,26 @@ export async function fetchLiveCostHints(
 export async function fetchLivePlaces(
   city: string,
   theme: string,
-  countryCode?: string
+  countryCode?: string,
+  uiLocale: "ko" | "en" = "ko"
 ): Promise<LivePlacesResult> {
   const cityGeo = await geocodeCity(city);
   if (!cityGeo) {
-    return { places: [], sourcesUsed: [], sourcesLabel: "지오코딩 실패" };
+    return {
+      places: [],
+      sourcesUsed: [],
+      sourcesLabel: uiLocale === "en" ? "Geocoding failed" : "지오코딩 실패",
+    };
   }
 
-  const voyage = await fetchWikivoyageExtract(city);
+  const voyage = await fetchWikivoyageExtract(city, countryCode ?? cityGeo.countryCode);
   const { places, sourcesUsed } = await searchLocalPlaces({
     city,
     theme,
     cityGeo,
     countryCode: countryCode ?? cityGeo.countryCode,
     voyageExtract: voyage?.extract,
+    uiLocale,
   });
 
   const geocoded = await geocodePlaces(city, places, cityGeo);
@@ -346,6 +427,6 @@ export async function fetchLivePlaces(
   return {
     places: fenced,
     sourcesUsed,
-    sourcesLabel: formatSourcesLabel(sourcesUsed),
+    sourcesLabel: formatSourcesLabel(sourcesUsed, uiLocale),
   };
 }

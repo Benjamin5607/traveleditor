@@ -1,4 +1,4 @@
-import { getBudgetTheme } from "./budgetThemes";
+import { localizeBudgetTheme } from "./budgetThemes";
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
 import { buildFlightDetail } from "./flightDetails";
@@ -312,7 +312,7 @@ export async function buildTravelGuidebook(
   const themeDb = await loadThemeTravelDb();
   const marketDb = await loadMarketDb();
   const cityGeo = await geocodeCity(prefs.city);
-  const voyageExtract = await fetchWikivoyageExtract(prefs.city);
+  const voyageExtract = await fetchWikivoyageExtract(prefs.city, cityGeo?.countryCode);
   const themeMeta = getEmilyTheme(prefs.theme);
   const dbKey = themeDbKey(themeMeta);
   const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
@@ -322,7 +322,7 @@ export async function buildTravelGuidebook(
   const minPlaces = minPlacesForTrip(prefs.days);
 
   if (places.length === 0) {
-    const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode);
+    const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode, prefs.locale);
     places = live.places;
     searchSourcesLabel = live.sourcesLabel;
     dataSource = "live";
@@ -344,8 +344,10 @@ export async function buildTravelGuidebook(
       places = blendPlacePools(places, extra, themeMeta.id, minPlaces, prefs.locale);
       if (dataSource === "static") dataSource = "live";
       searchSourcesLabel = searchSourcesLabel
-        ? `${searchSourcesLabel} · 도시 명소 보충`
-        : "테마 + 도시 명소 보충";
+        ? `${searchSourcesLabel} · ${prefs.locale === "en" ? "city highlights" : "도시 명소 보충"}`
+        : prefs.locale === "en"
+          ? "theme + city highlights"
+          : "테마 + 도시 명소 보충";
     }
   }
 
@@ -414,12 +416,13 @@ export async function buildTravelGuidebook(
     cityGeo?.countryCode
   );
 
-  const budgetThemeMeta = getBudgetTheme(prefs.budgetTheme);
+  const budgetThemeMeta = localizeBudgetTheme(prefs.budgetTheme, prefs.locale);
 
   const lodgingRecommendations = buildLodgingRecommendations(
     prefs.city,
     prefs.lodging,
-    voyageExtract?.extract
+    voyageExtract?.extract,
+    prefs.locale
   );
 
   const flightDetailFull = await buildFlightDetail(
@@ -437,7 +440,9 @@ export async function buildTravelGuidebook(
     cityCoords: cityCenter,
     liveCostHints: hasLiveCosts ? liveCostHints : undefined,
     priceSource: hasLiveCosts
-      ? "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
+      ? prefs.locale === "en"
+        ? "Lodging and meal costs parsed from Wikivoyage text (free estimate)."
+        : "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
       : undefined,
   });
   const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging, {
@@ -460,12 +465,20 @@ export async function buildTravelGuidebook(
   if (dataSource === "live") {
     tips.push(
       searchSourcesLabel
-        ? `로컬 장소 수집 (EOSLS): ${searchSourcesLabel}`
-        : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
+        ? prefs.locale === "en"
+          ? `Places via EOSLS: ${searchSourcesLabel}`
+          : `로컬 장소 수집 (EOSLS): ${searchSourcesLabel}`
+        : prefs.locale === "en"
+          ? "Places collected via open-source local search (EOSLS)."
+          : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
     );
   }
   if (!useGroq) {
-    tips.push("무료 경로 최적화 일정 엔진 사용. Groq 키 있으면 AI 일정·근거 문구가 더 풍부해집니다.");
+    tips.push(
+      prefs.locale === "en"
+        ? "Free route-optimized itinerary. Add a Groq key for richer AI narration."
+        : "무료 경로 최적화 일정 엔진 사용. Groq 키 있으면 AI 일정·근거 문구가 더 풍부해집니다."
+    );
   }
 
   const { estimate: flightRaw, ...flightDetail } = flightDetailFull;

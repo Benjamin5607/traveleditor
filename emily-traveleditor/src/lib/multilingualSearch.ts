@@ -18,8 +18,32 @@ export const SEARCH_LANGUAGES: Record<string, SearchLang> = {
 };
 
 const COUNTRY_TO_LANG: Record<string, string> = {
-  kr: "ko", jp: "ja", th: "th", vn: "vi", cn: "zh", tw: "zh",
-  fr: "fr", de: "de", es: "es", it: "it", gb: "en", us: "en", sg: "en",
+  kr: "ko",
+  jp: "ja",
+  th: "th",
+  vn: "vi",
+  cn: "zh",
+  tw: "zh",
+  hk: "zh",
+  fr: "fr",
+  de: "de",
+  es: "es",
+  it: "it",
+  pt: "pt",
+  br: "pt",
+  ru: "ru",
+  id: "id",
+  nl: "nl",
+  pl: "pl",
+  tr: "tr",
+  mx: "es",
+  ar: "es",
+  gb: "en",
+  us: "en",
+  sg: "en",
+  au: "en",
+  in: "en",
+  ph: "en",
 };
 
 const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
@@ -84,17 +108,25 @@ const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
 
 export function resolveSearchLanguages(countryCode?: string, uiLocale?: "ko" | "en"): SearchLang[] {
   const langs: SearchLang[] = [];
-  if (uiLocale === "en") {
-    langs.push(SEARCH_LANGUAGES.en);
-    langs.push(SEARCH_LANGUAGES.ko);
-  } else {
-    langs.push(SEARCH_LANGUAGES.ko);
-    langs.push(SEARCH_LANGUAGES.en);
-  }
+  const seen = new Set<string>();
+
+  const push = (code: string) => {
+    if (seen.has(code) || !SEARCH_LANGUAGES[code]) return;
+    seen.add(code);
+    langs.push(SEARCH_LANGUAGES[code]);
+  };
+
   const localCode = countryCode ? COUNTRY_TO_LANG[countryCode.toLowerCase()] : undefined;
-  if (localCode && SEARCH_LANGUAGES[localCode] && !langs.some((l) => l.code === localCode)) {
-    langs.push(SEARCH_LANGUAGES[localCode]);
+  if (localCode) push(localCode);
+
+  if (uiLocale === "en") {
+    push("en");
+    push("ko");
+  } else {
+    push("ko");
+    push("en");
   }
+
   return langs;
 }
 
@@ -108,11 +140,14 @@ export function buildMultilingualQueries(
   const queries: Array<{ lang: SearchLang; query: string }> = [];
 
   for (const lang of langs) {
-    const keywords = THEME_KEYWORDS_I18N[themeId]?.[lang.code] ?? THEME_KEYWORDS_I18N[themeId]?.en ?? ["travel"];
+    const keywords =
+      THEME_KEYWORDS_I18N[themeId]?.[lang.code] ??
+      THEME_KEYWORDS_I18N[themeId]?.en ??
+      (lang.code === "ko" ? ["관광", "명소"] : ["attraction", "sightseeing"]);
     for (const keyword of keywords.slice(0, 2)) {
       queries.push({
         lang,
-        query: lang.code === "ko" ? `${city} ${keyword}` : `"${city}" ${keyword}`,
+        query: lang.code === "en" ? `"${city}" ${keyword}` : `${city} ${keyword}`,
       });
     }
   }

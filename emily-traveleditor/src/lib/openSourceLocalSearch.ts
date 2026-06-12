@@ -55,7 +55,7 @@ type RawHit = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v9:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v10:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -444,8 +444,9 @@ export async function searchLocalPlaces(params: {
   cityGeo: GeoResult;
   countryCode?: string;
   voyageExtract?: string;
+  uiLocale?: Locale;
 }): Promise<{ places: PlaceCandidate[]; sourcesUsed: SearchSource[] }> {
-  const { city, theme, cityGeo, countryCode, voyageExtract } = params;
+  const { city, theme, cityGeo, countryCode, voyageExtract, uiLocale = "ko" } = params;
   const themeMeta = getEmilyTheme(theme);
   const themeId = themeMeta.id;
   const key = cacheKey(city, themeId, countryCode);
@@ -490,7 +491,7 @@ export async function searchLocalPlaces(params: {
   hits.push(...photonHits);
   if (photonHits.length) sourcesUsed.add("photon");
 
-  const queries = buildMultilingualQueries(city, themeId, countryCode);
+  const queries = buildMultilingualQueries(city, themeId, countryCode, uiLocale);
   for (const { lang, query } of queries.slice(0, 6)) {
     const nomHits = await nominatimLocalSearch(query, cityGeo, city, themeId);
     for (const h of nomHits) {
@@ -633,14 +634,14 @@ export async function searchSupplementaryPlaces(params: {
   return filterPlacesInMetro(places, city, cityGeo);
 }
 
-export function formatSourcesLabel(sources: SearchSource[]) {
-  const labels: Record<SearchSource, string> = {
-    osm: "OpenStreetMap",
-    nominatim: "Nominatim",
-    photon: "Photon",
-    wikivoyage: "Wikivoyage",
-    wikidata: "Wikidata",
-    wikipedia: "Wikipedia (폴백)",
+export function formatSourcesLabel(sources: SearchSource[], locale: Locale = "ko") {
+  const labels: Record<SearchSource, { ko: string; en: string }> = {
+    osm: { ko: "OpenStreetMap", en: "OpenStreetMap" },
+    nominatim: { ko: "Nominatim", en: "Nominatim" },
+    photon: { ko: "Photon", en: "Photon" },
+    wikivoyage: { ko: "Wikivoyage", en: "Wikivoyage" },
+    wikidata: { ko: "Wikidata", en: "Wikidata" },
+    wikipedia: { ko: "Wikipedia (폴백)", en: "Wikipedia (fallback)" },
   };
-  return sources.map((s) => labels[s]).join(" · ");
+  return sources.map((s) => labels[s][locale]).join(" · ");
 }
