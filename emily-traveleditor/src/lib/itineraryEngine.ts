@@ -213,7 +213,8 @@ export type SmartItineraryResult = {
 export function buildSmartItinerary(
   prefs: TripPreferences,
   places: PlaceCandidate[],
-  cityCenter?: { lat: number; lng: number }
+  cityCenter?: { lat: number; lng: number },
+  poolBlendNote?: string
 ): SmartItineraryResult {
   const themeMeta = getEmilyTheme(prefs.theme);
   const theme = localizeTheme(themeMeta, prefs.locale);
@@ -222,6 +223,7 @@ export function buildSmartItinerary(
   const ordered = orderPlacesByRoute(places, cityCenter);
   const days: ItineraryDay[] = [];
   let placeIdx = 0;
+  const usedPlaceIds = new Set<string>();
 
   const attractionsPerDay = Math.min(
     attractionSlotsPerDay,
@@ -237,16 +239,21 @@ export function buildSmartItinerary(
           ordered.some((p) => p.lat != null)
             ? "Sight order follows nearest-neighbor routing from the city center."
             : "Sight order follows collection order where coordinates were missing.",
+          poolBlendNote,
+          "Each sight is used at most once — no repeating the same place across days.",
         ]
           .filter(Boolean)
           .join(" ")
       : [
-          `「${theme.name}」 테마 ${ordered.length}곳을 ${prefs.days}일로 나눴습니다.`,
+          `「${theme.name}」 테마를 중심으로 ${ordered.length}곳을 ${prefs.days}일에 배치했습니다.`,
           THEME_SLOT_REASON[themeMeta.id] ?? "",
+          "테마는 우선순위이지 유일한 선택이 아닙니다 — 긴 일정에는 도시 대표 명소도 섞었습니다.",
           "하루에 아침·점심·저녁·커피 휴식과 관광 2~4곳을 번갈아 넣었습니다.",
           ordered.some((p) => p.lat != null)
             ? "관광지 순서는 도시 중심에서 가까운 순(최근접 경로)입니다."
             : "좌표가 부족한 장소는 수집 순서를 유지했습니다.",
+          poolBlendNote,
+          "같은 장소는 하루·여러 날에 반복하지 않습니다.",
         ]
           .filter(Boolean)
           .join(" ");
@@ -258,11 +265,19 @@ export function buildSmartItinerary(
 
     for (const slot of dayFlow) {
       if (slot.kind === "attraction") {
-        if (attractionsToday >= attractionsPerDay || placeIdx >= ordered.length) {
+        if (attractionsToday >= attractionsPerDay) {
+          continue;
+        }
+
+        while (placeIdx < ordered.length && usedPlaceIds.has(ordered[placeIdx].id)) {
+          placeIdx += 1;
+        }
+        if (placeIdx >= ordered.length) {
           continue;
         }
 
         const place = ordered[placeIdx];
+        usedPlaceIds.add(place.id);
         placeIdx += 1;
         attractionsToday += 1;
 

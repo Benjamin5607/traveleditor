@@ -120,9 +120,9 @@ export function scorePlaceQuality(input: QualityInput): number {
   return Math.round(score);
 }
 
-export function passesQualityGate(input: QualityInput): boolean {
+export function passesQualityGate(input: QualityInput, options?: { relaxed?: boolean }): boolean {
   const score = scorePlaceQuality(input);
-  const min = MIN_SCORE[input.themeId] ?? 42;
+  const min = options?.relaxed ? 36 : (MIN_SCORE[input.themeId] ?? 42);
   return score >= min;
 }
 

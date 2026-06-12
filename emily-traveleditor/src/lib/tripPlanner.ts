@@ -19,6 +19,14 @@ import {
   passesQualityGate,
   scorePlaceQuality,
 } from "./placeQuality";
+import { searchSupplementaryPlaces } from "./openSourceLocalSearch";
+import {
+  blendPlacePools,
+  blendRationale,
+  isStrictTheme,
+  maxPlacePoolSize,
+  minPlacesForTrip,
+} from "./themeBlend";
 import { filterPlacesForTheme } from "./themeFilters";
 import { getEmilyTheme, themeDbKey } from "./themes";
 import type {
@@ -123,9 +131,10 @@ function attachBlockRationales(blocks: ItineraryBlock[], places: PlaceCandidate[
 function smartItinerary(
   prefs: TripPreferences,
   places: PlaceCandidate[],
-  cityCenter?: { lat: number; lng: number }
+  cityCenter?: { lat: number; lng: number },
+  poolBlendNote?: string
 ): GuidebookCore {
-  const smart = buildSmartItinerary(prefs, places, cityCenter);
+  const smart = buildSmartItinerary(prefs, places, cityCenter, poolBlendNote);
   return { ...smart, preferences: prefs, places };
 }
 
@@ -136,6 +145,7 @@ function sanitizeItinerary(
 ): GuidebookCore {
   const allowedIds = new Set(places.map((place) => place.id));
   const days: ItineraryDay[] = [];
+  const usedInTrip = new Set<string>();
 
   for (const rawDay of raw.days ?? []) {
     const dayNumber = Number(rawDay.day) || days.length + 1;
@@ -146,10 +156,13 @@ function sanitizeItinerary(
       const mealKind = mealKindFromPlaceId(placeId);
       const isMeal = Boolean(mealKind);
       if (!isMeal && !allowedIds.has(placeId)) continue;
+      if (!isMeal && usedInTrip.has(placeId)) continue;
 
       const transport = VALID_TRANSPORTS.has(rawBlock.transport as TransportId)
         ? (rawBlock.transport as TransportId)
         : prefs.transport;
+
+      if (!isMeal) usedInTrip.add(placeId);
 
       blocks.push({
         time: rawBlock.time || "10:00",
@@ -251,6 +264,8 @@ ${JSON.stringify(placePayload, null, 2)}
 - place_id는 허용 목록에 있는 값만 (식사·카페 슬롯은 place_id를 breakfast:day1, lunch:day1, cafe:day1, dinner:day1 형식으로)
 - 하루에 최소 6~8블록: 아침 식사 → 관광 → 점심 → 관광 → 카페 → 관광 → 저녁 → (야간 관광 1곳 더)
 - 한 날에 관광지 1곳만 넣지 마라. 실제 여행처럼 식사·커피·이동·관광을 번갈아 배치
+- 같은 place_id를 여러 날·여러 블록에 반복하지 마라. ${prefs.days}일이면 서로 다른 장소를 골고루 배치
+- 테마에 맞는 장소를 우선 쓰되, 목록에 [도시 일반] 태그가 있으면 긴 일정의 나머지 슬롯에 활용해라
 - rationale에는 장소 why를 인용해 추천 이유를 써라
 - ${prefs.locale === "en" ? "Write in English" : "한국어로 작성"}
 `;
@@ -301,6 +316,7 @@ export async function buildTravelGuidebook(
   let dataSource: "static" | "live" = "static";
   let searchSourcesLabel: string | undefined;
   let places = rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id);
+  const minPlaces = minPlacesForTrip(prefs.days);
 
   if (places.length === 0) {
     const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode);
@@ -310,6 +326,28 @@ export async function buildTravelGuidebook(
   }
 
   places = filterPlacesForTheme(rankPlacesByQuality(places, themeMeta.id), themeMeta.id);
+
+  let themeOnlyCount = places.length;
+  if (!isStrictTheme(themeMeta.id) && cityGeo && places.length < minPlaces) {
+    const extra = await searchSupplementaryPlaces({
+      city: prefs.city,
+      cityGeo,
+      countryCode: cityGeo.countryCode,
+      voyageExtract: voyageExtract?.extract,
+      themeId: themeMeta.id,
+      locale: prefs.locale,
+    });
+    if (extra.length > 0) {
+      places = blendPlacePools(places, extra, themeMeta.id, minPlaces, prefs.locale);
+      if (dataSource === "static") dataSource = "live";
+      searchSourcesLabel = searchSourcesLabel
+        ? `${searchSourcesLabel} · 도시 명소 보충`
+        : "테마 + 도시 명소 보충";
+    }
+  }
+
+  places = places.slice(0, maxPlacePoolSize(prefs.days));
+  const poolBlendNote = blendRationale(themeMeta.id, prefs.locale, themeOnlyCount, places.length);
 
   if (!cityGeo) {
     return {
@@ -342,7 +380,7 @@ export async function buildTravelGuidebook(
 
   let itineraryCore = useGroq
     ? await buildItineraryWithGroq(prefs, places, modelId!, key!, cityCenter)
-    : smartItinerary(prefs, places, cityCenter);
+    : smartItinerary(prefs, places, cityCenter, poolBlendNote);
 
   const daysWithAmenities = await attachRouteAmenities(
     itineraryCore.days,

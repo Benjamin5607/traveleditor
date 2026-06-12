@@ -1,6 +1,24 @@
 import type { ThemeId } from "./themes";
 import type { PlaceCandidate } from "./tripTypes";
 
+/** 테마 무관 도시 하이라이트 — 유연 테마 일정 보충용 */
+export const GENERAL_CITY_OSM: Array<{ filter: string; label: string }> = [
+  { filter: '["tourism"="attraction"]', label: "명소" },
+  { filter: '["tourism"="museum"]', label: "박물관" },
+  { filter: '["tourism"="viewpoint"]', label: "전망" },
+  { filter: '["amenity"="marketplace"]', label: "시장" },
+  { filter: '["historic"="monument"]', label: "랜드마크" },
+  { filter: '["leisure"="park"]', label: "공원" },
+  { filter: '["tourism"="gallery"]', label: "갤러리" },
+];
+
+export const GENERAL_PHOTON_TAGS = [
+  "tourism:attraction",
+  "tourism:museum",
+  "tourism:viewpoint",
+  "amenity:marketplace",
+];
+
 /** 테마별 OSM Overpass 필터 */
 export const THEME_OSM: Record<ThemeId, Array<{ filter: string; label: string }>> = {
   peace_calm: [

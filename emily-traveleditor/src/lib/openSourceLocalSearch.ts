@@ -19,13 +19,17 @@ import { beachWhy, isGenericPlaceName, pickBestOsmName, resolveOsmPlaceName } fr
 import { isJunkPlaceTitle, isPhysicalPlace } from "./placeTitleFilter";
 import { getEmilyTheme } from "./themes";
 import {
+  GENERAL_CITY_OSM,
+  GENERAL_PHOTON_TAGS,
   THEME_OSM,
   THEME_PHOTON_TAGS,
   filterPlacesForTheme,
   passesFaithHeritageFilter,
 } from "./themeFilters";
+import { isStrictTheme, maxPlacePoolSize } from "./themeBlend";
+import type { Locale } from "./i18n";
 import { fetchWikidataPois } from "./wikidata";
-import { parseVenuesForTheme } from "./wikivoyageParser";
+import { parseVenuesForTheme, parseVenuesFromWikivoyage } from "./wikivoyageParser";
 import { buildMultilingualQueries } from "./multilingualSearch";
 import type { PlaceCandidate } from "./tripTypes";
 import { slugifyPlaceId } from "./travelData";
@@ -51,7 +55,7 @@ type RawHit = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v7:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v8:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -103,7 +107,8 @@ function isFaithTheme(themeId: string) {
 
 function hitFromQuality(
   partial: Omit<RawHit, "qualityScore"> & { nominatimImportance?: number },
-  themeId: string
+  themeId: string,
+  options?: { relaxedGate?: boolean }
 ): RawHit | null {
   if (
     !isPhysicalPlace(partial.title, partial.why, {
@@ -126,15 +131,18 @@ function hitFromQuality(
     nominatimImportance: partial.nominatimImportance,
   });
 
-  const gate = passesQualityGate({
-    title: partial.title,
-    why: partial.why,
-    source: partial.source,
-    themeId: themeId as import("./themes").ThemeId,
-    tags: partial.tags,
-    wikivoyageSection: partial.wikivoyageSection,
-    nominatimImportance: partial.nominatimImportance,
-  });
+  const gate = passesQualityGate(
+    {
+      title: partial.title,
+      why: partial.why,
+      source: partial.source,
+      themeId: themeId as import("./themes").ThemeId,
+      tags: partial.tags,
+      wikivoyageSection: partial.wikivoyageSection,
+      nominatimImportance: partial.nominatimImportance,
+    },
+    { relaxed: options?.relaxedGate }
+  );
 
   if (!gate) return null;
 
@@ -146,9 +154,10 @@ async function overpassSearch(
   themeId: string,
   city: string,
   cityGeo: GeoResult,
-  countryCode?: string
+  countryCode?: string,
+  options?: { filters?: Array<{ filter: string; label: string }>; relaxedGate?: boolean }
 ): Promise<RawHit[]> {
-  const filters = THEME_OSM[themeId as keyof typeof THEME_OSM] ?? [
+  const filters = options?.filters ?? THEME_OSM[themeId as keyof typeof THEME_OSM] ?? [
     { filter: '["tourism"="attraction"]', label: "명소" },
   ];
   const hits: RawHit[] = [];
@@ -206,7 +215,8 @@ async function overpassSearch(
           source_urls: [osmUrl(el.type, el.id)],
           tags,
         },
-        themeId
+        themeId,
+        { relaxedGate: options?.relaxedGate }
       );
       if (!hit) continue;
 
@@ -219,8 +229,13 @@ async function overpassSearch(
   return hits;
 }
 
-async function photonSearch(cityGeo: GeoResult, themeId: string, city: string): Promise<RawHit[]> {
-  const tags = THEME_PHOTON_TAGS[themeId as keyof typeof THEME_PHOTON_TAGS] ?? ["tourism:attraction"];
+async function photonSearch(
+  cityGeo: GeoResult,
+  themeId: string,
+  city: string,
+  options?: { tags?: string[]; relaxedGate?: boolean }
+): Promise<RawHit[]> {
+  const tags = options?.tags ?? THEME_PHOTON_TAGS[themeId as keyof typeof THEME_PHOTON_TAGS] ?? ["tourism:attraction"];
   const hits: RawHit[] = [];
   const seen = new Set<string>();
 
@@ -282,7 +297,8 @@ async function photonSearch(cityGeo: GeoResult, themeId: string, city: string): 
             source_urls: props.osm_id ? [osmUrl(props.osm_type ?? "node", props.osm_id)] : [],
             tags: tagMap,
           },
-          themeId
+          themeId,
+          { relaxedGate: options?.relaxedGate }
         );
         if (!hit) continue;
 
@@ -311,7 +327,8 @@ async function nominatimLocalSearch(
   query: string,
   cityGeo: GeoResult,
   city: string,
-  themeId: string
+  themeId: string,
+  options?: { relaxedGate?: boolean }
 ): Promise<RawHit[]> {
   const [south, north, west, east] = metroBoundingBox(city, cityGeo);
   const params: Record<string, string> = {
@@ -385,7 +402,8 @@ async function nominatimLocalSearch(
           tags: r.extratags,
           nominatimImportance: r.importance,
         },
-        themeId
+        themeId,
+        { relaxedGate: options?.relaxedGate }
       );
       if (hit) hits.push(hit);
     }
@@ -542,12 +560,77 @@ export async function searchLocalPlaces(params: {
     merged = mergeAndRankHits(merged);
   }
 
-  let places = merged.slice(0, 14).map((h) => toPlaceCandidate(city, h, themeMeta.shortLabel));
+  let places = merged.slice(0, 18).map((h) => toPlaceCandidate(city, h, themeMeta.shortLabel));
   places = filterPlacesForTheme(places, themeId);
   places = filterPlacesInMetro(places, city, cityGeo);
   writeCache(key, places);
 
   return { places, sourcesUsed: [...sourcesUsed] };
+}
+
+/** 테마 밖 도시 대표 명소 — 유연 테마의 긴 일정 보충용 */
+export async function searchSupplementaryPlaces(params: {
+  city: string;
+  cityGeo: GeoResult;
+  countryCode?: string;
+  voyageExtract?: string;
+  themeId: string;
+  locale?: Locale;
+}): Promise<PlaceCandidate[]> {
+  const { city, cityGeo, countryCode, voyageExtract, themeId, locale = "ko" } = params;
+  const themeMeta = getEmilyTheme(themeId);
+  if (isStrictTheme(themeMeta.id)) return [];
+
+  const hits: RawHit[] = [];
+  const bbox = overpassBboxString(city, cityGeo);
+  const cityLabel = locale === "en" ? "City highlight" : "도시 명소";
+
+  hits.push(
+    ...(await overpassSearch(bbox, themeId, city, cityGeo, countryCode, {
+      filters: GENERAL_CITY_OSM,
+      relaxedGate: true,
+    }))
+  );
+
+  hits.push(
+    ...(await photonSearch(cityGeo, themeId, city, {
+      tags: GENERAL_PHOTON_TAGS,
+      relaxedGate: true,
+    }))
+  );
+
+  if (voyageExtract) {
+    for (const v of parseVenuesFromWikivoyage(voyageExtract, 5)) {
+      if (isGlobalChain(v.name)) continue;
+      if (isJunkPlaceTitle(v.name, v.why)) continue;
+      const hit = hitFromQuality(
+        {
+          title: v.name,
+          why: `Wikivoyage ${v.section} — ${v.why}`,
+          source: "wikivoyage",
+          source_urls: [],
+          wikivoyageSection: v.section,
+        },
+        themeId,
+        { relaxedGate: true }
+      );
+      if (hit) hits.push(hit);
+    }
+  }
+
+  const attractionQuery = locale === "en" ? `${city} tourist attraction` : `${city} 관광 명소`;
+  const nomHits = await nominatimLocalSearch(attractionQuery, cityGeo, city, themeId, {
+    relaxedGate: true,
+  });
+  hits.push(...nomHits);
+
+  const merged = mergeAndRankHits(hits);
+  const places = merged
+    .slice(0, 22)
+    .map((h) => toPlaceCandidate(city, h, cityLabel))
+    .filter((p) => !isJunkPlaceTitle(p.title, p.why));
+
+  return filterPlacesInMetro(places, city, cityGeo);
 }
 
 export function formatSourcesLabel(sources: SearchSource[]) {
