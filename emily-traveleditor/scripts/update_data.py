@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import requests
 from datetime import datetime
@@ -187,6 +188,91 @@ def get_wikivoyage_city_source(city: str) -> dict[str, str] | None:
         return None
 
 
+def is_wikivoyage_meta_page(title: str) -> bool:
+    return bool(re.match(r"^wikivoyage:\s*", title.strip(), re.I))
+
+
+def is_physical_place(title: str, why: str | None = None, wikivoyage_section: str | None = None) -> bool:
+    t = title.strip()
+    if not t or len(t) < 2:
+        return False
+    if is_wikivoyage_meta_page(t):
+        return False
+
+    hay = f"{t} {why or ''}"
+
+    non_physical_title = [
+        r"^wikivoyage:\s*",
+        r"\(TV series\)",
+        r"\(film\)",
+        r"\(novel\)",
+        r"\(album\)",
+        r"\(song\)",
+        r"^the amazing race",
+        r"^Islam in ",
+        r"^Iranians in ",
+        r"^Indians in ",
+        r"^Koreans in ",
+        r"^Chinese in ",
+        r"^History of ",
+        r"^List of ",
+        r"\bscandal\b",
+        r"\b(bombings?|attacks?|assassination|massacre|riot|protests?)\b",
+        r"\b\d{4}\s+\w+\s+(bombings?|attacks?|war|crash|disaster|scandal)\b",
+        r"크래프트 비어 투어",
+        r"와인 투어",
+        r"craft beer tour",
+        r"wine tour",
+        r"beer tour",
+        r"food tour$",
+        r"walking tour$",
+        r"^(Tokyo|Seoul|Bangkok|Osaka|Singapore|Pattaya|Ansan)$",
+        r"^Chōfu$",
+        r"^Adachi, Tokyo$",
+    ]
+    for pattern in non_physical_title:
+        if re.search(pattern, t, re.I):
+            return False
+
+    non_physical_why = [
+        r"TV series|television series|crime drama|reality competition|reality show",
+        r"were a series of (explosions|attacks)",
+        r"entertainment and sex scandal",
+        r"diaspora|minority group|migrants in the country",
+        r"figurative painter",
+        r"is a city in ",
+        r"is one of the \d+ districts of ",
+        r"born .+ is a (British|American|Japanese)",
+    ]
+    for pattern in non_physical_why:
+        if re.search(pattern, hay, re.I):
+            return False
+
+    if wikivoyage_section and re.match(
+        r"^(Get in|Get around|Talk|Understand|Stay safe|History|Politics|Economy|Culture|Geography|Districts?|Regions?|See also|External links|Cities|Other destinations)\b",
+        wikivoyage_section,
+        re.I,
+    ):
+        return False
+
+    physical = re.search(
+        r"(museum|gallery|temple|shrine|church|mosque|synagogue|cathedral|palace|castle|fort|tower|"
+        r"bridge|park|garden|zoo|aquarium|market|mall|plaza|square|station|airport|hotel|hostel|"
+        r"restaurant|cafe|bar|pub|brewery|winery|distillery|bakery|shop|store|theatre|theater|"
+        r"stadium|arena|library|beach|island|monument|memorial|wat\b|nightclub|building|road|street|"
+        r"greenhouse|온실|dome$|district$|neighborhood|insa-dong|myeong-dong|asakusa|shibuya|shinjuku|"
+        r"itaewon|roppongi|khaosan|인사동|명동|이태원|"
+        r"박물관|미술관|사원|절|성당|모스크|궁|공원|정원|시장|해변|섬|역)",
+        hay,
+        re.I,
+    )
+    if physical:
+        return True
+    if re.match(r"^[\uac00-\ud7a3\u3040-\u30ff\u4e00-\u9fff][\uac00-\ud7a3\u3040-\u30ff\u4e00-\u9fff\s]{1,18}$", t):
+        return True
+    return False
+
+
 def is_city_relevant(source: dict[str, str], city: str) -> bool:
     title = CITY_PAGE_TITLES.get(city, city)
     haystack = f"{source.get('title', '')} {source.get('extract', '')} {source.get('url', '')}".lower()
@@ -200,8 +286,8 @@ def crawl_theme_sources(city: str, keywords: list[str], max_sources: int = 5) ->
     city_title = CITY_PAGE_TITLES.get(city, city)
     city_source = get_wikivoyage_city_source(city)
 
+    # 도시 Wikivoyage 문서는 맥락용만 — "Wikivoyage: Bangkok" 같은 메타 항목은 장소로 넣지 않음
     if city_source:
-        sources.append(city_source)
         seen_titles.add(city_source["title"])
 
     for keyword in keywords:
@@ -215,6 +301,8 @@ def crawl_theme_sources(city: str, keywords: list[str], max_sources: int = 5) ->
 
             summary = get_wikipedia_summary(title)
             if not summary or not is_city_relevant(summary, city):
+                continue
+            if not is_physical_place(summary["title"], summary.get("extract")):
                 continue
 
             seen_titles.add(title)
@@ -230,6 +318,8 @@ def fallback_theme_summary(theme: str, config: dict[str, Any], city_sources: dic
     for city, sources in city_sources.items():
         items = []
         for source in sources[:3]:
+            if not is_physical_place(source["title"], source.get("extract")):
+                continue
             item = {
                 "title": source["title"],
                 "angle": config["brief"],
@@ -292,7 +382,7 @@ def sanitize_groq_summary(
             raw_urls = raw_urls if isinstance(raw_urls, list) else []
             valid_titles = [
                 title for title in raw_titles
-                if isinstance(title, str) and title in source_titles
+                if isinstance(title, str) and title in source_titles and not is_wikivoyage_meta_page(title)
             ]
             valid_urls = [
                 url for url in raw_urls
@@ -309,8 +399,14 @@ def sanitize_groq_summary(
             if fallback_lat is None and fallback_source:
                 fallback_lat = fallback_source.get("lat")
                 fallback_lng = fallback_source.get("lng")
+            groq_title = str(item.get("title") or "")
+            source_title = valid_titles[0] if valid_titles else (fallback_source or {}).get("title", "")
+            resolved_title = groq_title if is_physical_place(groq_title, str(item.get("why") or "")) else source_title
+            if not resolved_title or not is_physical_place(resolved_title, str(item.get("why") or "")):
+                continue
+
             cleaned_item = {
-                "title": str(item.get("title") or (fallback_source or {}).get("title") or city),
+                "title": resolved_title,
                 "angle": str(item.get("angle") or config["brief"]),
                 "why": str(item.get("why") or config["brief"]),
                 "source_titles": valid_titles,
@@ -358,6 +454,7 @@ def summarize_theme_with_groq(theme: str, config: dict[str, Any], city_sources: 
 각 도시마다 테마에 맞는 여행 후보 2~3개를 골라 한국어 JSON으로만 답해.
 도시 키는 반드시 다음 영문 표기를 그대로 써: {json.dumps(TARGET_CITIES, ensure_ascii=False)}
 source_titles와 source_urls는 크롤링 소스에 있는 값만 그대로 써. 새 URL을 만들지 마.
+title은 반드시 source_titles에 있는 실제 장소명을 쓰거나, 그 장소의 공식 명칭이어야 해. "방콕 크래프트 비어 투어" 같은 추상 컨셉·이벤트·TV 프로그램 이름은 쓰지 마.
 official_url은 크롤링 소스의 official_url 값이 있을 때만 써. 새 공식/예약 URL을 만들지 마.
 스키마:
 {{
@@ -366,7 +463,7 @@ official_url은 크롤링 소스의 official_url 값이 있을 때만 써. 새 �
   "cities": {{
     "CityName": [
       {{
-        "title": "장소 또는 권역명",
+        "title": "크롤링 소스에 있는 실제 시설·랜드마크명 (투어·이벤트·방송·도시 전체 이름 금지)",
         "angle": "테마와 맞는 이유 한 줄",
         "why": "여행자에게 줄 짧은 설명",
         "source_titles": ["참고한 소스 제목"],

@@ -1,4 +1,5 @@
 import type { ThemeId } from "./themes";
+import { isJunkPlaceTitle } from "./placeTitleFilter";
 
 export type PlaceSource =
   | "wikivoyage"
@@ -60,6 +61,7 @@ const MIN_SCORE: Partial<Record<ThemeId, number>> = {
 export function scorePlaceQuality(input: QualityInput): number {
   const { title, why, source, themeId, tags, wikivoyageSection, nominatimImportance } = input;
 
+  if (isJunkPlaceTitle(title, why)) return -100;
   if (isGlobalChain(title, tags)) return -100;
   if (isFastFood(tags)) return -80;
 

@@ -22,21 +22,6 @@
       "cities": {
         "Seoul": [
           {
-            "title": "인사동",
-            "angle": "전통 차와 예술을 즐길 수 있는 곳",
-            "why": "인사동의 전통 차집과 갤러리를 구경하며 마음을 진정시킬 수 있습니다.",
-            "source_titles": [
-              "Insa-dong"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Insa-dong"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 37.572972,
-            "lng": 126.98618
-          },
-          {
             "title": "어린이대공원",
             "angle": "자연과 함께하는 평화로운 산책",
             "why": "어린이대공원의 식물원과 산책로에서 자연을 즐기며 마음을 진정시킬 수 있습니다.",
@@ -67,21 +52,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.612195,
             "lng": 139.635294
-          },
-          {
-            "title": "유메노시마 열대 식물 온실",
-            "angle": "열대 식물과 함께하는 평화로운 산책",
-            "why": "유메노시마 열대 식물 온실의 다양한 식물과 함께 산책하며 마음을 진정시킬 수 있습니다.",
-            "source_titles": [
-              "Yumenoshima Tropical Greenhouse Dome"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
-            ],
-            "official_url": "https://www.yumenoshima.jp/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 35.651298,
-            "lng": 139.829307
           }
         ],
         "Bangkok": [
@@ -130,118 +100,10 @@
         "beer tour"
       ],
       "cities": {
-        "Seoul": [
-          {
-            "title": "서울 크래프트 비어 투어",
-            "angle": "서울의 다양한 크래프트 비어를 맛볼 수 있는 투어",
-            "why": "서울의 скры어진 크래프트 비어를 발견하고 즐길 수 있는 기회",
-            "source_titles": [
-              "Wikivoyage: Seoul"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Seoul"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          },
-          {
-            "title": "마포 와인 투어",
-            "angle": "마포의 와인 양조장을 방문하고 와인을 맛볼 수 있는 투어",
-            "why": "마포의 와인 양조장에서 와인을 맛보고 배우는 기회",
-            "source_titles": [
-              "Wikivoyage: Seoul"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Seoul"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          }
-        ],
-        "Tokyo": [
-          {
-            "title": "도쿄 크래프트 비어 투어",
-            "angle": "도쿄의 다양한 크래프트 비어를 맛볼 수 있는 투어",
-            "why": "도쿄의 숨겨진 크래프트 비어를 발견하고 즐길 수 있는 기회",
-            "source_titles": [
-              "Wikivoyage: Tokyo"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Tokyo"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          },
-          {
-            "title": "신주쿠 와인 투어",
-            "angle": "신주쿠의 와인 양조장을 방문하고 와인을 맛볼 수 있는 투어",
-            "why": "신주쿠의 와인 양조장에서 와인을 맛보고 배우는 기회",
-            "source_titles": [
-              "Wikivoyage: Tokyo"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Tokyo"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          }
-        ],
-        "Bangkok": [
-          {
-            "title": "방콕 크래프트 비어 투어",
-            "angle": "방콕의 다양한 크래프트 비어를 맛볼 수 있는 투어",
-            "why": "방콕의 숨겨진 크래프트 비어를 발견하고 즐길 수 있는 기회",
-            "source_titles": [
-              "Wikivoyage: Bangkok"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Bangkok"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          },
-          {
-            "title": "실롬 와인 투어",
-            "angle": "실롬의 와인 양조장을 방문하고 와인을 맛볼 수 있는 투어",
-            "why": "실롬의 와인 양조장에서 와인을 맛보고 배우는 기회",
-            "source_titles": [
-              "Wikivoyage: Bangkok"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Bangkok"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          }
-        ],
-        "Singapore": [
-          {
-            "title": "싱가포르 크래프트 비어 투어",
-            "angle": "싱가포르의 다양한 크래프트 비어를 맛볼 수 있는 투어",
-            "why": "싱가포르의 숨겨진 크래프트 비어를 발견하고 즐길 수 있는 기회",
-            "source_titles": [
-              "Wikivoyage: Singapore"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Singapore"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          },
-          {
-            "title": "클라크 키 와인 투어",
-            "angle": "클라크 키의 와인 양조장을 방문하고 와인을 맛볼 수 있는 투어",
-            "why": "클라크 키의 와인 양조장에서 와인을 맛보고 배우는 기회",
-            "source_titles": [
-              "Wikivoyage: Singapore"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Singapore"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요."
-          }
-        ]
+        "Seoul": [],
+        "Tokyo": [],
+        "Bangkok": [],
+        "Singapore": []
       },
       "generated_by": "groq"
     },
@@ -254,117 +116,9 @@
         "nightlife district"
       ],
       "cities": {
-        "Seoul": [
-          {
-            "title": "Wikivoyage: Seoul",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and ",
-            "source_titles": [
-              "Wikivoyage: Seoul"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Seoul"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Burning Sun scandal",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "The Burning Sun scandal, also known as Burning Sun gate, was a 2019 entertainment and sex scandal in Seoul, South Korea, which involved several celebrities, including Korean idols ",
-            "source_titles": [
-              "Burning Sun scandal"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Burning_Sun_scandal"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Indians in Korea",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Indians in Korea include the migrant diaspora from India to Korea and their locally-born descendants. A majority of them live in Seoul and Busan, and smaller populations live in ot",
-            "source_titles": [
-              "Indians in Korea"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Indians_in_Korea"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          }
-        ],
-        "Tokyo": [
-          {
-            "title": "Wikivoyage: Tokyo",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of ",
-            "source_titles": [
-              "Wikivoyage: Tokyo"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Tokyo"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Carl Randall",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Carl Randall, born Carlo Lombardi, is a British figurative painter, whose work is based on images of modern Japan, resulting from the artist living for a decade in Tokyo. These wor",
-            "source_titles": [
-              "Carl Randall"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Carl_Randall"
-            ],
-            "official_url": "http://www.carlrandall.com/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
-          },
-          {
-            "title": "Tokyo Vice (TV series)",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Tokyo Vice is an American crime drama television series created by J. T. Rogers and based on the 2009 memoir by Jake Adelstein. It stars Ansel Elgort, Ken Watanabe, Rachel Keller, ",
-            "source_titles": [
-              "Tokyo Vice (TV series)"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tokyo_Vice_(TV_series)"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          }
-        ],
+        "Seoul": [],
+        "Tokyo": [],
         "Bangkok": [
-          {
-            "title": "Wikivoyage: Bangkok",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with ",
-            "source_titles": [
-              "Wikivoyage: Bangkok"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Bangkok"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "2012 Bangkok bombings",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "The 2012 Bangkok bombings were a series of explosions that occurred in Bangkok, Thailand on 14 February 2012, injuring five people. Israeli authorities said that the bombings were ",
-            "source_titles": [
-              "2012 Bangkok bombings"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/2012_Bangkok_bombings"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.75,
-            "lng": 100.517
-          },
           {
             "title": "Nana Plaza",
             "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
@@ -381,21 +135,7 @@
             "lng": 100.55316667
           }
         ],
-        "Singapore": [
-          {
-            "title": "Wikivoyage: Singapore",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since indepe",
-            "source_titles": [
-              "Wikivoyage: Singapore"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Singapore"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          }
-        ]
+        "Singapore": []
       },
       "generated_by": "wikipedia-fallback"
     },
@@ -409,63 +149,8 @@
         "halal travel"
       ],
       "cities": {
-        "Seoul": [
-          {
-            "title": "Wikivoyage: Seoul",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and ",
-            "source_titles": [
-              "Wikivoyage: Seoul"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Seoul"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Islam in Korea",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Islam (Korean: 이슬람교) is a minor religion in South Korea and North Korea. The Muslim community is centered in Seoul, Busan and Pyongyang. According to the Korea Muslim Federation, t",
-            "source_titles": [
-              "Islam in Korea"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Islam_in_Korea"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Yongsan District",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Yongsan District is one of the 25 districts of Seoul, South Korea. It has a population of 231,685 (2020) and has a geographic area of 21.87 km2 (8.44 sq mi), and is divided into 19",
-            "source_titles": [
-              "Yongsan District"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Yongsan_District"
-            ],
-            "official_url": "http://www.yongsan.go.kr",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 37.53833333,
-            "lng": 126.96555556
-          }
-        ],
+        "Seoul": [],
         "Tokyo": [
-          {
-            "title": "Wikivoyage: Tokyo",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of ",
-            "source_titles": [
-              "Wikivoyage: Tokyo"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Tokyo"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "Sensō-ji",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -480,35 +165,9 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.71472222,
             "lng": 139.79675
-          },
-          {
-            "title": "Iranians in Japan",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Iranians in Japan are a minority group, with official statistics recording about 5,000 Iranian migrants in the country. Part of the Iranian diaspora, most live in the Greater Tokyo",
-            "source_titles": [
-              "Iranians in Japan"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Iranians_in_Japan"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Bangkok": [
-          {
-            "title": "Wikivoyage: Bangkok",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with ",
-            "source_titles": [
-              "Wikivoyage: Bangkok"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Bangkok"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "Khaosan Road",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -541,19 +200,6 @@
           }
         ],
         "Singapore": [
-          {
-            "title": "Wikivoyage: Singapore",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since indepe",
-            "source_titles": [
-              "Wikivoyage: Singapore"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Singapore"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "Masjid Al Islah",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -593,12 +239,6 @@
     "마음의 평화": {
       "Seoul": [
         {
-          "title": "Wikivoyage: Seoul",
-          "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul",
-          "official_url": ""
-        },
-        {
           "title": "Insa-dong",
           "extract": "Insa-dong (Korean: 인사동) is a dong, or neighborhood, in Jongno District, Seoul, South Korea. Its main street is Insadong-gil, which is connected to a number of alleys that lead deeper into the district, with modern galleries and tea shops. Historically, it was the largest market for antiques and artwork in Korea.",
           "url": "https://en.wikipedia.org/wiki/Insa-dong",
@@ -613,23 +253,9 @@
           "official_url": "https://www.sisul.or.kr/open_content/childrenpark",
           "lat": 37.546,
           "lng": 127.08
-        },
-        {
-          "title": "Ansan",
-          "extract": "Ansan is a city in Gyeonggi Province, South Korea. It lies southwest of Seoul and is part of the Seoul Metropolitan Area. It is connected to Seoul by rail via Seoul Subway Line 4. It is situated on the Yellow Sea coast and some islands lie within its jurisdiction. The largest and best-known of these is Daebu Island.",
-          "url": "https://en.wikipedia.org/wiki/Ansan",
-          "official_url": "https://www.ansan.go.kr/www/main/main.do",
-          "lat": 37.31666667,
-          "lng": 126.83333333
         }
       ],
       "Tokyo": [
-        {
-          "title": "Wikivoyage: Tokyo",
-          "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo",
-          "official_url": ""
-        },
         {
           "title": "Gotoh Museum",
           "extract": "The Gotoh Museum  is a private museum in the Kaminoge district of Setagaya on the southwest periphery of Tokyo, Japan. It was opened in 1960, displaying the private collection of Keita Gotō, chairman of the Tokyu Group. Today's collection is centered on the original selection of classical Japanese and Chinese art, such as paintings, writings, crafts, and archaeological objects, completed by a small selection of Korean art. It features several objects designated as National Treasures or Important Cultural Properties. The exhibition changes several times each year with special openings in spring and fall.",
@@ -637,14 +263,6 @@
           "official_url": "https://www.gotoh-museum.or.jp/",
           "lat": 35.612195,
           "lng": 139.635294
-        },
-        {
-          "title": "Chōfu",
-          "extract": "Chōfu  is a city in the western side of Tokyo Metropolis, Japan. As of 1 April 2021, the city had an estimated population of 238,087, and a population density of 11,000 per km2. The total area of the city is 21.58 square kilometres (8.33 sq mi).",
-          "url": "https://en.wikipedia.org/wiki/Ch%C5%8Dfu",
-          "official_url": "https://www.city.chofu.lg.jp/",
-          "lat": 35.65061389,
-          "lng": 139.54066667
         },
         {
           "title": "Yumenoshima Tropical Greenhouse Dome",
@@ -655,37 +273,8 @@
           "lng": 139.829307
         }
       ],
-      "Bangkok": [
-        {
-          "title": "Wikivoyage: Bangkok",
-          "extract": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with the urban sprawl comprising nearly half of Thailand's population, and the largest city on the Southeast Asian mainland. Its high-rise buildings, heavy traffic congestion, intense heat and naughty nightlife do not immediately give you a warm welcome — but don't let your first impression mislead you. It is one of Asia's most cosmopolitan cities with magnificent temples and palaces, authentic canals, busy markets, opulent shopping malls and a vibrant nightlife that has something for everyone.\nFor years, it was only a small trading post at the banks of the Chao Phraya River, until King Rama I, the first monarch of the present Chakri dynasty, turned it into the capital of Siam in 1782, after the burning of Ayutthaya by Burmese invaders. Since then, Bangkok has turned into a national treasure house and functions as Thailand's spiritual, cultural, political, commercial, educational and diplomatic centre.\n\n\n== Districts ==\nBangkok is a huge and modern city humming with family activities, nightlife and fervor. Administratively, it is split up into 50 districts (เขต khet), which are further split into 180 sub-districts (แขวง khwaeng), but these are more often used in official business and for addresses. Visitors will find the conceptual division below of the main areas more useful for getting around.\n\n \n \n\nAround Bangkok are the provinces of Nakhon Pathom to the west, Nonthaburi to the northwest, Pathum Tha",
-          "url": "https://en.wikivoyage.org/wiki/Bangkok",
-          "official_url": ""
-        },
-        {
-          "title": "Chatuchak district",
-          "extract": "Chatuchak is one of the 50 districts (khet) of Bangkok, Thailand. The district is bounded by seven other districts : Lak Si, Bang Khen, Lat Phrao, Huai Khwang, Din Daeng, Phaya Thai, and Bang Sue.",
-          "url": "https://en.wikipedia.org/wiki/Chatuchak_district",
-          "official_url": "http://www.bangkok.go.th/chatuchak",
-          "lat": 13.82861111,
-          "lng": 100.55972222
-        },
-        {
-          "title": "Pattaya",
-          "extract": "Pattaya is a city in Eastern Thailand, the second-largest city in Chonburi province and the eighth-largest city in Thailand. It is on the east coast of the Gulf of Thailand, about 150 kilometres (93 mi) southeast of Bangkok, and has a population of 351,391 as of 2025.",
-          "url": "https://en.wikipedia.org/wiki/Pattaya",
-          "official_url": "https://pattaya.go.th",
-          "lat": 12.9357,
-          "lng": 100.889
-        }
-      ],
+      "Bangkok": [],
       "Singapore": [
-        {
-          "title": "Wikivoyage: Singapore",
-          "extract": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since independence, it has become one of the world's most prosperous countries and boasts one of the world's busiest ports. Singaporean food is legendary, with bustling hawker centres and 24-hour coffee shops offering affordable food from all parts of Asia. Combining the skyscrapers and shopping malls of an affluent modern city with a medley of different Asian cultures and a tropical climate, good shopping and a vibrant nightlife scene, this Garden City makes a great stopover or springboard into the region.\nThe country has a partly deserved reputation for its sterile predictability. Nevertheless, the \"Switzerland of Asia\" is for many a welcome respite from the chaos, dirt and poverty of much of the rest of Southeast Asia. If you scratch below the squeaky clean surface and get away from the tourist trail you'll soon find more than meets the eye in one of the few remaining city-states in the world.\n\n\n== Districts ==\nSometimes referred to as the Little Red Dot (originally coined as a pejorative by the former Indonesian president B. J. Habibie) or the Lion City (a literal translation of the original Sanskrit name), Singapore is a small country on a small island with six million people. It is a fairly crowded city and in fact, it is second only to Monaco as the world's most densely populated country. However, Singapore has over 50% of its area covered in greenery and with over 50 major parks and 4 nature reserves,",
-          "url": "https://en.wikivoyage.org/wiki/Singapore",
-          "official_url": ""
-        },
         {
           "title": "Yue Hwa Building",
           "extract": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan and Maclaren in 1927, it was then the tallest building in Chinatown and was known as Nam Tin Building (南天大厦), owned by Lum Chang Holdings. The building housed the six-storey Great Southern Hotel, along with a few shops and cabarets that were popular among Chinese travellers. In 1993, Lum Chang Holdings sold the building to Hong Kong businessman Yu Kwok Chun, who converted it to the first Yue Hwa Chinese Products department store in Singapore in 1994. The renovation process, which conserved the exterior while adding ",
@@ -697,71 +286,13 @@
       ]
     },
     "인생이 무료": {
-      "Seoul": [
-        {
-          "title": "Wikivoyage: Seoul",
-          "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul",
-          "official_url": ""
-        }
-      ],
-      "Tokyo": [
-        {
-          "title": "Wikivoyage: Tokyo",
-          "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo",
-          "official_url": ""
-        }
-      ],
-      "Bangkok": [
-        {
-          "title": "Wikivoyage: Bangkok",
-          "extract": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with the urban sprawl comprising nearly half of Thailand's population, and the largest city on the Southeast Asian mainland. Its high-rise buildings, heavy traffic congestion, intense heat and naughty nightlife do not immediately give you a warm welcome — but don't let your first impression mislead you. It is one of Asia's most cosmopolitan cities with magnificent temples and palaces, authentic canals, busy markets, opulent shopping malls and a vibrant nightlife that has something for everyone.\nFor years, it was only a small trading post at the banks of the Chao Phraya River, until King Rama I, the first monarch of the present Chakri dynasty, turned it into the capital of Siam in 1782, after the burning of Ayutthaya by Burmese invaders. Since then, Bangkok has turned into a national treasure house and functions as Thailand's spiritual, cultural, political, commercial, educational and diplomatic centre.\n\n\n== Districts ==\nBangkok is a huge and modern city humming with family activities, nightlife and fervor. Administratively, it is split up into 50 districts (เขต khet), which are further split into 180 sub-districts (แขวง khwaeng), but these are more often used in official business and for addresses. Visitors will find the conceptual division below of the main areas more useful for getting around.\n\n \n \n\nAround Bangkok are the provinces of Nakhon Pathom to the west, Nonthaburi to the northwest, Pathum Tha",
-          "url": "https://en.wikivoyage.org/wiki/Bangkok",
-          "official_url": ""
-        }
-      ],
-      "Singapore": [
-        {
-          "title": "Wikivoyage: Singapore",
-          "extract": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since independence, it has become one of the world's most prosperous countries and boasts one of the world's busiest ports. Singaporean food is legendary, with bustling hawker centres and 24-hour coffee shops offering affordable food from all parts of Asia. Combining the skyscrapers and shopping malls of an affluent modern city with a medley of different Asian cultures and a tropical climate, good shopping and a vibrant nightlife scene, this Garden City makes a great stopover or springboard into the region.\nThe country has a partly deserved reputation for its sterile predictability. Nevertheless, the \"Switzerland of Asia\" is for many a welcome respite from the chaos, dirt and poverty of much of the rest of Southeast Asia. If you scratch below the squeaky clean surface and get away from the tourist trail you'll soon find more than meets the eye in one of the few remaining city-states in the world.\n\n\n== Districts ==\nSometimes referred to as the Little Red Dot (originally coined as a pejorative by the former Indonesian president B. J. Habibie) or the Lion City (a literal translation of the original Sanskrit name), Singapore is a small country on a small island with six million people. It is a fairly crowded city and in fact, it is second only to Monaco as the world's most densely populated country. However, Singapore has over 50% of its area covered in greenery and with over 50 major parks and 4 nature reserves,",
-          "url": "https://en.wikivoyage.org/wiki/Singapore",
-          "official_url": ""
-        },
-        {
-          "title": "The Amazing Race Asia 1",
-          "extract": "The Amazing Race Asia 1 is the first season of The Amazing Race Asia, an Asian reality competition show based on the American series The Amazing Race. Hosted by Allan Wu, it featured ten teams of two, each with a pre-existing relationship, in a race around Asia and the Pacific Rim to win US$100,000. This season visited two continents and eight countries and travelled over 39,000 kilometres (24,000 mi) during twelve legs. Starting in Kuala Lumpur, teams travelled through Malaysia, Indonesia, Australia, New Zealand, Singapore, Thailand, India, the United Arab Emirates, before returning to Malaysia and finished in Kuching. Applications were accepted through 31 March 2006. The season began on 9 ",
-          "url": "https://en.wikipedia.org/wiki/The_Amazing_Race_Asia_1",
-          "official_url": ""
-        },
-        {
-          "title": "The Amazing Race 16",
-          "extract": "The Amazing Race 16 is the sixteenth season of the American reality competition show The Amazing Race. Hosted by Phil Keoghan, it featured eleven teams of two, each with a pre-existing relationship, competing in a race around the world to win US$1,000,000. This season visited five continents and nine countries and traveled over 40,000 miles (64,000 km) during twelve legs. Starting in Los Angeles, racers traveled through Chile, Argentina, Germany, France, the Seychelles, Malaysia, Singapore, and China before returning to the United States and finishing in San Francisco. This season also saw the return of the Intersection. The season premiered on CBS on February 14, 2010, and concluded on May ",
-          "url": "https://en.wikipedia.org/wiki/The_Amazing_Race_16",
-          "official_url": ""
-        }
-      ]
+      "Seoul": [],
+      "Tokyo": [],
+      "Bangkok": [],
+      "Singapore": []
     },
     "오늘은 욜로": {
       "Seoul": [
-        {
-          "title": "Wikivoyage: Seoul",
-          "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul",
-          "official_url": ""
-        },
-        {
-          "title": "Burning Sun scandal",
-          "extract": "The Burning Sun scandal, also known as Burning Sun gate, was a 2019 entertainment and sex scandal in Seoul, South Korea, which involved several celebrities, including Korean idols of popular K-pop groups, and police officials. It began on January 27, 2019, when MBC Newsdesk reported a November 2018 alleged assault of a male clubgoer at the Burning Sun, a prominent nightclub in Gangnam, by a staff member. The Seoul Metropolitan Police Agency investigation soon turned to one concerning the club's alleged involvement in sexual assault or date rape, prostitution, drug trafficking and police corruption.",
-          "url": "https://en.wikipedia.org/wiki/Burning_Sun_scandal",
-          "official_url": ""
-        },
-        {
-          "title": "Indians in Korea",
-          "extract": "Indians in Korea include the migrant diaspora from India to Korea and their locally-born descendants. A majority of them live in Seoul and Busan, and smaller populations live in other parts of South Korea. The Indian population in North Korea is negligible, consisting of embassy staff and NGO members.",
-          "url": "https://en.wikipedia.org/wiki/Indians_in_Korea",
-          "official_url": ""
-        },
         {
           "title": "Itaewon",
           "extract": "Itaewon is a commercial area within the Itaewon-dong neighborhood of Yongsan District in Seoul, South Korea, known for its nightlife and multi-ethnic population.",
@@ -773,55 +304,15 @@
       ],
       "Tokyo": [
         {
-          "title": "Wikivoyage: Tokyo",
-          "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo",
-          "official_url": ""
-        },
-        {
-          "title": "Carl Randall",
-          "extract": "Carl Randall, born Carlo Lombardi, is a British figurative painter, whose work is based on images of modern Japan, resulting from the artist living for a decade in Tokyo. These works came to prominence after they were exhibited at the National Portrait Gallery in London, and other exhibitions in the UK and Japan. He also subsequently made a series of paintings based on contemporary London.",
-          "url": "https://en.wikipedia.org/wiki/Carl_Randall",
-          "official_url": "http://www.carlrandall.com/"
-        },
-        {
-          "title": "Tokyo Vice (TV series)",
-          "extract": "Tokyo Vice is an American crime drama television series created by J. T. Rogers and based on the 2009 memoir by Jake Adelstein. It stars Ansel Elgort, Ken Watanabe, Rachel Keller, Hideaki Itō, Show Kasamatsu, Ella Rumpf, Rinko Kikuchi, Tomohisa Yamashita, Miki Maya, and Yōsuke Kubozuka. The series centers on Adelstein (Elgort), an American journalist investigating the yakuza in Tokyo. The first season of Tokyo Vice premiered on April 7, 2022, on HBO Max, and the second season premiered on February 8, 2024, on Max. The series received generally positive reviews, with praise for its setting, aesthetic, and characters. In June 2024, the series was canceled after two seasons.",
-          "url": "https://en.wikipedia.org/wiki/Tokyo_Vice_(TV_series)",
-          "official_url": ""
-        },
-        {
           "title": "Roppongi",
           "extract": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign embassies are located in or near Roppongi. The district is in central Tokyo, situated south of Akasaka and north of Azabu and is noted for its night life, attracting both local residents and visitors from abroad.",
           "url": "https://en.wikipedia.org/wiki/Roppongi",
           "official_url": "",
           "lat": 35.66,
           "lng": 139.73
-        },
-        {
-          "title": "Tokyo",
-          "extract": "Tokyo, officially the Tokyo Metropolis, is the capital and most populous city of Japan. The population of the city proper was over 14 million as of 2023. The Greater Tokyo Area, which includes Tokyo and parts of six neighboring prefectures, is the third-most populous metropolitan area in the world, with 33 million residents as of 2025.",
-          "url": "https://en.wikipedia.org/wiki/Tokyo",
-          "official_url": "https://www.english.metro.tokyo.lg.jp/",
-          "lat": 35.68972222,
-          "lng": 139.69222222
         }
       ],
       "Bangkok": [
-        {
-          "title": "Wikivoyage: Bangkok",
-          "extract": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with the urban sprawl comprising nearly half of Thailand's population, and the largest city on the Southeast Asian mainland. Its high-rise buildings, heavy traffic congestion, intense heat and naughty nightlife do not immediately give you a warm welcome — but don't let your first impression mislead you. It is one of Asia's most cosmopolitan cities with magnificent temples and palaces, authentic canals, busy markets, opulent shopping malls and a vibrant nightlife that has something for everyone.\nFor years, it was only a small trading post at the banks of the Chao Phraya River, until King Rama I, the first monarch of the present Chakri dynasty, turned it into the capital of Siam in 1782, after the burning of Ayutthaya by Burmese invaders. Since then, Bangkok has turned into a national treasure house and functions as Thailand's spiritual, cultural, political, commercial, educational and diplomatic centre.\n\n\n== Districts ==\nBangkok is a huge and modern city humming with family activities, nightlife and fervor. Administratively, it is split up into 50 districts (เขต khet), which are further split into 180 sub-districts (แขวง khwaeng), but these are more often used in official business and for addresses. Visitors will find the conceptual division below of the main areas more useful for getting around.\n\n \n \n\nAround Bangkok are the provinces of Nakhon Pathom to the west, Nonthaburi to the northwest, Pathum Tha",
-          "url": "https://en.wikivoyage.org/wiki/Bangkok",
-          "official_url": ""
-        },
-        {
-          "title": "2012 Bangkok bombings",
-          "extract": "The 2012 Bangkok bombings were a series of explosions that occurred in Bangkok, Thailand on 14 February 2012, injuring five people. Israeli authorities said that the bombings were a botched attempt by Iranian nationals to assassinate Israeli diplomats. Several Iranians were arrested and charged for the attacks, one of whom was badly injured.",
-          "url": "https://en.wikipedia.org/wiki/2012_Bangkok_bombings",
-          "official_url": "",
-          "lat": 13.75,
-          "lng": 100.517
-        },
         {
           "title": "Nana Plaza",
           "extract": "Nana Plaza is an entertainment complex and red-light district in Bangkok, Thailand. Originally built as a shopping center, Nana Plaza occupies a three-story commercial building in the Khlong Toei District of Bangkok about 300 metres (330 yd) from the BTS Skytrain's Nana Station. It describes itself as the \"worlds largest adult playground\". Its name originates from the influential, property-holding Nana family, Lek Nana being the most prominent member.",
@@ -831,45 +322,10 @@
           "lng": 100.55316667
         }
       ],
-      "Singapore": [
-        {
-          "title": "Wikivoyage: Singapore",
-          "extract": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since independence, it has become one of the world's most prosperous countries and boasts one of the world's busiest ports. Singaporean food is legendary, with bustling hawker centres and 24-hour coffee shops offering affordable food from all parts of Asia. Combining the skyscrapers and shopping malls of an affluent modern city with a medley of different Asian cultures and a tropical climate, good shopping and a vibrant nightlife scene, this Garden City makes a great stopover or springboard into the region.\nThe country has a partly deserved reputation for its sterile predictability. Nevertheless, the \"Switzerland of Asia\" is for many a welcome respite from the chaos, dirt and poverty of much of the rest of Southeast Asia. If you scratch below the squeaky clean surface and get away from the tourist trail you'll soon find more than meets the eye in one of the few remaining city-states in the world.\n\n\n== Districts ==\nSometimes referred to as the Little Red Dot (originally coined as a pejorative by the former Indonesian president B. J. Habibie) or the Lion City (a literal translation of the original Sanskrit name), Singapore is a small country on a small island with six million people. It is a fairly crowded city and in fact, it is second only to Monaco as the world's most densely populated country. However, Singapore has over 50% of its area covered in greenery and with over 50 major parks and 4 nature reserves,",
-          "url": "https://en.wikivoyage.org/wiki/Singapore",
-          "official_url": ""
-        }
-      ]
+      "Singapore": []
     },
     "신앙": {
       "Seoul": [
-        {
-          "title": "Wikivoyage: Seoul",
-          "extract": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and one of East Asia's financial and cultural centers. A fascinating blend of ancient traditions and cutting-edge digital technology, home to endless street food vendors and vast nightlife districts, an extraordinarily high-pressure educational system and serene Buddhist temples, a dynamic trend-setting youth culture and often crushing conformism, extraordinary architecture and endless monotonous rows of grey apartment buildings, Seoul is a city filled with stark contrasts, contradictions, and paradoxes. People in Seoul can enjoy various artistic activities such as plays, musicals, and concerts.\n\n\n== Districts ==\n\nAdministratively, Seoul is divided into 25 districts (구 gu), each with an area and population comparable to a small city. The districts are then further subdivided into 522 sub-districts (동 dong). The Han river splits the city into two halves: Gangbuk (강북), the northern, more historical half, and Gangnam (강남), the southern, wealthier and more modern half. The sheer size of the city means that travelers to Seoul will find it difficult to locate a true \"center\" of Seoul; instead, Seoul is almost more like a collection of cities that happen to be bunched together, each with their own central business and commercial districts. The two largest core areas are Jongno/Jung in the north, and Gangnam in the south. For travelers with more time, there are many more, smaller centers and districts to be e",
-          "url": "https://en.wikivoyage.org/wiki/Seoul",
-          "official_url": ""
-        },
-        {
-          "title": "Islam in Korea",
-          "extract": "Islam (Korean: 이슬람교) is a minor religion in South Korea and North Korea. The Muslim community is centered in Seoul, Busan and Pyongyang. According to the Korea Muslim Federation, there are about 200,000 Muslims living in South Korea, and about 70 to 80 percent are settled foreigners, whereas North Korea hosts around 3.000 Muslims, most of which are Indonesian guest workers, or Iranian diplomats. Seoul has 40% of South Korea's total Muslim population. The Ministry of Foreign Affairs has hosted an Iftar dinner during the month of Ramadan every year since 2004.",
-          "url": "https://en.wikipedia.org/wiki/Islam_in_Korea",
-          "official_url": ""
-        },
-        {
-          "title": "Yongsan District",
-          "extract": "Yongsan District is one of the 25 districts of Seoul, South Korea. It has a population of 231,685 (2020) and has a geographic area of 21.87 km2 (8.44 sq mi), and is divided into 19 dong. Yongsan is located near Downtown Seoul, on the northern bank of the Han River, bordering the city districts of Jung to the north, Mapo to the west, Yeongdeungpo and Dongjak to the southwest, Seocho and Gangnam District to the southeast, and Seongdong to the east.",
-          "url": "https://en.wikipedia.org/wiki/Yongsan_District",
-          "official_url": "http://www.yongsan.go.kr",
-          "lat": 37.53833333,
-          "lng": 126.96555556
-        },
-        {
-          "title": "Jung District, Seoul",
-          "extract": "Jung District is one of the 25 districts of Seoul, South Korea. It has a population of 131,452 (2013) and has a geographic area 9.96 km2 (3.85 mi2), making it both the least-populous and the smallest district of Seoul, and is divided into 15 dong. Jung is located at the centre of Seoul on the northern side of the Han River, bordering the city districts of Jongno to the north, Seodaemun to the northwest, Mapo to the west, Yongsan to the south, Seongdong to the southeast, and Dongdaemun to the northeast.",
-          "url": "https://en.wikipedia.org/wiki/Jung_District%2C_Seoul",
-          "official_url": "http://tour.junggu.seoul.kr/english/",
-          "lat": 37.556,
-          "lng": 126.97
-        },
         {
           "title": "Myeong-dong",
           "extract": "Myeong-dong is a dong (neighborhood) in Jung District, Seoul, South Korea. It is between Chungmu-ro, Eulji-ro, and Namdaemun-ro.\nMyeongdong is known for being one of Seoul's main shopping, parade route, and tourism districts. In 2023, it was listed as the ninth most expensive shopping street in the world. The area is known for its two historically significant sites, namely the Myeongdong Cathedral and the Myeongdong Theater. Performances at Myeongdong Nanta Theater are popular.",
@@ -881,12 +337,6 @@
       ],
       "Tokyo": [
         {
-          "title": "Wikivoyage: Tokyo",
-          "extract": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of as the \"city of Tokyo\". For information on Tokyo as a prefecture, Tama region and Islands, see Tokyo Metropolis.\n\nTokyo (東京 Tōkyō) is the enormous and wealthy capital of Japan, and its main city, overflowing with culture, commerce, and most of all, people. As one of the most populated urban areas in the world, Tokyo is a fascinating and dynamic metropolis that mixes foreign influences, consumer culture and global business along with remnants of the capital of old Japan. From modern electronics and gleaming skyscrapers to cherry blossoms and the Imperial Palace, this city represents the entire sweep of Japanese history and culture. Tokyo truly has something for every traveller.\n\n\n== Districts ==\nThe capital of Japan is not a city, but is actually Tokyo Metropolis (東京都 Tōkyō-to), which apart from the name is indistinguishable from a prefecture: it's equal in status with the other 46 prefectures, and is about as big (containing large suburban and even rural areas to the west, as well as islands as far as 1,000 km (620 mi) south). Even more strangely, there is no such thing as the \"city of Tokyo\". What most people, both foreigners and Japanese, are thinking of when they hear \"Tokyo\" is the special wards of Tokyo (特別区 tokubetsu-ku), sometimes just called the 23 wards (23区 nijūsan-ku). They're somewhat like the boroughs of London or New York, except there's no \"city government\" banding them together. Th",
-          "url": "https://en.wikivoyage.org/wiki/Tokyo",
-          "official_url": ""
-        },
-        {
           "title": "Sensō-ji",
           "extract": "Sensō-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisattva of compassion. Structures in the temple complex include the main hall, a five-story pagoda and large gates. It is the most widely visited religious site in the world with over 30 million visitors annually. The temple is the 13th stop on the Bandō Sanjūsankasho pilgrimage route.",
           "url": "https://en.wikipedia.org/wiki/Sens%C5%8D-ji",
@@ -895,35 +345,15 @@
           "lng": 139.79675
         },
         {
-          "title": "Iranians in Japan",
-          "extract": "Iranians in Japan are a minority group, with official statistics recording about 5,000 Iranian migrants in the country. Part of the Iranian diaspora, most live in the Greater Tokyo Area.",
-          "url": "https://en.wikipedia.org/wiki/Iranians_in_Japan",
-          "official_url": ""
-        },
-        {
           "title": "Asakusa",
           "extract": "Asakusa  is a district in Taitō, Tokyo, Japan. It is known for Sensō-ji, a Buddhist temple dedicated to the bodhisattva Kannon. There are several other temples in Asakusa, as well as various festivals, such as Sanja Matsuri.",
           "url": "https://en.wikipedia.org/wiki/Asakusa",
           "official_url": "",
           "lat": 35.71444444,
           "lng": 139.79666667
-        },
-        {
-          "title": "Adachi, Tokyo",
-          "extract": "Adachi  is a special ward in the Tokyo Metropolis in Japan. It is located to the north of the heart of Tokyo. The ward consists of two separate areas: a small strip of land between the Sumida River and Arakawa River and a larger area north of the Arakawa River. The ward is bordered by the cities of Kawaguchi, Sōka and Yashio in Saitama and Katsushika, Sumida, Arakawa and Kita in Tokyo. The ward is called Adachi City in English.",
-          "url": "https://en.wikipedia.org/wiki/Adachi%2C_Tokyo",
-          "official_url": "https://www.city.adachi.tokyo.jp/",
-          "lat": 35.78333333,
-          "lng": 139.8
         }
       ],
       "Bangkok": [
-        {
-          "title": "Wikivoyage: Bangkok",
-          "extract": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with the urban sprawl comprising nearly half of Thailand's population, and the largest city on the Southeast Asian mainland. Its high-rise buildings, heavy traffic congestion, intense heat and naughty nightlife do not immediately give you a warm welcome — but don't let your first impression mislead you. It is one of Asia's most cosmopolitan cities with magnificent temples and palaces, authentic canals, busy markets, opulent shopping malls and a vibrant nightlife that has something for everyone.\nFor years, it was only a small trading post at the banks of the Chao Phraya River, until King Rama I, the first monarch of the present Chakri dynasty, turned it into the capital of Siam in 1782, after the burning of Ayutthaya by Burmese invaders. Since then, Bangkok has turned into a national treasure house and functions as Thailand's spiritual, cultural, political, commercial, educational and diplomatic centre.\n\n\n== Districts ==\nBangkok is a huge and modern city humming with family activities, nightlife and fervor. Administratively, it is split up into 50 districts (เขต khet), which are further split into 180 sub-districts (แขวง khwaeng), but these are more often used in official business and for addresses. Visitors will find the conceptual division below of the main areas more useful for getting around.\n\n \n \n\nAround Bangkok are the provinces of Nakhon Pathom to the west, Nonthaburi to the northwest, Pathum Tha",
-          "url": "https://en.wikivoyage.org/wiki/Bangkok",
-          "official_url": ""
-        },
         {
           "title": "Khaosan Road",
           "extract": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
@@ -958,12 +388,6 @@
         }
       ],
       "Singapore": [
-        {
-          "title": "Wikivoyage: Singapore",
-          "extract": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since independence, it has become one of the world's most prosperous countries and boasts one of the world's busiest ports. Singaporean food is legendary, with bustling hawker centres and 24-hour coffee shops offering affordable food from all parts of Asia. Combining the skyscrapers and shopping malls of an affluent modern city with a medley of different Asian cultures and a tropical climate, good shopping and a vibrant nightlife scene, this Garden City makes a great stopover or springboard into the region.\nThe country has a partly deserved reputation for its sterile predictability. Nevertheless, the \"Switzerland of Asia\" is for many a welcome respite from the chaos, dirt and poverty of much of the rest of Southeast Asia. If you scratch below the squeaky clean surface and get away from the tourist trail you'll soon find more than meets the eye in one of the few remaining city-states in the world.\n\n\n== Districts ==\nSometimes referred to as the Little Red Dot (originally coined as a pejorative by the former Indonesian president B. J. Habibie) or the Lion City (a literal translation of the original Sanskrit name), Singapore is a small country on a small island with six million people. It is a fairly crowded city and in fact, it is second only to Monaco as the world's most densely populated country. However, Singapore has over 50% of its area covered in greenery and with over 50 major parks and 4 nature reserves,",
-          "url": "https://en.wikivoyage.org/wiki/Singapore",
-          "official_url": ""
-        },
         {
           "title": "Masjid Al Islah",
           "extract": "Masjid Al-Islah is a mosque located in Punggol within the North-East Region, Singapore. Built in 2015, it is the only mosque situated in the Punggol neighbourhood.",

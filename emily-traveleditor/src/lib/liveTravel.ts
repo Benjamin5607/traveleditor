@@ -1,4 +1,10 @@
 import { getCachedGeo, saveCachedGeo } from "./geoCache";
+import {
+  filterPlacesInMetro,
+  isWithinMetro,
+  metroBoundingBox,
+} from "./geoFence";
+import { isJunkPlaceTitle } from "./placeTitleFilter";
 import { formatSourcesLabel, searchLocalPlaces, type SearchSource } from "./openSourceLocalSearch";
 import { parseWikivoyageCosts } from "./wikivoyageCosts";
 import type { PlaceCandidate } from "./tripTypes";
@@ -18,6 +24,8 @@ const CITY_ALIASES: Record<string, string> = {
   taipei: "Taipei",
   osaka: "Osaka",
   kyoto: "Kyoto",
+  tokyo: "Tokyo",
+  seoul: "Seoul",
   barcelona: "Barcelona",
   rome: "Rome",
   berlin: "Berlin",
@@ -84,28 +92,40 @@ function enqueueNominatim<T>(task: () => Promise<T>): Promise<T> {
   return run;
 }
 
-async function photonGeocode(query: string): Promise<GeoResult | null> {
+async function photonGeocode(query: string, near?: GeoResult): Promise<GeoResult | null> {
   try {
-    const response = await fetch(
-      `${PHOTON}?${new URLSearchParams({ q: query, limit: "1", lang: "en" })}`
-    );
+    const params: Record<string, string> = { q: query, limit: "3", lang: "en" };
+    if (near) {
+      params.lat = String(near.lat);
+      params.lon = String(near.lng);
+      params.location_bias_scale = "0.2";
+    }
+    const response = await fetch(`${PHOTON}?${new URLSearchParams(params)}`);
     if (!response.ok) return null;
     const data = await response.json();
-    const feature = data.features?.[0];
-    if (!feature) return null;
-    const [lng, lat] = feature.geometry?.coordinates ?? [];
-    if (typeof lat !== "number" || typeof lng !== "number") return null;
-    const extent = feature.properties?.extent as number[] | undefined;
-    const boundingBox: [number, number, number, number] | undefined = extent?.length === 4
-      ? [extent[1], extent[3], extent[0], extent[2]]
-      : undefined;
-    return {
-      lat,
-      lng,
-      displayName: feature.properties?.name,
-      countryCode: feature.properties?.countrycode,
-      boundingBox,
-    };
+
+    for (const feature of data.features ?? []) {
+      const [lng, lat] = feature.geometry?.coordinates ?? [];
+      if (typeof lat !== "number" || typeof lng !== "number") continue;
+
+      if (near) {
+        const cc = feature.properties?.countrycode?.toLowerCase();
+        if (near.countryCode && cc && cc !== near.countryCode.toLowerCase()) continue;
+      }
+
+      const extent = feature.properties?.extent as number[] | undefined;
+      const boundingBox: [number, number, number, number] | undefined =
+        extent?.length === 4 ? [extent[1], extent[3], extent[0], extent[2]] : undefined;
+
+      return {
+        lat,
+        lng,
+        displayName: feature.properties?.name,
+        countryCode: feature.properties?.countrycode,
+        boundingBox,
+      };
+    }
+    return null;
   } catch {
     return null;
   }
@@ -125,11 +145,25 @@ async function wikiCityGeo(title: string): Promise<GeoResult | null> {
   }
 }
 
-async function nominatimSearch(query: string) {
-  const response = await fetch(
-    `${NOMINATIM}?${new URLSearchParams({ q: query, format: "json", limit: "1", addressdetails: "1" })}`,
-    { headers: { Accept: "application/json", "User-Agent": USER_AGENT } }
-  );
+async function nominatimSearch(query: string, near?: GeoResult) {
+  const params: Record<string, string> = {
+    q: query,
+    format: "json",
+    limit: "3",
+    addressdetails: "1",
+  };
+  if (near?.countryCode) {
+    params.countrycodes = near.countryCode.toLowerCase();
+  }
+  if (near) {
+    const [south, north, west, east] = metroBoundingBox("", near);
+    params.viewbox = `${west},${north},${east},${south}`;
+    params.bounded = "1";
+  }
+
+  const response = await fetch(`${NOMINATIM}?${new URLSearchParams(params)}`, {
+    headers: { Accept: "application/json", "User-Agent": USER_AGENT },
+  });
   if (!response.ok) return null;
   const results = (await response.json()) as Array<{
     lat: string;
@@ -138,16 +172,29 @@ async function nominatimSearch(query: string) {
     boundingbox?: [string, string, string, string];
     address?: { country_code?: string };
   }>;
-  const row = results[0];
-  if (!row) return null;
-  const bb = row.boundingbox;
-  return {
-    lat: Number(row.lat),
-    lng: Number(row.lon),
-    displayName: row.display_name,
-    countryCode: row.address?.country_code,
-    boundingBox: bb ? [Number(bb[0]), Number(bb[1]), Number(bb[2]), Number(bb[3])] as [number, number, number, number] : undefined,
-  };
+
+  for (const row of results) {
+    const lat = Number(row.lat);
+    const lng = Number(row.lon);
+    if (near && !isWithinMetro(lat, lng, near.displayName?.split(",")[0] ?? "city", near)) continue;
+
+    const bb = row.boundingbox;
+    return {
+      lat,
+      lng,
+      displayName: row.display_name,
+      countryCode: row.address?.country_code,
+      boundingBox: bb
+        ? ([Number(bb[0]), Number(bb[1]), Number(bb[2]), Number(bb[3])] as [
+            number,
+            number,
+            number,
+            number,
+          ])
+        : undefined,
+    };
+  }
+  return null;
 }
 
 export async function geocodeCity(city: string): Promise<GeoResult | null> {
@@ -177,21 +224,28 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
   return null;
 }
 
-export async function geocodeQuery(query: string): Promise<{ lat: number; lng: number } | null> {
-  const key = cacheKey("geo", query);
+export async function geocodeQuery(
+  query: string,
+  city: string,
+  cityGeo: GeoResult
+): Promise<{ lat: number; lng: number } | null> {
+  const key = cacheKey("geo", `${city}:${query}`);
   const cached = readCache<{ lat: number; lng: number }>(key);
-  if (cached) return cached;
+  if (cached) {
+    if (isWithinMetro(cached.lat, cached.lng, city, cityGeo)) return cached;
+    return null;
+  }
 
-  const photon = await photonGeocode(query);
-  if (photon) {
+  const photon = await photonGeocode(query, cityGeo);
+  if (photon && isWithinMetro(photon.lat, photon.lng, city, cityGeo)) {
     const coords = { lat: photon.lat, lng: photon.lng };
     writeCache(key, coords);
     return coords;
   }
 
   try {
-    const result = await enqueueNominatim(() => nominatimSearch(query));
-    if (!result) return null;
+    const result = await enqueueNominatim(() => nominatimSearch(query, cityGeo));
+    if (!result || !isWithinMetro(result.lat, result.lng, city, cityGeo)) return null;
     const coords = { lat: result.lat, lng: result.lng };
     writeCache(key, coords);
     return coords;
@@ -200,22 +254,36 @@ export async function geocodeQuery(query: string): Promise<{ lat: number; lng: n
   }
 }
 
-export async function geocodePlaces(city: string, places: PlaceCandidate[]): Promise<PlaceCandidate[]> {
+export async function geocodePlaces(
+  city: string,
+  places: PlaceCandidate[],
+  cityGeo: GeoResult
+): Promise<PlaceCandidate[]> {
   const enriched: PlaceCandidate[] = [];
   for (const place of places) {
+    if (isJunkPlaceTitle(place.title, place.why)) continue;
+
     if (place.lat != null && place.lng != null) {
-      enriched.push(place);
+      if (isWithinMetro(place.lat, place.lng, city, cityGeo)) {
+        enriched.push(place);
+      }
       continue;
     }
+
     const coords =
-      (await geocodeQuery(`${place.title}, ${city}`)) ??
-      (await geocodeQuery(`${city} ${place.title}`));
-    enriched.push(coords ? { ...place, lat: coords.lat, lng: coords.lng } : place);
+      (await geocodeQuery(`${place.title}, ${city}`, city, cityGeo)) ??
+      (await geocodeQuery(`${city} ${place.title}`, city, cityGeo));
+
+    if (coords) {
+      enriched.push({ ...place, lat: coords.lat, lng: coords.lng });
+    }
   }
   return enriched;
 }
 
-export async function fetchWikivoyageExtract(city: string): Promise<{ extract: string; url: string; title: string } | null> {
+export async function fetchWikivoyageExtract(
+  city: string
+): Promise<{ extract: string; url: string; title: string } | null> {
   const title = resolveCityTitle(city);
   const cache = readCache<{ extract: string; url: string; title: string }>(cacheKey("voyage", title));
   if (cache) return cache;
@@ -253,10 +321,6 @@ export async function fetchLiveCostHints(
   return parseWikivoyageCosts(voyage.extract, rates);
 }
 
-/**
- * EOSLS — OpenStreetMap·Nominatim·Photon·Wikivoyage·Wikidata 로컬 우선 수집
- * Wikipedia는 결과 4개 미만일 때만 폴백
- */
 export async function fetchLivePlaces(
   city: string,
   theme: string,
@@ -276,9 +340,11 @@ export async function fetchLivePlaces(
     voyageExtract: voyage?.extract,
   });
 
-  const geocoded = await geocodePlaces(city, places);
+  const geocoded = await geocodePlaces(city, places, cityGeo);
+  const fenced = filterPlacesInMetro(geocoded, city, cityGeo);
+
   return {
-    places: geocoded,
+    places: fenced,
     sourcesUsed,
     sourcesLabel: formatSourcesLabel(sourcesUsed),
   };
