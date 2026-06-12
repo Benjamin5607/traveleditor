@@ -35,6 +35,45 @@ const GENERIC_NAME_PATTERNS = [
   /^strand$/i,
   /^plage$/i,
   /^playa$/i,
+  // 식당·카페 등 타입 라벨만 있는 이름
+  /^restaurant$/i,
+  /^cafe$/i,
+  /^coffee\s*shop$/i,
+  /^coffee$/i,
+  /^bar$/i,
+  /^pub$/i,
+  /^bistro$/i,
+  /^diner$/i,
+  /^eatery$/i,
+  /^food\s*court$/i,
+  /^fast\s*food$/i,
+  /^bakery$/i,
+  /^식당$/,
+  /^음식점$/,
+  /^레스토랑$/,
+  /^카페$/,
+  /^커피숍$/,
+  /^커피\s*숍$/,
+  /^커피$/,
+  /^분식점$/,
+  /^술집$/,
+  /^주점$/,
+  /^아침\s*식사$/,
+  /^점심\s*식사$/,
+  /^저녁\s*식사$/,
+  /^breakfast$/i,
+  /^lunch$/i,
+  /^dinner$/i,
+  /^coffee\s*break$/i,
+  /^커피[·・]?\s*디저트\s*휴식$/,
+  /^meal$/i,
+  /^snack\s*bar$/i,
+  /^공중\s*화장실$/,
+  /^public\s*(?:toilet|restroom|wc)$/i,
+  /^restroom$/i,
+  /^toilet$/i,
+  /^wc$/i,
+  /^화장실$/,
 ];
 
 const wikidataLabelCache = new Map<string, string>();
@@ -45,13 +84,18 @@ export function isGenericPlaceName(name: string, tags?: Record<string, string>):
   if (!t || t.length < 2) return true;
   if (GENERIC_NAME_PATTERNS.some((re) => re.test(t))) return true;
 
-  const typeWord = tags?.natural || tags?.tourism || tags?.leisure || tags?.amenity || tags?.historic;
+  const typeWord =
+    tags?.natural || tags?.tourism || tags?.leisure || tags?.amenity || tags?.historic || tags?.shop;
   if (typeWord) {
     const normalized = t.toLowerCase().replace(/[\s_-]+/g, "");
     const typeNorm = typeWord.toLowerCase().replace(/[\s_-]+/g, "");
     if (normalized === typeNorm) return true;
     if (normalized === `public${typeNorm}`) return true;
   }
+
+  if (tags?.amenity === "restaurant" && /^(restaurant|식당|음식점|레스토랑)$/i.test(t)) return true;
+  if (tags?.amenity === "cafe" && /^(cafe|카페|coffee\s*shop|커피숍)$/i.test(t)) return true;
+  if (tags?.amenity === "toilets" && /^(toilet|restroom|wc|화장실|공중\s*화장실)$/i.test(t)) return true;
 
   if (tags?.natural === "beach" && /^[\w\s]{0,12}beach$/i.test(t) && !/[A-Z가-힣]{2,}/.test(t.replace(/beach/gi, ""))) {
     return true;

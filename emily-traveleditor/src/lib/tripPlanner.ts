@@ -7,7 +7,10 @@ import { buildGuideNarration } from "./guideNarration";
 import { buildSmartItinerary } from "./itineraryEngine";
 import { buildLodgingRecommendations } from "./lodgingRecommendations";
 import { enrichPlacesWithMaps } from "./placeLinks";
-import { attachRouteAmenities } from "./routeAmenities";
+import { attachRouteAmenities, dropUnnamedMealBlocks } from "./routeAmenities";
+import { attachTransitLegs } from "./transitLegs";
+import { applyCostMultipliers } from "./budgetThemes";
+import { costsFromCountryCode } from "./liveCost";
 import { filterPlacesInMetro } from "./geoFence";
 import { filterValidPlaceCandidates, isJunkPlaceTitle } from "./placeTitleFilter";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
@@ -382,13 +385,27 @@ export async function buildTravelGuidebook(
     ? await buildItineraryWithGroq(prefs, places, modelId!, key!, cityCenter)
     : smartItinerary(prefs, places, cityCenter, poolBlendNote);
 
-  const daysWithAmenities = await attachRouteAmenities(
-    itineraryCore.days,
-    places,
-    prefs.city,
+  const daysWithAmenities = dropUnnamedMealBlocks(
+    await attachRouteAmenities(
+      itineraryCore.days,
+      places,
+      prefs.city,
+      prefs.budgetTheme,
+      prefs.locale
+    )
+  );
+
+  const baseCosts = applyCostMultipliers(
+    { ...costsFromCountryCode(cityGeo.countryCode), ...liveCostHints },
     prefs.budgetTheme
   );
-  itineraryCore = { ...itineraryCore, days: daysWithAmenities };
+  const daysWithTransit = await attachTransitLegs(
+    daysWithAmenities,
+    places,
+    prefs,
+    baseCosts.bus_day ?? 12000
+  );
+  itineraryCore = { ...itineraryCore, days: daysWithTransit };
 
   const narration = buildGuideNarration(
     prefs,

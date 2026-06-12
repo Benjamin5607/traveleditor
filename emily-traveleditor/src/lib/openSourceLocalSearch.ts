@@ -55,7 +55,7 @@ type RawHit = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v8:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v9:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {

@@ -1,5 +1,6 @@
 import { formatKrw } from "../lib/budget";
 import { t } from "../lib/i18n";
+import { formatTransitLeg } from "../lib/transitLegs";
 import { getEmilyTheme, localizeTheme } from "../lib/themes";
 import type { TravelGuidebook } from "../lib/tripTypes";
 import RouteMap from "./RouteMap";
@@ -286,10 +287,31 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
                           )}
                           <p className="font-bold text-white">{block.place_title}</p>
                           <p className="mt-1 text-sm text-zinc-400">{block.activity}</p>
-                          {!isMeal && (
-                            <p className="mt-1 text-xs text-zinc-500">
-                              {locale === "en" ? "Transport" : "이동"}: {block.transport}
-                            </p>
+                          {(block.transport !== "walk" || block.travel) && (
+                            <div className="mt-2 space-y-1">
+                              <p className="text-xs text-zinc-500">
+                                {locale === "en" ? "Transport" : "이동"}:{" "}
+                                {block.transport === "bus"
+                                  ? locale === "en"
+                                    ? "Public transit"
+                                    : "대중교통"
+                                  : block.transport === "rental_car"
+                                    ? locale === "en"
+                                      ? "Rental car"
+                                      : "렌트카"
+                                    : block.transport}
+                              </p>
+                              {block.travel && block.transport === "bus" && (
+                                <div className="rounded-lg border border-sky-400/15 bg-sky-400/[0.06] px-3 py-2 text-xs leading-5 text-sky-100">
+                                  <p className="font-bold text-sky-50">
+                                    {formatTransitLeg(block.travel, locale)}
+                                  </p>
+                                  {block.travel.note && (
+                                    <p className="mt-1 text-sky-200/80">{block.travel.note}</p>
+                                  )}
+                                </div>
+                              )}
+                            </div>
                           )}
                         </div>
                         <div className="flex flex-wrap gap-2 self-start">
