@@ -255,18 +255,42 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
               )}
               <div className="mt-4 space-y-4">
                 {day.blocks.map((block, index) => {
+                  const kind = block.kind ?? "attraction";
+                  const isMeal = kind !== "attraction";
                   const place = places.find((item) => item.id === block.place_id);
-                  const mapsUrl = place?.maps_url;
+                  const mapsUrl = block.maps_url ?? place?.maps_url;
                   const sourceUrl = place?.official_url || place?.source_urls?.[0];
+                  const kindBadge =
+                    kind === "breakfast"
+                      ? (locale === "en" ? "Breakfast" : "아침")
+                      : kind === "lunch"
+                        ? (locale === "en" ? "Lunch" : "점심")
+                        : kind === "dinner"
+                          ? (locale === "en" ? "Dinner" : "저녁")
+                          : kind === "cafe"
+                            ? (locale === "en" ? "Cafe" : "카페")
+                            : null;
 
                   return (
-                    <div key={`${day.day}-${index}`} className="grid gap-3 border-t border-white/5 pt-4 first:border-t-0 first:pt-0">
+                    <div
+                      key={`${day.day}-${index}`}
+                      className={`grid gap-3 border-t border-white/5 pt-4 first:border-t-0 first:pt-0 ${isMeal ? "rounded-2xl border border-amber-400/10 bg-amber-400/[0.04] px-3 py-3" : ""}`}
+                    >
                       <div className="grid gap-3 md:grid-cols-[80px_1fr_auto]">
                         <p className="text-sm font-bold text-yellow-200">{block.time}</p>
                         <div>
+                          {kindBadge && (
+                            <span className="mb-1 inline-block rounded-full bg-amber-400/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-200">
+                              {kindBadge}
+                            </span>
+                          )}
                           <p className="font-bold text-white">{block.place_title}</p>
                           <p className="mt-1 text-sm text-zinc-400">{block.activity}</p>
-                          <p className="mt-1 text-xs text-zinc-500">이동: {block.transport}</p>
+                          {!isMeal && (
+                            <p className="mt-1 text-xs text-zinc-500">
+                              {locale === "en" ? "Transport" : "이동"}: {block.transport}
+                            </p>
+                          )}
                         </div>
                         <div className="flex flex-wrap gap-2 self-start">
                           {mapsUrl && (
