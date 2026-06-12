@@ -9,7 +9,7 @@ import { buildLodgingRecommendations } from "./lodgingRecommendations";
 import { enrichPlacesWithMaps } from "./placeLinks";
 import { attachRouteAmenities } from "./routeAmenities";
 import { filterPlacesInMetro } from "./geoFence";
-import { isJunkPlaceTitle } from "./placeTitleFilter";
+import { filterValidPlaceCandidates, isJunkPlaceTitle } from "./placeTitleFilter";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { t } from "./i18n";
@@ -312,6 +312,7 @@ export async function buildTravelGuidebook(
     await geocodePlaces(prefs.city, places, cityGeo)
   );
   places = filterPlacesInMetro(places, prefs.city, cityGeo);
+  places = filterValidPlaceCandidates(places);
 
   if (places.length === 0) {
     return {

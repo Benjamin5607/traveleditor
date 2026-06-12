@@ -63,7 +63,7 @@ const LANG_BY_COUNTRY: Record<string, string[]> = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v3:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v4:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {

@@ -200,8 +200,8 @@ def crawl_theme_sources(city: str, keywords: list[str], max_sources: int = 5) ->
     city_title = CITY_PAGE_TITLES.get(city, city)
     city_source = get_wikivoyage_city_source(city)
 
+    # 도시 Wikivoyage 문서는 맥락용만 — "Wikivoyage: Bangkok" 같은 메타 항목은 장소로 넣지 않음
     if city_source:
-        sources.append(city_source)
         seen_titles.add(city_source["title"])
 
     for keyword in keywords:

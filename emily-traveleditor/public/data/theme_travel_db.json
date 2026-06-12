@@ -256,19 +256,6 @@
       "cities": {
         "Seoul": [
           {
-            "title": "Wikivoyage: Seoul",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and ",
-            "source_titles": [
-              "Wikivoyage: Seoul"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Seoul"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
             "title": "Burning Sun scandal",
             "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
             "why": "The Burning Sun scandal, also known as Burning Sun gate, was a 2019 entertainment and sex scandal in Seoul, South Korea, which involved several celebrities, including Korean idols ",
@@ -297,19 +284,6 @@
         ],
         "Tokyo": [
           {
-            "title": "Wikivoyage: Tokyo",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of ",
-            "source_titles": [
-              "Wikivoyage: Tokyo"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Tokyo"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
             "title": "Carl Randall",
             "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
             "why": "Carl Randall, born Carlo Lombardi, is a British figurative painter, whose work is based on images of modern Japan, resulting from the artist living for a decade in Tokyo. These wor",
@@ -337,19 +311,6 @@
           }
         ],
         "Bangkok": [
-          {
-            "title": "Wikivoyage: Bangkok",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with ",
-            "source_titles": [
-              "Wikivoyage: Bangkok"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Bangkok"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "2012 Bangkok bombings",
             "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
@@ -381,21 +342,7 @@
             "lng": 100.55316667
           }
         ],
-        "Singapore": [
-          {
-            "title": "Wikivoyage: Singapore",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since indepe",
-            "source_titles": [
-              "Wikivoyage: Singapore"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Singapore"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          }
-        ]
+        "Singapore": []
       },
       "generated_by": "wikipedia-fallback"
     },
@@ -410,19 +357,6 @@
       ],
       "cities": {
         "Seoul": [
-          {
-            "title": "Wikivoyage: Seoul",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Seoul (서울) is the capital of South Korea. With a population of over 9 million (with over 20 million in the wider metropolitan area), Seoul is by far South Korea's largest city and ",
-            "source_titles": [
-              "Wikivoyage: Seoul"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Seoul"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "Islam in Korea",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -454,19 +388,6 @@
         ],
         "Tokyo": [
           {
-            "title": "Wikivoyage: Tokyo",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Tokyo can be broadly divided into the \"23 special wards\", \"Tama region\" and \"Islands\". This article is about the 23 special wards of Tokyo, which corresponds to what many think of ",
-            "source_titles": [
-              "Wikivoyage: Tokyo"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Tokyo"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
             "title": "Sensō-ji",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Sensō-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisat",
@@ -496,19 +417,6 @@
           }
         ],
         "Bangkok": [
-          {
-            "title": "Wikivoyage: Bangkok",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Bangkok (Thai: กรุงเทพฯ Krung Thep) is the capital and largest city of Thailand. With a population of over eleven million inhabitants, Bangkok is by far Thailand's main city, with ",
-            "source_titles": [
-              "Wikivoyage: Bangkok"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Bangkok"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "Khaosan Road",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -541,19 +449,6 @@
           }
         ],
         "Singapore": [
-          {
-            "title": "Wikivoyage: Singapore",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Singapore (Chinese: 新加坡; Malay: Singapura; Tamil: சிங்கப்பூர்) is a city-state in Southeast Asia. Modern Singapore was founded as a British trading colony in 1819, and since indepe",
-            "source_titles": [
-              "Wikivoyage: Singapore"
-            ],
-            "source_urls": [
-              "https://en.wikivoyage.org/wiki/Singapore"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
           {
             "title": "Masjid Al Islah",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
