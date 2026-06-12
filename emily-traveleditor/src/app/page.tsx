@@ -8,7 +8,13 @@ import type { EmilyWorker } from "../lib/groqMarket";
 import { buildTravelGuidebook } from "../lib/tripPlanner";
 import { BUDGET_THEMES } from "../lib/budgetThemes";
 import { EMILY_THEMES, localizeTheme, type ThemeId } from "../lib/themes";
-import { airportLabel, POPULAR_ORIGIN_CITIES, resolveCityAirport } from "../lib/airports";
+import {
+  airportLabel,
+  POPULAR_ORIGIN_CITIES,
+  resolveCityAirport,
+  resolveCityAirportAsync,
+  type VerifiedAirport,
+} from "../lib/airports";
 import { t, type Locale } from "../lib/i18n";
 import {
   LODGING_OPTIONS,
@@ -86,8 +92,29 @@ export default function Home() {
     none: locale === "en" ? "No stay" : "숙박 없음",
   };
 
-  const originAirport = resolveCityAirport(originCity);
-  const destAirport = resolveCityAirport(city);
+  const [originAirport, setOriginAirport] = useState<VerifiedAirport | null>(() => resolveCityAirport("Seoul"));
+  const [destAirport, setDestAirport] = useState<VerifiedAirport | null>(() => resolveCityAirport("Bangkok"));
+  const [airportResolving, setAirportResolving] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      setAirportResolving(true);
+      const [origin, dest] = await Promise.all([
+        resolveCityAirportAsync(originCity),
+        resolveCityAirportAsync(city),
+      ]);
+      if (!cancelled) {
+        setOriginAirport(origin);
+        setDestAirport(dest);
+        setAirportResolving(false);
+      }
+    }, 350);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [originCity, city]);
 
   const handleBuildGuidebook = async () => {
     setLoading(true);
@@ -166,9 +193,11 @@ export default function Home() {
                 {POPULAR_ORIGIN_CITIES.map((c) => <option key={c} value={c} />)}
               </datalist>
               <p className="text-xs text-zinc-500">
-                {originAirport
-                  ? airportLabel(originAirport, locale)
-                  : t(locale, "airport.unknown")}
+                {airportResolving
+                  ? t(locale, "airport.resolving")
+                  : originAirport
+                    ? airportLabel(originAirport, locale)
+                    : t(locale, "airport.unknown")}
               </p>
             </label>
             <label className="space-y-2">
@@ -181,9 +210,11 @@ export default function Home() {
                 className="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-4 text-lg font-semibold text-white outline-none transition focus:border-yellow-200/60"
               />
               <p className="text-xs text-zinc-500">
-                {destAirport
-                  ? airportLabel(destAirport, locale)
-                  : t(locale, "airport.unknown")}
+                {airportResolving
+                  ? t(locale, "airport.resolving")
+                  : destAirport
+                    ? airportLabel(destAirport, locale)
+                    : t(locale, "airport.unknown")}
               </p>
             </label>
             <label className="space-y-2">

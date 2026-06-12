@@ -60,14 +60,23 @@ export type PlaceCandidate = {
   qualityScore?: number;
 };
 
+export type ItineraryBlockKind =
+  | "attraction"
+  | "breakfast"
+  | "lunch"
+  | "dinner"
+  | "cafe";
+
 export type ItineraryBlock = {
   time: string;
+  kind?: ItineraryBlockKind;
   place_id: string;
   place_title: string;
   activity: string;
   transport: TransportId;
   rationale?: string;
   amenities?: AmenityStop[];
+  maps_url?: string;
 };
 
 export type LodgingRecommendation = {

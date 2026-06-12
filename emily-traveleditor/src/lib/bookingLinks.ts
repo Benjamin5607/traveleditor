@@ -1,4 +1,3 @@
-import { resolveCityAirport } from "./airports";
 import { buildGoogleMapsSearchQuery, sanitizePlaceTitle } from "./placeLinks";
 import type { BookingLinkSet, LodgingId } from "./tripTypes";
 
@@ -6,20 +5,16 @@ function encode(value: string) {
   return encodeURIComponent(value.trim());
 }
 
-function iataForLinks(city: string) {
-  const airport = resolveCityAirport(city);
-  return airport?.iata.toLowerCase() ?? encode(city.trim().toLowerCase());
-}
-
 export function buildBookingLinks(
   originCity: string,
   destCity: string,
-  lodging: LodgingId
+  lodging: LodgingId,
+  airports?: { originIata?: string; destIata?: string }
 ): BookingLinkSet {
   const originQuery = encode(originCity);
   const destQuery = encode(destCity);
-  const originIata = iataForLinks(originCity);
-  const destIata = iataForLinks(destCity);
+  const originIata = airports?.originIata?.toLowerCase() ?? originQuery;
+  const destIata = airports?.destIata?.toLowerCase() ?? destQuery;
 
   const lodgingUrl =
     lodging === "hostel"

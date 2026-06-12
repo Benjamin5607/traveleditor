@@ -1,7 +1,7 @@
 import { buildGoogleMapsPlaceUrl } from "./placeLinks";
 import { isFastFood, isGlobalChain } from "./placeQuality";
 import { getBudgetTheme } from "./budgetThemes";
-import type { BudgetThemeId } from "./tripTypes";
+import type { BudgetThemeId, ItineraryBlockKind } from "./tripTypes";
 import type { AmenityStop, ItineraryDay, PlaceCandidate } from "./tripTypes";
 
 const OVERPASS = "https://overpass-api.de/api/interpreter";
@@ -15,15 +15,14 @@ type OsmElement = {
   tags?: Record<string, string>;
 };
 
-async function queryNearbyAmenities(lat: number, lng: number, radius = 350) {
+async function queryNearbyAmenities(lat: number, lng: number, radius = 400) {
   const overpass = `[out:json][timeout:12];
 (
-  node["amenity"~"restaurant|food_court"](around:${radius},${lat},${lng});
-  node["amenity"="cafe"]["cuisine"](around:${radius},${lat},${lng});
-  node["amenity"="toilets"](around:${radius},${lat},${lng});
+  node["amenity"~"restaurant|food_court|cafe"](around:${radius},${lat},${lng});
+  way["amenity"~"restaurant|food_court|cafe"](around:${radius},${lat},${lng});
   node["amenity"="toilets"]["access"!="private"](around:${radius},${lat},${lng});
 );
-out center 12;`;
+out center 16;`;
 
   try {
     const response = await fetch(OVERPASS, {
@@ -39,7 +38,7 @@ out center 12;`;
   }
 }
 
-function classifyAmenity(el: OsmElement): AmenityStop["kind"] | null {
+function classifyAmenity(el: OsmElement): "meal" | "cafe" | "restroom" | null {
   const a = el.tags?.amenity ?? "";
   if (a === "toilets") return "restroom";
   if (a === "cafe") return "cafe";
@@ -59,6 +58,13 @@ function isQualityMealOrCafe(el: OsmElement): boolean {
   return true;
 }
 
+function elementCoords(el: OsmElement) {
+  const lat = el.lat ?? el.center?.lat;
+  const lon = el.lon ?? el.center?.lon;
+  if (typeof lat !== "number" || typeof lon !== "number") return null;
+  return { lat, lng: lon };
+}
+
 function amenityWhy(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId, name: string) {
   const theme = getBudgetTheme(budgetTheme);
   if (kind === "meal") return `${theme.mealGuide} 근처 로컬 식당 '${name}' (체인·패스트푸드 제외).`;
@@ -73,40 +79,30 @@ function amenityTip(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId) {
   return "Google Maps에서 영업시간·리뷰를 확인한 뒤 방문하세요.";
 }
 
-function pickAmenities(elements: OsmElement[], budgetTheme: BudgetThemeId, city: string): AmenityStop[] {
-  const stops: AmenityStop[] = [];
-  const seen = new Set<string>();
-
-  const order: AmenityStop["kind"][] =
-    budgetTheme === "yolo_luxury" ? ["meal", "cafe", "restroom"] : ["restroom", "meal", "cafe"];
-
-  for (const kind of order) {
-    for (const el of elements) {
-      if (classifyAmenity(el) !== kind) continue;
-      if (kind !== "restroom" && !isQualityMealOrCafe(el)) continue;
-
-      const name = el.tags?.name ?? (kind === "restroom" ? "공중화장실" : "");
-      const key = `${kind}:${name.toLowerCase()}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      const lat = el.lat ?? el.center?.lat;
-      const lon = el.lon ?? el.center?.lon;
-      stops.push({
-        kind,
-        name,
-        why: amenityWhy(kind, budgetTheme, name),
-        tip: amenityTip(kind, budgetTheme),
-        mapsUrl: buildGoogleMapsPlaceUrl(city, {
-          title: name,
-          lat: typeof lat === "number" ? lat : undefined,
-          lng: typeof lon === "number" ? lon : undefined,
-        }),
-        source: "osm",
-      });
-      break;
-    }
+function pickNamedVenue(
+  elements: OsmElement[],
+  want: "meal" | "cafe",
+  seen: Set<string>
+): { name: string; lat: number; lng: number } | null {
+  for (const el of elements) {
+    const kind = classifyAmenity(el);
+    if (kind !== want) continue;
+    if (!isQualityMealOrCafe(el)) continue;
+    const name = el.tags?.name ?? "";
+    const key = name.toLowerCase();
+    if (seen.has(key)) continue;
+    const coords = elementCoords(el);
+    if (!coords) continue;
+    seen.add(key);
+    return { name, ...coords };
   }
-  return stops;
+  return null;
+}
+
+function mealKindToOsm(want: ItineraryBlockKind): "meal" | "cafe" | null {
+  if (want === "breakfast" || want === "lunch" || want === "dinner") return "meal";
+  if (want === "cafe") return "cafe";
+  return null;
 }
 
 export async function attachRouteAmenities(
@@ -116,20 +112,84 @@ export async function attachRouteAmenities(
   budgetTheme: BudgetThemeId
 ): Promise<ItineraryDay[]> {
   const enriched: ItineraryDay[] = [];
+  const seenVenues = new Set<string>();
+  let lastCoords: { lat: number; lng: number } | undefined;
+
+  for (const place of places) {
+    if (place.lat != null && place.lng != null) {
+      lastCoords = { lat: place.lat, lng: place.lng };
+      break;
+    }
+  }
 
   for (const day of days) {
     const blocks = [];
-    for (const block of day.blocks) {
-      const place = places.find((p) => p.id === block.place_id);
-      let amenities: AmenityStop[] = [];
 
-      if (place?.lat != null && place?.lng != null) {
-        const elements = await queryNearbyAmenities(place.lat, place.lng);
-        amenities = pickAmenities(elements, budgetTheme, city);
+    for (const block of day.blocks) {
+      const kind = block.kind ?? "attraction";
+      let nextBlock = { ...block };
+
+      if (kind === "attraction") {
+        const place = places.find((p) => p.id === block.place_id);
+        if (place?.lat != null && place?.lng != null) {
+          lastCoords = { lat: place.lat, lng: place.lng };
+          const elements = await queryNearbyAmenities(place.lat, place.lng);
+          const restrooms = elements.filter((el) => classifyAmenity(el) === "restroom");
+          const amenities: AmenityStop[] = [];
+
+          for (const el of restrooms) {
+            const name = el.tags?.name ?? "공중화장실";
+            const coords = elementCoords(el);
+            amenities.push({
+              kind: "restroom",
+              name,
+              why: amenityWhy("restroom", budgetTheme, name),
+              tip: amenityTip("restroom", budgetTheme),
+              mapsUrl: buildGoogleMapsPlaceUrl(city, {
+                title: name,
+                lat: coords?.lat,
+                lng: coords?.lng,
+              }),
+              source: "osm",
+            });
+            break;
+          }
+
+          if (amenities.length) nextBlock = { ...nextBlock, amenities };
+        }
+      } else if (lastCoords) {
+        const osmWant = mealKindToOsm(kind);
+        if (osmWant) {
+          const elements = await queryNearbyAmenities(lastCoords.lat, lastCoords.lng, 500);
+          const venue = pickNamedVenue(elements, osmWant, seenVenues);
+          if (venue) {
+            const prefix =
+              kind === "breakfast"
+                ? "아침 · "
+                : kind === "lunch"
+                  ? "점심 · "
+                  : kind === "dinner"
+                    ? "저녁 · "
+                    : "카페 · ";
+            nextBlock = {
+              ...nextBlock,
+              place_title: `${prefix}${venue.name}`,
+              activity: `${block.activity} — ${venue.name}`,
+              maps_url: buildGoogleMapsPlaceUrl(city, {
+                title: venue.name,
+                lat: venue.lat,
+                lng: venue.lng,
+              }),
+              rationale: `${block.rationale ?? ""} OSM 근처 추천: ${venue.name}.`,
+            };
+            lastCoords = { lat: venue.lat, lng: venue.lng };
+          }
+        }
       }
 
-      blocks.push({ ...block, amenities });
+      blocks.push(nextBlock);
     }
+
     enriched.push({ ...day, blocks });
   }
 

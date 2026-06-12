@@ -46,7 +46,9 @@ type RawItineraryResponse = {
     label?: string;
     blocks?: Array<{
       time?: string;
+      kind?: string;
       place_id?: string;
+      place_title?: string;
       activity?: string;
       transport?: string;
       rationale?: string;
@@ -56,6 +58,13 @@ type RawItineraryResponse = {
 };
 
 const VALID_TRANSPORTS = new Set<TransportId>(["walk", "bus", "rental_car"]);
+const MEAL_PLACE_ID = /^(breakfast|lunch|dinner|cafe):day\d+$/i;
+
+function mealKindFromPlaceId(placeId: string): import("./tripTypes").ItineraryBlockKind | undefined {
+  const match = placeId.match(MEAL_PLACE_ID);
+  if (!match) return undefined;
+  return match[1].toLowerCase() as import("./tripTypes").ItineraryBlockKind;
+}
 
 type GuidebookCore = Omit<
   TravelGuidebook,
@@ -134,7 +143,9 @@ function sanitizeItinerary(
 
     for (const rawBlock of rawDay.blocks ?? []) {
       const placeId = rawBlock.place_id ?? "";
-      if (!allowedIds.has(placeId)) continue;
+      const mealKind = mealKindFromPlaceId(placeId);
+      const isMeal = Boolean(mealKind);
+      if (!isMeal && !allowedIds.has(placeId)) continue;
 
       const transport = VALID_TRANSPORTS.has(rawBlock.transport as TransportId)
         ? (rawBlock.transport as TransportId)
@@ -142,9 +153,12 @@ function sanitizeItinerary(
 
       blocks.push({
         time: rawBlock.time || "10:00",
+        kind: mealKind ?? (rawBlock.kind as import("./tripTypes").ItineraryBlockKind | undefined) ?? "attraction",
         place_id: placeId,
-        place_title: resolvePlaceTitle(placeId, places),
-        activity: rawBlock.activity || "테마 맞춤 방문",
+        place_title: isMeal
+          ? rawBlock.place_title || rawBlock.activity || placeId
+          : resolvePlaceTitle(placeId, places),
+        activity: rawBlock.activity || (isMeal ? "식사·휴식" : "테마 맞춤 방문"),
         transport,
         rationale: rawBlock.rationale,
       });
@@ -234,7 +248,9 @@ ${JSON.stringify(placePayload, null, 2)}
 
 규칙:
 - day는 ${prefs.days}일까지만
-- place_id는 허용 목록에 있는 값만
+- place_id는 허용 목록에 있는 값만 (식사·카페 슬롯은 place_id를 breakfast:day1, lunch:day1, cafe:day1, dinner:day1 형식으로)
+- 하루에 최소 6~8블록: 아침 식사 → 관광 → 점심 → 관광 → 카페 → 관광 → 저녁 → (야간 관광 1곳 더)
+- 한 날에 관광지 1곳만 넣지 마라. 실제 여행처럼 식사·커피·이동·관광을 번갈아 배치
 - rationale에는 장소 why를 인용해 추천 이유를 써라
 - ${prefs.locale === "en" ? "Write in English" : "한국어로 작성"}
 `;
@@ -312,7 +328,7 @@ export async function buildTravelGuidebook(
     await geocodePlaces(prefs.city, places, cityGeo)
   );
   places = filterPlacesInMetro(places, prefs.city, cityGeo);
-  places = filterValidPlaceCandidates(places);
+  places = filterValidPlaceCandidates(places, { requireCoords: true });
 
   if (places.length === 0) {
     return {
@@ -351,7 +367,7 @@ export async function buildTravelGuidebook(
     voyageExtract?.extract
   );
 
-  const flightDetailFull = buildFlightDetail(
+  const flightDetailFull = await buildFlightDetail(
     prefs.originCity,
     prefs.city,
     cityCenter,
@@ -369,12 +385,17 @@ export async function buildTravelGuidebook(
       ? "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
       : undefined,
   });
-  const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging);
+  const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging, {
+    originIata: flightDetailFull.origin.code !== "—" ? flightDetailFull.origin.code : undefined,
+    destIata: flightDetailFull.destination.code !== "—" ? flightDetailFull.destination.code : undefined,
+  });
   const mapStops = itineraryCore.days.flatMap((day) =>
-    day.blocks.map((block) => {
-      const place = places.find((item) => item.id === block.place_id);
-      return { title: block.place_title, lat: place?.lat, lng: place?.lng };
-    })
+    day.blocks
+      .filter((block) => (block.kind ?? "attraction") === "attraction")
+      .map((block) => {
+        const place = places.find((item) => item.id === block.place_id);
+        return { title: block.place_title, lat: place?.lat, lng: place?.lng };
+      })
   );
   const mapUrl = buildRouteMapUrl(prefs.city, mapStops);
   const mapEmbedUrl = buildOsmEmbedUrl(mapStops, cityCenter);
