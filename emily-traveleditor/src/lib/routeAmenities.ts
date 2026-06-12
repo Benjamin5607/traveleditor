@@ -1,4 +1,5 @@
 import { buildGoogleMapsPlaceUrl } from "./placeLinks";
+import { isFastFood, isGlobalChain } from "./placeQuality";
 import { getBudgetTheme } from "./budgetThemes";
 import type { BudgetThemeId } from "./tripTypes";
 import type { AmenityStop, ItineraryDay, PlaceCandidate } from "./tripTypes";
@@ -17,11 +18,12 @@ type OsmElement = {
 async function queryNearbyAmenities(lat: number, lng: number, radius = 350) {
   const overpass = `[out:json][timeout:12];
 (
-  node["amenity"~"restaurant|fast_food|cafe|food_court"](around:${radius},${lat},${lng});
+  node["amenity"~"restaurant|food_court"](around:${radius},${lat},${lng});
+  node["amenity"="cafe"]["cuisine"](around:${radius},${lat},${lng});
   node["amenity"="toilets"](around:${radius},${lat},${lng});
   node["amenity"="toilets"]["access"!="private"](around:${radius},${lat},${lng});
 );
-out center 8;`;
+out center 12;`;
 
   try {
     const response = await fetch(OVERPASS, {
@@ -41,14 +43,26 @@ function classifyAmenity(el: OsmElement): AmenityStop["kind"] | null {
   const a = el.tags?.amenity ?? "";
   if (a === "toilets") return "restroom";
   if (a === "cafe") return "cafe";
-  if (/restaurant|fast_food|food_court/.test(a)) return "meal";
+  if (/restaurant|food_court/.test(a)) return "meal";
   return null;
+}
+
+function isQualityMealOrCafe(el: OsmElement): boolean {
+  const name = el.tags?.name ?? "";
+  if (!name || name.length < 2) return false;
+  if (isGlobalChain(name, el.tags)) return false;
+  if (isFastFood(el.tags)) return false;
+  const kind = classifyAmenity(el);
+  if (kind === "meal" && !el.tags?.cuisine && el.tags?.amenity === "restaurant") {
+    return false;
+  }
+  return true;
 }
 
 function amenityWhy(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId, name: string) {
   const theme = getBudgetTheme(budgetTheme);
-  if (kind === "meal") return `${theme.mealGuide} OSM에 등록된 '${name}'이 근처에 있습니다.`;
-  if (kind === "cafe") return `이동 전후 휴식용. ${theme.narrationTone} 기준으로 루트 인근 카페입니다.`;
+  if (kind === "meal") return `${theme.mealGuide} 근처 로컬 식당 '${name}' (체인·패스트푸드 제외).`;
+  if (kind === "cafe") return `이동 전후 휴식용. 루트 인근 로컬 카페 '${name}'.`;
   return `${theme.restroomGuide} '${name || "공중화장실"}' — OSM 공개 데이터.`;
 }
 
@@ -69,7 +83,9 @@ function pickAmenities(elements: OsmElement[], budgetTheme: BudgetThemeId, city:
   for (const kind of order) {
     for (const el of elements) {
       if (classifyAmenity(el) !== kind) continue;
-      const name = el.tags?.name ?? (kind === "restroom" ? "공중화장실" : "이름 미등록");
+      if (kind !== "restroom" && !isQualityMealOrCafe(el)) continue;
+
+      const name = el.tags?.name ?? (kind === "restroom" ? "공중화장실" : "");
       const key = `${kind}:${name.toLowerCase()}`;
       if (seen.has(key)) continue;
       seen.add(key);
@@ -93,7 +109,6 @@ function pickAmenities(elements: OsmElement[], budgetTheme: BudgetThemeId, city:
   return stops;
 }
 
-/** 일정 블록마다 식사·카페·화장실 휴게를 OSM으로 보강 */
 export async function attachRouteAmenities(
   days: ItineraryDay[],
   places: PlaceCandidate[],

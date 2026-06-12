@@ -11,6 +11,12 @@ import { attachRouteAmenities } from "./routeAmenities";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { t } from "./i18n";
+import {
+  buildQualityWhy,
+  isGlobalChain,
+  passesQualityGate,
+  scorePlaceQuality,
+} from "./placeQuality";
 import { filterPlacesForTheme } from "./themeFilters";
 import { getEmilyTheme, themeDbKey } from "./themes";
 import type {
@@ -63,6 +69,33 @@ type GuidebookCore = Omit<
   | "budgetThemeLabel"
   | "dataSource"
 >;
+
+function rankPlacesByQuality(places: PlaceCandidate[], themeId: string): PlaceCandidate[] {
+  return places
+    .filter((p) => !isGlobalChain(p.title))
+    .map((p) => {
+      const score = scorePlaceQuality({
+        title: p.title,
+        why: p.why ?? p.angle ?? "",
+        source: "wikivoyage",
+        themeId: themeId as import("./themes").ThemeId,
+      });
+      return {
+        ...p,
+        qualityScore: score,
+        why: p.why ? buildQualityWhy(p.why, score, "ko") : p.why,
+      };
+    })
+    .filter((p) =>
+      passesQualityGate({
+        title: p.title,
+        why: p.why ?? "",
+        source: "wikivoyage",
+        themeId: themeId as import("./themes").ThemeId,
+      })
+    )
+    .sort((a, b) => (b.qualityScore ?? 0) - (a.qualityScore ?? 0));
+}
 
 function attachBlockRationales(blocks: ItineraryBlock[], places: PlaceCandidate[], theme: string): ItineraryBlock[] {
   return blocks.map((block) => {
@@ -249,7 +282,7 @@ export async function buildTravelGuidebook(
   const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
   let dataSource: "static" | "live" = "static";
   let searchSourcesLabel: string | undefined;
-  let places = toPlaceCandidates(prefs.city, rawItems);
+  let places = rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id);
 
   if (places.length === 0) {
     const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode);
@@ -258,7 +291,7 @@ export async function buildTravelGuidebook(
     dataSource = "live";
   }
 
-  places = filterPlacesForTheme(places, themeMeta.id);
+  places = filterPlacesForTheme(rankPlacesByQuality(places, themeMeta.id), themeMeta.id);
 
   if (places.length === 0) {
     return {

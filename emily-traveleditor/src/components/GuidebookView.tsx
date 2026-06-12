@@ -320,11 +320,25 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
 
       <section className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6">
         <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Places</p>
-        <h3 className="mt-2 text-2xl font-black text-white">추천 장소</h3>
+        <h3 className="mt-2 text-2xl font-black text-white">
+          {locale === "en" ? "Recommended places" : "추천 장소"}
+        </h3>
+        <p className="mt-2 text-xs text-zinc-500">
+          {locale === "en"
+            ? "Ranked by Wikivoyage curation, reputation signals, and chain/fast-food exclusion."
+            : "Wikivoyage 큐레이션·평판 신호·체인/패스트푸드 제외 후 품질 순 정렬."}
+        </p>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           {places.map((place) => (
             <article key={place.id} className="rounded-3xl border border-white/10 bg-black/25 p-5">
-              <p className="text-sm font-bold text-yellow-200">{place.angle || "테마 후보"}</p>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-sm font-bold text-yellow-200">{place.angle || (locale === "en" ? "Theme pick" : "테마 후보")}</p>
+                {place.qualityScore != null && place.qualityScore >= 55 && (
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+                    Q{place.qualityScore}
+                  </span>
+                )}
+              </div>
               <h4 className="mt-2 text-xl font-black text-white">{place.title}</h4>
               {place.why && (
                 <p className="mt-3 text-sm leading-6 text-zinc-400">
