@@ -80,7 +80,8 @@ export async function askEmily(modelId: string, category: string, city: string, 
   try {
     const themeDb = await loadThemeTravelDb();
     if (themeDb) {
-      const recommendations = findCityRecommendations(themeDb.themes?.[theme.name]?.cities, city);
+      const dbKey = theme.legacyDbKey ?? theme.id;
+      const recommendations = findCityRecommendations(themeDb.themes?.[dbKey]?.cities, city);
       if (recommendations.length > 0) {
         themeTravelContext = recommendations
           .slice(0, 3)
@@ -97,10 +98,18 @@ export async function askEmily(modelId: string, category: string, city: string, 
 
   // D. 카테고리별 페르소나
   const personas: Record<string, string> = {
-    "마음의 평화": "도도하고 차분한 팩폭러. 날씨와 물가를 보고 '주제에 맞게 쉬라'는 식으로 조언해.",
-    "인생이 무료": "자극 추구 광인. 텅장(텅 빈 통장)이 되더라도 지금 당장 떠나라고 소리쳐.",
-    "오늘은 욜로": "내일이 없는 한탕주의자. 할부의 무서움보다 지금의 행복이 중요하다고 꼬드겨.",
-    "신앙": "엄격하지만 박식한 순례 가이드. 욕망보다 의미와 예의를 챙기라고 콕 집어줘."
+    peace_calm: "도도하고 차분한 팩폭러. 날씨와 물가를 보고 '주제에 맞게 쉬라'는 식으로 조언해.",
+    drink_craft: "자극 추구 광인. 텅장이 되더라도 지금 당장 떠나라고 소리쳐.",
+    yolo_night: "내일이 없는 한탕주의자. 할부보다 지금의 행복이 중요하다고 꼬드겨.",
+    faith_heritage: "엄격한 문화유산 가이드. 등록된 유적 사찰·성당만, 일반 교회는 제외.",
+    nature_trail: "트레킹 덕후. 신발 끈 묶고 자연으로.",
+    art_culture: "미술관 큐레이터 톤. 전시와 공연 위주.",
+    food_market: "미식 평론가. 시장과 로컬 맛집만.",
+    history_heritage: "역사학도. UNESCO·궁궐·유적만.",
+    family_fun: "가족 여행 전문가. 아이 체력 고려.",
+    wellness_spa: "웰니스 코치. 온천·스파 휴식.",
+    shopping_style: "패션 에디터. 쇼핑·빈티지.",
+    photo_landmark: "포토그래퍼. 랜드마크·야경 스팟.",
   };
 
   try {
@@ -115,7 +124,7 @@ export async function askEmily(modelId: string, category: string, city: string, 
         messages: [
           { 
             role: "system", 
-            content: `너는 여행 에디터 Emily다. ${personas[theme.name]} 
+            content: `너는 여행 에디터 Emily다. ${personas[theme.id] ?? personas.peace_calm} 
             선택된 테마: ${theme.name}. 추천 장소 범위: ${theme.prompt}
             데이터 정보: ${weatherContext} ${marketContext}
             수집된 테마 여행 후보: ${themeTravelContext || "아직 해당 도시 후보는 비어 있어."}

@@ -10,7 +10,9 @@ import { enrichPlacesWithMaps } from "./placeLinks";
 import { attachRouteAmenities } from "./routeAmenities";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
-import { getEmilyTheme } from "./themes";
+import { t } from "./i18n";
+import { filterPlacesForTheme } from "./themeFilters";
+import { getEmilyTheme, themeDbKey } from "./themes";
 import type {
   ItineraryBlock,
   ItineraryDay,
@@ -199,7 +201,7 @@ ${JSON.stringify(placePayload, null, 2)}
 - day는 ${prefs.days}일까지만
 - place_id는 허용 목록에 있는 값만
 - rationale에는 장소 why를 인용해 추천 이유를 써라
-- 한국어로 작성
+- ${prefs.locale === "en" ? "Write in English" : "한국어로 작성"}
 `;
 
   try {
@@ -242,21 +244,25 @@ export async function buildTravelGuidebook(
   const marketDb = await loadMarketDb();
   const cityGeo = await geocodeCity(prefs.city);
   const voyageExtract = await fetchWikivoyageExtract(prefs.city);
-  const rawItems = findCityRecommendations(themeDb?.themes?.[prefs.theme]?.cities, prefs.city);
+  const themeMeta = getEmilyTheme(prefs.theme);
+  const dbKey = themeDbKey(themeMeta);
+  const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
   let dataSource: "static" | "live" = "static";
   let searchSourcesLabel: string | undefined;
   let places = toPlaceCandidates(prefs.city, rawItems);
 
   if (places.length === 0) {
-    const live = await fetchLivePlaces(prefs.city, prefs.theme, cityGeo?.countryCode);
+    const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode);
     places = live.places;
     searchSourcesLabel = live.sourcesLabel;
     dataSource = "live";
   }
 
+  places = filterPlacesForTheme(places, themeMeta.id);
+
   if (places.length === 0) {
     return {
-      error: `${prefs.city} 여행 정보를 무료 공개 API에서도 찾지 못했어. 도시명을 영문으로 바꿔 다시 시도해줘.`,
+      error: t(prefs.locale, "error.noPlaces", { city: prefs.city }),
     };
   }
 
@@ -294,10 +300,12 @@ export async function buildTravelGuidebook(
   );
 
   const flightDetailFull = buildFlightDetail(
+    prefs.originCity,
     prefs.city,
     cityCenter,
     marketDb,
-    voyageExtract?.extract
+    voyageExtract?.extract,
+    prefs.locale
   );
 
   const stopCount = itineraryCore.days.reduce((sum, day) => sum + day.blocks.length, 0);
@@ -309,7 +317,7 @@ export async function buildTravelGuidebook(
       ? "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
       : undefined,
   });
-  const bookingLinks = buildBookingLinks(prefs.city, prefs.lodging);
+  const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging);
   const mapStops = itineraryCore.days.flatMap((day) =>
     day.blocks.map((block) => {
       const place = places.find((item) => item.id === block.place_id);

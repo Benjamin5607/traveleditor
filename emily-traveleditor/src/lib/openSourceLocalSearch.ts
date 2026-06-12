@@ -1,9 +1,14 @@
 /**
  * Emily Open Source Local Search (EOSLS)
- * Wikipedia가 아닌 OSM·Nominatim·Photon·Wikivoyage·Wikidata로 로컬 장소 수집
  */
 import type { GeoResult } from "./geoTypes";
 import { getEmilyTheme } from "./themes";
+import {
+  THEME_OSM,
+  THEME_PHOTON_TAGS,
+  filterPlacesForTheme,
+  passesFaithHeritageFilter,
+} from "./themeFilters";
 import { fetchWikidataPois } from "./wikidata";
 import { parseVenuesFromWikivoyage } from "./wikivoyageParser";
 import { buildMultilingualQueries } from "./multilingualSearch";
@@ -26,40 +31,6 @@ type RawHit = {
   source: SearchSource;
   source_urls: string[];
   confidence: number;
-};
-
-/** 테마별 OSM Overpass 필터 (node+way, 로컬 name 태그) */
-const THEME_OSM: Record<string, Array<{ filter: string; label: string }>> = {
-  "마음의 평화": [
-    { filter: '["amenity"="cafe"]', label: "카페" },
-    { filter: '["shop"="tea"]', label: "티숍" },
-    { filter: '["leisure"="garden"]', label: "정원" },
-    { filter: '["tourism"="museum"]', label: "박물관" },
-  ],
-  "인생이 무료": [
-    { filter: '["craft"="brewery"]', label: "브루어리" },
-    { filter: '["craft"="winery"]', label: "와이너리" },
-    { filter: '["amenity"="pub"]', label: "펍" },
-    { filter: '["amenity"="bar"]', label: "바" },
-  ],
-  "오늘은 욜로": [
-    { filter: '["amenity"="nightclub"]', label: "클럽" },
-    { filter: '["amenity"="bar"]', label: "바" },
-    { filter: '["amenity"="biergarten"]', label: "비어가든" },
-  ],
-  "신앙": [
-    { filter: '["amenity"="place_of_worship"]', label: "예배당" },
-    { filter: '["historic"="church"]', label: "교회" },
-    { filter: '["amenity"="monastery"]', label: "수도원" },
-  ],
-};
-
-/** Photon osm_tag 필터 */
-const THEME_PHOTON_TAGS: Record<string, string[]> = {
-  "마음의 평화": ["amenity:cafe", "shop:tea", "leisure:garden"],
-  "인생이 무료": ["craft:brewery", "amenity:pub", "craft:winery"],
-  "오늘은 욜로": ["amenity:nightclub", "amenity:bar"],
-  "신앙": ["amenity:place_of_worship", "historic:church"],
 };
 
 const LANG_BY_COUNTRY: Record<string, string[]> = {
@@ -109,9 +80,10 @@ function pickOsmName(tags: Record<string, string>, countryCode?: string): string
 
 function osmWhy(tags: Record<string, string>, label: string, city: string) {
   const parts = [`${city} 로컬 OSM 데이터`, label];
+  if (tags.heritage) parts.push(`문화유산: ${tags.heritage}`);
+  if (tags.historic) parts.push(`역사: ${tags.historic}`);
   if (tags.cuisine) parts.push(`요리: ${tags.cuisine}`);
   if (tags.opening_hours) parts.push(`영업: ${tags.opening_hours}`);
-  if (tags.wheelchair) parts.push(`휠체어: ${tags.wheelchair}`);
   const addr = [tags["addr:street"], tags["addr:housenumber"]].filter(Boolean).join(" ");
   if (addr) parts.push(`주소: ${addr}`);
   return parts.join(" · ");
@@ -121,8 +93,19 @@ function osmUrl(type: string, id: number) {
   return `https://www.openstreetmap.org/${type}/${id}`;
 }
 
-async function overpassSearch(bbox: string, theme: string, city: string, countryCode?: string): Promise<RawHit[]> {
-  const filters = THEME_OSM[theme] ?? [{ filter: '["tourism"="attraction"]', label: "명소" }];
+function isFaithTheme(themeId: string) {
+  return themeId === "faith_heritage";
+}
+
+async function overpassSearch(
+  bbox: string,
+  themeId: string,
+  city: string,
+  countryCode?: string
+): Promise<RawHit[]> {
+  const filters = THEME_OSM[themeId as keyof typeof THEME_OSM] ?? [
+    { filter: '["tourism"="attraction"]', label: "명소" },
+  ];
   const hits: RawHit[] = [];
   const seen = new Set<string>();
 
@@ -146,19 +129,27 @@ async function overpassSearch(bbox: string, theme: string, city: string, country
       const tags = (el.tags ?? {}) as Record<string, string>;
       const name = pickOsmName(tags, countryCode);
       if (!name || seen.has(name.toLowerCase())) continue;
+
+      const why = osmWhy(tags, tags.historic || tags.amenity || tags.tourism || "POI", city);
+
+      if (isFaithTheme(themeId)) {
+        const hasHeritage =
+          Boolean(tags.historic) || Boolean(tags.heritage) || Boolean(tags.start_date);
+        if (!hasHeritage && !passesFaithHeritageFilter(name, why)) continue;
+      }
+
       seen.add(name.toLowerCase());
       const lat = el.lat ?? el.center?.lat;
       const lon = el.lon ?? el.center?.lon;
-      const tagLabel = tags.amenity || tags.shop || tags.tourism || tags.leisure || tags.historic || "POI";
       hits.push({
         title: name,
         localName: tags.name !== name ? tags.name : undefined,
-        why: osmWhy(tags, String(tagLabel), city),
+        why,
         lat: typeof lat === "number" ? lat : undefined,
         lng: typeof lon === "number" ? lon : undefined,
         source: "osm",
         source_urls: [osmUrl(el.type, el.id)],
-        confidence: tags.website || tags.opening_hours ? 88 : 82,
+        confidence: tags.heritage || tags.historic ? 92 : tags.website ? 88 : 82,
       });
     }
   } catch {
@@ -167,12 +158,8 @@ async function overpassSearch(bbox: string, theme: string, city: string, country
   return hits;
 }
 
-async function photonSearch(
-  cityGeo: GeoResult,
-  theme: string,
-  city: string
-): Promise<RawHit[]> {
-  const tags = THEME_PHOTON_TAGS[theme] ?? ["tourism:attraction"];
+async function photonSearch(cityGeo: GeoResult, themeId: string, city: string): Promise<RawHit[]> {
+  const tags = THEME_PHOTON_TAGS[themeId as keyof typeof THEME_PHOTON_TAGS] ?? ["tourism:attraction"];
   const hits: RawHit[] = [];
   const seen = new Set<string>();
 
@@ -197,17 +184,17 @@ async function photonSearch(
           props["name:vi"] ||
           props.name;
         if (!name || seen.has(String(name).toLowerCase())) continue;
+        const why = `${city} Photon/OSM (${osmTag})`;
+        if (isFaithTheme(themeId) && !passesFaithHeritageFilter(String(name), why)) continue;
         seen.add(String(name).toLowerCase());
         const [lng, lat] = feature.geometry?.coordinates ?? [];
         hits.push({
           title: String(name),
-          why: `${city} Photon/OSM 로컬 검색 (${osmTag}) — ${props.street ?? props.city ?? ""}`.trim(),
+          why,
           lat: typeof lat === "number" ? lat : undefined,
           lng: typeof lng === "number" ? lng : undefined,
           source: "photon",
-          source_urls: props.osm_id
-            ? [osmUrl(props.osm_type ?? "node", props.osm_id)]
-            : [],
+          source_urls: props.osm_id ? [osmUrl(props.osm_type ?? "node", props.osm_id)] : [],
           confidence: 78,
         });
       }
@@ -260,7 +247,6 @@ async function nominatimLocalSearch(
       display_name: string;
       class: string;
       type: string;
-      extratags?: Record<string, string>;
       osm_type?: string;
       osm_id?: number;
     }>;
@@ -271,7 +257,7 @@ async function nominatimLocalSearch(
         const name = r.display_name.split(",")[0]?.trim() || r.display_name;
         return {
           title: name,
-          why: `Nominatim 로컬 검색 (${r.class}/${r.type}) · ${city}`,
+          why: `Nominatim (${r.class}/${r.type}) · ${city}`,
           lat: Number(r.lat),
           lng: Number(r.lon),
           source: "nominatim" as const,
@@ -308,7 +294,6 @@ function toPlaceCandidate(city: string, hit: RawHit, angle: string): PlaceCandid
   };
 }
 
-/** EOSLS 메인 — 로컬 오픈소스 우선 장소 수집 */
 export async function searchLocalPlaces(params: {
   city: string;
   theme: string;
@@ -317,19 +302,21 @@ export async function searchLocalPlaces(params: {
   voyageExtract?: string;
 }): Promise<{ places: PlaceCandidate[]; sourcesUsed: SearchSource[] }> {
   const { city, theme, cityGeo, countryCode, voyageExtract } = params;
-  const key = cacheKey(city, theme, countryCode);
+  const themeMeta = getEmilyTheme(theme);
+  const themeId = themeMeta.id;
+  const key = cacheKey(city, themeId, countryCode);
   const cached = readCache(key);
   if (cached?.length) {
     return { places: cached, sourcesUsed: ["osm", "nominatim", "photon", "wikivoyage", "wikidata"] };
   }
 
-  const themeMeta = getEmilyTheme(theme);
   const hits: RawHit[] = [];
   const sourcesUsed = new Set<SearchSource>();
 
   if (voyageExtract) {
     const venues = parseVenuesFromWikivoyage(voyageExtract);
     for (const v of venues) {
+      if (isFaithTheme(themeId) && !passesFaithHeritageFilter(v.name, v.why)) continue;
       hits.push({
         title: v.name,
         why: `Wikivoyage ${v.section} — ${v.why}`,
@@ -344,26 +331,28 @@ export async function searchLocalPlaces(params: {
   const bb = cityGeo.boundingBox;
   if (bb) {
     const bbox = `${bb[0]},${bb[2]},${bb[1]},${bb[3]}`;
-    const osmHits = await overpassSearch(bbox, theme, city, countryCode);
+    const osmHits = await overpassSearch(bbox, themeId, city, countryCode);
     hits.push(...osmHits);
     if (osmHits.length) sourcesUsed.add("osm");
   }
 
-  const photonHits = await photonSearch(cityGeo, theme, city);
+  const photonHits = await photonSearch(cityGeo, themeId, city);
   hits.push(...photonHits);
   if (photonHits.length) sourcesUsed.add("photon");
 
-  const queries = buildMultilingualQueries(city, theme, countryCode);
+  const queries = buildMultilingualQueries(city, themeId, countryCode);
   for (const { lang, query } of queries.slice(0, 6)) {
     const nomHits = await nominatimLocalSearch(query, cityGeo, city);
     for (const h of nomHits) {
-      hits.push({ ...h, why: `${h.why} (${lang.label} 검색어)` });
+      if (isFaithTheme(themeId) && !passesFaithHeritageFilter(h.title, h.why)) continue;
+      hits.push({ ...h, why: `${h.why} (${lang.label})` });
     }
     if (nomHits.length) sourcesUsed.add("nominatim");
   }
 
-  const wikidataHits = await fetchWikidataPois(city, theme, cityGeo);
+  const wikidataHits = await fetchWikidataPois(city, themeId, cityGeo);
   for (const p of wikidataHits) {
+    if (isFaithTheme(themeId) && !passesFaithHeritageFilter(p.title, p.why)) continue;
     hits.push({
       title: p.title,
       why: p.why ?? `${city} Wikidata`,
@@ -378,14 +367,15 @@ export async function searchLocalPlaces(params: {
 
   let merged = mergeHits(hits);
 
-  if (merged.length < 4) {
+  if (merged.length < 4 && !isFaithTheme(themeId)) {
     const { searchWikipediaFallback } = await import("./openSourceLocalSearchWikiFallback");
-    const wikiHits = await searchWikipediaFallback(city, theme, countryCode);
+    const wikiHits = await searchWikipediaFallback(city, themeId, countryCode);
     merged = mergeHits([...merged, ...wikiHits]);
     if (wikiHits.length) sourcesUsed.add("wikipedia");
   }
 
-  const places = merged.slice(0, 14).map((h) => toPlaceCandidate(city, h, themeMeta.shortLabel));
+  let places = merged.slice(0, 14).map((h) => toPlaceCandidate(city, h, themeMeta.shortLabel));
+  places = filterPlacesForTheme(places, themeId);
   writeCache(key, places);
 
   return { places, sourcesUsed: [...sourcesUsed] };

@@ -1,4 +1,6 @@
 import { formatKrw } from "../lib/budget";
+import { t } from "../lib/i18n";
+import { getEmilyTheme, localizeTheme } from "../lib/themes";
 import type { TravelGuidebook } from "../lib/tripTypes";
 import RouteMap from "./RouteMap";
 
@@ -25,19 +27,36 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
     searchSourcesLabel,
   } = guidebook;
 
-  const AMENITY_LABEL = { meal: "🍽 식사", cafe: "☕ 카페", restroom: "🚻 화장실" } as const;
+  const locale = preferences.locale ?? "ko";
+  const themeLabel = localizeTheme(getEmilyTheme(preferences.theme), locale).name;
 
-  const bookingItems = [
-    { label: "Google 항공권", href: bookingLinks.flights },
-    { label: "Skyscanner 항공권", href: bookingLinks.flightsSkyscanner },
-    { label: "Kayak 항공권", href: bookingLinks.kayakFlights },
-    { label: "숙소 검색 (Booking)", href: bookingLinks.lodging },
-    { label: "Google Hotels", href: bookingLinks.googleHotels },
-    { label: "식당 검색", href: bookingLinks.restaurants },
-    { label: "Google 지도", href: mapUrl },
-    { label: "OpenStreetMap", href: bookingLinks.osm },
-    ...(osmDirectionsUrl ? [{ label: "OSM 경로", href: osmDirectionsUrl }] : []),
-  ];
+  const AMENITY_LABEL = locale === "en"
+    ? { meal: "🍽 Meal", cafe: "☕ Cafe", restroom: "🚻 Restroom" }
+    : { meal: "🍽 식사", cafe: "☕ 카페", restroom: "🚻 화장실" };
+
+  const bookingItems = locale === "en"
+    ? [
+        { label: "Google Flights", href: bookingLinks.flights },
+        { label: "Skyscanner", href: bookingLinks.flightsSkyscanner },
+        { label: "Kayak", href: bookingLinks.kayakFlights },
+        { label: "Booking.com", href: bookingLinks.lodging },
+        { label: "Google Hotels", href: bookingLinks.googleHotels },
+        { label: "Restaurants", href: bookingLinks.restaurants },
+        { label: "Google Maps", href: mapUrl },
+        { label: "OpenStreetMap", href: bookingLinks.osm },
+        ...(osmDirectionsUrl ? [{ label: t(locale, "guide.osmRoute"), href: osmDirectionsUrl }] : []),
+      ]
+    : [
+        { label: "Google 항공권", href: bookingLinks.flights },
+        { label: "Skyscanner 항공권", href: bookingLinks.flightsSkyscanner },
+        { label: "Kayak 항공권", href: bookingLinks.kayakFlights },
+        { label: "숙소 검색 (Booking)", href: bookingLinks.lodging },
+        { label: "Google Hotels", href: bookingLinks.googleHotels },
+        { label: "식당 검색", href: bookingLinks.restaurants },
+        { label: "Google 지도", href: mapUrl },
+        { label: "OpenStreetMap", href: bookingLinks.osm },
+        ...(osmDirectionsUrl ? [{ label: t(locale, "guide.osmRoute"), href: osmDirectionsUrl }] : []),
+      ];
 
   return (
     <div id="emily-guidebook" className="guidebook-print space-y-6">
@@ -45,7 +64,7 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-yellow-200">My Travel Guidebook</p>
           <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-bold text-zinc-400">
-            {dataSource === "live" ? `EOSLS 로컬 검색` : "수집 JSON 기반"}
+            {dataSource === "live" ? t(locale, "guide.eosls") : t(locale, "guide.static")}
           </span>
           {searchSourcesLabel && (
             <span className="rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-bold text-emerald-300">
@@ -56,9 +75,15 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white">{guidebook.title}</h2>
         <p className="mt-4 max-w-3xl text-base leading-7 text-zinc-300">{guidebook.summary}</p>
         <div className="mt-5 flex flex-wrap gap-2 text-sm">
-          <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{preferences.city}</span>
-          <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{preferences.theme}</span>
-          <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{preferences.days}일 {preferences.nights}박</span>
+          <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">
+            {preferences.originCity} → {preferences.city}
+          </span>
+          <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{themeLabel}</span>
+          <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">
+            {locale === "en"
+              ? `${preferences.days}d ${preferences.nights}n`
+              : `${preferences.days}일 ${preferences.nights}박`}
+          </span>
           <span className="rounded-full border border-yellow-200/30 bg-yellow-200/10 px-3 py-1 text-yellow-100">{budgetThemeLabel}</span>
           <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">예산 {formatKrw(preferences.budgetKrw)}</span>
         </div>
@@ -67,13 +92,13 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
           onClick={() => window.print()}
           className="no-print mt-5 rounded-full border border-yellow-200/40 bg-yellow-200/10 px-5 py-2 text-sm font-bold text-yellow-100 hover:bg-yellow-200/20"
         >
-          PDF로 저장 (인쇄)
+          {t(locale, "guide.print")}
         </button>
       </header>
 
       <section className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-indigo-500/10 to-transparent p-6">
         <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Guide</p>
-        <h3 className="mt-2 text-2xl font-black text-white">여행 가이드 해설</h3>
+        <h3 className="mt-2 text-2xl font-black text-white">{t(locale, "guide.narration")}</h3>
         <p className="mt-4 text-base leading-7 text-zinc-300">{narration.welcome}</p>
         <p className="mt-4 text-sm leading-7 text-zinc-400">{narration.philosophy}</p>
         <p className="mt-3 text-xs text-zinc-500">{narration.searchNote}</p>
@@ -82,18 +107,18 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
       {/* 항공 — 구간·항공사·이유 */}
       <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
         <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Flight</p>
-        <h3 className="mt-2 text-2xl font-black text-white">항공권 (구간 기준 추정)</h3>
+        <h3 className="mt-2 text-2xl font-black text-white">{t(locale, "guide.flight")}</h3>
         <div className="mt-4 rounded-2xl border border-yellow-200/20 bg-yellow-200/5 p-5">
           <p className="text-lg font-black text-yellow-100">
             {flightDetail.origin.name} ({flightDetail.origin.code}) → {flightDetail.destination.name} ({flightDetail.destination.code})
           </p>
           <p className="mt-2 text-2xl font-black text-white">{flightEstimate.label}</p>
           {flightDetail.durationHours != null && flightDetail.durationHours > 0 && (
-            <p className="mt-1 text-sm text-zinc-400">비행시간 약 {flightDetail.durationHours}시간 (추정)</p>
+            <p className="mt-1 text-sm text-zinc-400">{t(locale, "guide.flight.duration", { hours: flightDetail.durationHours })}</p>
           )}
           {flightDetail.carriers.length > 0 && (
             <p className="mt-3 text-sm text-zinc-300">
-              <span className="font-bold text-white">관련 항공사: </span>
+              <span className="font-bold text-white">{t(locale, "guide.flight.carriers")}</span>
               {flightDetail.carriers.join(", ")}
             </p>
           )}
@@ -193,11 +218,11 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Map</p>
           <div className="flex flex-wrap gap-3 text-xs font-bold">
             <a href={mapUrl} target="_blank" rel="noreferrer" className="text-yellow-200 hover:text-yellow-100">
-              Google Maps 전체 경로
+              {t(locale, "guide.googleRoute")}
             </a>
             {osmDirectionsUrl && (
               <a href={osmDirectionsUrl} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">
-                OSM 길찾기
+                {t(locale, "guide.osmRoute")}
               </a>
             )}
           </div>
@@ -209,7 +234,7 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Itinerary</p>
-            <h3 className="mt-2 text-2xl font-black text-white">일정표</h3>
+            <h3 className="mt-2 text-2xl font-black text-white">{t(locale, "guide.itinerary")}</h3>
           </div>
           <a href={mapUrl} target="_blank" rel="noreferrer" className="text-sm font-bold text-yellow-200 hover:text-yellow-100">
             Google Maps에서 경로 보기
