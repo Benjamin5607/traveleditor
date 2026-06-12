@@ -1,4 +1,4 @@
-import { resolveCityAirport } from "./airports";
+import { resolveCityAirport, type VerifiedAirport } from "./airports";
 import type { Locale } from "./i18n";
 import { normalizeCityName, type FlightIndexEntry, type MarketDb } from "./travelData";
 
@@ -88,7 +88,8 @@ export function estimateFlight(
   destCity: string,
   destCoords?: { lat: number; lng: number },
   market?: MarketDb | null,
-  locale: Locale = "ko"
+  locale: Locale = "ko",
+  airports?: { originAirport?: VerifiedAirport | null; destAirport?: VerifiedAirport | null }
 ): FlightEstimate {
   const originKey = normalizeCityName(originCity);
   const destKey = normalizeCityName(destCity);
@@ -105,7 +106,8 @@ export function estimateFlight(
     };
   }
 
-  const originAirport = resolveCityAirport(originCity);
+  const originAirport = airports?.originAirport ?? resolveCityAirport(originCity);
+  const destAirport = airports?.destAirport;
 
   const indexed = market?.flight_index?.[destKey]
     ?? Object.entries(market?.flight_index ?? {}).find(([name]) => normalizeCityName(name) === destKey)?.[1];
@@ -150,8 +152,12 @@ export function estimateFlight(
     }
   }
 
-  if (originAirport?.lat && destCoords) {
-    const km = haversineKm({ lat: originAirport.lat, lng: originAirport.lng }, destCoords);
+  const destPoint = destAirport
+    ? { lat: destAirport.lat, lng: destAirport.lng }
+    : destCoords;
+
+  if (originAirport?.lat && destPoint) {
+    const km = haversineKm({ lat: originAirport.lat, lng: originAirport.lng }, destPoint);
     const dist = estimateFlightByDistanceKm(km);
     return {
       ...dist,

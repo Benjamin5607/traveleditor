@@ -1,13 +1,15 @@
 import { estimateFlight, type FlightEstimate } from "./flightEstimates";
 import {
+  airportDistanceKm,
   airportLabel,
-  resolveCityAirport,
+  resolveCityAirportAsync,
   resolveDestinationAirport,
   type VerifiedAirport,
 } from "./airports";
 import type { Locale } from "./i18n";
 import type { MarketDb } from "./travelData";
 import { parseFlightInfoFromWikivoyage, type ParsedFlightInfo } from "./wikivoyageParser";
+import { geocodeCity } from "./liveTravel";
 
 function estimateDurationHours(distanceKm: number) {
   if (distanceKm < 50) return 0;
@@ -42,20 +44,29 @@ export type FlightDetail = {
   airportVerified: boolean;
 };
 
-export function buildFlightDetail(
+export async function buildFlightDetail(
   originCity: string,
   destCity: string,
   destCoords: { lat: number; lng: number } | undefined,
   market: MarketDb | null,
   wikivoyageExtract?: string,
   locale: Locale = "ko"
-): FlightDetail {
+): Promise<FlightDetail> {
   const parsed: ParsedFlightInfo = wikivoyageExtract
     ? parseFlightInfoFromWikivoyage(wikivoyageExtract, destCity)
     : { airlines: [], notes: [] };
 
-  const originAirport = resolveCityAirport(originCity);
-  const destAirport = resolveDestinationAirport(destCity, parsed.destinationAirport);
+  const [originAirport, destGeo] = await Promise.all([
+    resolveCityAirportAsync(originCity),
+    destCoords ? Promise.resolve(null) : geocodeCity(destCity),
+  ]);
+
+  const destinationCoords = destCoords ?? (destGeo ? { lat: destGeo.lat, lng: destGeo.lng } : undefined);
+  const destAirport = resolveDestinationAirport(
+    destCity,
+    parsed.destinationAirport,
+    destinationCoords
+  );
 
   const origin = originAirport
     ? {
@@ -65,7 +76,7 @@ export function buildFlightDetail(
       }
     : {
         code: "—",
-        name: locale === "en" ? "Airport not verified" : "등록 공항 미확인",
+        name: locale === "en" ? "Airport not found" : "공항을 찾지 못함",
         city: originCity,
       };
 
@@ -77,16 +88,20 @@ export function buildFlightDetail(
       }
     : {
         code: "—",
-        name: locale === "en" ? "Airport not verified" : "등록 공항 미확인",
+        name: locale === "en" ? "Airport not found" : "공항을 찾지 못함",
         city: destCity,
       };
 
-  const estimate = estimateFlight(originCity, destCity, destCoords, market, locale);
+  const estimate = estimateFlight(originCity, destCity, destinationCoords, market, locale, {
+    originAirport,
+    destAirport,
+  });
 
   const originCoords = originAirport ? { lat: originAirport.lat, lng: originAirport.lng } : undefined;
+  const destAirportCoords = destAirport ? { lat: destAirport.lat, lng: destAirport.lng } : destinationCoords;
   const km =
-    originCoords && destCoords
-      ? Math.round(haversineKm(originCoords, destCoords))
+    originCoords && destAirportCoords
+      ? Math.round(haversineKm(originCoords, destAirportCoords))
       : undefined;
 
   const durationHours = km != null ? estimateDurationHours(km) : undefined;
@@ -101,16 +116,23 @@ export function buildFlightDetail(
 
   const originLabel = originAirport
     ? airportLabel(originAirport, locale)
-    : `${originCity} (${locale === "en" ? "unverified airport" : "공항 미확인"})`;
+    : `${originCity} (${locale === "en" ? "airport not found" : "공항 미확인"})`;
 
   const destLabel = destAirport
     ? airportLabel(destAirport as VerifiedAirport, locale)
-    : `${destCity} (${locale === "en" ? "unverified airport" : "공항 미확인"})`;
+    : `${destCity} (${locale === "en" ? "airport not found" : "공항 미확인"})`;
+
+  const destDistNote =
+    destAirport && destinationCoords
+      ? locale === "en"
+        ? ` Nearest airport is ${airportDistanceKm(destAirport, destinationCoords)}km from city center.`
+        : ` 도시 중심에서 가장 가까운 공항까지 약 ${airportDistanceKm(destAirport, destinationCoords)}km.`
+      : "";
 
   const whyParts = [
     locale === "en"
-      ? `Round-trip estimate for ${originLabel} → ${destLabel}. Only verified IATA airports are shown — no fabricated codes.`
-      : `${originLabel} 출발 → ${destLabel} 도착 구간 왕복 요금 추정입니다. IATA 등록 공항만 표시하며 허구 코드는 사용하지 않습니다.`,
+      ? `Round-trip estimate for ${originLabel} → ${destLabel}. Nearest verified IATA airport from each city.${destDistNote}`
+      : `${originLabel} 출발 → ${destLabel} 도착 구간 왕복 요금 추정입니다. 각 도시에서 가장 가까운 IATA 등록 공항을 사용합니다.${destDistNote}`,
     durationHours
       ? locale === "en"
         ? `About ${durationHours} hours including airport time (estimate).`
@@ -118,8 +140,8 @@ export function buildFlightDetail(
       : "",
     !destAirport
       ? locale === "en"
-        ? "Destination airport not in verified list — check Wikivoyage or booking links."
-        : "도착지 공항이 등록 목록에 없습니다. Wikivoyage·검색 링크에서 확인하세요."
+        ? "Could not find a verified airport near this destination — check booking links."
+        : "도착지 근처 IATA 공항을 찾지 못했습니다. 검색 링크에서 확인하세요."
       : parsed.airlines.length
         ? locale === "en"
           ? `Airlines mentioned on Wikivoyage: ${parsed.airlines.join(", ")}.`

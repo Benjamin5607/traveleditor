@@ -312,7 +312,7 @@ export async function buildTravelGuidebook(
     await geocodePlaces(prefs.city, places, cityGeo)
   );
   places = filterPlacesInMetro(places, prefs.city, cityGeo);
-  places = filterValidPlaceCandidates(places);
+  places = filterValidPlaceCandidates(places, { requireCoords: true });
 
   if (places.length === 0) {
     return {
@@ -351,7 +351,7 @@ export async function buildTravelGuidebook(
     voyageExtract?.extract
   );
 
-  const flightDetailFull = buildFlightDetail(
+  const flightDetailFull = await buildFlightDetail(
     prefs.originCity,
     prefs.city,
     cityCenter,
@@ -369,7 +369,10 @@ export async function buildTravelGuidebook(
       ? "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
       : undefined,
   });
-  const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging);
+  const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging, {
+    originIata: flightDetailFull.origin.code !== "—" ? flightDetailFull.origin.code : undefined,
+    destIata: flightDetailFull.destination.code !== "—" ? flightDetailFull.destination.code : undefined,
+  });
   const mapStops = itineraryCore.days.flatMap((day) =>
     day.blocks.map((block) => {
       const place = places.find((item) => item.id === block.place_id);
