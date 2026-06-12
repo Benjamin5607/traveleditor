@@ -56,6 +56,8 @@ export type PlaceCandidate = {
   lat?: number;
   lng?: number;
   maps_url?: string;
+  /** EOSLS 품질 점수 (Wikivoyage·평판 신호·체인 제외 등) */
+  qualityScore?: number;
 };
 
 export type ItineraryBlock = {
