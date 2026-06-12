@@ -1,4 +1,18 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+.route-map-container .leaflet-container {
+  font-family: inherit;
+  border-radius: 1rem;
+}
+
+@media print {
+  .route-map-container {
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
 
 :root {
   --background: #07070b;
