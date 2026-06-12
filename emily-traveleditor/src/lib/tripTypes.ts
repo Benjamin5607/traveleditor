@@ -20,7 +20,12 @@ export type BudgetThemeId =
   | "yolo_luxury"
   | "custom";
 
+import type { Locale } from "./i18n";
+
+export type { Locale };
+
 export type TripPreferences = {
+  originCity: string;
   city: string;
   theme: string;
   days: number;
@@ -29,6 +34,7 @@ export type TripPreferences = {
   lodging: LodgingId;
   budgetTheme: BudgetThemeId;
   budgetKrw: number;
+  locale: Locale;
 };
 
 export type AmenityStop = {

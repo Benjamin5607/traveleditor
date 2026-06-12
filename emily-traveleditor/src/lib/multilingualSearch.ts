@@ -18,65 +18,93 @@ export const SEARCH_LANGUAGES: Record<string, SearchLang> = {
 };
 
 const COUNTRY_TO_LANG: Record<string, string> = {
-  kr: "ko",
-  jp: "ja",
-  th: "th",
-  vn: "vi",
-  cn: "zh",
-  tw: "zh",
-  fr: "fr",
-  de: "de",
-  es: "es",
-  it: "it",
-  gb: "en",
-  us: "en",
-  sg: "en",
+  kr: "ko", jp: "ja", th: "th", vn: "vi", cn: "zh", tw: "zh",
+  fr: "fr", de: "de", es: "es", it: "it", gb: "en", us: "en", sg: "en",
 };
 
 const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
-  "마음의 평화": {
-    ko: ["차집", "카페", "산책"],
+  peace_calm: {
+    ko: ["차집", "카페", "정원"],
     en: ["tea house", "coffee", "garden"],
     ja: ["茶屋", "カフェ", "庭園"],
-    th: ["ร้านชา", "คาเฟ่"],
-    vi: ["trà", "cà phê"],
-    fr: ["salon de thé", "café"],
   },
-  "인생이 무료": {
+  drink_craft: {
     ko: ["와이너리", "양조장", "증류소"],
     en: ["winery", "brewery", "distillery"],
     ja: ["ワイナリー", "醸造所"],
-    th: ["โรงเบียร์", "ไวน์"],
   },
-  "오늘은 욜로": {
+  yolo_night: {
     ko: ["클럽", "바", "나이트라이프"],
     en: ["nightclub", "speakeasy", "bar"],
     ja: ["クラブ", "バー"],
-    th: ["ผับ", "คลับ"],
   },
-  "신앙": {
-    ko: ["사원", "성당", "모스크", "사찰"],
-    en: ["temple", "cathedral", "mosque"],
-    ja: ["寺", "神社", "モスク"],
-    th: ["วัด", "มัสยิด"],
+  faith_heritage: {
+    ko: ["문화유산 사찰", "유적 성당", "세계유산 사원"],
+    en: ["heritage temple", "historic cathedral", "UNESCO mosque"],
+    ja: ["文化財 寺", "歴史 教会"],
+    th: ["มรดกโลก วัด", "โบสถ์"],
+  },
+  nature_trail: {
+    ko: ["국립공원", "트레킹", "전망대"],
+    en: ["national park", "hiking trail", "viewpoint"],
+  },
+  art_culture: {
+    ko: ["미술관", "박물관", "갤러리"],
+    en: ["art museum", "gallery", "theater"],
+  },
+  food_market: {
+    ko: ["전통시장", "맛집", "푸드마켓"],
+    en: ["food market", "local restaurant", "street food"],
+  },
+  history_heritage: {
+    ko: ["역사 유적", "궁궐", "세계유산"],
+    en: ["historic site", "palace", "UNESCO"],
+  },
+  family_fun: {
+    ko: ["동물원", "수족관", "테마파크"],
+    en: ["zoo", "aquarium", "theme park"],
+  },
+  wellness_spa: {
+    ko: ["온천", "스파", "사우나"],
+    en: ["hot spring", "spa", "wellness"],
+  },
+  shopping_style: {
+    ko: ["쇼핑거리", "빈티지", "로컬 브랜드"],
+    en: ["shopping district", "vintage", "boutique"],
+  },
+  photo_landmark: {
+    ko: ["랜드마크", "전망", "야경"],
+    en: ["landmark", "viewpoint", "iconic"],
   },
 };
 
-export function resolveSearchLanguages(countryCode?: string): SearchLang[] {
+export function resolveSearchLanguages(countryCode?: string, uiLocale?: "ko" | "en"): SearchLang[] {
+  const langs: SearchLang[] = [];
+  if (uiLocale === "en") {
+    langs.push(SEARCH_LANGUAGES.en);
+    langs.push(SEARCH_LANGUAGES.ko);
+  } else {
+    langs.push(SEARCH_LANGUAGES.ko);
+    langs.push(SEARCH_LANGUAGES.en);
+  }
   const localCode = countryCode ? COUNTRY_TO_LANG[countryCode.toLowerCase()] : undefined;
-  const langs: SearchLang[] = [SEARCH_LANGUAGES.ko, SEARCH_LANGUAGES.en];
   if (localCode && SEARCH_LANGUAGES[localCode] && !langs.some((l) => l.code === localCode)) {
     langs.push(SEARCH_LANGUAGES[localCode]);
   }
   return langs;
 }
 
-export function buildMultilingualQueries(city: string, theme: string, countryCode?: string): Array<{ lang: SearchLang; query: string }> {
-  const langs = resolveSearchLanguages(countryCode);
+export function buildMultilingualQueries(
+  city: string,
+  themeId: string,
+  countryCode?: string,
+  uiLocale?: "ko" | "en"
+): Array<{ lang: SearchLang; query: string }> {
+  const langs = resolveSearchLanguages(countryCode, uiLocale);
   const queries: Array<{ lang: SearchLang; query: string }> = [];
 
   for (const lang of langs) {
-    const keywords = THEME_KEYWORDS_I18N[theme]?.[lang.code] ?? THEME_KEYWORDS_I18N[theme]?.en ?? ["travel"];
+    const keywords = THEME_KEYWORDS_I18N[themeId]?.[lang.code] ?? THEME_KEYWORDS_I18N[themeId]?.en ?? ["travel"];
     for (const keyword of keywords.slice(0, 2)) {
       queries.push({
         lang,
@@ -120,11 +148,10 @@ export async function fetchWikiSummaryLang(lang: string, title: string) {
     if (!data.extract) return null;
     return {
       title: data.title as string,
-      extract: String(data.extract).slice(0, 280),
-      url: data.content_urls?.desktop?.page as string | undefined,
+      extract: data.extract as string,
       lat: data.coordinates?.lat as number | undefined,
       lng: data.coordinates?.lon as number | undefined,
-      lang,
+      url: data.content_urls?.desktop?.page as string | undefined,
     };
   } catch {
     return null;
