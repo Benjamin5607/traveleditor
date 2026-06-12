@@ -74,6 +74,53 @@ function lodgingCategory(name: string, desc: string): ParsedLodging["category"] 
   return "other";
 }
 
+export type ParsedVenue = {
+  name: string;
+  why: string;
+  section: string;
+};
+
+function parseListingsSection(section: string, sectionName: string, max: number): ParsedVenue[] {
+  const listings: ParsedVenue[] = [];
+  const seen = new Set<string>();
+
+  for (const line of section.split("\n")) {
+    if (!line.trim().startsWith("*")) continue;
+    const cleaned = line.replace(/^\*\s*/, "").trim();
+    const match =
+      cleaned.match(/^'{2,3}([^']+)'{2,3}\s*[—–-]\s*(.+)$/i) ??
+      cleaned.match(/^(.+?)\s*[—–-]\s*(.+)$/);
+    if (!match) continue;
+
+    const name = match[1].replace(/\[.*?\]/g, "").trim();
+    const why = match[2].replace(/\[.*?\]/g, "").trim();
+    if (name.length < 2 || name.length > 90 || seen.has(name.toLowerCase())) continue;
+    seen.add(name.toLowerCase());
+
+    listings.push({ name, why: why.slice(0, 240), section: sectionName });
+    if (listings.length >= max) break;
+  }
+  return listings;
+}
+
+/** Wikivoyage See/Do/Drink/Eat — 로컬 큐레이션 장소 */
+export function parseVenuesFromWikivoyage(extract: string, maxPerSection = 4): ParsedVenue[] {
+  const sections = ["See", "Do", "Drink", "Eat", "Buy"];
+  const all: ParsedVenue[] = [];
+  const seen = new Set<string>();
+
+  for (const heading of sections) {
+    const text = sectionText(extract, heading);
+    if (!text) continue;
+    for (const item of parseListingsSection(text, heading, maxPerSection)) {
+      if (seen.has(item.name.toLowerCase())) continue;
+      seen.add(item.name.toLowerCase());
+      all.push(item);
+    }
+  }
+  return all;
+}
+
 export function parseLodgingFromWikivoyage(extract: string, max = 4): ParsedLodging[] {
   const section = sleepSection(extract);
   if (!section) return [];

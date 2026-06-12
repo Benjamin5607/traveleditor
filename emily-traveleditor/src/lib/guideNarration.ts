@@ -32,7 +32,7 @@ export function buildGuideNarration(
     `${travelTheme.description}`,
     `식사: ${budgetTheme.mealGuide}`,
     `휴게: ${budgetTheme.restroomGuide}`,
-    `검색은 ${langLabels} Wikipedia·Wikidata·OSM을 동원해 로컬 이름까지 수집했습니다.`,
+    `장소는 EOSLS(오픈소스 로컬 검색)로 수집 — OpenStreetMap·Nominatim·Photon·Wikivoyage·Wikidata 우선, ${langLabels} 검색어 적용. Wikipedia는 최후 폴백.`,
   ].join(" ");
 
   const dayIntros: Record<number, string> = {};

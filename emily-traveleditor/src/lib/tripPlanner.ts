@@ -244,10 +244,13 @@ export async function buildTravelGuidebook(
   const voyageExtract = await fetchWikivoyageExtract(prefs.city);
   const rawItems = findCityRecommendations(themeDb?.themes?.[prefs.theme]?.cities, prefs.city);
   let dataSource: "static" | "live" = "static";
+  let searchSourcesLabel: string | undefined;
   let places = toPlaceCandidates(prefs.city, rawItems);
 
   if (places.length === 0) {
-    places = await fetchLivePlaces(prefs.city, prefs.theme, cityGeo?.countryCode);
+    const live = await fetchLivePlaces(prefs.city, prefs.theme, cityGeo?.countryCode);
+    places = live.places;
+    searchSourcesLabel = live.sourcesLabel;
     dataSource = "live";
   }
 
@@ -319,7 +322,11 @@ export async function buildTravelGuidebook(
 
   const tips = [...itineraryCore.tips];
   if (dataSource === "live") {
-    tips.push("수집 JSON 없음 → Wikidata·Photon·Wikivoyage·Wikipedia 무료 체인으로 즉시 보강했습니다.");
+    tips.push(
+      searchSourcesLabel
+        ? `로컬 장소 수집 (EOSLS): ${searchSourcesLabel}`
+        : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
+    );
   }
   if (!useGroq) {
     tips.push("무료 경로 최적화 일정 엔진 사용. Groq 키 있으면 AI 일정·근거 문구가 더 풍부해집니다.");
@@ -347,5 +354,6 @@ export async function buildTravelGuidebook(
     },
     flightDetail,
     dataSource,
+    searchSourcesLabel,
   };
 }

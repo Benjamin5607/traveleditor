@@ -22,6 +22,7 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
     narration,
     budgetThemeLabel,
     dataSource,
+    searchSourcesLabel,
   } = guidebook;
 
   const AMENITY_LABEL = { meal: "🍽 식사", cafe: "☕ 카페", restroom: "🚻 화장실" } as const;
@@ -44,8 +45,13 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-yellow-200">My Travel Guidebook</p>
           <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-bold text-zinc-400">
-            {dataSource === "live" ? "실시간 무료 API 보강" : "수집 JSON 기반"}
+            {dataSource === "live" ? `EOSLS 로컬 검색` : "수집 JSON 기반"}
           </span>
+          {searchSourcesLabel && (
+            <span className="rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-bold text-emerald-300">
+              {searchSourcesLabel}
+            </span>
+          )}
         </div>
         <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white">{guidebook.title}</h2>
         <p className="mt-4 max-w-3xl text-base leading-7 text-zinc-300">{guidebook.summary}</p>

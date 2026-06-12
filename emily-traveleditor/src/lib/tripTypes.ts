@@ -114,6 +114,7 @@ export type TravelGuidebook = {
   flightEstimate: FlightEstimateInfo;
   flightDetail: FlightDetailInfo;
   dataSource: "static" | "live";
+  searchSourcesLabel?: string;
 };
 
 export type FlightEstimateInfo = {

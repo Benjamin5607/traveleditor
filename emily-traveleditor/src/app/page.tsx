@@ -106,7 +106,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-2xl text-base leading-7 text-zinc-300">
-                Wikidata·Photon·Wikivoyage 무료 체인으로 어떤 도시든 즉시 보강. 물가는 Wikivoyage 파싱, 항공은 거리 공식, 일정은 경로 최적화 엔진.
+                EOSLS 로컬 검색(OSM·Nominatim·Photon·Wikivoyage)으로 실제 장소명 수집. Wikipedia는 폴백만.
               </p>
             </div>
           </div>
