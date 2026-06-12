@@ -48,7 +48,8 @@ export function blendPlacePools(
   }
 
   for (const place of generalPlaces) {
-    if (out.length >= targetCount + 6) break;
+    if (out.length >= targetCount + 4) break;
+    if ((place.qualityScore ?? 0) < 52) continue;
     const key = dedupeKey(place);
     if (seen.has(key)) continue;
     seen.add(key);

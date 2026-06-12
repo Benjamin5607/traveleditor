@@ -1,3 +1,4 @@
+import { isAdministrativePlace } from "./placeTitleFilter";
 import type { ThemeId } from "./themes";
 import type { PlaceCandidate } from "./tripTypes";
 
@@ -180,7 +181,45 @@ export function passesFaithHeritageFilter(title: string, why?: string): boolean 
   return false;
 }
 
+const THEME_RELEVANCE: Record<ThemeId, RegExp> = {
+  peace_calm: /cafe|coffee|tea|garden|museum|park|spa|조용|차|카페|정원|박물관/i,
+  drink_craft: /brewery|winery|distillery|pub|bar|와이너리|양조|브루|증류|醸造|ワイナリー/i,
+  yolo_night: /club|bar|night|pub|lounge|biergarten|클럽|바|나이트|nightclub/i,
+  faith_heritage: FAITH_ACCEPT_TITLE,
+  nature_trail: /beach|park|trail|hike|viewpoint|mountain|forest|reserve|peak|해변|공원|트레킹|전망|国立公園/i,
+  art_culture: /museum|gallery|theatre|theater|arts|exhibit|박물관|미술|공연|갤러리/i,
+  food_market: /market|food|restaurant|cuisine|street food|시장|맛집|푸드|요리|marketplace/i,
+  history_heritage: /castle|monument|heritage|historic|palace|ruins|유적|궁|성|문화유산|세계유산/i,
+  family_fun: /zoo|aquarium|theme park|amusement|family|동물원|수족관|테마파크/i,
+  wellness_spa: /spa|onsen|hot spring|bath|wellness|온천|스파|사우나/i,
+  shopping_style: /shop|boutique|mall|market|fashion|vintage|쇼핑|부티크|백화점/i,
+  photo_landmark: /landmark|tower|viewpoint|monument|bridge|iconic|랜드마크|전망|야경|타워/i,
+};
+
+const CITY_HIGHLIGHT_RE = /\[도시 일반\]|\[City highlight\]|도시 명소|City highlight|GENERAL_CITY|museum|attraction|monument|market|gallery|랜드마크|박물관|시장|명소/i;
+
+/** 테마와 무관한 일반 POI 제외 — 도시 하이라이트 태그는 완화 */
+export function passesThemeRelevance(
+  title: string,
+  why: string | undefined,
+  themeId: ThemeId
+): boolean {
+  if (themeId === "faith_heritage") {
+    return passesFaithHeritageFilter(title, why);
+  }
+
+  const hay = `${title} ${why ?? ""}`;
+  if (FAITH_REJECT_TITLE.test(title)) return false;
+  if (isAdministrativePlace(title, why)) return false;
+
+  if (CITY_HIGHLIGHT_RE.test(hay) && /museum|attraction|monument|market|gallery|park|viewpoint|랜드마크|박물관|시장|공원|전망/i.test(hay)) {
+    return true;
+  }
+
+  const pattern = THEME_RELEVANCE[themeId];
+  return pattern ? pattern.test(hay) : true;
+}
+
 export function filterPlacesForTheme(places: PlaceCandidate[], themeId: ThemeId): PlaceCandidate[] {
-  if (themeId !== "faith_heritage") return places;
-  return places.filter((p) => passesFaithHeritageFilter(p.title, p.why ?? p.angle));
+  return places.filter((p) => passesThemeRelevance(p.title, p.why ?? p.angle, themeId));
 }

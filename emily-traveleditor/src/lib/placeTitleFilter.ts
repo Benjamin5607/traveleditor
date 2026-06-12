@@ -96,9 +96,8 @@ const PHYSICAL_PLACE_SIGNALS = [
   /hotel|hostel|inn\b|spa\b|onsen|mall|department store|boutique/i,
   /사원|성당|사찰|신사|모스크|박물관|미술관|궁|성|공원|정원|시장|해변|섬|역|항/i,
   /寺|神社|ワイナリー|醸造|วัด|ตลาด/i,
-  /district$|neighborhood|quarter|old town|downtown/i,
   /insa-dong|myeong-dong|asakusa|shibuya|shinjuku|siam|sukhumvit|chatuchak|itaewon|roppongi|khaosan/i,
-  /인사동|명동|이태원|신주쿠|시부야|아사쿠사|차투차크|카오산|실롬|방콕/i,
+  /인사동|명동|이태원|신주쿠|시부야|아사쿠사|차투차크|카오산|실롬/i,
   /road$|street$|building$|greenhouse|온실|dome$/i,
   /-dong$|동$/i,
 ];
@@ -110,8 +109,73 @@ const TRUSTED_PHYSICAL_SOURCES: PlaceSource[] = [
   "wikidata",
 ];
 
+/** 행정구역·동네·도시 전체 — 방문 POI가 아님 */
+const ADMIN_PLACE_PATTERNS = [
+  /^district$/i,
+  /\bdistrict of\b/i,
+  /\badministrative\b/i,
+  /\bsuburb\b/i,
+  /\bquarter\b/i,
+  /\bneighborhood of\b/i,
+  /\bward of\b/i,
+  /^greater /i,
+  /is a city in /i,
+  /is one of the \d+ districts/i,
+  /special ward of /i,
+  /municipality of /i,
+  /province of /i,
+  /^old town$/i,
+  /^downtown$/i,
+  /^city centre$/i,
+  /^city center$/i,
+];
+
+const WEAK_OSM_AMENITIES = new Set([
+  "toilets",
+  "bench",
+  "drinking_water",
+  "waste_basket",
+  "bicycle_parking",
+  "parking",
+  "vending_machine",
+  "atm",
+  "post_box",
+]);
+
 function hasPhysicalPlaceSignal(text: string): boolean {
   return PHYSICAL_PLACE_SIGNALS.some((re) => re.test(text));
+}
+
+export function isAdministrativePlace(title: string, why?: string): boolean {
+  const hay = `${title} ${why ?? ""}`;
+  return ADMIN_PLACE_PATTERNS.some((re) => re.test(hay));
+}
+
+/** OSM·Nominatim 등 — 좌표만으로 통과시키지 않고 실제 POI 태그/신호 필요 */
+export function hasStrongPoiEvidence(
+  title: string,
+  why?: string,
+  tags?: Record<string, string>
+): boolean {
+  if (isAdministrativePlace(title, why)) return false;
+
+  if (tags) {
+    if (tags.wikipedia || tags.wikidata) return true;
+    if (tags.heritage || tags.historic) return true;
+    if (tags.tourism && tags.tourism !== "information" && tags.tourism !== "yes") return true;
+    if (tags.natural === "beach" && tags.name) return true;
+    if (tags.leisure && /park|garden|nature_reserve|spa|beach_resort/.test(tags.leisure)) return true;
+    if (tags.craft) return true;
+    if (tags.amenity && !WEAK_OSM_AMENITIES.has(tags.amenity)) {
+      if (tags.amenity === "restaurant" && !tags.cuisine && !tags.wikidata) return false;
+      return true;
+    }
+    if (tags.shop) return true;
+    if (tags.man_made === "tower") return true;
+  }
+
+  const hay = `${title} ${why ?? ""}`;
+  return hasPhysicalPlaceSignal(hay);
 }
 
 export function isJunkPlaceTitle(title: string, why?: string): boolean {
@@ -130,6 +194,7 @@ export function isPhysicalPlace(
     lng?: number;
     source?: PlaceSource;
     wikivoyageSection?: string;
+    tags?: Record<string, string>;
   }
 ): boolean {
   const t = title.trim();
@@ -151,11 +216,12 @@ export function isPhysicalPlace(
 
   if (source === "wikivoyage" && options?.wikivoyageSection) {
     if (!POI_WIKIVOYAGE_SECTIONS.test(options.wikivoyageSection)) return false;
-    return true;
+    if (isAdministrativePlace(t, why)) return false;
+    return hasPhysicalPlaceSignal(t) || hasPhysicalPlaceSignal(hay);
   }
 
   if (source && TRUSTED_PHYSICAL_SOURCES.includes(source) && hasCoords) {
-    return true;
+    return hasStrongPoiEvidence(t, hay, options?.tags);
   }
 
   if (source === "wikipedia") {
@@ -165,20 +231,6 @@ export function isPhysicalPlace(
 
   if (hasCoords && hasPhysicalPlaceSignal(hay)) {
     return true;
-  }
-
-  if (
-    hasCoords &&
-    /^[\uac00-\ud7a3\u3040-\u30ff\u4e00-\u9fff][\uac00-\ud7a3\u3040-\u30ff\u4e00-\u9fff\s]{1,18}$/.test(t)
-  ) {
-    return true;
-  }
-
-  if (hasCoords && /^[A-Z0-9가-힣][\w\s.'-가-힣]{2,60}$/.test(t) && !/\d{4}/.test(t)) {
-    const wordCount = t.split(/\s+/).length;
-    if (wordCount >= 1 && wordCount <= 6) {
-      if (hasPhysicalPlaceSignal(t)) return true;
-    }
   }
 
   return hasPhysicalPlaceSignal(t);
@@ -201,7 +253,8 @@ export function filterValidPlaceCandidates<
         lng: p.lng,
         source,
         wikivoyageSection,
-      })
+      }) ||
+      isAdministrativePlace(p.title, p.why ?? p.angle)
     ) {
       return false;
     }

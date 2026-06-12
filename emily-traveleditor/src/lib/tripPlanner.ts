@@ -92,28 +92,48 @@ type GuidebookCore = Omit<
   | "dataSource"
 >;
 
-function rankPlacesByQuality(places: PlaceCandidate[], themeId: string): PlaceCandidate[] {
+function parsePlaceSource(place: PlaceCandidate): import("./placeQuality").PlaceSource {
+  const fromAngle = place.angle?.match(/\[(OSM|NOMINATIM|PHOTON|WIKIDATA|WIKIVOYAGE|WIKIPEDIA)/i)?.[1];
+  if (fromAngle) return fromAngle.toLowerCase() as import("./placeQuality").PlaceSource;
+  if (place.angle?.match(/Wikivoyage/i) || place.why?.includes("Wikivoyage")) return "wikivoyage";
+  if (place.why?.includes("Wikidata")) return "wikidata";
+  if (place.why?.includes("Nominatim")) return "nominatim";
+  if (place.why?.includes("Photon")) return "photon";
+  if (place.why?.includes("OSM")) return "osm";
+  return "wikivoyage";
+}
+
+function rankPlacesByQuality(
+  places: PlaceCandidate[],
+  themeId: string,
+  locale: "ko" | "en" = "ko"
+): PlaceCandidate[] {
+  const tid = themeId as import("./themes").ThemeId;
   return places
     .filter((p) => !isGlobalChain(p.title) && !isJunkPlaceTitle(p.title, p.why))
     .map((p) => {
+      const source = parsePlaceSource(p);
+      const wikivoyageSection = p.angle?.match(/Wikivoyage (See|Do|Eat|Drink|Buy|Sleep)/i)?.[1];
       const score = scorePlaceQuality({
         title: p.title,
         why: p.why ?? p.angle ?? "",
-        source: "wikivoyage",
-        themeId: themeId as import("./themes").ThemeId,
+        source,
+        themeId: tid,
+        wikivoyageSection,
       });
       return {
         ...p,
         qualityScore: score,
-        why: p.why ? buildQualityWhy(p.why, score, "ko") : p.why,
+        why: p.why ? buildQualityWhy(p.why, score, locale) : p.why,
       };
     })
     .filter((p) =>
       passesQualityGate({
         title: p.title,
         why: p.why ?? "",
-        source: "wikivoyage",
-        themeId: themeId as import("./themes").ThemeId,
+        source: parsePlaceSource(p),
+        themeId: tid,
+        wikivoyageSection: p.angle?.match(/Wikivoyage (See|Do|Eat|Drink|Buy|Sleep)/i)?.[1],
       })
     )
     .sort((a, b) => (b.qualityScore ?? 0) - (a.qualityScore ?? 0));
@@ -318,30 +338,57 @@ export async function buildTravelGuidebook(
   const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
   let dataSource: "static" | "live" = "static";
   let searchSourcesLabel: string | undefined;
-  let places = rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id);
   const minPlaces = minPlacesForTrip(prefs.days);
+  let places = filterPlacesForTheme(
+    rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id, prefs.locale),
+    themeMeta.id
+  );
 
-  if (places.length === 0) {
+  const staticWeak =
+    places.length < Math.min(4, minPlaces) || (places[0]?.qualityScore ?? 0) < 55;
+
+  if (places.length === 0 || staticWeak) {
     const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode, prefs.locale);
-    places = live.places;
-    searchSourcesLabel = live.sourcesLabel;
-    dataSource = "live";
+    const liveRanked = filterPlacesForTheme(
+      rankPlacesByQuality(live.places, themeMeta.id, prefs.locale),
+      themeMeta.id
+    );
+    if (liveRanked.length > places.length) {
+      const seen = new Set(places.map((p) => p.title.toLowerCase()));
+      for (const p of liveRanked) {
+        if (!seen.has(p.title.toLowerCase())) {
+          places.push(p);
+          seen.add(p.title.toLowerCase());
+        }
+      }
+      places.sort((a, b) => (b.qualityScore ?? 0) - (a.qualityScore ?? 0));
+      dataSource = "live";
+      searchSourcesLabel = live.sourcesLabel;
+    } else if (places.length === 0) {
+      places = liveRanked;
+      dataSource = "live";
+      searchSourcesLabel = live.sourcesLabel;
+    }
   }
-
-  places = filterPlacesForTheme(rankPlacesByQuality(places, themeMeta.id), themeMeta.id);
 
   let themeOnlyCount = places.length;
   if (!isStrictTheme(themeMeta.id) && cityGeo && places.length < minPlaces) {
-    const extra = await searchSupplementaryPlaces({
-      city: prefs.city,
-      cityGeo,
-      countryCode: cityGeo.countryCode,
-      voyageExtract: voyageExtract?.extract,
-      themeId: themeMeta.id,
-      locale: prefs.locale,
-    });
+    const extra = filterPlacesForTheme(
+      await searchSupplementaryPlaces({
+        city: prefs.city,
+        cityGeo,
+        countryCode: cityGeo.countryCode,
+        voyageExtract: voyageExtract?.extract,
+        themeId: themeMeta.id,
+        locale: prefs.locale,
+      }),
+      themeMeta.id
+    );
     if (extra.length > 0) {
-      places = blendPlacePools(places, extra, themeMeta.id, minPlaces, prefs.locale);
+      places = filterPlacesForTheme(
+        blendPlacePools(places, extra, themeMeta.id, minPlaces, prefs.locale),
+        themeMeta.id
+      );
       if (dataSource === "static") dataSource = "live";
       searchSourcesLabel = searchSourcesLabel
         ? `${searchSourcesLabel} · ${prefs.locale === "en" ? "city highlights" : "도시 명소 보충"}`

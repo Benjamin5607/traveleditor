@@ -16,7 +16,7 @@ import {
   overpassBboxString,
 } from "./geoFence";
 import { beachWhy, isGenericPlaceName, pickBestOsmName, resolveOsmPlaceName } from "./placeNaming";
-import { isJunkPlaceTitle, isPhysicalPlace } from "./placeTitleFilter";
+import { isAdministrativePlace, isJunkPlaceTitle, isPhysicalPlace } from "./placeTitleFilter";
 import { getEmilyTheme } from "./themes";
 import {
   GENERAL_CITY_OSM,
@@ -55,7 +55,7 @@ type RawHit = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v10:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v11:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -116,6 +116,7 @@ function hitFromQuality(
       lng: partial.lng,
       source: partial.source,
       wikivoyageSection: partial.wikivoyageSection,
+      tags: partial.tags,
     })
   ) {
     return null;
@@ -170,7 +171,7 @@ async function overpassSearch(
     )
     .join("");
 
-  const query = `[out:json][timeout:25];(${parts});out center 24;`;
+  const query = `[out:json][timeout:25];(${parts});out center 40;`;
   try {
     const response = await fetch(OVERPASS, {
       method: "POST",
@@ -226,7 +227,7 @@ async function overpassSearch(
   } catch {
     /* skip */
   }
-  return hits;
+  return hits.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, 22);
 }
 
 async function photonSearch(
@@ -239,13 +240,17 @@ async function photonSearch(
   const hits: RawHit[] = [];
   const seen = new Set<string>();
 
+  const themeKeywords =
+    buildMultilingualQueries(city, themeId, cityGeo.countryCode)[0]?.query.replace(`"${city}"`, city).trim() ??
+    `${city} attraction`;
+
   for (const osmTag of tags.slice(0, 3)) {
     try {
       const params = new URLSearchParams({
-        q: city,
+        q: themeKeywords,
         lat: String(cityGeo.lat),
         lon: String(cityGeo.lng),
-        limit: "10",
+        limit: "12",
         osm_tag: osmTag,
       });
       const response = await fetch(`${PHOTON}?${params}`);
@@ -368,6 +373,10 @@ async function nominatimLocalSearch(
 
     for (const r of rows) {
       const classType = `${r.class}/${r.type}`;
+      if (/place\/(suburb|quarter|neighbourhood|city|town|village)|boundary\/administrative|highway\/(residential|primary|secondary)/.test(classType)) {
+        continue;
+      }
+      if ((r.importance ?? 0) < 0.28) continue;
       if (!/tourism|amenity|shop|leisure|historic/.test(classType)) {
         if (!(allowNatural && /natural\/beach/.test(classType))) continue;
       }
@@ -389,6 +398,7 @@ async function nominatimLocalSearch(
         r.type === "beach" || extratags.natural === "beach"
           ? beachWhy(name, city)
           : `Nominatim (${r.class}/${r.type}) · ${city}`;
+      if (isAdministrativePlace(name, why)) continue;
       if (isFaithTheme(themeId) && !passesFaithHeritageFilter(name, why)) continue;
 
       const hit = hitFromQuality(
@@ -528,7 +538,7 @@ export async function searchLocalPlaces(params: {
   const skipWikiFallback =
     isFaithTheme(themeId) || themeId === "food_market" || merged.length >= 4;
 
-  if (!skipWikiFallback && merged.length < 4) {
+  if (!skipWikiFallback && merged.length < 2) {
     const { searchWikipediaFallback } = await import("./openSourceLocalSearchWikiFallback");
     const wikiHits = await searchWikipediaFallback(city, themeId, countryCode);
     for (const w of wikiHits) {
