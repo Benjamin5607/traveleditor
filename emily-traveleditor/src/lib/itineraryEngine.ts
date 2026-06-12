@@ -19,9 +19,10 @@ function pickTransport(distanceKm: number, pref: TransportId): TransportId {
 }
 
 function orderPlacesByRoute(places: PlaceCandidate[], origin?: { lat: number; lng: number }) {
-  const withCoords = places.filter((p) => p.lat != null && p.lng != null) as Array<PlaceCandidate & { lat: number; lng: number }>;
-  const without = places.filter((p) => p.lat == null || p.lng == null);
-  if (withCoords.length <= 1) return [...withCoords, ...without];
+  const withCoords = places.filter((p) => p.lat != null && p.lng != null) as Array<
+    PlaceCandidate & { lat: number; lng: number }
+  >;
+  if (withCoords.length <= 1) return withCoords;
 
   const ordered: typeof withCoords = [];
   const remaining = [...withCoords];
@@ -42,7 +43,7 @@ function orderPlacesByRoute(places: PlaceCandidate[], origin?: { lat: number; ln
     current = { lat: next.lat, lng: next.lng };
   }
 
-  return [...ordered, ...without];
+  return ordered;
 }
 
 function blockRationale(

@@ -8,6 +8,8 @@ import { buildSmartItinerary } from "./itineraryEngine";
 import { buildLodgingRecommendations } from "./lodgingRecommendations";
 import { enrichPlacesWithMaps } from "./placeLinks";
 import { attachRouteAmenities } from "./routeAmenities";
+import { filterPlacesInMetro } from "./geoFence";
+import { isJunkPlaceTitle } from "./placeTitleFilter";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { t } from "./i18n";
@@ -72,7 +74,7 @@ type GuidebookCore = Omit<
 
 function rankPlacesByQuality(places: PlaceCandidate[], themeId: string): PlaceCandidate[] {
   return places
-    .filter((p) => !isGlobalChain(p.title))
+    .filter((p) => !isGlobalChain(p.title) && !isJunkPlaceTitle(p.title, p.why))
     .map((p) => {
       const score = scorePlaceQuality({
         title: p.title,
@@ -293,15 +295,31 @@ export async function buildTravelGuidebook(
 
   places = filterPlacesForTheme(rankPlacesByQuality(places, themeMeta.id), themeMeta.id);
 
+  if (!cityGeo) {
+    return {
+      error: t(prefs.locale, "error.noPlaces", { city: prefs.city }),
+    };
+  }
+
   if (places.length === 0) {
     return {
       error: t(prefs.locale, "error.noPlaces", { city: prefs.city }),
     };
   }
 
-  places = enrichPlacesWithMaps(prefs.city, await geocodePlaces(prefs.city, places));
+  places = enrichPlacesWithMaps(
+    prefs.city,
+    await geocodePlaces(prefs.city, places, cityGeo)
+  );
+  places = filterPlacesInMetro(places, prefs.city, cityGeo);
 
-  const cityCenter = cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng } : undefined;
+  if (places.length === 0) {
+    return {
+      error: t(prefs.locale, "error.noPlaces", { city: prefs.city }),
+    };
+  }
+
+  const cityCenter = { lat: cityGeo.lat, lng: cityGeo.lng };
   const liveCostHints = await fetchLiveCostHints(prefs.city, marketDb?.rates);
   const hasLiveCosts = Object.keys(liveCostHints).length > 0;
 

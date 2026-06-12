@@ -9,6 +9,13 @@ import {
   scorePlaceQuality,
   type PlaceSource,
 } from "./placeQuality";
+import {
+  filterPlacesInMetro,
+  isWithinMetro,
+  metroBoundingBox,
+  overpassBboxString,
+} from "./geoFence";
+import { isJunkPlaceTitle } from "./placeTitleFilter";
 import { getEmilyTheme } from "./themes";
 import {
   THEME_OSM,
@@ -56,7 +63,7 @@ const LANG_BY_COUNTRY: Record<string, string[]> = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v2:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v3:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -142,6 +149,7 @@ async function overpassSearch(
   bbox: string,
   themeId: string,
   city: string,
+  cityGeo: GeoResult,
   countryCode?: string
 ): Promise<RawHit[]> {
   const filters = THEME_OSM[themeId as keyof typeof THEME_OSM] ?? [
@@ -171,6 +179,7 @@ async function overpassSearch(
       const name = pickOsmName(tags, countryCode);
       if (!name || seen.has(name.toLowerCase())) continue;
       if (isGlobalChain(name, tags)) continue;
+      if (isJunkPlaceTitle(name)) continue;
 
       const why = osmWhy(tags, tags.historic || tags.amenity || tags.tourism || "POI", city);
 
@@ -180,13 +189,19 @@ async function overpassSearch(
         if (!hasHeritage && !passesFaithHeritageFilter(name, why)) continue;
       }
 
+      const lat = el.lat ?? el.center?.lat;
+      const lon = el.lon ?? el.center?.lon;
+      if (typeof lat === "number" && typeof lon === "number") {
+        if (!isWithinMetro(lat, lon, city, cityGeo)) continue;
+      }
+
       const hit = hitFromQuality(
         {
           title: name,
           localName: tags.name !== name ? tags.name : undefined,
           why,
-          lat: typeof (el.lat ?? el.center?.lat) === "number" ? (el.lat ?? el.center?.lat) : undefined,
-          lng: typeof (el.lon ?? el.center?.lon) === "number" ? (el.lon ?? el.center?.lon) : undefined,
+          lat: typeof lat === "number" ? lat : undefined,
+          lng: typeof lon === "number" ? lon : undefined,
           source: "osm",
           source_urls: [osmUrl(el.type, el.id)],
           tags,
@@ -238,14 +253,21 @@ async function photonSearch(cityGeo: GeoResult, themeId: string, city: string): 
           brand: props.brand ?? "",
         };
         if (isGlobalChain(String(name), tagMap)) continue;
+        if (isJunkPlaceTitle(String(name))) continue;
+
+        const plat = feature.geometry?.coordinates?.[1];
+        const plng = feature.geometry?.coordinates?.[0];
+        if (typeof plat === "number" && typeof plng === "number") {
+          if (!isWithinMetro(plat, plng, city, cityGeo)) continue;
+        }
 
         const why = `${city} Photon (${osmTag})`;
         const hit = hitFromQuality(
           {
             title: String(name),
             why,
-            lat: feature.geometry?.coordinates?.[1],
-            lng: feature.geometry?.coordinates?.[0],
+            lat: plat,
+            lng: plng,
             source: "photon",
             source_urls: props.osm_id ? [osmUrl(props.osm_type ?? "node", props.osm_id)] : [],
             tags: tagMap,
@@ -281,17 +303,18 @@ async function nominatimLocalSearch(
   city: string,
   themeId: string
 ): Promise<RawHit[]> {
-  const bb = cityGeo.boundingBox;
+  const [south, north, west, east] = metroBoundingBox(city, cityGeo);
   const params: Record<string, string> = {
     q: query,
     format: "json",
     limit: "8",
     addressdetails: "1",
     extratags: "1",
+    viewbox: `${west},${north},${east},${south}`,
+    bounded: "1",
   };
-  if (bb) {
-    params.viewbox = `${bb[2]},${bb[1]},${bb[3]},${bb[0]}`;
-    params.bounded = "1";
+  if (cityGeo.countryCode) {
+    params.countrycodes = cityGeo.countryCode.toLowerCase();
   }
 
   try {
@@ -318,6 +341,11 @@ async function nominatimLocalSearch(
       if (!/tourism|amenity|shop|leisure|historic/.test(`${r.class}/${r.type}`)) continue;
       const name = r.display_name.split(",")[0]?.trim() || r.display_name;
       if (isGlobalChain(name, r.extratags)) continue;
+      if (isJunkPlaceTitle(name)) continue;
+
+      const lat = Number(r.lat);
+      const lng = Number(r.lon);
+      if (!isWithinMetro(lat, lng, city, cityGeo)) continue;
 
       const why = `Nominatim (${r.class}/${r.type}) · ${city}`;
       if (isFaithTheme(themeId) && !passesFaithHeritageFilter(name, why)) continue;
@@ -326,8 +354,8 @@ async function nominatimLocalSearch(
         {
           title: name,
           why,
-          lat: Number(r.lat),
-          lng: Number(r.lon),
+          lat,
+          lng,
           source: "nominatim",
           source_urls: r.osm_id ? [osmUrl(r.osm_type ?? "node", r.osm_id)] : [],
           tags: r.extratags,
@@ -392,6 +420,7 @@ export async function searchLocalPlaces(params: {
     for (const v of venues) {
       if (isFaithTheme(themeId) && !passesFaithHeritageFilter(v.name, v.why)) continue;
       if (isGlobalChain(v.name)) continue;
+      if (isJunkPlaceTitle(v.name, v.why)) continue;
 
       const hit = hitFromQuality(
         {
@@ -408,10 +437,9 @@ export async function searchLocalPlaces(params: {
     if (venues.length) sourcesUsed.add("wikivoyage");
   }
 
-  const bb = cityGeo.boundingBox;
-  if (bb) {
-    const bbox = `${bb[0]},${bb[2]},${bb[1]},${bb[3]}`;
-    const osmHits = await overpassSearch(bbox, themeId, city, countryCode);
+  {
+    const bbox = overpassBboxString(city, cityGeo);
+    const osmHits = await overpassSearch(bbox, themeId, city, cityGeo, countryCode);
     hits.push(...osmHits);
     if (osmHits.length) sourcesUsed.add("osm");
   }
@@ -433,6 +461,8 @@ export async function searchLocalPlaces(params: {
   for (const p of wikidataHits) {
     if (isFaithTheme(themeId) && !passesFaithHeritageFilter(p.title, p.why)) continue;
     if (isGlobalChain(p.title)) continue;
+    if (isJunkPlaceTitle(p.title, p.why)) continue;
+    if (p.lat != null && p.lng != null && !isWithinMetro(p.lat, p.lng, city, cityGeo)) continue;
 
     const hit = hitFromQuality(
       {
@@ -459,6 +489,8 @@ export async function searchLocalPlaces(params: {
     const wikiHits = await searchWikipediaFallback(city, themeId, countryCode);
     for (const w of wikiHits) {
       if (isGlobalChain(w.title)) continue;
+      if (isJunkPlaceTitle(w.title, w.why)) continue;
+      if (w.lat != null && w.lng != null && !isWithinMetro(w.lat, w.lng, city, cityGeo)) continue;
       const hit = hitFromQuality(
         {
           title: w.title,
@@ -478,6 +510,7 @@ export async function searchLocalPlaces(params: {
 
   let places = merged.slice(0, 14).map((h) => toPlaceCandidate(city, h, themeMeta.shortLabel));
   places = filterPlacesForTheme(places, themeId);
+  places = filterPlacesInMetro(places, city, cityGeo);
   writeCache(key, places);
 
   return { places, sourcesUsed: [...sourcesUsed] };
