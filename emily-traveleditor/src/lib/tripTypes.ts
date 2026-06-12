@@ -14,6 +14,12 @@ export const LODGING_OPTIONS = [
 export type TransportId = (typeof TRANSPORT_OPTIONS)[number]["id"];
 export type LodgingId = (typeof LODGING_OPTIONS)[number]["id"];
 
+export type BudgetThemeId =
+  | "miser_backpack"
+  | "smart_value"
+  | "yolo_luxury"
+  | "custom";
+
 export type TripPreferences = {
   city: string;
   theme: string;
@@ -21,7 +27,17 @@ export type TripPreferences = {
   nights: number;
   transport: TransportId;
   lodging: LodgingId;
+  budgetTheme: BudgetThemeId;
   budgetKrw: number;
+};
+
+export type AmenityStop = {
+  kind: "meal" | "cafe" | "restroom";
+  name: string;
+  why: string;
+  tip: string;
+  mapsUrl: string;
+  source: "osm" | "wikivoyage";
 };
 
 export type PlaceCandidate = {
@@ -43,6 +59,7 @@ export type ItineraryBlock = {
   activity: string;
   transport: TransportId;
   rationale?: string;
+  amenities?: AmenityStop[];
 };
 
 export type LodgingRecommendation = {
@@ -70,16 +87,26 @@ export type ItineraryDay = {
   blocks: ItineraryBlock[];
 };
 
+export type GuideNarrationInfo = {
+  welcome: string;
+  philosophy: string;
+  dayIntros: Record<number, string>;
+  closing: string;
+  searchNote: string;
+};
+
 export type TravelGuidebook = {
   title: string;
   summary: string;
   itineraryRationale: string;
+  narration: GuideNarrationInfo;
   days: ItineraryDay[];
   tips: string[];
   preferences: TripPreferences;
   places: PlaceCandidate[];
   lodgingRecommendations: LodgingRecommendation[];
   budget: BudgetBreakdown;
+  budgetThemeLabel: string;
   bookingLinks: BookingLinkSet;
   mapUrl: string;
   mapEmbedUrl: string;

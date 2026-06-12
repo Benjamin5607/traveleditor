@@ -1,4 +1,9 @@
 import { getCachedGeo, saveCachedGeo } from "./geoCache";
+import {
+  buildMultilingualQueries,
+  fetchWikiSummaryLang,
+  searchWikipediaLang,
+} from "./multilingualSearch";
 import { getEmilyTheme } from "./themes";
 import { fetchWikidataPois } from "./wikidata";
 import { parseWikivoyageCosts } from "./wikivoyageCosts";
@@ -351,9 +356,14 @@ async function fetchOsmPois(cityGeo: GeoResult, theme: string, city: string): Pr
   return places;
 }
 
-/** JSON에 없을 때 무료 공개 API로 장소 후보를 즉시 수집 */
-export async function fetchLivePlaces(city: string, theme: string): Promise<PlaceCandidate[]> {
-  const cache = readCache<PlaceCandidate[]>(cacheKey("places", `${city}:${theme}`));
+/** JSON에 없을 때 무료 공개 API로 장소 후보를 즉시 수집 (한·영·로컬어 Wikipedia) */
+export async function fetchLivePlaces(
+  city: string,
+  theme: string,
+  countryCode?: string
+): Promise<PlaceCandidate[]> {
+  const cacheKeyPlaces = cacheKey("places", `${city}:${theme}:${countryCode ?? "xx"}`);
+  const cache = readCache<PlaceCandidate[]>(cacheKeyPlaces);
   if (cache?.length) return cache;
 
   const themeMeta = getEmilyTheme(theme);
@@ -395,8 +405,29 @@ export async function fetchLivePlaces(city: string, theme: string): Promise<Plac
     }
   }
 
+  const mlQueries = buildMultilingualQueries(city, theme, countryCode);
+  for (const { lang, query } of mlQueries) {
+    if (places.length >= 10) break;
+    const results = await searchWikipediaLang(lang.wikiApi, query, 2);
+    for (const result of results) {
+      if (seen.has(result.title.toLowerCase())) continue;
+      const summary = await fetchWikiSummaryLang(result.lang, result.title);
+      if (!summary) continue;
+      seen.add(summary.title.toLowerCase());
+      places.push({
+        id: slugifyPlaceId(city, summary.title),
+        title: summary.title,
+        angle: `${themeMeta.shortLabel} (${lang.label})`,
+        why: `[${lang.label} Wikipedia] ${summary.extract}`,
+        source_urls: summary.url ? [summary.url] : [],
+        lat: summary.lat,
+        lng: summary.lng,
+      });
+    }
+  }
+
   for (const keyword of keywords) {
-    if (places.length >= 8) break;
+    if (places.length >= 10) break;
     const results = await searchWikipedia(`"${cityTitle}" ${keyword}`, 2);
     for (const result of results) {
       if (seen.has(result.title.toLowerCase())) continue;
@@ -416,6 +447,6 @@ export async function fetchLivePlaces(city: string, theme: string): Promise<Plac
   }
 
   const geocoded = await geocodePlaces(city, places);
-  writeCache(cacheKey("places", `${city}:${theme}`), geocoded);
+  writeCache(cacheKeyPlaces, geocoded);
   return geocoded;
 }
