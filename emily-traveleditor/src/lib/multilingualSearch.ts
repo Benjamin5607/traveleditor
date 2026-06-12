@@ -45,8 +45,11 @@ const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
     th: ["มรดกโลก วัด", "โบสถ์"],
   },
   nature_trail: {
-    ko: ["국립공원", "트레킹", "전망대"],
-    en: ["national park", "hiking trail", "viewpoint"],
+    ko: ["해변", "국립공원", "트레킹", "전망대"],
+    en: ["beach", "national park", "hiking trail", "viewpoint"],
+    ja: ["ビーチ", "海岸", "国立公園"],
+    th: ["ชายหาด", "อุทยานแห่งชาติ"],
+    vi: ["bãi biển", "vườn quốc gia"],
   },
   art_culture: {
     ko: ["미술관", "박물관", "갤러리"],
@@ -73,8 +76,9 @@ const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
     en: ["shopping district", "vintage", "boutique"],
   },
   photo_landmark: {
-    ko: ["랜드마크", "전망", "야경"],
-    en: ["landmark", "viewpoint", "iconic"],
+    ko: ["해변", "랜드마크", "전망", "야경"],
+    en: ["beach", "landmark", "viewpoint", "iconic"],
+    th: ["ชายหาด", "แลนด์มาร์ก"],
   },
 };
 

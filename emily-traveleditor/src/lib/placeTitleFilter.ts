@@ -1,5 +1,6 @@
 /** 여행 '장소'가 아닌 Wikipedia·메타·이벤트·컨셉 항목 제외 — 실제 POI만 통과 */
 
+import { isGenericPlaceName } from "./placeNaming";
 import type { PlaceSource } from "./placeQuality";
 
 /** Wikivoyage 도시 문서 자체 (예: "Wikivoyage: Bangkok") */
@@ -139,6 +140,7 @@ export function isPhysicalPlace(
 
   if (NON_PHYSICAL_TITLE.some((re) => re.test(t))) return false;
   if (NON_PHYSICAL_WHY.some((re) => re.test(hay))) return false;
+  if (isGenericPlaceName(t)) return false;
 
   const source = options?.source;
   const hasCoords =

@@ -15,6 +15,7 @@ import {
   metroBoundingBox,
   overpassBboxString,
 } from "./geoFence";
+import { beachWhy, isGenericPlaceName, pickBestOsmName, resolveOsmPlaceName } from "./placeNaming";
 import { isJunkPlaceTitle, isPhysicalPlace } from "./placeTitleFilter";
 import { getEmilyTheme } from "./themes";
 import {
@@ -49,21 +50,8 @@ type RawHit = {
   wikivoyageSection?: string;
 };
 
-const LANG_BY_COUNTRY: Record<string, string[]> = {
-  kr: ["ko", "en"],
-  jp: ["ja", "en", "ko"],
-  th: ["th", "en"],
-  vn: ["vi", "en"],
-  cn: ["zh", "en"],
-  tw: ["zh", "en"],
-  fr: ["fr", "en"],
-  de: ["de", "en"],
-  es: ["es", "en"],
-  it: ["it", "en"],
-};
-
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v6:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v7:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -85,17 +73,14 @@ function writeCache(key: string, places: PlaceCandidate[]) {
   }
 }
 
-function pickOsmName(tags: Record<string, string>, countryCode?: string): string | null {
-  const langs = countryCode ? LANG_BY_COUNTRY[countryCode.toLowerCase()] ?? [] : [];
-  for (const lang of langs) {
-    const v = tags[`name:${lang}`];
-    if (v?.trim()) return v.trim();
-  }
-  return tags.name?.trim() || tags.official_name?.trim() || tags["name:en"]?.trim() || null;
-}
-
-function osmWhy(tags: Record<string, string>, label: string, city: string) {
-  const parts = [`${city} OSM`, label];
+function osmWhy(tags: Record<string, string>, label: string, city: string, placeName?: string) {
+  const kind =
+    tags.natural === "beach" && placeName
+      ? `해변 · ${placeName}`
+      : tags.natural === "beach"
+        ? "해변"
+        : label;
+  const parts = [`${city} OSM`, kind];
   if (tags.cuisine) parts.push(`요리: ${tags.cuisine}`);
   if (tags.heritage) parts.push(`문화유산: ${tags.heritage}`);
   if (tags.historic) parts.push(`역사: ${tags.historic}`);
@@ -187,12 +172,16 @@ async function overpassSearch(
     const data = await response.json();
     for (const el of data.elements ?? []) {
       const tags = (el.tags ?? {}) as Record<string, string>;
-      const name = pickOsmName(tags, countryCode);
-      if (!name || seen.has(name.toLowerCase())) continue;
+      const name = await resolveOsmPlaceName(tags, countryCode);
+      if (!name || isGenericPlaceName(name, tags) || seen.has(name.toLowerCase())) continue;
       if (isGlobalChain(name, tags)) continue;
       if (isJunkPlaceTitle(name)) continue;
 
-      const why = osmWhy(tags, tags.historic || tags.amenity || tags.tourism || "POI", city);
+      const label = tags.historic || tags.amenity || tags.tourism || tags.natural || "POI";
+      const why =
+        tags.natural === "beach"
+          ? beachWhy(name, city)
+          : osmWhy(tags, label, city, name);
 
       if (isFaithTheme(themeId)) {
         const hasHeritage =
@@ -249,20 +238,27 @@ async function photonSearch(cityGeo: GeoResult, themeId: string, city: string): 
       const data = await response.json();
       for (const feature of data.features ?? []) {
         const props = feature.properties ?? {};
-        const name =
-          props["name:ko"] ||
-          props["name:ja"] ||
-          props["name:th"] ||
-          props["name:vi"] ||
-          props.name;
-        if (!name || seen.has(String(name).toLowerCase())) continue;
-
         const tagMap: Record<string, string> = {
           amenity: props.amenity ?? "",
           cuisine: props.cuisine ?? "",
           tourism: props.tourism ?? "",
+          natural: props.natural ?? "",
+          leisure: props.leisure ?? "",
           brand: props.brand ?? "",
         };
+        const name = pickBestOsmName(
+          {
+            name: props.name,
+            "name:ko": props["name:ko"],
+            "name:ja": props["name:ja"],
+            "name:th": props["name:th"],
+            "name:vi": props["name:vi"],
+            ...tagMap,
+          },
+          cityGeo.countryCode
+        );
+        if (!name || isGenericPlaceName(name, tagMap) || seen.has(String(name).toLowerCase())) continue;
+
         if (isGlobalChain(String(name), tagMap)) continue;
         if (isJunkPlaceTitle(String(name))) continue;
 
@@ -272,7 +268,10 @@ async function photonSearch(cityGeo: GeoResult, themeId: string, city: string): 
           if (!isWithinMetro(plat, plng, city, cityGeo)) continue;
         }
 
-        const why = `${city} Photon (${osmTag})`;
+        const why =
+          tagMap.natural === "beach"
+            ? beachWhy(String(name), city)
+            : `${city} Photon (${osmTag})`;
         const hit = hitFromQuality(
           {
             title: String(name),
@@ -348,17 +347,31 @@ async function nominatimLocalSearch(
     }>;
 
     const hits: RawHit[] = [];
+    const allowNatural = themeId === "nature_trail" || themeId === "photo_landmark";
+
     for (const r of rows) {
-      if (!/tourism|amenity|shop|leisure|historic/.test(`${r.class}/${r.type}`)) continue;
-      const name = r.display_name.split(",")[0]?.trim() || r.display_name;
-      if (isGlobalChain(name, r.extratags)) continue;
+      const classType = `${r.class}/${r.type}`;
+      if (!/tourism|amenity|shop|leisure|historic/.test(classType)) {
+        if (!(allowNatural && /natural\/beach/.test(classType))) continue;
+      }
+
+      const extratags = r.extratags ?? {};
+      const fromDisplay = r.display_name.split(",")[0]?.trim() || r.display_name;
+      const name =
+        pickBestOsmName({ name: fromDisplay, ...extratags }, cityGeo.countryCode) ?? fromDisplay;
+
+      if (isGenericPlaceName(name, extratags)) continue;
+      if (isGlobalChain(name, extratags)) continue;
       if (isJunkPlaceTitle(name)) continue;
 
       const lat = Number(r.lat);
       const lng = Number(r.lon);
       if (!isWithinMetro(lat, lng, city, cityGeo)) continue;
 
-      const why = `Nominatim (${r.class}/${r.type}) · ${city}`;
+      const why =
+        r.type === "beach" || extratags.natural === "beach"
+          ? beachWhy(name, city)
+          : `Nominatim (${r.class}/${r.type}) · ${city}`;
       if (isFaithTheme(themeId) && !passesFaithHeritageFilter(name, why)) continue;
 
       const hit = hitFromQuality(
@@ -472,6 +485,7 @@ export async function searchLocalPlaces(params: {
   for (const p of wikidataHits) {
     if (isFaithTheme(themeId) && !passesFaithHeritageFilter(p.title, p.why)) continue;
     if (isGlobalChain(p.title)) continue;
+    if (isGenericPlaceName(p.title)) continue;
     if (isJunkPlaceTitle(p.title, p.why)) continue;
     if (p.lat != null && p.lng != null && !isWithinMetro(p.lat, p.lng, city, cityGeo)) continue;
 

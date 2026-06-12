@@ -1,3 +1,4 @@
+import { isGenericPlaceName } from "./placeNaming";
 import type { ThemeId } from "./themes";
 import { isJunkPlaceTitle } from "./placeTitleFilter";
 
@@ -62,6 +63,7 @@ export function scorePlaceQuality(input: QualityInput): number {
   const { title, why, source, themeId, tags, wikivoyageSection, nominatimImportance } = input;
 
   if (isJunkPlaceTitle(title, why)) return -100;
+  if (isGenericPlaceName(title, tags)) return -100;
   if (isGlobalChain(title, tags)) return -100;
   if (isFastFood(tags)) return -80;
 
@@ -92,6 +94,7 @@ export function scorePlaceQuality(input: QualityInput): number {
   if (tags) {
     if (tags.cuisine) score += 18;
     if (tags.wikipedia || tags.wikidata) score += 22;
+    if (tags.natural === "beach" && tags.name && !isGenericPlaceName(tags.name, tags)) score += 18;
     if (tags.tourism === "attraction") score += 14;
     if (tags.heritage || tags.historic) score += 12;
     if (tags.stars || tags["michelin:stars"]) score += 16;

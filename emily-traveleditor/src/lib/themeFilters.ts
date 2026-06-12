@@ -29,6 +29,9 @@ export const THEME_OSM: Record<ThemeId, Array<{ filter: string; label: string }>
     { filter: '["historic"="mosque"]', label: "역사 모스크" },
   ],
   nature_trail: [
+    { filter: '["natural"="beach"]["name"]', label: "해변" },
+    { filter: '["natural"="beach"]["wikidata"]', label: "해변(위키데이터)" },
+    { filter: '["leisure"="beach_resort"]["name"]', label: "해변 리조트" },
     { filter: '["leisure"="nature_reserve"]', label: "자연보호구역" },
     { filter: '["boundary"="national_park"]', label: "국립공원" },
     { filter: '["natural"="peak"]', label: "전망봉우리" },
@@ -73,6 +76,8 @@ export const THEME_OSM: Record<ThemeId, Array<{ filter: string; label: string }>
     { filter: '["amenity"="marketplace"]', label: "플리마켓" },
   ],
   photo_landmark: [
+    { filter: '["natural"="beach"]["name"]', label: "해변" },
+    { filter: '["natural"="beach"]["wikidata"]', label: "해변(위키데이터)" },
     { filter: '["tourism"="attraction"]', label: "명소" },
     { filter: '["tourism"="viewpoint"]', label: "전망" },
     { filter: '["man_made"="tower"]', label: "타워" },
@@ -85,14 +90,14 @@ export const THEME_PHOTON_TAGS: Record<ThemeId, string[]> = {
   drink_craft: ["craft:brewery", "craft:winery", "craft:distillery"],
   yolo_night: ["amenity:nightclub", "amenity:bar"],
   faith_heritage: ["historic:church", "historic:monastery", "heritage"],
-  nature_trail: ["leisure:nature_reserve", "tourism:viewpoint", "natural:peak"],
+  nature_trail: ["natural:beach", "leisure:nature_reserve", "tourism:viewpoint", "natural:peak"],
   art_culture: ["tourism:museum", "tourism:gallery", "amenity:theatre"],
   food_market: ["amenity:marketplace", "amenity:food_court"],
   history_heritage: ["historic:castle", "historic:monument", "heritage"],
   family_fun: ["tourism:zoo", "tourism:aquarium", "tourism:theme_park"],
   wellness_spa: ["leisure:spa", "natural:hot_spring"],
   shopping_style: ["shop:clothes", "shop:boutique", "shop:department_store"],
-  photo_landmark: ["tourism:attraction", "tourism:viewpoint", "man_made:tower"],
+  photo_landmark: ["natural:beach", "tourism:attraction", "tourism:viewpoint", "man_made:tower"],
 };
 
 export const THEME_WIKIDATA_TYPES: Record<ThemeId, string[]> = {
@@ -100,14 +105,14 @@ export const THEME_WIKIDATA_TYPES: Record<ThemeId, string[]> = {
   drink_craft: ["wd:Q156362", "wd:Q131734", "wd:Q185583"],
   yolo_night: ["wd:Q622425", "wd:Q187456"],
   faith_heritage: ["wd:Q16970", "wd:Q44613", "wd:Q32815", "wd:Q839954", "wd:Q56242215"],
-  nature_trail: ["wd:Q46169", "wd:Q8502", "wd:Q271669"],
+  nature_trail: ["wd:Q40080", "wd:Q46169", "wd:Q8502", "wd:Q271669"],
   art_culture: ["wd:Q33506", "wd:Q207694", "wd:Q24354"],
   food_market: ["wd:Q132510", "wd:Q11707"],
   history_heritage: ["wd:Q839954", "wd:Q23413", "wd:Q16560"],
   family_fun: ["wd:Q43501", "wd:Q23397", "wd:Q194195"],
   wellness_spa: ["wd:Q1065424", "wd:Q180111"],
   shopping_style: ["wd:Q11315", "wd:Q213441"],
-  photo_landmark: ["wd:Q570116", "wd:Q41176", "wd:Q12544"],
+  photo_landmark: ["wd:Q40080", "wd:Q570116", "wd:Q41176", "wd:Q12544"],
 };
 
 export const THEME_SLOT_REASON: Record<ThemeId, string> = {
