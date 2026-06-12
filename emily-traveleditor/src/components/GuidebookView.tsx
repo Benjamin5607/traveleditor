@@ -1,5 +1,6 @@
 import { formatKrw } from "../lib/budget";
 import type { TravelGuidebook } from "../lib/tripTypes";
+import RouteMap from "./RouteMap";
 
 type GuidebookViewProps = {
   guidebook: TravelGuidebook;
@@ -13,7 +14,6 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
     places,
     preferences,
     mapUrl,
-    mapEmbedUrl,
     osmDirectionsUrl,
     flightEstimate,
     flightDetail,
@@ -189,21 +189,20 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
       </section>
 
       <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950/80 p-4">
-        <p className="mb-3 px-2 text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Map</p>
-        {mapEmbedUrl ? (
-          <iframe
-            title="OpenStreetMap route preview"
-            src={mapEmbedUrl}
-            className="h-72 w-full rounded-2xl border-0 bg-zinc-900"
-            loading="lazy"
-          />
-        ) : (
-          <div className="flex h-72 items-center justify-center rounded-2xl bg-zinc-900 text-sm text-zinc-400">
-            <a href={bookingLinks.osm} target="_blank" rel="noreferrer" className="font-bold text-yellow-200">
-              OSM에서 {preferences.city} 보기
+        <div className="mb-3 flex flex-wrap items-end justify-between gap-2 px-2">
+          <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Map</p>
+          <div className="flex flex-wrap gap-3 text-xs font-bold">
+            <a href={mapUrl} target="_blank" rel="noreferrer" className="text-yellow-200 hover:text-yellow-100">
+              Google Maps 전체 경로
             </a>
+            {osmDirectionsUrl && (
+              <a href={osmDirectionsUrl} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">
+                OSM 길찾기
+              </a>
+            )}
           </div>
-        )}
+        </div>
+        <RouteMap city={preferences.city} days={days} places={places} />
       </section>
 
       <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">

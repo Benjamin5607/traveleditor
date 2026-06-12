@@ -1,3 +1,4 @@
+import { buildGoogleMapsSearchQuery, sanitizePlaceTitle } from "./placeLinks";
 import type { BookingLinkSet, LodgingId } from "./tripTypes";
 
 function encode(value: string) {
@@ -45,24 +46,20 @@ export function buildBookingLinks(city: string, lodging: LodgingId): BookingLink
   };
 }
 
+/** 경로/장소 — 좌표 대신 가게명+도시로 Google Maps 연결 */
 export function buildRouteMapUrl(
   city: string,
   stops: Array<{ title: string; lat?: number; lng?: number }>
 ) {
-  const withCoords = stops.filter((stop) => typeof stop.lat === "number" && typeof stop.lng === "number");
-  if (withCoords.length >= 2) {
-    const path = withCoords.map((stop) => `${stop.lat},${stop.lng}`).join("/");
-    return `https://www.google.com/maps/dir/${path}`;
-  }
-  if (withCoords.length === 1) {
-    return `https://www.google.com/maps/search/?api=1&query=${withCoords[0].lat},${withCoords[0].lng}`;
-  }
   if (stops.length >= 2) {
-    const path = stops.map((stop) => encodeURIComponent(`${stop.title}, ${city}`)).join("/");
+    const path = stops
+      .map((stop) => buildGoogleMapsSearchQuery(city, stop.title))
+      .join("/");
     return `https://www.google.com/maps/dir/${path}`;
   }
   if (stops.length === 1) {
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${stops[0].title}, ${city}`)}`;
+    const name = sanitizePlaceTitle(stops[0].title);
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name}, ${city}`)}`;
   }
   return `https://www.google.com/maps/search/${encode(city)}`;
 }
