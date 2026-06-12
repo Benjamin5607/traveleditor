@@ -15,7 +15,7 @@ import {
   metroBoundingBox,
   overpassBboxString,
 } from "./geoFence";
-import { isJunkPlaceTitle } from "./placeTitleFilter";
+import { isJunkPlaceTitle, isPhysicalPlace } from "./placeTitleFilter";
 import { getEmilyTheme } from "./themes";
 import {
   THEME_OSM,
@@ -63,7 +63,7 @@ const LANG_BY_COUNTRY: Record<string, string[]> = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v4:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v6:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -120,6 +120,17 @@ function hitFromQuality(
   partial: Omit<RawHit, "qualityScore"> & { nominatimImportance?: number },
   themeId: string
 ): RawHit | null {
+  if (
+    !isPhysicalPlace(partial.title, partial.why, {
+      lat: partial.lat,
+      lng: partial.lng,
+      source: partial.source,
+      wikivoyageSection: partial.wikivoyageSection,
+    })
+  ) {
+    return null;
+  }
+
   const qualityScore = scorePlaceQuality({
     title: partial.title,
     why: partial.why,
@@ -491,6 +502,15 @@ export async function searchLocalPlaces(params: {
       if (isGlobalChain(w.title)) continue;
       if (isJunkPlaceTitle(w.title, w.why)) continue;
       if (w.lat != null && w.lng != null && !isWithinMetro(w.lat, w.lng, city, cityGeo)) continue;
+      if (
+        !isPhysicalPlace(w.title, w.why, {
+          lat: w.lat,
+          lng: w.lng,
+          source: "wikipedia",
+        })
+      ) {
+        continue;
+      }
       const hit = hitFromQuality(
         {
           title: w.title,
