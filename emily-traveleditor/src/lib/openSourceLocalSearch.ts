@@ -6,7 +6,7 @@ import type { GeoResult } from "./geoTypes";
 import { getEmilyTheme } from "./themes";
 import { fetchWikidataPois } from "./wikidata";
 import { parseVenuesFromWikivoyage } from "./wikivoyageParser";
-import { buildMultilingualQueries, resolveSearchLanguages } from "./multilingualSearch";
+import { buildMultilingualQueries } from "./multilingualSearch";
 import type { PlaceCandidate } from "./tripTypes";
 import { slugifyPlaceId } from "./travelData";
 
@@ -353,7 +353,6 @@ export async function searchLocalPlaces(params: {
   hits.push(...photonHits);
   if (photonHits.length) sourcesUsed.add("photon");
 
-  const langs = resolveSearchLanguages(countryCode);
   const queries = buildMultilingualQueries(city, theme, countryCode);
   for (const { lang, query } of queries.slice(0, 6)) {
     const nomHits = await nominatimLocalSearch(query, cityGeo, city);
