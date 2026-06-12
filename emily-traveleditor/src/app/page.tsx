@@ -4,10 +4,12 @@ import GuidebookView from "../components/GuidebookView";
 import { getEmilyWorkers } from "../lib/groqMarket";
 import type { EmilyWorker } from "../lib/groqMarket";
 import { buildTravelGuidebook } from "../lib/tripPlanner";
+import { BUDGET_THEMES } from "../lib/budgetThemes";
 import { EMILY_THEMES, type EmilyThemeName } from "../lib/themes";
 import {
   LODGING_OPTIONS,
   TRANSPORT_OPTIONS,
+  type BudgetThemeId,
   type LodgingId,
   type TransportId,
   type TravelGuidebook,
@@ -38,7 +40,8 @@ export default function Home() {
   const [nights, setNights] = useState(2);
   const [transport, setTransport] = useState<TransportId>("bus");
   const [lodging, setLodging] = useState<LodgingId>("hotel");
-  const [budgetKrw, setBudgetKrw] = useState(1500000);
+  const [budgetTheme, setBudgetTheme] = useState<BudgetThemeId>("smart_value");
+  const [budgetKrw, setBudgetKrw] = useState(1200000);
   const [guidebook, setGuidebook] = useState<TravelGuidebook | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -71,6 +74,7 @@ export default function Home() {
       nights: lodging === "none" ? 0 : nights,
       transport,
       lodging,
+      budgetTheme,
       budgetKrw,
     };
 
@@ -102,7 +106,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-2xl text-base leading-7 text-zinc-300">
-                Wikidata·Photon·Wikivoyage 무료 체인으로 어떤 도시든 즉시 보강. 물가는 Wikivoyage 파싱, 항공은 거리 공식, 일정은 경로 최적화 엔진.
+                EOSLS 로컬 검색(OSM·Nominatim·Photon·Wikivoyage)으로 실제 장소명 수집. Wikipedia는 폴백만.
               </p>
             </div>
           </div>
@@ -159,8 +163,16 @@ export default function Home() {
               <input type="number" min={0} max={13} value={nights} onChange={(e) => setNights(Number(e.target.value))} className="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white" />
             </label>
             <label className="space-y-2">
-              <span className="text-xs font-bold text-zinc-500">예산 (원)</span>
-              <input type="number" min={100000} step={50000} value={budgetKrw} onChange={(e) => setBudgetKrw(Number(e.target.value))} className="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white" />
+              <span className="text-xs font-bold text-zinc-500">예산 (원){budgetTheme !== "custom" ? " · 테마 자동" : ""}</span>
+              <input
+                type="number"
+                min={100000}
+                step={50000}
+                value={budgetKrw}
+                onChange={(e) => setBudgetKrw(Number(e.target.value))}
+                disabled={budgetTheme !== "custom"}
+                className="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white disabled:opacity-50"
+              />
             </label>
             <label className="space-y-2">
               <span className="text-xs font-bold text-zinc-500">이동 수단</span>
@@ -174,6 +186,34 @@ export default function Home() {
                 {LODGING_OPTIONS.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
               </select>
             </label>
+          </div>
+        </section>
+
+        <section className="no-print rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
+          <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Budget vibe</p>
+          <h2 className="mt-2 text-2xl font-black text-white">MZ 예산 테마</h2>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {BUDGET_THEMES.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  setBudgetTheme(item.id);
+                  if (item.id !== "custom") {
+                    setBudgetKrw(item.defaultBudgetKrw);
+                    if (item.suggestedLodging !== "none") setLodging(item.suggestedLodging);
+                  }
+                }}
+                className={`rounded-2xl border p-4 text-left transition ${
+                  budgetTheme === item.id ? "border-pink-300/60 bg-pink-300/10" : "border-white/10 bg-white/[0.04]"
+                }`}
+              >
+                <p className="text-2xl">{item.emoji}</p>
+                <p className="mt-2 font-black text-white">{item.name}</p>
+                <p className="mt-1 text-xs font-bold text-pink-200">{item.tagline}</p>
+                <p className="mt-2 text-sm text-zinc-400">{item.description}</p>
+              </button>
+            ))}
           </div>
         </section>
 

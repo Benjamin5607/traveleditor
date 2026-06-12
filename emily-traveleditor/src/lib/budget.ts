@@ -1,5 +1,6 @@
 import { costsFromCountryCode } from "./liveCost";
 import { flightMidpoint, estimateFlightFromSeoul } from "./flightEstimates";
+import { applyCostMultipliers, getBudgetTheme } from "./budgetThemes";
 import type { BudgetBreakdown, LodgingId, TransportId, TripPreferences } from "./tripTypes";
 import type { CityCostIndex, MarketDb } from "./travelData";
 import { normalizeCityName } from "./travelData";
@@ -54,7 +55,9 @@ export function estimateBudget(
     priceSource?: string;
   }
 ): BudgetBreakdown {
-  const costs = getCityCosts(market, prefs.city, options?.countryCode, options?.liveCostHints);
+  const baseCosts = getCityCosts(market, prefs.city, options?.countryCode, options?.liveCostHints);
+  const costs = applyCostMultipliers(baseCosts, prefs.budgetTheme);
+  const budgetTheme = getBudgetTheme(prefs.budgetTheme);
   const nights = prefs.lodging === "none" ? 0 : prefs.nights;
   const days = Math.max(prefs.days, 1);
 
@@ -67,8 +70,9 @@ export function estimateBudget(
   const total = flights + lodging + transport + meals + activities;
 
   const notes = [
+    `예산 테마: ${budgetTheme.emoji} ${budgetTheme.name} — ${budgetTheme.tagline}`,
     "항공권은 서울 출발 무료 추정(테이블·거리·권역) 중간값입니다.",
-    "숙박·교통·식비·체험비는 도시/국가 물가 티어 기준 추정치입니다.",
+    "숙박·교통·식비·체험비는 물가 티어 × 예산 테마 배율을 적용했습니다.",
     "실제 예약 가격은 검색 링크에서 반드시 다시 확인하세요.",
   ];
 

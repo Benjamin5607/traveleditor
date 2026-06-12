@@ -19,8 +19,13 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
     flightDetail,
     lodgingRecommendations,
     itineraryRationale,
+    narration,
+    budgetThemeLabel,
     dataSource,
+    searchSourcesLabel,
   } = guidebook;
+
+  const AMENITY_LABEL = { meal: "🍽 식사", cafe: "☕ 카페", restroom: "🚻 화장실" } as const;
 
   const bookingItems = [
     { label: "Google 항공권", href: bookingLinks.flights },
@@ -40,8 +45,13 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-yellow-200">My Travel Guidebook</p>
           <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-bold text-zinc-400">
-            {dataSource === "live" ? "실시간 무료 API 보강" : "수집 JSON 기반"}
+            {dataSource === "live" ? `EOSLS 로컬 검색` : "수집 JSON 기반"}
           </span>
+          {searchSourcesLabel && (
+            <span className="rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-bold text-emerald-300">
+              {searchSourcesLabel}
+            </span>
+          )}
         </div>
         <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white">{guidebook.title}</h2>
         <p className="mt-4 max-w-3xl text-base leading-7 text-zinc-300">{guidebook.summary}</p>
@@ -49,6 +59,7 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
           <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{preferences.city}</span>
           <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{preferences.theme}</span>
           <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">{preferences.days}일 {preferences.nights}박</span>
+          <span className="rounded-full border border-yellow-200/30 bg-yellow-200/10 px-3 py-1 text-yellow-100">{budgetThemeLabel}</span>
           <span className="rounded-full border border-white/10 px-3 py-1 text-zinc-300">예산 {formatKrw(preferences.budgetKrw)}</span>
         </div>
         <button
@@ -59,6 +70,14 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
           PDF로 저장 (인쇄)
         </button>
       </header>
+
+      <section className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-indigo-500/10 to-transparent p-6">
+        <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Guide</p>
+        <h3 className="mt-2 text-2xl font-black text-white">여행 가이드 해설</h3>
+        <p className="mt-4 text-base leading-7 text-zinc-300">{narration.welcome}</p>
+        <p className="mt-4 text-sm leading-7 text-zinc-400">{narration.philosophy}</p>
+        <p className="mt-3 text-xs text-zinc-500">{narration.searchNote}</p>
+      </section>
 
       {/* 항공 — 구간·항공사·이유 */}
       <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
@@ -207,6 +226,9 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
           {days.map((day) => (
             <div key={day.day} className="rounded-3xl border border-white/10 bg-black/20 p-5">
               <h4 className="text-lg font-black text-white">{day.label}</h4>
+              {narration.dayIntros[day.day] && (
+                <p className="mt-2 text-sm leading-6 text-zinc-400">{narration.dayIntros[day.day]}</p>
+              )}
               <div className="mt-4 space-y-4">
                 {day.blocks.map((block, index) => {
                   const place = places.find((item) => item.id === block.place_id);
@@ -240,6 +262,28 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
                           <span className="font-bold text-zinc-300">일정 근거: </span>
                           {block.rationale}
                         </p>
+                      )}
+                      {block.amenities && block.amenities.length > 0 && (
+                        <div className="space-y-2 rounded-xl border border-white/5 bg-white/[0.03] p-4">
+                          <p className="text-xs font-bold uppercase tracking-[0.15em] text-zinc-500">루트 휴게·식사</p>
+                          {block.amenities.map((amenity) => (
+                            <div key={`${amenity.kind}-${amenity.name}`} className="rounded-lg bg-black/20 p-3">
+                              <p className="text-sm font-bold text-white">
+                                {AMENITY_LABEL[amenity.kind]} · {amenity.name}
+                              </p>
+                              <p className="mt-1 text-xs leading-5 text-zinc-400">{amenity.why}</p>
+                              <p className="mt-1 text-xs text-zinc-500">{amenity.tip}</p>
+                              <a
+                                href={amenity.mapsUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="mt-2 inline-flex text-xs font-bold text-yellow-200 hover:text-yellow-100"
+                              >
+                                Google Maps →
+                              </a>
+                            </div>
+                          ))}
+                        </div>
                       )}
                     </div>
                   );
@@ -286,14 +330,15 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         </div>
       </section>
 
-      {guidebook.tips.length > 0 && (
-        <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
-          <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Tips</p>
-          <ul className="mt-4 space-y-2 text-sm leading-7 text-zinc-300">
+      <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
+        <p className="text-xs font-bold uppercase tracking-[0.35em] text-zinc-500">Closing</p>
+        <p className="mt-3 text-sm leading-7 text-zinc-300">{narration.closing}</p>
+        {guidebook.tips.length > 0 && (
+          <ul className="mt-4 space-y-2 border-t border-white/10 pt-4 text-sm leading-7 text-zinc-400">
             {guidebook.tips.map((tip) => <li key={tip}>• {tip}</li>)}
           </ul>
-        </section>
-      )}
+        )}
+      </section>
     </div>
   );
 }

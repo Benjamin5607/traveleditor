@@ -1,10 +1,13 @@
+import { getBudgetTheme } from "./budgetThemes";
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
 import { buildFlightDetail } from "./flightDetails";
 import { flightMidpoint } from "./flightEstimates";
+import { buildGuideNarration } from "./guideNarration";
 import { buildSmartItinerary } from "./itineraryEngine";
 import { buildLodgingRecommendations } from "./lodgingRecommendations";
 import { enrichPlacesWithMaps } from "./placeLinks";
+import { attachRouteAmenities } from "./routeAmenities";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { getEmilyTheme } from "./themes";
@@ -54,6 +57,8 @@ type GuidebookCore = Omit<
   | "flightEstimate"
   | "flightDetail"
   | "lodgingRecommendations"
+  | "narration"
+  | "budgetThemeLabel"
   | "dataSource"
 >;
 
@@ -141,7 +146,8 @@ async function buildItineraryWithGroq(
   prefs: TripPreferences,
   places: PlaceCandidate[],
   modelId: string,
-  apiKey: string
+  apiKey: string,
+  cityCenter?: { lat: number; lng: number }
 ): Promise<GuidebookCore> {
   const theme = getEmilyTheme(prefs.theme);
   const placePayload = places.map((place) => ({
@@ -216,11 +222,11 @@ ${JSON.stringify(placePayload, null, 2)}
     });
 
     const data = await response.json();
-    if (!response.ok) return smartItinerary(prefs, places);
+    if (!response.ok) return smartItinerary(prefs, places, cityCenter);
     const parsed = JSON.parse(data.choices[0].message.content) as RawItineraryResponse;
     return sanitizeItinerary(parsed, prefs, places);
   } catch {
-    return smartItinerary(prefs, places);
+    return smartItinerary(prefs, places, cityCenter);
   }
 }
 
@@ -238,10 +244,13 @@ export async function buildTravelGuidebook(
   const voyageExtract = await fetchWikivoyageExtract(prefs.city);
   const rawItems = findCityRecommendations(themeDb?.themes?.[prefs.theme]?.cities, prefs.city);
   let dataSource: "static" | "live" = "static";
+  let searchSourcesLabel: string | undefined;
   let places = toPlaceCandidates(prefs.city, rawItems);
 
   if (places.length === 0) {
-    places = await fetchLivePlaces(prefs.city, prefs.theme);
+    const live = await fetchLivePlaces(prefs.city, prefs.theme, cityGeo?.countryCode);
+    places = live.places;
+    searchSourcesLabel = live.sourcesLabel;
     dataSource = "live";
   }
 
@@ -257,9 +266,26 @@ export async function buildTravelGuidebook(
   const liveCostHints = await fetchLiveCostHints(prefs.city, marketDb?.rates);
   const hasLiveCosts = Object.keys(liveCostHints).length > 0;
 
-  const itineraryCore = useGroq
-    ? await buildItineraryWithGroq(prefs, places, modelId!, key!)
+  let itineraryCore = useGroq
+    ? await buildItineraryWithGroq(prefs, places, modelId!, key!, cityCenter)
     : smartItinerary(prefs, places, cityCenter);
+
+  const daysWithAmenities = await attachRouteAmenities(
+    itineraryCore.days,
+    places,
+    prefs.city,
+    prefs.budgetTheme
+  );
+  itineraryCore = { ...itineraryCore, days: daysWithAmenities };
+
+  const narration = buildGuideNarration(
+    prefs,
+    places,
+    itineraryCore.days,
+    cityGeo?.countryCode
+  );
+
+  const budgetThemeMeta = getBudgetTheme(prefs.budgetTheme);
 
   const lodgingRecommendations = buildLodgingRecommendations(
     prefs.city,
@@ -296,7 +322,11 @@ export async function buildTravelGuidebook(
 
   const tips = [...itineraryCore.tips];
   if (dataSource === "live") {
-    tips.push("수집 JSON 없음 → Wikidata·Photon·Wikivoyage·Wikipedia 무료 체인으로 즉시 보강했습니다.");
+    tips.push(
+      searchSourcesLabel
+        ? `로컬 장소 수집 (EOSLS): ${searchSourcesLabel}`
+        : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
+    );
   }
   if (!useGroq) {
     tips.push("무료 경로 최적화 일정 엔진 사용. Groq 키 있으면 AI 일정·근거 문구가 더 풍부해집니다.");
@@ -307,6 +337,8 @@ export async function buildTravelGuidebook(
   return {
     ...itineraryCore,
     tips,
+    narration,
+    budgetThemeLabel: `${budgetThemeMeta.emoji} ${budgetThemeMeta.name}`,
     lodgingRecommendations,
     budget,
     bookingLinks,
@@ -322,5 +354,6 @@ export async function buildTravelGuidebook(
     },
     flightDetail,
     dataSource,
+    searchSourcesLabel,
   };
 }

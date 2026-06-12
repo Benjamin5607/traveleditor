@@ -1,4 +1,4 @@
-import type { GeoResult } from "./liveTravel";
+import type { GeoResult } from "./geoTypes";
 import { normalizeCityName } from "./travelData";
 
 const DATA_BASE = "/traveleditor/data";
