@@ -1,5 +1,24 @@
+import { isAdministrativePlace } from "./placeTitleFilter";
 import type { ThemeId } from "./themes";
 import type { PlaceCandidate } from "./tripTypes";
+
+/** 테마 무관 도시 하이라이트 — 유연 테마 일정 보충용 */
+export const GENERAL_CITY_OSM: Array<{ filter: string; label: string }> = [
+  { filter: '["tourism"="attraction"]', label: "명소" },
+  { filter: '["tourism"="museum"]', label: "박물관" },
+  { filter: '["tourism"="viewpoint"]', label: "전망" },
+  { filter: '["amenity"="marketplace"]', label: "시장" },
+  { filter: '["historic"="monument"]', label: "랜드마크" },
+  { filter: '["leisure"="park"]', label: "공원" },
+  { filter: '["tourism"="gallery"]', label: "갤러리" },
+];
+
+export const GENERAL_PHOTON_TAGS = [
+  "tourism:attraction",
+  "tourism:museum",
+  "tourism:viewpoint",
+  "amenity:marketplace",
+];
 
 /** 테마별 OSM Overpass 필터 */
 export const THEME_OSM: Record<ThemeId, Array<{ filter: string; label: string }>> = {
@@ -29,6 +48,9 @@ export const THEME_OSM: Record<ThemeId, Array<{ filter: string; label: string }>
     { filter: '["historic"="mosque"]', label: "역사 모스크" },
   ],
   nature_trail: [
+    { filter: '["natural"="beach"]["name"]', label: "해변" },
+    { filter: '["natural"="beach"]["wikidata"]', label: "해변(위키데이터)" },
+    { filter: '["leisure"="beach_resort"]["name"]', label: "해변 리조트" },
     { filter: '["leisure"="nature_reserve"]', label: "자연보호구역" },
     { filter: '["boundary"="national_park"]', label: "국립공원" },
     { filter: '["natural"="peak"]', label: "전망봉우리" },
@@ -73,6 +95,8 @@ export const THEME_OSM: Record<ThemeId, Array<{ filter: string; label: string }>
     { filter: '["amenity"="marketplace"]', label: "플리마켓" },
   ],
   photo_landmark: [
+    { filter: '["natural"="beach"]["name"]', label: "해변" },
+    { filter: '["natural"="beach"]["wikidata"]', label: "해변(위키데이터)" },
     { filter: '["tourism"="attraction"]', label: "명소" },
     { filter: '["tourism"="viewpoint"]', label: "전망" },
     { filter: '["man_made"="tower"]', label: "타워" },
@@ -85,14 +109,14 @@ export const THEME_PHOTON_TAGS: Record<ThemeId, string[]> = {
   drink_craft: ["craft:brewery", "craft:winery", "craft:distillery"],
   yolo_night: ["amenity:nightclub", "amenity:bar"],
   faith_heritage: ["historic:church", "historic:monastery", "heritage"],
-  nature_trail: ["leisure:nature_reserve", "tourism:viewpoint", "natural:peak"],
+  nature_trail: ["natural:beach", "leisure:nature_reserve", "tourism:viewpoint", "natural:peak"],
   art_culture: ["tourism:museum", "tourism:gallery", "amenity:theatre"],
   food_market: ["amenity:marketplace", "amenity:food_court"],
   history_heritage: ["historic:castle", "historic:monument", "heritage"],
   family_fun: ["tourism:zoo", "tourism:aquarium", "tourism:theme_park"],
   wellness_spa: ["leisure:spa", "natural:hot_spring"],
   shopping_style: ["shop:clothes", "shop:boutique", "shop:department_store"],
-  photo_landmark: ["tourism:attraction", "tourism:viewpoint", "man_made:tower"],
+  photo_landmark: ["natural:beach", "tourism:attraction", "tourism:viewpoint", "man_made:tower"],
 };
 
 export const THEME_WIKIDATA_TYPES: Record<ThemeId, string[]> = {
@@ -100,14 +124,14 @@ export const THEME_WIKIDATA_TYPES: Record<ThemeId, string[]> = {
   drink_craft: ["wd:Q156362", "wd:Q131734", "wd:Q185583"],
   yolo_night: ["wd:Q622425", "wd:Q187456"],
   faith_heritage: ["wd:Q16970", "wd:Q44613", "wd:Q32815", "wd:Q839954", "wd:Q56242215"],
-  nature_trail: ["wd:Q46169", "wd:Q8502", "wd:Q271669"],
+  nature_trail: ["wd:Q40080", "wd:Q46169", "wd:Q8502", "wd:Q271669"],
   art_culture: ["wd:Q33506", "wd:Q207694", "wd:Q24354"],
   food_market: ["wd:Q132510", "wd:Q11707"],
   history_heritage: ["wd:Q839954", "wd:Q23413", "wd:Q16560"],
   family_fun: ["wd:Q43501", "wd:Q23397", "wd:Q194195"],
   wellness_spa: ["wd:Q1065424", "wd:Q180111"],
   shopping_style: ["wd:Q11315", "wd:Q213441"],
-  photo_landmark: ["wd:Q570116", "wd:Q41176", "wd:Q12544"],
+  photo_landmark: ["wd:Q40080", "wd:Q570116", "wd:Q41176", "wd:Q12544"],
 };
 
 export const THEME_SLOT_REASON: Record<ThemeId, string> = {
@@ -157,7 +181,45 @@ export function passesFaithHeritageFilter(title: string, why?: string): boolean 
   return false;
 }
 
+const THEME_RELEVANCE: Record<ThemeId, RegExp> = {
+  peace_calm: /cafe|coffee|tea|garden|museum|park|spa|조용|차|카페|정원|박물관/i,
+  drink_craft: /brewery|winery|distillery|pub|bar|와이너리|양조|브루|증류|醸造|ワイナリー/i,
+  yolo_night: /club|bar|night|pub|lounge|biergarten|클럽|바|나이트|nightclub/i,
+  faith_heritage: FAITH_ACCEPT_TITLE,
+  nature_trail: /beach|park|trail|hike|viewpoint|mountain|forest|reserve|peak|해변|공원|트레킹|전망|国立公園/i,
+  art_culture: /museum|gallery|theatre|theater|arts|exhibit|박물관|미술|공연|갤러리/i,
+  food_market: /market|food|restaurant|cuisine|street food|시장|맛집|푸드|요리|marketplace/i,
+  history_heritage: /castle|monument|heritage|historic|palace|ruins|유적|궁|성|문화유산|세계유산/i,
+  family_fun: /zoo|aquarium|theme park|amusement|family|동물원|수족관|테마파크/i,
+  wellness_spa: /spa|onsen|hot spring|bath|wellness|온천|스파|사우나/i,
+  shopping_style: /shop|boutique|mall|market|fashion|vintage|쇼핑|부티크|백화점/i,
+  photo_landmark: /landmark|tower|viewpoint|monument|bridge|iconic|랜드마크|전망|야경|타워/i,
+};
+
+const CITY_HIGHLIGHT_RE = /\[도시 일반\]|\[City highlight\]|도시 명소|City highlight|GENERAL_CITY|museum|attraction|monument|market|gallery|랜드마크|박물관|시장|명소/i;
+
+/** 테마와 무관한 일반 POI 제외 — 도시 하이라이트 태그는 완화 */
+export function passesThemeRelevance(
+  title: string,
+  why: string | undefined,
+  themeId: ThemeId
+): boolean {
+  if (themeId === "faith_heritage") {
+    return passesFaithHeritageFilter(title, why);
+  }
+
+  const hay = `${title} ${why ?? ""}`;
+  if (FAITH_REJECT_TITLE.test(title)) return false;
+  if (isAdministrativePlace(title, why)) return false;
+
+  if (CITY_HIGHLIGHT_RE.test(hay) && /museum|attraction|monument|market|gallery|park|viewpoint|랜드마크|박물관|시장|공원|전망/i.test(hay)) {
+    return true;
+  }
+
+  const pattern = THEME_RELEVANCE[themeId];
+  return pattern ? pattern.test(hay) : true;
+}
+
 export function filterPlacesForTheme(places: PlaceCandidate[], themeId: ThemeId): PlaceCandidate[] {
-  if (themeId !== "faith_heritage") return places;
-  return places.filter((p) => passesFaithHeritageFilter(p.title, p.why ?? p.angle));
+  return places.filter((p) => passesThemeRelevance(p.title, p.why ?? p.angle, themeId));
 }

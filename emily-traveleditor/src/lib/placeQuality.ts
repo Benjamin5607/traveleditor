@@ -1,5 +1,6 @@
+import { isGenericPlaceName } from "./placeNaming";
 import type { ThemeId } from "./themes";
-import { isJunkPlaceTitle } from "./placeTitleFilter";
+import { isAdministrativePlace, isJunkPlaceTitle } from "./placeTitleFilter";
 
 export type PlaceSource =
   | "wikivoyage"
@@ -18,6 +19,9 @@ const CHAIN_PATTERNS = [
   /dairy queen/i, /baskin/i, /krispy kreme/i, /jollibee/i, /lotteria/i,
   /mos burger/i, /yoshinoya/i, /sukiya/i, /coco ichibanya/i, /saizeriya/i,
   /h&m/i, /uniqlo/i, /zara/i, /ikea food/i, /amazon go/i,
+  /matsuya/i, /gyu-?don/i, /sushiro/i, /kura sushi/i, /ichiran/i,
+  /pepper lunch/i, /soup stock/i, /tully'?s/i, /doutor/i, /komeda/i,
+  /boots/i, /watsons/i, /daiso/i, /miniso/i, /cvs/i, /wawa/i,
 ];
 
 const REVIEW_SIGNALS =
@@ -49,21 +53,28 @@ export function isFastFood(tags?: Record<string, string>): boolean {
 
 /** 테마별 최소 품질 점수 — 이보다 낮으면 추천 제외 */
 const MIN_SCORE: Partial<Record<ThemeId, number>> = {
-  food_market: 58,
-  peace_calm: 50,
-  drink_craft: 52,
-  yolo_night: 48,
-  faith_heritage: 55,
-  photo_landmark: 50,
-  shopping_style: 48,
+  food_market: 62,
+  peace_calm: 54,
+  drink_craft: 56,
+  yolo_night: 52,
+  faith_heritage: 58,
+  photo_landmark: 54,
+  shopping_style: 52,
+  nature_trail: 52,
+  art_culture: 54,
+  history_heritage: 56,
+  family_fun: 52,
+  wellness_spa: 52,
 };
 
 export function scorePlaceQuality(input: QualityInput): number {
   const { title, why, source, themeId, tags, wikivoyageSection, nominatimImportance } = input;
 
   if (isJunkPlaceTitle(title, why)) return -100;
+  if (isGenericPlaceName(title, tags)) return -100;
   if (isGlobalChain(title, tags)) return -100;
   if (isFastFood(tags)) return -80;
+  if (isAdministrativePlace(title, why)) return -100;
 
   let score = 0;
 
@@ -92,7 +103,10 @@ export function scorePlaceQuality(input: QualityInput): number {
   if (tags) {
     if (tags.cuisine) score += 18;
     if (tags.wikipedia || tags.wikidata) score += 22;
-    if (tags.tourism === "attraction") score += 14;
+    if (tags.natural === "beach" && tags.name && !isGenericPlaceName(tags.name, tags)) score += 18;
+    if (tags.tourism === "attraction") {
+      score += tags.wikidata || tags.wikipedia ? 14 : 4;
+    }
     if (tags.heritage || tags.historic) score += 12;
     if (tags.stars || tags["michelin:stars"]) score += 16;
     if (tags.rating) score += Math.min(15, Number(tags.rating) * 3);
@@ -117,9 +131,9 @@ export function scorePlaceQuality(input: QualityInput): number {
   return Math.round(score);
 }
 
-export function passesQualityGate(input: QualityInput): boolean {
+export function passesQualityGate(input: QualityInput, options?: { relaxed?: boolean }): boolean {
   const score = scorePlaceQuality(input);
-  const min = MIN_SCORE[input.themeId] ?? 42;
+  const min = options?.relaxed ? 46 : (MIN_SCORE[input.themeId] ?? 50);
   return score >= min;
 }
 

@@ -105,70 +105,6 @@ function buildDayFlow(themeId: ThemeId, locale: "ko" | "en"): DaySlot[] {
   ];
 }
 
-function mealCopy(
-  kind: Exclude<ItineraryBlockKind, "attraction">,
-  locale: "ko" | "en",
-  city: string
-): { title: string; activity: string; rationale: string } {
-  const copy = {
-    breakfast: {
-      ko: {
-        title: "아침 식사",
-        activity: "근처 로컬 식당·카페에서 아침",
-        rationale: "하루를 시작하기 전 가볍게 식사합니다. 숙소·첫 장소 근처에서 해결하세요.",
-      },
-      en: {
-        title: "Breakfast",
-        activity: "Local breakfast near your stay or first stop",
-        rationale: "Fuel up before the first attraction — pick somewhere near your hotel or route.",
-      },
-    },
-    lunch: {
-      ko: {
-        title: "점심 식사",
-        activity: "오전 일정 후 근처에서 점심",
-        rationale: "오전 관광 후 이동 거리를 줄이기 위해 다음 장소 인근에서 식사합니다.",
-      },
-      en: {
-        title: "Lunch",
-        activity: "Lunch break after the morning stop",
-        rationale: "Eat near your route to avoid backtracking after the morning visit.",
-      },
-    },
-    dinner: {
-      ko: {
-        title: "저녁 식사",
-        activity: "하루 일정 중 저녁 식사",
-        rationale: "저녁은 당일 마지막 관광지·숙소 방향의 맛집을 고르세요.",
-      },
-      en: {
-        title: "Dinner",
-        activity: "Evening meal between afternoon and night plans",
-        rationale: "Pick a spot toward your last stop or lodging for the night.",
-      },
-    },
-    cafe: {
-      ko: {
-        title: "커피·디저트 휴식",
-        activity: "카페에서 잠깐 쉬어가기",
-        rationale: "오후 이동 전 컨디션 회복용 짧은 휴식입니다.",
-      },
-      en: {
-        title: "Coffee break",
-        activity: "Short cafe stop between sights",
-        rationale: "A quick rest before the next stop — check hours on Maps.",
-      },
-    },
-  } as const;
-
-  const c = copy[kind][locale];
-  return {
-    title: c.title,
-    activity: c.activity,
-    rationale: `${c.rationale} (${city})`,
-  };
-}
-
 function blockRationale(
   place: PlaceCandidate,
   themeId: string,
@@ -213,7 +149,8 @@ export type SmartItineraryResult = {
 export function buildSmartItinerary(
   prefs: TripPreferences,
   places: PlaceCandidate[],
-  cityCenter?: { lat: number; lng: number }
+  cityCenter?: { lat: number; lng: number },
+  poolBlendNote?: string
 ): SmartItineraryResult {
   const themeMeta = getEmilyTheme(prefs.theme);
   const theme = localizeTheme(themeMeta, prefs.locale);
@@ -222,6 +159,7 @@ export function buildSmartItinerary(
   const ordered = orderPlacesByRoute(places, cityCenter);
   const days: ItineraryDay[] = [];
   let placeIdx = 0;
+  const usedPlaceIds = new Set<string>();
 
   const attractionsPerDay = Math.min(
     attractionSlotsPerDay,
@@ -237,16 +175,21 @@ export function buildSmartItinerary(
           ordered.some((p) => p.lat != null)
             ? "Sight order follows nearest-neighbor routing from the city center."
             : "Sight order follows collection order where coordinates were missing.",
+          poolBlendNote,
+          "Each sight is used at most once — no repeating the same place across days.",
         ]
           .filter(Boolean)
           .join(" ")
       : [
-          `「${theme.name}」 테마 ${ordered.length}곳을 ${prefs.days}일로 나눴습니다.`,
+          `「${theme.name}」 테마를 중심으로 ${ordered.length}곳을 ${prefs.days}일에 배치했습니다.`,
           THEME_SLOT_REASON[themeMeta.id] ?? "",
+          "테마는 우선순위이지 유일한 선택이 아닙니다 — 긴 일정에는 도시 대표 명소도 섞었습니다.",
           "하루에 아침·점심·저녁·커피 휴식과 관광 2~4곳을 번갈아 넣었습니다.",
           ordered.some((p) => p.lat != null)
             ? "관광지 순서는 도시 중심에서 가까운 순(최근접 경로)입니다."
             : "좌표가 부족한 장소는 수집 순서를 유지했습니다.",
+          poolBlendNote,
+          "같은 장소는 하루·여러 날에 반복하지 않습니다.",
         ]
           .filter(Boolean)
           .join(" ");
@@ -258,11 +201,19 @@ export function buildSmartItinerary(
 
     for (const slot of dayFlow) {
       if (slot.kind === "attraction") {
-        if (attractionsToday >= attractionsPerDay || placeIdx >= ordered.length) {
+        if (attractionsToday >= attractionsPerDay) {
+          continue;
+        }
+
+        while (placeIdx < ordered.length && usedPlaceIds.has(ordered[placeIdx].id)) {
+          placeIdx += 1;
+        }
+        if (placeIdx >= ordered.length) {
           continue;
         }
 
         const place = ordered[placeIdx];
+        usedPlaceIds.add(place.id);
         placeIdx += 1;
         attractionsToday += 1;
 
@@ -299,15 +250,20 @@ export function buildSmartItinerary(
         continue;
       }
 
-      const meal = mealCopy(slot.kind, prefs.locale, prefs.city);
       blocks.push({
         time: slot.time,
         kind: slot.kind,
         place_id: `${slot.kind}:day${day}`,
-        place_title: meal.title,
-        activity: meal.activity,
+        place_title: "",
+        activity:
+          prefs.locale === "en"
+            ? "Nearby named cafe or restaurant (OSM lookup)"
+            : "근처 실제 상호명 식당·카페 (OSM 검색)",
         transport: prevCoords ? prefs.transport : "walk",
-        rationale: meal.rationale,
+        rationale:
+          prefs.locale === "en"
+            ? `Meal slot at ${slot.time} — filled only when OSM returns a real business name.`
+            : `${slot.time} 식사 슬롯 — OSM에서 실제 상호명이 확인될 때만 일정에 포함됩니다.`,
       });
     }
 
@@ -336,12 +292,12 @@ export function buildSmartItinerary(
       prefs.locale === "en"
         ? [
             "Each day mixes meals, cafe breaks, and multiple sights — not one stop per day.",
-            "Meal stops will be filled with nearby local spots from OSM when possible.",
+            "Meal stops appear only when OSM returns a real business name — no generic placeholders.",
             "Confirm all locations via Google Maps before visiting.",
           ]
         : [
             "하루에 한 곳만 가는 게 아니라 아침·점심·저녁·커피와 관광을 섞었습니다.",
-            "식사·카페는 가능하면 OSM 근처 로컬 맛집으로 채웁니다.",
+            "식사·카페는 OSM에서 실제 상호명이 확인된 곳만 일정에 넣습니다.",
             "방문 전 Google Maps에서 영업시간·위치를 꼭 확인하세요.",
           ],
   };

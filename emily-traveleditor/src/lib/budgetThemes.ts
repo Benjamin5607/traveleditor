@@ -55,8 +55,53 @@ export const BUDGET_THEMES = [
   },
 ] as const;
 
+const BUDGET_THEME_EN: Record<
+  BudgetThemeId,
+  { name: string; tagline: string; description: string; mealGuide: string; restroomGuide: string; narrationTone: string }
+> = {
+  miser_backpack: {
+    name: "Broke Backpacker",
+    tagline: "Save money, max experiences",
+    description: "Hostels, street food, free sights. Use station and mall restrooms.",
+    mealGuide: "Street stalls, markets, convenience-store meals. Avoid tourist-trap restaurants.",
+    restroomGuide: "OSM marks station, park, and mall restrooms on your route — mostly free.",
+    narrationTone: "Budget hero guide",
+  },
+  smart_value: {
+    name: "Smart Value",
+    tagline: "Spend where it counts",
+    description: "Guesthouses, local restaurants, key experiences. Public transit.",
+    mealGuide: "Local lunch, one splurge dinner for the theme. One cafe break in the afternoon.",
+    restroomGuide: "Café stops plus station restrooms along the route.",
+    narrationTone: "Practical value guide",
+  },
+  yolo_luxury: {
+    name: "YOLO Luxury",
+    tagline: "You only live once",
+    description: "Hotels, fine dining, premium experiences. Taxi or rental car.",
+    mealGuide: "Popular spots from Wikivoyage/OSM. Book ahead at peak hours.",
+    restroomGuide: "Hotel, department store, and premium café restrooms. Upscale café breaks included.",
+    narrationTone: "Luxury curator",
+  },
+  custom: {
+    name: "Custom budget",
+    tagline: "Your wallet, your rules",
+    description: "Enter your own budget amount.",
+    mealGuide: "Check OSM restaurants and cafés near each stop.",
+    restroomGuide: "Public restrooms and café breaks are marked on the route.",
+    narrationTone: "Custom guide",
+  },
+};
+
 export function getBudgetTheme(id: BudgetThemeId) {
   return BUDGET_THEMES.find((t) => t.id === id) ?? BUDGET_THEMES[2];
+}
+
+export function localizeBudgetTheme(id: BudgetThemeId, locale: "ko" | "en") {
+  const base = getBudgetTheme(id);
+  if (locale === "ko") return base;
+  const en = BUDGET_THEME_EN[id];
+  return { ...base, ...en };
 }
 
 export function applyCostMultipliers(

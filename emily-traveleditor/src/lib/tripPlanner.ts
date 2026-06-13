@@ -1,4 +1,4 @@
-import { getBudgetTheme } from "./budgetThemes";
+import { localizeBudgetTheme } from "./budgetThemes";
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
 import { buildFlightDetail } from "./flightDetails";
@@ -7,7 +7,10 @@ import { buildGuideNarration } from "./guideNarration";
 import { buildSmartItinerary } from "./itineraryEngine";
 import { buildLodgingRecommendations } from "./lodgingRecommendations";
 import { enrichPlacesWithMaps } from "./placeLinks";
-import { attachRouteAmenities } from "./routeAmenities";
+import { attachRouteAmenities, dropUnnamedMealBlocks } from "./routeAmenities";
+import { attachTransitLegs } from "./transitLegs";
+import { applyCostMultipliers } from "./budgetThemes";
+import { costsFromCountryCode } from "./liveCost";
 import { filterPlacesInMetro } from "./geoFence";
 import { filterValidPlaceCandidates, isJunkPlaceTitle } from "./placeTitleFilter";
 import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCity, geocodePlaces } from "./liveTravel";
@@ -19,6 +22,14 @@ import {
   passesQualityGate,
   scorePlaceQuality,
 } from "./placeQuality";
+import { searchSupplementaryPlaces } from "./openSourceLocalSearch";
+import {
+  blendPlacePools,
+  blendRationale,
+  isStrictTheme,
+  maxPlacePoolSize,
+  minPlacesForTrip,
+} from "./themeBlend";
 import { filterPlacesForTheme } from "./themeFilters";
 import { getEmilyTheme, themeDbKey } from "./themes";
 import type {
@@ -81,28 +92,48 @@ type GuidebookCore = Omit<
   | "dataSource"
 >;
 
-function rankPlacesByQuality(places: PlaceCandidate[], themeId: string): PlaceCandidate[] {
+function parsePlaceSource(place: PlaceCandidate): import("./placeQuality").PlaceSource {
+  const fromAngle = place.angle?.match(/\[(OSM|NOMINATIM|PHOTON|WIKIDATA|WIKIVOYAGE|WIKIPEDIA)/i)?.[1];
+  if (fromAngle) return fromAngle.toLowerCase() as import("./placeQuality").PlaceSource;
+  if (place.angle?.match(/Wikivoyage/i) || place.why?.includes("Wikivoyage")) return "wikivoyage";
+  if (place.why?.includes("Wikidata")) return "wikidata";
+  if (place.why?.includes("Nominatim")) return "nominatim";
+  if (place.why?.includes("Photon")) return "photon";
+  if (place.why?.includes("OSM")) return "osm";
+  return "wikivoyage";
+}
+
+function rankPlacesByQuality(
+  places: PlaceCandidate[],
+  themeId: string,
+  locale: "ko" | "en" = "ko"
+): PlaceCandidate[] {
+  const tid = themeId as import("./themes").ThemeId;
   return places
     .filter((p) => !isGlobalChain(p.title) && !isJunkPlaceTitle(p.title, p.why))
     .map((p) => {
+      const source = parsePlaceSource(p);
+      const wikivoyageSection = p.angle?.match(/Wikivoyage (See|Do|Eat|Drink|Buy|Sleep)/i)?.[1];
       const score = scorePlaceQuality({
         title: p.title,
         why: p.why ?? p.angle ?? "",
-        source: "wikivoyage",
-        themeId: themeId as import("./themes").ThemeId,
+        source,
+        themeId: tid,
+        wikivoyageSection,
       });
       return {
         ...p,
         qualityScore: score,
-        why: p.why ? buildQualityWhy(p.why, score, "ko") : p.why,
+        why: p.why ? buildQualityWhy(p.why, score, locale) : p.why,
       };
     })
     .filter((p) =>
       passesQualityGate({
         title: p.title,
         why: p.why ?? "",
-        source: "wikivoyage",
-        themeId: themeId as import("./themes").ThemeId,
+        source: parsePlaceSource(p),
+        themeId: tid,
+        wikivoyageSection: p.angle?.match(/Wikivoyage (See|Do|Eat|Drink|Buy|Sleep)/i)?.[1],
       })
     )
     .sort((a, b) => (b.qualityScore ?? 0) - (a.qualityScore ?? 0));
@@ -123,9 +154,10 @@ function attachBlockRationales(blocks: ItineraryBlock[], places: PlaceCandidate[
 function smartItinerary(
   prefs: TripPreferences,
   places: PlaceCandidate[],
-  cityCenter?: { lat: number; lng: number }
+  cityCenter?: { lat: number; lng: number },
+  poolBlendNote?: string
 ): GuidebookCore {
-  const smart = buildSmartItinerary(prefs, places, cityCenter);
+  const smart = buildSmartItinerary(prefs, places, cityCenter, poolBlendNote);
   return { ...smart, preferences: prefs, places };
 }
 
@@ -136,6 +168,7 @@ function sanitizeItinerary(
 ): GuidebookCore {
   const allowedIds = new Set(places.map((place) => place.id));
   const days: ItineraryDay[] = [];
+  const usedInTrip = new Set<string>();
 
   for (const rawDay of raw.days ?? []) {
     const dayNumber = Number(rawDay.day) || days.length + 1;
@@ -146,10 +179,13 @@ function sanitizeItinerary(
       const mealKind = mealKindFromPlaceId(placeId);
       const isMeal = Boolean(mealKind);
       if (!isMeal && !allowedIds.has(placeId)) continue;
+      if (!isMeal && usedInTrip.has(placeId)) continue;
 
       const transport = VALID_TRANSPORTS.has(rawBlock.transport as TransportId)
         ? (rawBlock.transport as TransportId)
         : prefs.transport;
+
+      if (!isMeal) usedInTrip.add(placeId);
 
       blocks.push({
         time: rawBlock.time || "10:00",
@@ -251,6 +287,8 @@ ${JSON.stringify(placePayload, null, 2)}
 - place_id는 허용 목록에 있는 값만 (식사·카페 슬롯은 place_id를 breakfast:day1, lunch:day1, cafe:day1, dinner:day1 형식으로)
 - 하루에 최소 6~8블록: 아침 식사 → 관광 → 점심 → 관광 → 카페 → 관광 → 저녁 → (야간 관광 1곳 더)
 - 한 날에 관광지 1곳만 넣지 마라. 실제 여행처럼 식사·커피·이동·관광을 번갈아 배치
+- 같은 place_id를 여러 날·여러 블록에 반복하지 마라. ${prefs.days}일이면 서로 다른 장소를 골고루 배치
+- 테마에 맞는 장소를 우선 쓰되, 목록에 [도시 일반] 태그가 있으면 긴 일정의 나머지 슬롯에 활용해라
 - rationale에는 장소 why를 인용해 추천 이유를 써라
 - ${prefs.locale === "en" ? "Write in English" : "한국어로 작성"}
 `;
@@ -294,22 +332,74 @@ export async function buildTravelGuidebook(
   const themeDb = await loadThemeTravelDb();
   const marketDb = await loadMarketDb();
   const cityGeo = await geocodeCity(prefs.city);
-  const voyageExtract = await fetchWikivoyageExtract(prefs.city);
+  const voyageExtract = await fetchWikivoyageExtract(prefs.city, cityGeo?.countryCode);
   const themeMeta = getEmilyTheme(prefs.theme);
   const dbKey = themeDbKey(themeMeta);
   const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
   let dataSource: "static" | "live" = "static";
   let searchSourcesLabel: string | undefined;
-  let places = rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id);
+  const minPlaces = minPlacesForTrip(prefs.days);
+  let places = filterPlacesForTheme(
+    rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id, prefs.locale),
+    themeMeta.id
+  );
 
-  if (places.length === 0) {
-    const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode);
-    places = live.places;
-    searchSourcesLabel = live.sourcesLabel;
-    dataSource = "live";
+  const staticWeak =
+    places.length < Math.min(4, minPlaces) || (places[0]?.qualityScore ?? 0) < 55;
+
+  if (places.length === 0 || staticWeak) {
+    const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode, prefs.locale);
+    const liveRanked = filterPlacesForTheme(
+      rankPlacesByQuality(live.places, themeMeta.id, prefs.locale),
+      themeMeta.id
+    );
+    if (liveRanked.length > places.length) {
+      const seen = new Set(places.map((p) => p.title.toLowerCase()));
+      for (const p of liveRanked) {
+        if (!seen.has(p.title.toLowerCase())) {
+          places.push(p);
+          seen.add(p.title.toLowerCase());
+        }
+      }
+      places.sort((a, b) => (b.qualityScore ?? 0) - (a.qualityScore ?? 0));
+      dataSource = "live";
+      searchSourcesLabel = live.sourcesLabel;
+    } else if (places.length === 0) {
+      places = liveRanked;
+      dataSource = "live";
+      searchSourcesLabel = live.sourcesLabel;
+    }
   }
 
-  places = filterPlacesForTheme(rankPlacesByQuality(places, themeMeta.id), themeMeta.id);
+  let themeOnlyCount = places.length;
+  if (!isStrictTheme(themeMeta.id) && cityGeo && places.length < minPlaces) {
+    const extra = filterPlacesForTheme(
+      await searchSupplementaryPlaces({
+        city: prefs.city,
+        cityGeo,
+        countryCode: cityGeo.countryCode,
+        voyageExtract: voyageExtract?.extract,
+        themeId: themeMeta.id,
+        locale: prefs.locale,
+      }),
+      themeMeta.id
+    );
+    if (extra.length > 0) {
+      places = filterPlacesForTheme(
+        blendPlacePools(places, extra, themeMeta.id, minPlaces, prefs.locale),
+        themeMeta.id
+      );
+      if (dataSource === "static") dataSource = "live";
+      searchSourcesLabel = searchSourcesLabel
+        ? `${searchSourcesLabel} · ${prefs.locale === "en" ? "city highlights" : "도시 명소 보충"}`
+        : prefs.locale === "en"
+          ? "theme + city highlights"
+          : "테마 + 도시 명소 보충";
+    }
+  }
+
+  places = places.slice(0, maxPlacePoolSize(prefs.days));
+  const poolBlendNote = blendRationale(themeMeta.id, prefs.locale, themeOnlyCount, places.length);
 
   if (!cityGeo) {
     return {
@@ -342,15 +432,29 @@ export async function buildTravelGuidebook(
 
   let itineraryCore = useGroq
     ? await buildItineraryWithGroq(prefs, places, modelId!, key!, cityCenter)
-    : smartItinerary(prefs, places, cityCenter);
+    : smartItinerary(prefs, places, cityCenter, poolBlendNote);
 
-  const daysWithAmenities = await attachRouteAmenities(
-    itineraryCore.days,
-    places,
-    prefs.city,
+  const daysWithAmenities = dropUnnamedMealBlocks(
+    await attachRouteAmenities(
+      itineraryCore.days,
+      places,
+      prefs.city,
+      prefs.budgetTheme,
+      prefs.locale
+    )
+  );
+
+  const baseCosts = applyCostMultipliers(
+    { ...costsFromCountryCode(cityGeo.countryCode), ...liveCostHints },
     prefs.budgetTheme
   );
-  itineraryCore = { ...itineraryCore, days: daysWithAmenities };
+  const daysWithTransit = await attachTransitLegs(
+    daysWithAmenities,
+    places,
+    prefs,
+    baseCosts.bus_day ?? 12000
+  );
+  itineraryCore = { ...itineraryCore, days: daysWithTransit };
 
   const narration = buildGuideNarration(
     prefs,
@@ -359,12 +463,13 @@ export async function buildTravelGuidebook(
     cityGeo?.countryCode
   );
 
-  const budgetThemeMeta = getBudgetTheme(prefs.budgetTheme);
+  const budgetThemeMeta = localizeBudgetTheme(prefs.budgetTheme, prefs.locale);
 
   const lodgingRecommendations = buildLodgingRecommendations(
     prefs.city,
     prefs.lodging,
-    voyageExtract?.extract
+    voyageExtract?.extract,
+    prefs.locale
   );
 
   const flightDetailFull = await buildFlightDetail(
@@ -382,7 +487,9 @@ export async function buildTravelGuidebook(
     cityCoords: cityCenter,
     liveCostHints: hasLiveCosts ? liveCostHints : undefined,
     priceSource: hasLiveCosts
-      ? "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
+      ? prefs.locale === "en"
+        ? "Lodging and meal costs parsed from Wikivoyage text (free estimate)."
+        : "숙박·식비는 Wikivoyage 본문에서 무료 파싱한 추정치입니다."
       : undefined,
   });
   const bookingLinks = buildBookingLinks(prefs.originCity, prefs.city, prefs.lodging, {
@@ -405,12 +512,20 @@ export async function buildTravelGuidebook(
   if (dataSource === "live") {
     tips.push(
       searchSourcesLabel
-        ? `로컬 장소 수집 (EOSLS): ${searchSourcesLabel}`
-        : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
+        ? prefs.locale === "en"
+          ? `Places via EOSLS: ${searchSourcesLabel}`
+          : `로컬 장소 수집 (EOSLS): ${searchSourcesLabel}`
+        : prefs.locale === "en"
+          ? "Places collected via open-source local search (EOSLS)."
+          : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
     );
   }
   if (!useGroq) {
-    tips.push("무료 경로 최적화 일정 엔진 사용. Groq 키 있으면 AI 일정·근거 문구가 더 풍부해집니다.");
+    tips.push(
+      prefs.locale === "en"
+        ? "Free route-optimized itinerary. Add a Groq key for richer AI narration."
+        : "무료 경로 최적화 일정 엔진 사용. Groq 키 있으면 AI 일정·근거 문구가 더 풍부해집니다."
+    );
   }
 
   const { estimate: flightRaw, ...flightDetail } = flightDetailFull;

@@ -1,6 +1,7 @@
 import { buildGoogleMapsPlaceUrl } from "./placeLinks";
 import { isFastFood, isGlobalChain } from "./placeQuality";
-import { getBudgetTheme } from "./budgetThemes";
+import { isGenericPlaceName, pickBestOsmName } from "./placeNaming";
+import { localizeBudgetTheme } from "./budgetThemes";
 import type { BudgetThemeId, ItineraryBlockKind } from "./tripTypes";
 import type { AmenityStop, ItineraryDay, PlaceCandidate } from "./tripTypes";
 
@@ -47,8 +48,8 @@ function classifyAmenity(el: OsmElement): "meal" | "cafe" | "restroom" | null {
 }
 
 function isQualityMealOrCafe(el: OsmElement): boolean {
-  const name = el.tags?.name ?? "";
-  if (!name || name.length < 2) return false;
+  const name = pickBestOsmName(el.tags ?? {});
+  if (!name || name.length < 2 || isGenericPlaceName(name, el.tags)) return false;
   if (isGlobalChain(name, el.tags)) return false;
   if (isFastFood(el.tags)) return false;
   const kind = classifyAmenity(el);
@@ -65,38 +66,103 @@ function elementCoords(el: OsmElement) {
   return { lat, lng: lon };
 }
 
-function amenityWhy(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId, name: string) {
-  const theme = getBudgetTheme(budgetTheme);
-  if (kind === "meal") return `${theme.mealGuide} 근처 로컬 식당 '${name}' (체인·패스트푸드 제외).`;
-  if (kind === "cafe") return `이동 전후 휴식용. 루트 인근 로컬 카페 '${name}'.`;
-  return `${theme.restroomGuide} '${name || "공중화장실"}' — OSM 공개 데이터.`;
+function amenityWhy(
+  kind: AmenityStop["kind"],
+  budgetTheme: BudgetThemeId,
+  name: string,
+  locale: "ko" | "en"
+) {
+  const theme = localizeBudgetTheme(budgetTheme, locale);
+  if (kind === "meal") {
+    return locale === "en"
+      ? `${theme.mealGuide} Nearby local restaurant '${name}' (no chains or fast food).`
+      : `${theme.mealGuide} 근처 로컬 식당 '${name}' (체인·패스트푸드 제외).`;
+  }
+  if (kind === "cafe") {
+    return locale === "en"
+      ? `Break between stops. Local café '${name}' on the route.`
+      : `이동 전후 휴식용. 루트 인근 로컬 카페 '${name}'.`;
+  }
+  return locale === "en"
+    ? `${theme.restroomGuide} '${name}' — OSM data.`
+    : `${theme.restroomGuide} '${name}' — OSM 공개 데이터.`;
 }
 
-function amenityTip(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId) {
-  if (kind === "restroom") return "카페 미이용 시 역·백화점 화장실도 대안입니다.";
-  if (kind === "meal" && budgetTheme === "miser_backpack") return "점심 특선·세트 메뉴 가격을 먼저 확인하세요.";
-  if (kind === "meal" && budgetTheme === "yolo_luxury") return "인기 시간대면 예약 또는 웨이팅을 감안하세요.";
-  return "Google Maps에서 영업시간·리뷰를 확인한 뒤 방문하세요.";
+function amenityTip(kind: AmenityStop["kind"], budgetTheme: BudgetThemeId, locale: "ko" | "en") {
+  if (kind === "restroom") {
+    return locale === "en"
+      ? "Station and mall restrooms work if you skip the café."
+      : "카페 미이용 시 역·백화점 화장실도 대안입니다.";
+  }
+  if (kind === "meal" && budgetTheme === "miser_backpack") {
+    return locale === "en"
+      ? "Check lunch sets and combo prices first."
+      : "점심 특선·세트 메뉴 가격을 먼저 확인하세요.";
+  }
+  if (kind === "meal" && budgetTheme === "yolo_luxury") {
+    return locale === "en"
+      ? "Book ahead or expect a wait at peak hours."
+      : "인기 시간대면 예약 또는 웨이팅을 감안하세요.";
+  }
+  return locale === "en"
+    ? "Confirm hours and reviews on Google Maps before visiting."
+    : "Google Maps에서 영업시간·리뷰를 확인한 뒤 방문하세요.";
 }
 
-function pickNamedVenue(
-  elements: OsmElement[],
+const VENUE_SEARCH_RADII = [500, 800, 1200];
+
+async function queryVenueWithRadii(
+  lat: number,
+  lng: number,
   want: "meal" | "cafe",
   seen: Set<string>
-): { name: string; lat: number; lng: number } | null {
-  for (const el of elements) {
-    const kind = classifyAmenity(el);
-    if (kind !== want) continue;
-    if (!isQualityMealOrCafe(el)) continue;
-    const name = el.tags?.name ?? "";
-    const key = name.toLowerCase();
-    if (seen.has(key)) continue;
-    const coords = elementCoords(el);
-    if (!coords) continue;
-    seen.add(key);
-    return { name, ...coords };
+): Promise<{ name: string; lat: number; lng: number } | null> {
+  for (const radius of VENUE_SEARCH_RADII) {
+    const elements = await queryNearbyAmenities(lat, lng, radius);
+    for (const el of elements) {
+      const kind = classifyAmenity(el);
+      if (kind !== want) continue;
+      if (!isQualityMealOrCafe(el)) continue;
+      const name = pickBestOsmName(el.tags ?? {});
+      if (!name) continue;
+      const key = name.toLowerCase();
+      if (seen.has(key)) continue;
+      const coords = elementCoords(el);
+      if (!coords) continue;
+      seen.add(key);
+      return { name, ...coords };
+    }
   }
   return null;
+}
+
+function mealActivity(kind: ItineraryBlockKind, venueName: string, locale: "ko" | "en") {
+  if (locale === "en") {
+    if (kind === "breakfast") return `Breakfast at ${venueName}`;
+    if (kind === "lunch") return `Lunch at ${venueName}`;
+    if (kind === "dinner") return `Dinner at ${venueName}`;
+    return `Coffee break at ${venueName}`;
+  }
+  if (kind === "breakfast") return `${venueName}에서 아침 식사`;
+  if (kind === "lunch") return `${venueName}에서 점심 식사`;
+  if (kind === "dinner") return `${venueName}에서 저녁 식사`;
+  return `${venueName}에서 커피·디저트`;
+}
+
+export function isMealBlockKind(kind?: ItineraryBlockKind): boolean {
+  return kind === "breakfast" || kind === "lunch" || kind === "dinner" || kind === "cafe";
+}
+
+/** 상호명 없는 식사·카페 블록 제거 */
+export function dropUnnamedMealBlocks(days: ItineraryDay[]): ItineraryDay[] {
+  return days.map((day) => ({
+    ...day,
+    blocks: day.blocks.filter((block) => {
+      if (!isMealBlockKind(block.kind)) return true;
+      const title = block.place_title?.trim() ?? "";
+      return title.length >= 2 && !isGenericPlaceName(title);
+    }),
+  }));
 }
 
 function mealKindToOsm(want: ItineraryBlockKind): "meal" | "cafe" | null {
@@ -109,7 +175,8 @@ export async function attachRouteAmenities(
   days: ItineraryDay[],
   places: PlaceCandidate[],
   city: string,
-  budgetTheme: BudgetThemeId
+  budgetTheme: BudgetThemeId,
+  locale: "ko" | "en" = "ko"
 ): Promise<ItineraryDay[]> {
   const enriched: ItineraryDay[] = [];
   const seenVenues = new Set<string>();
@@ -138,13 +205,14 @@ export async function attachRouteAmenities(
           const amenities: AmenityStop[] = [];
 
           for (const el of restrooms) {
-            const name = el.tags?.name ?? "공중화장실";
+            const name = pickBestOsmName(el.tags ?? {});
+            if (!name || isGenericPlaceName(name, el.tags)) continue;
             const coords = elementCoords(el);
             amenities.push({
               kind: "restroom",
               name,
-              why: amenityWhy("restroom", budgetTheme, name),
-              tip: amenityTip("restroom", budgetTheme),
+              why: amenityWhy("restroom", budgetTheme, name, locale),
+              tip: amenityTip("restroom", budgetTheme, locale),
               mapsUrl: buildGoogleMapsPlaceUrl(city, {
                 title: name,
                 lat: coords?.lat,
@@ -157,30 +225,26 @@ export async function attachRouteAmenities(
 
           if (amenities.length) nextBlock = { ...nextBlock, amenities };
         }
-      } else if (lastCoords) {
+      } else if (lastCoords && isMealBlockKind(kind)) {
         const osmWant = mealKindToOsm(kind);
         if (osmWant) {
-          const elements = await queryNearbyAmenities(lastCoords.lat, lastCoords.lng, 500);
-          const venue = pickNamedVenue(elements, osmWant, seenVenues);
+          const venue = await queryVenueWithRadii(lastCoords.lat, lastCoords.lng, osmWant, seenVenues);
           if (venue) {
-            const prefix =
-              kind === "breakfast"
-                ? "아침 · "
-                : kind === "lunch"
-                  ? "점심 · "
-                  : kind === "dinner"
-                    ? "저녁 · "
-                    : "카페 · ";
             nextBlock = {
               ...nextBlock,
-              place_title: `${prefix}${venue.name}`,
-              activity: `${block.activity} — ${venue.name}`,
+              place_title: venue.name,
+              activity: mealActivity(kind, venue.name, locale),
+              lat: venue.lat,
+              lng: venue.lng,
               maps_url: buildGoogleMapsPlaceUrl(city, {
                 title: venue.name,
                 lat: venue.lat,
                 lng: venue.lng,
               }),
-              rationale: `${block.rationale ?? ""} OSM 근처 추천: ${venue.name}.`,
+              rationale:
+                locale === "en"
+                  ? `Registered business name '${venue.name}' from OSM — chains, fast food, and unnamed venues excluded.`
+                  : `OSM 공개 데이터에 등록된 실제 상호명 '${venue.name}' — 체인·패스트푸드·무기명 식당 제외.`,
             };
             lastCoords = { lat: venue.lat, lng: venue.lng };
           }

@@ -43,7 +43,11 @@ SELECT ?item ?itemLabel ?lat ?lon WHERE {
   BIND(geof:latitude(?coord) AS ?lat)
   BIND(geof:longitude(?coord) AS ?lon)
   FILTER(geof:distance("Point(${center.lng} ${center.lat})"^^geo:wktLiteral, ?coord, unit:Kilometer) < ${radiusKm})
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ko". }
+  FILTER NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q515 }
+  FILTER NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q486972 }
+  FILTER NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q15284 }
+  FILTER(BOUND(?itemLabel) && STRLEN(?itemLabel) > 2)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ko,ja,th,vi,zh". }
 }
 LIMIT 8`;
 

@@ -18,8 +18,32 @@ export const SEARCH_LANGUAGES: Record<string, SearchLang> = {
 };
 
 const COUNTRY_TO_LANG: Record<string, string> = {
-  kr: "ko", jp: "ja", th: "th", vn: "vi", cn: "zh", tw: "zh",
-  fr: "fr", de: "de", es: "es", it: "it", gb: "en", us: "en", sg: "en",
+  kr: "ko",
+  jp: "ja",
+  th: "th",
+  vn: "vi",
+  cn: "zh",
+  tw: "zh",
+  hk: "zh",
+  fr: "fr",
+  de: "de",
+  es: "es",
+  it: "it",
+  pt: "pt",
+  br: "pt",
+  ru: "ru",
+  id: "id",
+  nl: "nl",
+  pl: "pl",
+  tr: "tr",
+  mx: "es",
+  ar: "es",
+  gb: "en",
+  us: "en",
+  sg: "en",
+  au: "en",
+  in: "en",
+  ph: "en",
 };
 
 const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
@@ -45,8 +69,11 @@ const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
     th: ["มรดกโลก วัด", "โบสถ์"],
   },
   nature_trail: {
-    ko: ["국립공원", "트레킹", "전망대"],
-    en: ["national park", "hiking trail", "viewpoint"],
+    ko: ["해변", "국립공원", "트레킹", "전망대"],
+    en: ["beach", "national park", "hiking trail", "viewpoint"],
+    ja: ["ビーチ", "海岸", "国立公園"],
+    th: ["ชายหาด", "อุทยานแห่งชาติ"],
+    vi: ["bãi biển", "vườn quốc gia"],
   },
   art_culture: {
     ko: ["미술관", "박물관", "갤러리"],
@@ -73,24 +100,33 @@ const THEME_KEYWORDS_I18N: Record<string, Record<string, string[]>> = {
     en: ["shopping district", "vintage", "boutique"],
   },
   photo_landmark: {
-    ko: ["랜드마크", "전망", "야경"],
-    en: ["landmark", "viewpoint", "iconic"],
+    ko: ["해변", "랜드마크", "전망", "야경"],
+    en: ["beach", "landmark", "viewpoint", "iconic"],
+    th: ["ชายหาด", "แลนด์มาร์ก"],
   },
 };
 
 export function resolveSearchLanguages(countryCode?: string, uiLocale?: "ko" | "en"): SearchLang[] {
   const langs: SearchLang[] = [];
-  if (uiLocale === "en") {
-    langs.push(SEARCH_LANGUAGES.en);
-    langs.push(SEARCH_LANGUAGES.ko);
-  } else {
-    langs.push(SEARCH_LANGUAGES.ko);
-    langs.push(SEARCH_LANGUAGES.en);
-  }
+  const seen = new Set<string>();
+
+  const push = (code: string) => {
+    if (seen.has(code) || !SEARCH_LANGUAGES[code]) return;
+    seen.add(code);
+    langs.push(SEARCH_LANGUAGES[code]);
+  };
+
   const localCode = countryCode ? COUNTRY_TO_LANG[countryCode.toLowerCase()] : undefined;
-  if (localCode && SEARCH_LANGUAGES[localCode] && !langs.some((l) => l.code === localCode)) {
-    langs.push(SEARCH_LANGUAGES[localCode]);
+  if (localCode) push(localCode);
+
+  if (uiLocale === "en") {
+    push("en");
+    push("ko");
+  } else {
+    push("ko");
+    push("en");
   }
+
   return langs;
 }
 
@@ -104,11 +140,14 @@ export function buildMultilingualQueries(
   const queries: Array<{ lang: SearchLang; query: string }> = [];
 
   for (const lang of langs) {
-    const keywords = THEME_KEYWORDS_I18N[themeId]?.[lang.code] ?? THEME_KEYWORDS_I18N[themeId]?.en ?? ["travel"];
+    const keywords =
+      THEME_KEYWORDS_I18N[themeId]?.[lang.code] ??
+      THEME_KEYWORDS_I18N[themeId]?.en ??
+      (lang.code === "ko" ? ["관광", "명소"] : ["attraction", "sightseeing"]);
     for (const keyword of keywords.slice(0, 2)) {
       queries.push({
         lang,
-        query: lang.code === "ko" ? `${city} ${keyword}` : `"${city}" ${keyword}`,
+        query: lang.code === "en" ? `"${city}" ${keyword}` : `${city} ${keyword}`,
       });
     }
   }

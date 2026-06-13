@@ -67,6 +67,17 @@ export type ItineraryBlockKind =
   | "dinner"
   | "cafe";
 
+export type TransitLeg = {
+  mode: "bus" | "subway" | "train" | "tram";
+  line?: string;
+  fromStop: string;
+  toStop: string;
+  distanceKm: number;
+  durationMinutes: number;
+  fareKrw: number;
+  note?: string;
+};
+
 export type ItineraryBlock = {
   time: string;
   kind?: ItineraryBlockKind;
@@ -77,6 +88,9 @@ export type ItineraryBlock = {
   rationale?: string;
   amenities?: AmenityStop[];
   maps_url?: string;
+  lat?: number;
+  lng?: number;
+  travel?: TransitLeg;
 };
 
 export type LodgingRecommendation = {
