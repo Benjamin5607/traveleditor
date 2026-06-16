@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-15 02:54",
+  "last_updated": "2026-06-16 02:55",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
-            "why": "인사동의 전통적인 차와 현대적인 갤러리를 경험할 수 있습니다.",
+            "angle": "차와 현대 미술이 어우러진 거리",
+            "why": "인사동의 차집과 현대 미술 갤러리를 구경하며 마음을 진정시세요",
             "source_titles": [
               "Insa-dong"
             ],
@@ -47,7 +47,7 @@
           {
             "title": "어린이대공원",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원에서 자연과 함께하는 평화로운 산책을 즐길 수 있습니다.",
+            "why": "어린이대공원의 식물원과 산책로에서 마음을 편안하게 해보세요",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 고요한 정원",
-            "why": "고토 미술관의 고요한 정원에서 마음을 진정시킬 수 있습니다.",
+            "angle": "일본과 중국의 고대 미술을 감상하며 마음을 진정시키기",
+            "why": "고토 미술관의 고대 일본과 중국 미술 작품을 감상하세요",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -75,28 +75,13 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.612195,
             "lng": 139.635294
-          },
-          {
-            "title": "유메노시마 열대 식물 온실",
-            "angle": "열대 식물 온실의 아름다운 정원",
-            "why": "유메노시마 열대 식물 온실의 아름다운 정원에서 마음을 진정시킬 수 있습니다.",
-            "source_titles": [
-              "Yumenoshima Tropical Greenhouse Dome"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
-            ],
-            "official_url": "https://www.yumenoshima.jp/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 35.651298,
-            "lng": 139.829307
           }
         ],
         "Osaka": [
           {
             "title": "오사카 성",
-            "angle": "오사카 성의 역사와 문화",
-            "why": "오사카 성에서 역사와 문화를 경험할 수 있습니다.",
+            "angle": "일본의 역사와 문화를 느끼는 곳",
+            "why": "오사카 성의 역사와 문화를 느끼며 마음을 편안하게 해보세요",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,29 +92,14 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
-          },
-          {
-            "title": "텐노지 구",
-            "angle": "텐노지 구의 전통과 문화",
-            "why": "텐노지 구에서 전통과 문화를 경험할 수 있습니다.",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "자르뎅 데 플랑트",
-            "angle": "자르뎅 데 플랑트의 아름다운 정원",
-            "why": "자르뎅 데 플랑트의 아름다운 정원에서 마음을 진정시킬 수 있습니다.",
+            "title": "자르뎅 데 플란트",
+            "angle": "식물원과 동물원에서 평화로운 시간을 보내기",
+            "why": "자르뎅 데 플란트의 식물원과 동물원을 구경하세요",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -164,8 +134,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 전통적인 가옥과 차 집",
-            "why": "지우펀에서 전통적인 가옥과 차 집을 경험할 수 있습니다.",
+            "angle": "전통적인 차집과 산책로에서 마음을 진정시키기",
+            "why": "지우펀의 전통적인 차집과 산책로를 구경하세요",
             "source_titles": [
               "Jiufen"
             ],
@@ -176,28 +146,13 @@
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
-          },
-          {
-            "title": "다퉁 구",
-            "angle": "다퉁 구의 역사와 문화",
-            "why": "다퉁 구에서 역사와 문화를 경험할 수 있습니다.",
-            "source_titles": [
-              "Datong District, Taipei"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
-            ],
-            "official_url": "https://dtdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.05972222,
-            "lng": 121.51416667
           }
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로브레라 정원",
-            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물",
-            "why": "모센 코스타 이 로브레라 정원에서 아름다운 식물을 경험할 수 있습니다.",
+            "title": "Mossèn Costa i Llobera Gardens",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Mossèn Costa i Llobera Gardens is a botanical garden in the center of Barcelona, Catalonia, Spain. It is situated at the foot of Montjuïc facing the sea.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -205,7 +160,7 @@
               "https://en.wikipedia.org/wiki/Moss%C3%A8n_Costa_i_Llobera_Gardens"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 41.3689,
             "lng": 2.1723
           }
@@ -213,24 +168,9 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "아시아 미술관",
-            "angle": "아시아 미술관의 고요한 정원",
-            "why": "아시아 미술관의 고요한 정원에서 마음을 진정시킬 수 있습니다.",
-            "source_titles": [
-              "Museum of Asian Art"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
-            ],
-            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.5175,
-            "lng": 13.40277778
-          },
-          {
             "title": "베를린 식물원",
-            "angle": "베를린 식물원의 아름다운 정원",
-            "why": "베를린 식물원에서 아름다운 정원을 경험할 수 있습니다.",
+            "angle": "다양한 식물과 평화로운 산책로",
+            "why": "베를린 식물원의 다양한 식물과 산책로를 구경하세요",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -260,8 +200,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "스카치 위스키 생산지",
-            "why": "오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 생산지",
+            "angle": "싱글 몰트 스코치 위스키 생산지",
+            "why": "일본 오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 생산지",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -298,8 +238,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "크래프트 비어와 예술의 만남",
-            "why": "다양한 예술과 문화를 경험할 수 있는 공간",
+            "angle": "다목적 공원",
+            "why": "타이페이의 문화 예술 공간",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -390,7 +330,7 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 지역과 나이트클럽",
+            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
             "why": "도쿄의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Roppongi"
@@ -441,7 +381,7 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 콤플렉스 및 레드라이트 지구",
+            "angle": "엔터테인먼트 콤플렉스와 레드라이트 디스트릭트",
             "why": "방콕의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Nana Plaza"
@@ -508,8 +448,8 @@
         "Seoul": [
           {
             "title": "명동성당",
-            "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 중심가에 위치한 역사적인 성당",
+            "angle": "서울의 대표적인 성당",
+            "why": "서울의 중심에 위치한 역사적인 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -559,8 +499,8 @@
         "London": [
           {
             "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성공회 사원",
-            "why": "영국에서 가장 유명한 사원",
+            "angle": "런던의 대표적인 성당",
+            "why": "영국에서 가장 유명한 성당",
             "source_titles": [
               "Westminster"
             ],
@@ -627,7 +567,7 @@
         ],
         "Taipei": [
           {
-            "title": "롱산 사원",
+            "title": "롱산사",
             "angle": "타이페이의 대표적인 불교 사원",
             "why": "타이페이에서 가장 유명한 불교 사원",
             "source_titles": [
@@ -643,8 +583,8 @@
         "Barcelona": [
           {
             "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 가톨릭 성당",
-            "why": "세계에서 가장 유명한 가톨릭 성당",
+            "angle": "바르셀로나의 대표적인 성당",
+            "why": "바르셀로나에서 가장 유명한 성당",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -660,8 +600,8 @@
         "Rome": [
           {
             "title": "라테란 대성당",
-            "angle": "로마의 대표적인 가톨릭 성당",
-            "why": "세계에서 가장 오래된 가톨릭 성당",
+            "angle": "로마의 대표적인 성당",
+            "why": "로마에서 가장 오래된 성당",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -677,8 +617,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 개신교 성당",
-            "why": "독일에서 가장 유명한 개신교 성당",
+            "angle": "베를린의 대표적인 성당",
+            "why": "베를린에서 가장 유명한 성당",
             "source_titles": [
               "Zossen"
             ],
@@ -723,14 +663,6 @@
           "official_url": "https://www.gotoh-museum.or.jp/",
           "lat": 35.612195,
           "lng": 139.635294
-        },
-        {
-          "title": "Yumenoshima Tropical Greenhouse Dome",
-          "extract": "The Yumenoshima Tropical Greenhouse Dome , also sometimes called the Yumenoshima Tropical Plant Dome, is a botanical garden located at 3-2, Yumenoshima, Kōtō, Tokyo, Japan. It is operated by the Tokyo Metropolitan Park Association and is open daily except on Mondays; an admission fee is charged.",
-          "url": "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome",
-          "official_url": "https://www.yumenoshima.jp/",
-          "lat": 35.651298,
-          "lng": 139.829307
         }
       ],
       "Osaka": [
@@ -1188,6 +1120,14 @@
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "official_url": "",
+          "lat": 41.899,
+          "lng": 12.4731
         }
       ],
       "Berlin": [
