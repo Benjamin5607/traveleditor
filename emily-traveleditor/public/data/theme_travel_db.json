@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-16 02:55",
+  "last_updated": "2026-06-17 02:51",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "차와 현대 미술이 어우러진 거리",
-            "why": "인사동의 차집과 현대 미술 갤러리를 구경하며 마음을 진정시세요",
+            "angle": "차와 현대 미술을 즐길 수 있는 인사동의 차고를 방문해 보세요.",
+            "why": "인사동의 차고에서 차를 마시며 현대 미술을 감상할 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 식물원과 산책로에서 마음을 편안하게 해보세요",
+            "angle": "어린이대공원의 식물원에서 평화로운 산책을 즐길 수 있습니다.",
+            "why": "어린이대공원에는 다양한 식물과 꽃이 피어있는 식물원이 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,9 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "고토 미술관",
-            "angle": "일본과 중국의 고대 미술을 감상하며 마음을 진정시키기",
-            "why": "고토 미술관의 고대 일본과 중국 미술 작품을 감상하세요",
+            "title": "Gotoh Museum",
+            "angle": "고토 미술관에서 일본과 중국의 고대 미술을 감상할 수 있습니다.",
+            "why": "고토 미술관에는 일본과 중국의 고대 미술 작품이 전시되어 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -79,9 +79,9 @@
         ],
         "Osaka": [
           {
-            "title": "오사카 성",
-            "angle": "일본의 역사와 문화를 느끼는 곳",
-            "why": "오사카 성의 역사와 문화를 느끼며 마음을 편안하게 해보세요",
+            "title": "오사카성",
+            "angle": "오사카성에서 일본의 역사와 문화를 배우실 수 있습니다.",
+            "why": "오사카성에는 일본의 역사와 문화를介绍하는 전시회가 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -97,9 +97,9 @@
         "London": [],
         "Paris": [
           {
-            "title": "자르뎅 데 플란트",
-            "angle": "식물원과 동물원에서 평화로운 시간을 보내기",
-            "why": "자르뎅 데 플란트의 식물원과 동물원을 구경하세요",
+            "title": "Ménagerie du Jardin des plantes",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -134,8 +134,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "전통적인 차집과 산책로에서 마음을 진정시키기",
-            "why": "지우펀의 전통적인 차집과 산책로를 구경하세요",
+            "angle": "지우펀의 구시가지에서 전통적인 타이페이의 삶을 경험할 수 있습니다.",
+            "why": "지우펀의 구시가는 타이페이의 전통적인 삶을體驗할 수 있는 곳입니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -151,8 +151,8 @@
         "Barcelona": [
           {
             "title": "Mossèn Costa i Llobera Gardens",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Mossèn Costa i Llobera Gardens is a botanical garden in the center of Barcelona, Catalonia, Spain. It is situated at the foot of Montjuïc facing the sea.",
+            "angle": "모센 코스타 이 로베라 정원에서 평화로운 산책을 즐길 수 있습니다.",
+            "why": "모센 코스타 이 로베라 정원에는 다양한 식물과 꽃이 피어있는 정원이 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -160,7 +160,7 @@
               "https://en.wikipedia.org/wiki/Moss%C3%A8n_Costa_i_Llobera_Gardens"
             ],
             "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 41.3689,
             "lng": 2.1723
           }
@@ -168,9 +168,9 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "베를린 식물원",
-            "angle": "다양한 식물과 평화로운 산책로",
-            "why": "베를린 식물원의 다양한 식물과 산책로를 구경하세요",
+            "title": "Berlin Botanical Garden and Botanical Museum",
+            "angle": "베를린 식물원에서 다양한 식물을 감상할 수 있습니다.",
+            "why": "베를린 식물원에는 다양한 식물과 꽃이 피어있는 정원이 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -200,8 +200,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글 몰트 스코치 위스키 생산지",
-            "why": "일본 오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 생산지",
+            "angle": "싱글 몰트 스코치 위스키 디스틸러리",
+            "why": "스코틀랜드의 케네스몬트 마을에 위치한 싱글 몰트 스코치 위스키 디스틸러리",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -239,7 +239,7 @@
           {
             "title": "Huashan 1914 Creative Park",
             "angle": "다목적 공원",
-            "why": "타이페이의 문화 예술 공간",
+            "why": "타이페이의 중정 구에 위치한 다목적 공원",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -313,7 +313,7 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간생활과 다문화 인구로 유명한 지역",
+            "angle": "야간 생활과 다문화 인구로 유명한 지역",
             "why": "서울의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Itaewon"
@@ -330,7 +330,7 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
+            "angle": "고급 상업 및 주거 지역, 나이트 클럽",
             "why": "도쿄의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Roppongi"
@@ -381,7 +381,7 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 콤플렉스와 레드라이트 디스트릭트",
+            "angle": "엔터테인먼트 콤플렉스 및 레드 라이트 지구",
             "why": "방콕의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Nana Plaza"
@@ -418,8 +418,8 @@
         "Berlin": [
           {
             "title": "Berghain",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Berghain is a nightclub in Berlin, Germany. It is named after its location near the border between Kreuzberg and Friedrichshain and is a short walk from Berlin Ostbahnhof main line",
+            "angle": "세계적으로 유명한 나이트클럽",
+            "why": "베를린의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Berghain"
             ],
@@ -448,8 +448,8 @@
         "Seoul": [
           {
             "title": "명동성당",
-            "angle": "서울의 대표적인 성당",
-            "why": "서울의 중심에 위치한 역사적인 성당",
+            "angle": "서울의 대표적인 천주교 성당",
+            "why": "서울의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -465,8 +465,8 @@
         "Tokyo": [
           {
             "title": "센소지",
-            "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄에서 가장 오래된 불교 사원",
+            "angle": "도쿄에서 가장 오래된 불교 사원",
+            "why": "도쿄의 대표적인 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -483,7 +483,7 @@
           {
             "title": "시텐노지",
             "angle": "오사카의 대표적인 불교 사원",
-            "why": "일본에서 가장 오래된 불교 사원",
+            "why": "오사카의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -499,8 +499,8 @@
         "London": [
           {
             "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성당",
-            "why": "영국에서 가장 유명한 성당",
+            "angle": "런던의 대표적인 성공회 사원",
+            "why": "런던의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Westminster"
             ],
@@ -517,7 +517,7 @@
           {
             "title": "파리 대모스크",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "프랑스에서 가장 큰 이슬람 사원",
+            "why": "파리의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -535,7 +535,7 @@
           {
             "title": "와트 아룬",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "태국의 대표적인 불교 사원",
+            "why": "방콕의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Wat Arun"
             ],
@@ -550,26 +550,26 @@
         ],
         "Singapore": [
           {
-            "title": "마스지드 알 이슬라",
-            "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르에서 가장 큰 이슬람 사원",
+            "title": "아르메니아 교회",
+            "angle": "싱가포르의 대표적인 기독교 교회",
+            "why": "싱가포르의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
-              "Masjid Al Islah"
+              "Armenian Church, Singapore"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Masjid_Al_Islah"
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 1.4013989,
-            "lng": 103.9015299
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
           }
         ],
         "Taipei": [
           {
             "title": "롱산사",
             "angle": "타이페이의 대표적인 불교 사원",
-            "why": "타이페이에서 가장 유명한 불교 사원",
+            "why": "타이페이의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Taiwan High Speed Rail"
             ],
@@ -583,8 +583,8 @@
         "Barcelona": [
           {
             "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 성당",
-            "why": "바르셀로나에서 가장 유명한 성당",
+            "angle": "바르셀로나의 대표적인 가톨릭 성당",
+            "why": "바르셀로나의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -599,9 +599,9 @@
         ],
         "Rome": [
           {
-            "title": "라테란 대성당",
-            "angle": "로마의 대표적인 성당",
-            "why": "로마에서 가장 오래된 성당",
+            "title": "산 조반니 인 라테라노 대성당",
+            "angle": "로마의 대표적인 가톨릭 대성당",
+            "why": "로마의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -617,8 +617,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 성당",
-            "why": "베를린에서 가장 유명한 성당",
+            "angle": "베를린의 대표적인 개신교 대성당",
+            "why": "베를린의 주요 관광지 중 하나로 역사적인 건축물",
             "source_titles": [
               "Zossen"
             ],
@@ -963,6 +963,14 @@
           "extract": "Kōdai-in (高台院), formerly known as Nene (ねね), One (おね), Nei (ねい), was an aristocrat and Buddhist nun, founder of the temple Kōdai-ji in Kyoto, Japan. She was formerly the principal samurai wife of Toyotomi Hideyoshi under the name of Toyotomi Yoshiko . When she rose in higher political status, she took the title of \"Kita no mandokoro\". As the matriarch figure of the Toyotomi clan, she led all diplomatic affairs that had to do with the imperial court, and monitored the daimyos' families who were being held hostage at Osaka Castle.",
           "url": "https://en.wikipedia.org/wiki/K%C5%8Ddai-in",
           "official_url": ""
+        },
+        {
+          "title": "Mount Kōya",
+          "extract": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, the ecclesiastical headquarters of the Kōyasan sect of Shingon Buddhism.",
+          "url": "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya",
+          "official_url": "",
+          "lat": 34.2125,
+          "lng": 135.58638889
         }
       ],
       "London": [
@@ -991,6 +999,14 @@
           "official_url": "https://www.grandemosqueedeparis.fr",
           "lat": 48.84194444,
           "lng": 2.355
+        },
+        {
+          "title": "Notre-Dame de Paris",
+          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
+          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
+          "official_url": "https://www.notredamedeparis.fr/",
+          "lat": 48.85305556,
+          "lng": 2.35
         }
       ],
       "DaNang": [],
@@ -1012,12 +1028,12 @@
           "lng": 100.48888889
         },
         {
-          "title": "Don Mueang International Airport",
-          "extract": "Don Mueang International Airport — known as Bangkok International Airport before 2006 — is one of two international airports serving Bangkok, the capital of Thailand, the other being Suvarnabhumi Airport (BKK).",
-          "url": "https://en.wikipedia.org/wiki/Don_Mueang_International_Airport",
-          "official_url": "https://donmueang.airportthai.co.th/",
-          "lat": 13.9125,
-          "lng": 100.60666667
+          "title": "Bang Lamphu",
+          "extract": "Bang Lamphu, also spelled Banglampoo or Banglamphu is a neighbourhood in Bangkok located in Phra Nakhon District. The history of the Bang Lamphu community dates to the establishment of the Rattanakosin Kingdom, or earlier. Bang Lamphu covers the area north of Phra Nakhon, both inside and outside Rattanakosin Island, stretching from Phra Athit to Samsen Roads, which lead toward Dusit District. Most of Bang Lamphu lies within Talat Yot Subdistrict, with parts extending into nearby subdistricts such as Chana Songkhram, Bowon Niwet, Ban Phan Thom, and up to Wat Sam Phraya.",
+          "url": "https://en.wikipedia.org/wiki/Bang_Lamphu",
+          "official_url": "",
+          "lat": 13.75248056,
+          "lng": 100.50113889
         },
         {
           "title": "Assumption Cathedral, Bangkok",
@@ -1081,7 +1097,7 @@
       "Barcelona": [
         {
           "title": "Sagrada Família",
-          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the largest unfinished Catholic church in the world. In 2005, Sagrada Família was added to an existing (1984) UNESCO World Heritage Site, \"Works of Antoni Gaudí\". On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a minor basilica.",
+          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. Parts of the Sagrada Família were declared as an UNESCO World Heritage Site in 2005, under \"Works of Antoni Gaudí\".",
           "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
           "official_url": "https://sagradafamilia.org/",
           "lat": 41.40369,
