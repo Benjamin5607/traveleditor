@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-17 02:51",
+  "last_updated": "2026-06-18 02:49",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "차와 현대 미술을 즐길 수 있는 인사동의 차고를 방문해 보세요.",
-            "why": "인사동의 차고에서 차를 마시며 현대 미술을 감상할 수 있습니다.",
+            "angle": "전통 차집과 현대 갤러리가 조화된 인사동의 거리",
+            "why": "인사동의 차집에서 전통 차를 마시며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "어린이대공원의 식물원에서 평화로운 산책을 즐길 수 있습니다.",
-            "why": "어린이대공원에는 다양한 식물과 꽃이 피어있는 식물원이 있습니다.",
+            "angle": "자연과 함께하는 어린이대공원의 산책로",
+            "why": "어린이대공원의 산책로에서 자연을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,9 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "Gotoh Museum",
-            "angle": "고토 미술관에서 일본과 중국의 고대 미술을 감상할 수 있습니다.",
-            "why": "고토 미술관에는 일본과 중국의 고대 미술 작품이 전시되어 있습니다.",
+            "title": "고토 미술관",
+            "angle": "고토 미술관의 정원에서 차를 마시며 마음을 진정시키는 공간",
+            "why": "고토 미술관의 정원에서 차를 마시며 일본의 전통 문화를 감상할 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -75,13 +75,28 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.612195,
             "lng": 139.635294
+          },
+          {
+            "title": "유메노시마 열대 식물 온실",
+            "angle": "유메노시마 열대 식물 온실의 아름다운 정원",
+            "why": "유메노시마 열대 식물 온실의 정원에서 다양한 식물을 감상하며 마음을 진정시킬 수 있습니다.",
+            "source_titles": [
+              "Yumenoshima Tropical Greenhouse Dome"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
+            ],
+            "official_url": "https://www.yumenoshima.jp/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 35.651298,
+            "lng": 139.829307
           }
         ],
         "Osaka": [
           {
-            "title": "오사카성",
-            "angle": "오사카성에서 일본의 역사와 문화를 배우실 수 있습니다.",
-            "why": "오사카성에는 일본의 역사와 문화를介绍하는 전시회가 있습니다.",
+            "title": "오사카 성",
+            "angle": "오사카 성의 정원에서 차를 마시며 마음을 진정시키는 공간",
+            "why": "오사카 성의 정원에서 차를 마시며 일본의 역사와 문화를 감상할 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -92,14 +107,29 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "텐노지 구",
+            "angle": "텐노지 구의 전통 차집과 현대 갤러리가 조화된 거리",
+            "why": "텐노지 구의 차집에서 전통 차를 마시며 마음을 진정시킬 수 있습니다.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "Ménagerie du Jardin des plantes",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
+            "title": "자르뎅 데 플란트",
+            "angle": "자르뎅 데 플란트의 아름다운 정원",
+            "why": "자르뎅 데 플란트의 정원에서 다양한 식물을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -134,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 구시가지에서 전통적인 타이페이의 삶을 경험할 수 있습니다.",
-            "why": "지우펀의 구시가는 타이페이의 전통적인 삶을體驗할 수 있는 곳입니다.",
+            "angle": "지우펀의 전통 차집과 현대 갤러리가 조화된 거리",
+            "why": "지우펀의 차집에서 전통 차를 마시며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -146,13 +176,28 @@
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
+          },
+          {
+            "title": "다퉁 구",
+            "angle": "다퉁 구의 전통 차집과 현대 갤러리가 조화된 거리",
+            "why": "다퉁 구의 차집에서 전통 차를 마시며 마음을 진정시킬 수 있습니다.",
+            "source_titles": [
+              "Datong District, Taipei"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
+            ],
+            "official_url": "https://dtdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.05972222,
+            "lng": 121.51416667
           }
         ],
         "Barcelona": [
           {
-            "title": "Mossèn Costa i Llobera Gardens",
-            "angle": "모센 코스타 이 로베라 정원에서 평화로운 산책을 즐길 수 있습니다.",
-            "why": "모센 코스타 이 로베라 정원에는 다양한 식물과 꽃이 피어있는 정원이 있습니다.",
+            "title": "모센 코스타 이 요베라 정원",
+            "angle": "모센 코스타 이 요베라 정원의 아름다운 정원",
+            "why": "모센 코스타 이 요베라 정원에서 다양한 식물을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -168,9 +213,24 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "Berlin Botanical Garden and Botanical Museum",
-            "angle": "베를린 식물원에서 다양한 식물을 감상할 수 있습니다.",
-            "why": "베를린 식물원에는 다양한 식물과 꽃이 피어있는 정원이 있습니다.",
+            "title": "아시아 미술관",
+            "angle": "아시아 미술관의 정원에서 차를 마시며 마음을 진정시키는 공간",
+            "why": "아시아 미술관의 정원에서 차를 마시며 아시아의 문화와 예술을 감상할 수 있습니다.",
+            "source_titles": [
+              "Museum of Asian Art"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
+            ],
+            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.5175,
+            "lng": 13.40277778
+          },
+          {
+            "title": "베를린 식물원",
+            "angle": "베를린 식물원의 아름다운 정원",
+            "why": "베를린 식물원의 정원에서 다양한 식물을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -200,8 +260,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글 몰트 스코치 위스키 디스틸러리",
-            "why": "스코틀랜드의 케네스몬트 마을에 위치한 싱글 몰트 스코치 위스키 디스틸러리",
+            "angle": "싱글 몰트 스코치 위스키 생산지",
+            "why": "일본 오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 생산지",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -239,7 +299,7 @@
           {
             "title": "Huashan 1914 Creative Park",
             "angle": "다목적 공원",
-            "why": "타이페이의 중정 구에 위치한 다목적 공원",
+            "why": "타이페이의 예술과 문화를 경험할 수 있는 공간",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -313,8 +373,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간 생활과 다문화 인구로 유명한 지역",
-            "why": "서울의 대표적인 나이트라이프 지역",
+            "angle": "다양한 국적의 사람들과 밤을 즐길 수 있는 장소",
+            "why": "이태원은 서울의 대표적인 나이트라이프 지역입니다.",
             "source_titles": [
               "Itaewon"
             ],
@@ -330,8 +390,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 지역, 나이트 클럽",
-            "why": "도쿄의 대표적인 나이트라이프 지역",
+            "angle": "고급스러운 상업 및 주거 지역과 나이트클럽",
+            "why": "로펑기는 도쿄의 대표적인 나이트라이프 지역입니다.",
             "source_titles": [
               "Roppongi"
             ],
@@ -348,8 +408,8 @@
         "London": [
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급 칵테일 바",
-            "why": "런던의 대표적인 스피커시 바",
+            "angle": "고급스러운 칵테일 바",
+            "why": "밀크 앤 허니는 런던의 대표적인 스피커시 바입니다.",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -381,8 +441,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 콤플렉스 및 레드 라이트 지구",
-            "why": "방콕의 대표적인 나이트라이프 지역",
+            "angle": "세계 최대의 어덜트 플레이그라운드",
+            "why": "나나 플라자는 방콕의 대표적인 나이트라이프 지역입니다.",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -418,8 +478,8 @@
         "Berlin": [
           {
             "title": "Berghain",
-            "angle": "세계적으로 유명한 나이트클럽",
-            "why": "베를린의 대표적인 나이트라이프 지역",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Berghain is a nightclub in Berlin, Germany. It is named after its location near the border between Kreuzberg and Friedrichshain and is a short walk from Berlin Ostbahnhof main line",
             "source_titles": [
               "Berghain"
             ],
@@ -448,8 +508,8 @@
         "Seoul": [
           {
             "title": "명동성당",
-            "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "서울의 대표적인 성당",
+            "why": "서울의 주요 관광지 중 하나인 명동에 위치한 역사적인 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -465,8 +525,8 @@
         "Tokyo": [
           {
             "title": "센소지",
-            "angle": "도쿄에서 가장 오래된 불교 사원",
-            "why": "도쿄의 대표적인 관광지 중 하나로 역사적인 건축물",
+            "angle": "도쿄의 대표적인 불교 사원",
+            "why": "도쿄에서 가장 오래된 사원으로 많은 관광객이 방문하는 곳",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -481,26 +541,26 @@
         ],
         "Osaka": [
           {
-            "title": "시텐노지",
-            "angle": "오사카의 대표적인 불교 사원",
-            "why": "오사카의 주요 관광지 중 하나로 역사적인 건축물",
+            "title": "코야산",
+            "angle": "오사카 근교의 불교 사원",
+            "why": "오사카 근교에 위치한 역사적인 불교 사원",
             "source_titles": [
-              "Tennōji-ku, Osaka"
+              "Mount Kōya"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+              "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
             ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 34.2125,
+            "lng": 135.58638889
           }
         ],
         "London": [
           {
             "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성공회 사원",
-            "why": "런던의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "런던의 대표적인 성당",
+            "why": "런던의 주요 관광지 중 하나인 웨스트민스터에 위치한 역사적인 성당",
             "source_titles": [
               "Westminster"
             ],
@@ -516,8 +576,8 @@
         "Paris": [
           {
             "title": "파리 대모스크",
-            "angle": "파리의 대표적인 이슬람 사원",
-            "why": "파리의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "파리의 대표적인 모스크",
+            "why": "파리에서 가장 큰 모스크로 많은 무슬림이 방문하는 곳",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -534,8 +594,8 @@
         "Bangkok": [
           {
             "title": "와트 아룬",
-            "angle": "방콕의 대표적인 불교 사원",
-            "why": "방콕의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "방콕의 대표적인 사원",
+            "why": "방콕에서 가장 유명한 사원 중 하나로 많은 관광객이 방문하는 곳",
             "source_titles": [
               "Wat Arun"
             ],
@@ -550,41 +610,43 @@
         ],
         "Singapore": [
           {
-            "title": "아르메니아 교회",
-            "angle": "싱가포르의 대표적인 기독교 교회",
-            "why": "싱가포르의 주요 관광지 중 하나로 역사적인 건축물",
+            "title": "마스지드 알 이슬라",
+            "angle": "싱가포르의 대표적인 모스크",
+            "why": "싱가포르에서 가장 큰 모스크로 많은 무슬림이 방문하는 곳",
             "source_titles": [
-              "Armenian Church, Singapore"
+              "Masjid Al Islah"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
+              "https://en.wikipedia.org/wiki/Masjid_Al_Islah"
             ],
-            "official_url": "https://www.armeniansinasia.org/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 1.29305556,
-            "lng": 103.84930556
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 1.4013989,
+            "lng": 103.9015299
           }
         ],
         "Taipei": [
           {
-            "title": "롱산사",
-            "angle": "타이페이의 대표적인 불교 사원",
-            "why": "타이페이의 주요 관광지 중 하나로 역사적인 건축물",
+            "title": "베이とう 구",
+            "angle": "타이페이의 대표적인 사원",
+            "why": "타이페이에서 가장 유명한 사원 중 하나로 많은 관광객이 방문하는 곳",
             "source_titles": [
-              "Taiwan High Speed Rail"
+              "Beitou District"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
+              "https://en.wikipedia.org/wiki/Beitou_District"
             ],
-            "official_url": "https://www.thsrc.com.tw/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+            "official_url": "https://btdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.1167,
+            "lng": 121.5
           }
         ],
         "Barcelona": [
           {
             "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 가톨릭 성당",
-            "why": "바르셀로나의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "바르셀로나의 대표적인 성당",
+            "why": "바르셀로나에서 가장 유명한 성당 중 하나로 많은 관광객이 방문하는 곳",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -600,8 +662,8 @@
         "Rome": [
           {
             "title": "산 조반니 인 라테라노 대성당",
-            "angle": "로마의 대표적인 가톨릭 대성당",
-            "why": "로마의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "로마의 대표적인 성당",
+            "why": "로마에서 가장 유명한 성당 중 하나로 많은 관광객이 방문하는 곳",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -617,8 +679,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 개신교 대성당",
-            "why": "베를린의 주요 관광지 중 하나로 역사적인 건축물",
+            "angle": "베를린의 대표적인 성당",
+            "why": "베를린에서 가장 유명한 성당 중 하나로 많은 관광객이 방문하는 곳",
             "source_titles": [
               "Zossen"
             ],
@@ -663,6 +725,14 @@
           "official_url": "https://www.gotoh-museum.or.jp/",
           "lat": 35.612195,
           "lng": 139.635294
+        },
+        {
+          "title": "Yumenoshima Tropical Greenhouse Dome",
+          "extract": "The Yumenoshima Tropical Greenhouse Dome , also sometimes called the Yumenoshima Tropical Plant Dome, is a botanical garden located at 3-2, Yumenoshima, Kōtō, Tokyo, Japan. It is operated by the Tokyo Metropolitan Park Association and is open daily except on Mondays; an admission fee is charged.",
+          "url": "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome",
+          "official_url": "https://www.yumenoshima.jp/",
+          "lat": 35.651298,
+          "lng": 139.829307
         }
       ],
       "Osaka": [
@@ -1028,12 +1098,12 @@
           "lng": 100.48888889
         },
         {
-          "title": "Bang Lamphu",
-          "extract": "Bang Lamphu, also spelled Banglampoo or Banglamphu is a neighbourhood in Bangkok located in Phra Nakhon District. The history of the Bang Lamphu community dates to the establishment of the Rattanakosin Kingdom, or earlier. Bang Lamphu covers the area north of Phra Nakhon, both inside and outside Rattanakosin Island, stretching from Phra Athit to Samsen Roads, which lead toward Dusit District. Most of Bang Lamphu lies within Talat Yot Subdistrict, with parts extending into nearby subdistricts such as Chana Songkhram, Bowon Niwet, Ban Phan Thom, and up to Wat Sam Phraya.",
-          "url": "https://en.wikipedia.org/wiki/Bang_Lamphu",
-          "official_url": "",
-          "lat": 13.75248056,
-          "lng": 100.50113889
+          "title": "Don Mueang International Airport",
+          "extract": "Don Mueang International Airport — known as Bangkok International Airport before 2006 — is one of two international airports serving Bangkok, the capital of Thailand, the other being Suvarnabhumi Airport (BKK).",
+          "url": "https://en.wikipedia.org/wiki/Don_Mueang_International_Airport",
+          "official_url": "https://donmueang.airportthai.co.th/",
+          "lat": 13.9125,
+          "lng": 100.60666667
         },
         {
           "title": "Assumption Cathedral, Bangkok",
