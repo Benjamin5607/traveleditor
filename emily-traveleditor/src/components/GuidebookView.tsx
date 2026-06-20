@@ -3,14 +3,23 @@ import { formatKrwLocale, t, type Locale } from "../lib/i18n";
 import { formatTransitLeg } from "../lib/transitLegs";
 import { getEmilyTheme, localizeTheme } from "../lib/themes";
 import type { TravelGuidebook } from "../lib/tripTypes";
+import PlaneExplorer from "./PlaneExplorer";
 import RouteMap from "./RouteMap";
 
 type GuidebookViewProps = {
   guidebook: TravelGuidebook;
   uiLocale?: Locale;
+  groqModelId?: string;
 };
 
-export default function GuidebookView({ guidebook, uiLocale }: GuidebookViewProps) {
+function dataSourceLabel(dataSource: TravelGuidebook["dataSource"], locale: Locale) {
+  if (dataSource === "plane") return locale === "en" ? "Plane DB" : "Plane DB";
+  if (dataSource === "plane+live") return locale === "en" ? "Plane + EOSLS" : "Plane + EOSLS";
+  if (dataSource === "live") return t(locale, "guide.eosls");
+  return t(locale, "guide.static");
+}
+
+export default function GuidebookView({ guidebook, uiLocale, groqModelId }: GuidebookViewProps) {
   const {
     budget,
     bookingLinks,
@@ -27,6 +36,9 @@ export default function GuidebookView({ guidebook, uiLocale }: GuidebookViewProp
     budgetThemeLabel,
     dataSource,
     searchSourcesLabel,
+    planeMode,
+    planePool,
+    planePersona,
   } = guidebook;
 
   const locale = uiLocale ?? preferences.locale ?? "ko";
@@ -69,8 +81,19 @@ export default function GuidebookView({ guidebook, uiLocale }: GuidebookViewProp
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-yellow-200">{t(locale, "guide.header")}</p>
           <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-bold text-zinc-400">
-            {dataSource === "live" ? t(locale, "guide.eosls") : t(locale, "guide.static")}
+            {dataSourceLabel(dataSource, locale)}
           </span>
+          {planeMode && (
+            <span
+              className={`rounded-full border px-3 py-1 text-xs font-bold ${
+                planeMode === "halal"
+                  ? "border-sky-400/40 text-sky-300"
+                  : "border-fuchsia-400/40 text-fuchsia-300"
+              }`}
+            >
+              {planeMode === "halal" ? "🕌 Halal Plane" : "🍸 Drunken Plane"}
+            </span>
+          )}
           {searchSourcesLabel && (
             <span className="rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-bold text-emerald-300">
               {searchSourcesLabel}
@@ -119,6 +142,16 @@ export default function GuidebookView({ guidebook, uiLocale }: GuidebookViewProp
           {narration.searchNote}
         </p>
       </section>
+
+      {planeMode && planePool && planePool.length > 0 && planePersona && (
+        <PlaneExplorer
+          mode={planeMode}
+          city={preferences.city}
+          places={planePool}
+          persona={planePersona}
+          modelId={groqModelId}
+        />
+      )}
 
       {/* 항공 — 구간·항공사·이유 */}
       <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">

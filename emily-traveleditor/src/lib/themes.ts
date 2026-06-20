@@ -1,3 +1,5 @@
+export type PlaneMode = "halal" | "drunken" | null;
+
 export type ThemeId =
   | "peace_calm"
   | "drink_craft"
@@ -32,6 +34,7 @@ export type EmilyTheme = {
   promptEn: string;
   /** static theme_travel_db.json 키 (레거시 4테마) */
   legacyDbKey?: string;
+  planeMode?: PlaneMode;
   requirements: ThemeRequirement[];
 };
 
@@ -46,6 +49,7 @@ export const EMILY_THEMES: EmilyTheme[] = [
     descriptionEn: "Quiet tea houses, roasteries, and garden walks to unwind",
     icon: "🍵",
     accent: "from-emerald-300 via-teal-300 to-cyan-300",
+    planeMode: null,
     prompt: "조용한 티하우스, 로스터리 카페, 다도 체험, 고요한 정원·산책 코스만 추천해.",
     promptEn: "Recommend quiet tea houses, specialty coffee, tea ceremonies, and peaceful gardens.",
     legacyDbKey: "마음의 평화",
@@ -65,6 +69,7 @@ export const EMILY_THEMES: EmilyTheme[] = [
     descriptionEn: "Where drinks are made — wineries, breweries, distilleries",
     icon: "🍷",
     accent: "from-amber-300 via-orange-300 to-rose-300",
+    planeMode: "drunken",
     prompt: "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 생산·시음 체험이 있는 장소만 추천해.",
     promptEn: "Wineries, distilleries, and breweries with tasting or production tours only.",
     legacyDbKey: "인생이 무료",
@@ -84,6 +89,7 @@ export const EMILY_THEMES: EmilyTheme[] = [
     descriptionEn: "Nightlife energy and concept bars only",
     icon: "🪩",
     accent: "from-fuchsia-300 via-pink-300 to-purple-300",
+    planeMode: "drunken",
     prompt: "클럽, 스픽이지 바, 콘셉트 바처럼 밤에 에너지가 강한 장소만 추천해.",
     promptEn: "Nightclubs, speakeasies, and concept bars with strong evening vibes.",
     legacyDbKey: "오늘은 욜로",
@@ -103,6 +109,7 @@ export const EMILY_THEMES: EmilyTheme[] = [
     descriptionEn: "Only registered heritage religious sites — no random neighborhood churches",
     icon: "⛪",
     accent: "from-sky-300 via-indigo-300 to-violet-300",
+    planeMode: "halal",
     prompt: "문화유산·역사 유적으로 등록된 사찰, 성당, 모스크, 수도원만 추천해. 일반 동네 교회나 역사 없는 예배당은 제외.",
     promptEn: "Only UNESCO, national heritage, or historically registered temples, cathedrals, mosques, and monasteries. Exclude ordinary parish churches.",
     legacyDbKey: "신앙",

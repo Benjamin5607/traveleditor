@@ -17,6 +17,14 @@ import { fetchLiveCostHints, fetchLivePlaces, fetchWikivoyageExtract, geocodeCit
 import { buildOsmDirectionsUrl, buildOsmEmbedUrl } from "./mapUtils";
 import { t } from "./i18n";
 import {
+  fetchPlanePlacesForTrip,
+  getPlaneModeForTheme,
+  getPlanePersona,
+  mergePlaneIntoPlaces,
+  planeSourceLabel,
+  planeToPlaceCandidates,
+} from "./planeData";
+import {
   buildQualityWhy,
   isGlobalChain,
   passesQualityGate,
@@ -36,6 +44,7 @@ import type {
   ItineraryBlock,
   ItineraryDay,
   PlaceCandidate,
+  PlanePlaceRecord,
   TransportId,
   TravelGuidebook,
   TripPreferences,
@@ -332,11 +341,24 @@ export async function buildTravelGuidebook(
   const themeDb = await loadThemeTravelDb();
   const marketDb = await loadMarketDb();
   const cityGeo = await geocodeCity(prefs.city);
+  const planeMode = getPlaneModeForTheme(prefs.theme);
+  const planePersona = getPlanePersona(prefs.theme);
+  let planePool: PlanePlaceRecord[] = [];
+
+  if (planeMode) {
+    planePool = await fetchPlanePlacesForTrip(
+      planeMode,
+      prefs.theme,
+      prefs.city,
+      cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng, countryCode: cityGeo.countryCode } : undefined
+    );
+  }
+
   const voyageExtract = await fetchWikivoyageExtract(prefs.city, cityGeo?.countryCode);
   const themeMeta = getEmilyTheme(prefs.theme);
   const dbKey = themeDbKey(themeMeta);
   const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
-  let dataSource: "static" | "live" = "static";
+  let dataSource: TravelGuidebook["dataSource"] = "static";
   let searchSourcesLabel: string | undefined;
   const minPlaces = minPlacesForTrip(prefs.days);
   let places = filterPlacesForTheme(
@@ -400,6 +422,15 @@ export async function buildTravelGuidebook(
 
   places = places.slice(0, maxPlacePoolSize(prefs.days));
   const poolBlendNote = blendRationale(themeMeta.id, prefs.locale, themeOnlyCount, places.length);
+
+  const usedLive = dataSource === "live";
+  if (planeMode && planePool.length > 0) {
+    const planePlaces = planeToPlaceCandidates(prefs.city, planePool, planeMode);
+    places = mergePlaneIntoPlaces(planePlaces, places);
+    const planeLabel = planeSourceLabel(planeMode, planePool.length);
+    searchSourcesLabel = searchSourcesLabel ? `${planeLabel} · ${searchSourcesLabel}` : planeLabel;
+    dataSource = usedLive ? "plane+live" : "plane";
+  }
 
   if (!cityGeo) {
     return {
@@ -509,7 +540,7 @@ export async function buildTravelGuidebook(
   const osmDirectionsUrl = buildOsmDirectionsUrl(mapStops);
 
   const tips = [...itineraryCore.tips];
-  if (dataSource === "live") {
+  if (dataSource === "live" || dataSource === "plane+live") {
     tips.push(
       searchSourcesLabel
         ? prefs.locale === "en"
@@ -518,6 +549,17 @@ export async function buildTravelGuidebook(
         : prefs.locale === "en"
           ? "Places collected via open-source local search (EOSLS)."
           : "EOSLS 오픈소스 로컬 검색으로 장소를 수집했습니다."
+    );
+  }
+  if (dataSource === "plane" || dataSource === "plane+live") {
+    tips.push(
+      planeMode === "halal"
+        ? prefs.locale === "en"
+          ? "Halal Plane curation is prioritized. Chat with Amina in Plane Explorer below."
+          : "Halal Plane 큐레이션 DB가 일정·추천 장소에 우선 반영됩니다. 아래 Plane Explorer에서 아미나와 대화해 보세요."
+        : prefs.locale === "en"
+          ? "Drunken Plane curation is prioritized. Chat with Emily in Plane Explorer below."
+          : "Drunken Plane 큐레이션 DB가 일정·추천 장소에 우선 반영됩니다. 아래 Plane Explorer에서 Emily와 대화해 보세요."
     );
   }
   if (!useGroq) {
@@ -551,5 +593,8 @@ export async function buildTravelGuidebook(
     flightDetail,
     dataSource,
     searchSourcesLabel,
+    planeMode: planeMode ?? undefined,
+    planePool: planePool.length > 0 ? planePool : undefined,
+    planePersona: planePersona ?? undefined,
   };
 }

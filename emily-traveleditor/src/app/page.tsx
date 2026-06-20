@@ -362,6 +362,17 @@ export default function Home() {
                   <p className="text-xs font-bold text-zinc-400">{loc.shortLabel}</p>
                   <h3 className="mt-1 text-xl font-black text-white">{loc.name}</h3>
                   <p className="mt-2 line-clamp-2 text-sm text-zinc-400">{loc.description}</p>
+                  {item.planeMode && (
+                    <p className="mt-3 text-xs font-bold text-yellow-200/80">
+                      {item.planeMode === "halal"
+                        ? locale === "en"
+                          ? "🕌 Halal Plane"
+                          : "🕌 Halal Plane 연동"
+                        : locale === "en"
+                          ? "🍸 Drunken Plane"
+                          : "🍸 Drunken Plane 연동"}
+                    </p>
+                  )}
                   <div className="mt-3 flex flex-wrap gap-1">
                     {loc.requirements.slice(0, 3).map((req) => (
                       <span key={req} className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-zinc-500">
@@ -400,7 +411,13 @@ export default function Home() {
           </div>
         )}
 
-        {guidebook && <GuidebookView guidebook={guidebook} uiLocale={locale} />}
+        {guidebook && (
+          <GuidebookView
+            guidebook={guidebook}
+            uiLocale={locale}
+            groqModelId={selectedWorker || undefined}
+          />
+        )}
       </section>
     </main>
   );

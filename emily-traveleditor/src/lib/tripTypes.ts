@@ -126,6 +126,26 @@ export type GuideNarrationInfo = {
   searchNote: string;
 };
 
+export type PlaneMode = "halal" | "drunken";
+
+export type PlanePersona = "amina" | "emily_bartender";
+
+export type PlanePlaceRecord = {
+  country: string;
+  name: string;
+  nameKo?: string | null;
+  lat: number;
+  lng: number;
+  category: string;
+  label?: string;
+  descKo: string;
+  descEn: string;
+  address?: string;
+  signature?: string;
+  vibe?: string;
+  distanceKm?: number;
+};
+
 export type TravelGuidebook = {
   title: string;
   summary: string;
@@ -144,8 +164,11 @@ export type TravelGuidebook = {
   osmDirectionsUrl: string;
   flightEstimate: FlightEstimateInfo;
   flightDetail: FlightDetailInfo;
-  dataSource: "static" | "live";
+  dataSource: "static" | "live" | "plane" | "plane+live";
   searchSourcesLabel?: string;
+  planeMode?: PlaneMode;
+  planePool?: PlanePlaceRecord[];
+  planePersona?: PlanePersona;
 };
 
 export type FlightEstimateInfo = {
