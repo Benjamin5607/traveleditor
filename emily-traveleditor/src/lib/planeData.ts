@@ -1,4 +1,4 @@
-import { getEmilyTheme, type EmilyThemeName } from "./themes";
+import { getEmilyTheme } from "./themes";
 import { slugifyPlaceId } from "./travelData";
 import type { PlaceCandidate, PlanePlaceRecord } from "./tripTypes";
 
@@ -102,15 +102,13 @@ export function getPlanePersona(themeName: string): "amina" | "emily_bartender" 
   return null;
 }
 
-function matchesDrunkenFilter(
-  place: PlanePlaceRecord,
-  themeName: EmilyThemeName
-): boolean {
+function matchesDrunkenFilter(place: PlanePlaceRecord, themeKey: string): boolean {
+  const theme = getEmilyTheme(themeKey);
   const hay = `${place.category} ${place.vibe ?? ""} ${place.label ?? ""} ${place.descEn ?? ""}`;
-  if (themeName === "인생이 무료") {
+  if (theme.id === "drink_craft") {
     return CRAFT_RE.test(hay) || /winery|brewery|distillery|whisky|beer|wine/i.test(place.name);
   }
-  if (themeName === "오늘은 욜로") {
+  if (theme.id === "yolo_night") {
     return NIGHT_RE.test(hay) || /bar|club|lounge|speakeasy/i.test(place.name);
   }
   return true;
@@ -149,7 +147,7 @@ export async function fetchPlanePlacesForTrip(
   }
 
   if (mode === "drunken") {
-    pool = pool.filter((p) => matchesDrunkenFilter(p, themeName as EmilyThemeName));
+    pool = pool.filter((p) => matchesDrunkenFilter(p, themeName));
   }
 
   if (cityGeo) {

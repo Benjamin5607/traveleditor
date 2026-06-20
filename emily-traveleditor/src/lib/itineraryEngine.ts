@@ -1,19 +1,13 @@
-import { getEmilyTheme } from "./themes";
-import type { ItineraryBlock, ItineraryDay, PlaceCandidate, TransportId, TripPreferences } from "./tripTypes";
-
-const THEME_SLOTS: Record<string, string[]> = {
-  "마음의 평화": ["09:30", "14:00", "16:30"],
-  "인생이 무료": ["11:00", "14:30", "17:00"],
-  "오늘은 욜로": ["18:00", "21:00", "23:00"],
-  "신앙": ["08:30", "11:00", "15:00"],
-};
-
-const THEME_SLOT_REASON: Record<string, string> = {
-  "마음의 평화": "차·커피·산책은 한적한 오전·오후가 적합해 이 시간대를 썼습니다.",
-  "인생이 무료": "와이너리·브루어리 투어는 점심 이후 운영이 많아 오전·오후·저녁으로 배치했습니다.",
-  "오늘은 욜로": "클럽·바는 밤 시간대가 핵심이라 저녁·심야 슬롯을 우선했습니다.",
-  "신앙": "사원·성당은 이른 오전·오후에 방문하기 좋아 조용한 시간대를 택했습니다.",
-};
+import { getEmilyTheme, localizeTheme, type ThemeId } from "./themes";
+import { THEME_SLOT_REASON } from "./themeFilters";
+import type {
+  ItineraryBlock,
+  ItineraryBlockKind,
+  ItineraryDay,
+  PlaceCandidate,
+  TransportId,
+  TripPreferences,
+} from "./tripTypes";
 
 function haversineKm(a: { lat: number; lng: number }, b: { lat: number; lng: number }) {
   const toRad = (d: number) => (d * Math.PI) / 180;
@@ -32,9 +26,10 @@ function pickTransport(distanceKm: number, pref: TransportId): TransportId {
 }
 
 function orderPlacesByRoute(places: PlaceCandidate[], origin?: { lat: number; lng: number }) {
-  const withCoords = places.filter((p) => p.lat != null && p.lng != null) as Array<PlaceCandidate & { lat: number; lng: number }>;
-  const without = places.filter((p) => p.lat == null || p.lng == null);
-  if (withCoords.length <= 1) return [...withCoords, ...without];
+  const withCoords = places.filter((p) => p.lat != null && p.lng != null) as Array<
+    PlaceCandidate & { lat: number; lng: number }
+  >;
+  if (withCoords.length <= 1) return withCoords;
 
   const ordered: typeof withCoords = [];
   const remaining = [...withCoords];
@@ -55,27 +50,92 @@ function orderPlacesByRoute(places: PlaceCandidate[], origin?: { lat: number; ln
     current = { lat: next.lat, lng: next.lng };
   }
 
-  return [...ordered, ...without];
+  const withoutCoords = places.filter((p) => p.lat == null || p.lng == null);
+  return [...ordered, ...withoutCoords];
+}
+
+type DaySlot = { time: string; kind: ItineraryBlockKind };
+
+/** 하루 일과 — 식사·커피·관광을 번갈아 배치 */
+function buildDayFlow(themeId: ThemeId, locale: "ko" | "en"): DaySlot[] {
+  if (themeId === "yolo_night") {
+    return locale === "en"
+      ? [
+          { time: "11:30", kind: "lunch" },
+          { time: "13:00", kind: "attraction" },
+          { time: "15:00", kind: "cafe" },
+          { time: "16:30", kind: "attraction" },
+          { time: "18:30", kind: "dinner" },
+          { time: "20:30", kind: "attraction" },
+          { time: "22:30", kind: "attraction" },
+        ]
+      : [
+          { time: "11:30", kind: "lunch" },
+          { time: "13:00", kind: "attraction" },
+          { time: "15:00", kind: "cafe" },
+          { time: "16:30", kind: "attraction" },
+          { time: "18:30", kind: "dinner" },
+          { time: "20:30", kind: "attraction" },
+          { time: "22:30", kind: "attraction" },
+        ];
+  }
+
+  if (themeId === "food_market") {
+    return [
+      { time: "08:30", kind: "breakfast" },
+      { time: "10:00", kind: "attraction" },
+      { time: "12:00", kind: "lunch" },
+      { time: "13:30", kind: "attraction" },
+      { time: "15:00", kind: "cafe" },
+      { time: "16:30", kind: "attraction" },
+      { time: "18:30", kind: "dinner" },
+      { time: "20:00", kind: "attraction" },
+    ];
+  }
+
+  return [
+    { time: "08:30", kind: "breakfast" },
+    { time: "10:00", kind: "attraction" },
+    { time: "12:30", kind: "lunch" },
+    { time: "14:00", kind: "attraction" },
+    { time: "15:30", kind: "cafe" },
+    { time: "16:30", kind: "attraction" },
+    { time: "18:30", kind: "dinner" },
+    { time: "20:00", kind: "attraction" },
+  ];
 }
 
 function blockRationale(
   place: PlaceCandidate,
-  theme: string,
+  themeId: string,
   time: string,
   transport: TransportId,
-  distanceKm?: number
+  distanceKm: number | undefined,
+  locale: "ko" | "en"
 ) {
-  const themeReason = THEME_SLOT_REASON[theme] ?? "테마에 맞는 시간대로 배치했습니다.";
+  const themeReason =
+    THEME_SLOT_REASON[themeId as ThemeId] ??
+    (locale === "en" ? "Scheduled for theme-appropriate time." : "테마에 맞는 시간대로 배치했습니다.");
   const placeReason = place.why
-    ? `추천 이유: ${place.why.slice(0, 160)}`
+    ? locale === "en"
+      ? `Why: ${place.why.slice(0, 160)}`
+      : `추천 이유: ${place.why.slice(0, 160)}`
     : place.angle
-      ? `테마 포인트: ${place.angle}`
-      : "수집 데이터에 근거한 후보 장소입니다.";
+      ? locale === "en"
+        ? `Theme: ${place.angle}`
+        : `테마 포인트: ${place.angle}`
+      : locale === "en"
+        ? "Curated from collected data."
+        : "수집 데이터에 근거한 후보 장소입니다.";
   const moveReason =
     transport === "walk" && distanceKm != null
-      ? `이전 장소에서 약 ${distanceKm.toFixed(1)}km라 도보 이동을 제안합니다.`
-      : `이동 수단은 ${transport} 기준입니다.`;
-  return `${time} 방문 — ${themeReason} ${placeReason} ${moveReason}`;
+      ? locale === "en"
+        ? `About ${distanceKm.toFixed(1)}km from previous stop — walk suggested.`
+        : `이전 장소에서 약 ${distanceKm.toFixed(1)}km라 도보 이동을 제안합니다.`
+      : locale === "en"
+        ? `Transport: ${transport}.`
+        : `이동 수단은 ${transport} 기준입니다.`;
+  return `${time} — ${themeReason} ${placeReason} ${moveReason}`;
 }
 
 export type SmartItineraryResult = {
@@ -89,74 +149,156 @@ export type SmartItineraryResult = {
 export function buildSmartItinerary(
   prefs: TripPreferences,
   places: PlaceCandidate[],
-  cityCenter?: { lat: number; lng: number }
+  cityCenter?: { lat: number; lng: number },
+  poolBlendNote?: string
 ): SmartItineraryResult {
-  const theme = getEmilyTheme(prefs.theme);
-  const slots = THEME_SLOTS[prefs.theme] ?? ["10:00", "14:00", "17:00"];
+  const themeMeta = getEmilyTheme(prefs.theme);
+  const theme = localizeTheme(themeMeta, prefs.locale);
+  const dayFlow = buildDayFlow(themeMeta.id, prefs.locale);
+  const attractionSlotsPerDay = dayFlow.filter((s) => s.kind === "attraction").length;
   const ordered = orderPlacesByRoute(places, cityCenter);
-  const perDay = Math.min(3, Math.max(1, Math.ceil(ordered.length / prefs.days)));
   const days: ItineraryDay[] = [];
   let placeIdx = 0;
+  const usedPlaceIds = new Set<string>();
 
-  const itineraryRationale = [
-    `「${theme.name}」 테마에 맞는 ${ordered.length}곳을 ${prefs.days}일로 나눴습니다.`,
-    THEME_SLOT_REASON[prefs.theme] ?? "",
-    ordered.some((p) => p.lat != null)
-      ? "장소 순서는 도시 중심에서 가까운 순(최근접 경로)으로 짰습니다 — 불필요한 이동을 줄이기 위함입니다."
-      : "좌표가 부족해 수집 순서를 유지했습니다.",
-    `하루 ${perDay}곳씩 배치해 ${prefs.nights === 0 ? "무박" : `${prefs.nights}박`} 일정에 맞췄습니다.`,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const attractionsPerDay = Math.min(
+    attractionSlotsPerDay,
+    Math.max(2, Math.ceil(ordered.length / prefs.days))
+  );
+
+  const itineraryRationale =
+    prefs.locale === "en"
+      ? [
+          `${ordered.length} sights for 「${theme.name}」 across ${prefs.days} days.`,
+          THEME_SLOT_REASON[themeMeta.id] ?? "",
+          "Each day includes breakfast, lunch, dinner, a cafe break, and multiple sights — like a real trip.",
+          ordered.some((p) => p.lat != null)
+            ? "Sight order follows nearest-neighbor routing from the city center."
+            : "Sight order follows collection order where coordinates were missing.",
+          poolBlendNote,
+          "Each sight is used at most once — no repeating the same place across days.",
+        ]
+          .filter(Boolean)
+          .join(" ")
+      : [
+          `「${theme.name}」 테마를 중심으로 ${ordered.length}곳을 ${prefs.days}일에 배치했습니다.`,
+          THEME_SLOT_REASON[themeMeta.id] ?? "",
+          "테마는 우선순위이지 유일한 선택이 아닙니다 — 긴 일정에는 도시 대표 명소도 섞었습니다.",
+          "하루에 아침·점심·저녁·커피 휴식과 관광 2~4곳을 번갈아 넣었습니다.",
+          ordered.some((p) => p.lat != null)
+            ? "관광지 순서는 도시 중심에서 가까운 순(최근접 경로)입니다."
+            : "좌표가 부족한 장소는 수집 순서를 유지했습니다.",
+          poolBlendNote,
+          "같은 장소는 하루·여러 날에 반복하지 않습니다.",
+        ]
+          .filter(Boolean)
+          .join(" ");
 
   for (let day = 1; day <= prefs.days; day += 1) {
     const blocks: ItineraryBlock[] = [];
     let prevCoords = cityCenter;
+    let attractionsToday = 0;
 
-    for (let slotIdx = 0; slotIdx < perDay && placeIdx < ordered.length; slotIdx += 1) {
-      const place = ordered[placeIdx];
-      placeIdx += 1;
-      const time = slots[slotIdx % slots.length];
-      let transport: TransportId = prefs.transport;
-      let distanceKm: number | undefined;
+    for (const slot of dayFlow) {
+      if (slot.kind === "attraction") {
+        if (attractionsToday >= attractionsPerDay) {
+          continue;
+        }
 
-      if (prevCoords && place.lat != null && place.lng != null) {
-        distanceKm = haversineKm(prevCoords, { lat: place.lat, lng: place.lng });
-        transport = pickTransport(distanceKm, prefs.transport);
+        while (placeIdx < ordered.length && usedPlaceIds.has(ordered[placeIdx].id)) {
+          placeIdx += 1;
+        }
+        if (placeIdx >= ordered.length) {
+          continue;
+        }
+
+        const place = ordered[placeIdx];
+        usedPlaceIds.add(place.id);
+        placeIdx += 1;
+        attractionsToday += 1;
+
+        let transport: TransportId = prefs.transport;
+        let distanceKm: number | undefined;
+
+        if (prevCoords && place.lat != null && place.lng != null) {
+          distanceKm = haversineKm(prevCoords, { lat: place.lat, lng: place.lng });
+          transport = pickTransport(distanceKm, prefs.transport);
+        }
+
+        const activity = place.angle || place.why?.slice(0, 80) || theme.shortLabel;
+
+        blocks.push({
+          time: slot.time,
+          kind: "attraction",
+          place_id: place.id,
+          place_title: place.title,
+          activity,
+          transport,
+          rationale: blockRationale(
+            place,
+            themeMeta.id,
+            slot.time,
+            transport,
+            distanceKm,
+            prefs.locale
+          ),
+        });
+
+        if (place.lat != null && place.lng != null) {
+          prevCoords = { lat: place.lat, lng: place.lng };
+        }
+        continue;
       }
-
-      const activity = place.angle || place.why?.slice(0, 80) || `${theme.shortLabel} 테마 체험`;
 
       blocks.push({
-        time,
-        place_id: place.id,
-        place_title: place.title,
-        activity,
-        transport,
-        rationale: blockRationale(place, prefs.theme, time, transport, distanceKm),
+        time: slot.time,
+        kind: slot.kind,
+        place_id: `${slot.kind}:day${day}`,
+        place_title: "",
+        activity:
+          prefs.locale === "en"
+            ? "Nearby named cafe or restaurant (OSM lookup)"
+            : "근처 실제 상호명 식당·카페 (OSM 검색)",
+        transport: prevCoords ? prefs.transport : "walk",
+        rationale:
+          prefs.locale === "en"
+            ? `Meal slot at ${slot.time} — filled only when OSM returns a real business name.`
+            : `${slot.time} 식사 슬롯 — OSM에서 실제 상호명이 확인될 때만 일정에 포함됩니다.`,
       });
-
-      if (place.lat != null && place.lng != null) {
-        prevCoords = { lat: place.lat, lng: place.lng };
-      }
     }
 
-    days.push({
-      day,
-      label: prefs.nights === 0 ? `${day}일차 (무박)` : `${day}일차`,
-      blocks,
-    });
+    const dayLabel =
+      prefs.locale === "en"
+        ? `Day ${day}`
+        : prefs.nights === 0
+          ? `${day}일차 (무박)`
+          : `${day}일차`;
+
+    days.push({ day, label: dayLabel, blocks });
   }
 
   return {
-    title: `${prefs.city} ${prefs.days}일 ${theme.name} 가이드`,
-    summary: `${prefs.city}에서 ${theme.shortLabel} 중심 ${ordered.length}곳을 거리·테마 시간대에 맞춰 배치한 ${prefs.days}일 일정입니다.`,
+    title:
+      prefs.locale === "en"
+        ? `${prefs.city} ${prefs.days}-day ${theme.name} guide`
+        : `${prefs.city} ${prefs.days}일 ${theme.name} 가이드`,
+    summary:
+      prefs.locale === "en"
+        ? `${ordered.length} ${theme.shortLabel} spots with meals and cafe breaks across ${prefs.days} days in ${prefs.city}.`
+        : `${prefs.city}에서 식사·커피 휴식과 함께 ${theme.shortLabel} ${ordered.length}곳을 돌아보는 ${prefs.days}일 일정입니다.`,
     itineraryRationale,
     days,
-    tips: [
-      "각 일정 블록에 ‘왜 이 시간·이 장소인지’ 근거를 붙였습니다.",
-      "장소 Google Maps 링크로 위치를 확인한 뒤 방문하세요.",
-      "항공·숙소는 구간·숙소명 기준 추정이며, 링크에서 실제 편·객실을 고르세요.",
-    ],
+    tips:
+      prefs.locale === "en"
+        ? [
+            "Each day mixes meals, cafe breaks, and multiple sights — not one stop per day.",
+            "Meal stops appear only when OSM returns a real business name — no generic placeholders.",
+            "Confirm all locations via Google Maps before visiting.",
+          ]
+        : [
+            "하루에 한 곳만 가는 게 아니라 아침·점심·저녁·커피와 관광을 섞었습니다.",
+            "식사·카페는 OSM에서 실제 상호명이 확인된 곳만 일정에 넣습니다.",
+            "방문 전 Google Maps에서 영업시간·위치를 꼭 확인하세요.",
+          ],
   };
 }

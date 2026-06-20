@@ -1,15 +1,8 @@
+import { THEME_WIKIDATA_TYPES } from "./themeFilters";
 import type { PlaceCandidate } from "./tripTypes";
 import { slugifyPlaceId } from "./travelData";
 
 const WIKIDATA_SPARQL = "https://query.wikidata.org/sparql";
-
-/** 테마별 Wikidata 엔티티 타입 */
-const THEME_TYPES: Record<string, string[]> = {
-  "마음의 평화": ["wd:Q30022", "wd:Q136222", "wd:Q167346"],
-  "인생이 무료": ["wd:Q156362", "wd:Q131734", "wd:Q185583"],
-  "오늘은 욜로": ["wd:Q622425", "wd:Q187456"],
-  "신앙": ["wd:Q2977", "wd:Q32815", "wd:Q8441", "wd:Q44613"],
-};
 
 type SparqlRow = {
   item?: { value: string };
@@ -32,14 +25,13 @@ async function runSparql(query: string) {
   return (data.results?.bindings ?? []) as SparqlRow[];
 }
 
-/** 도시 중심 반경(km) 내 테마 POI — Overpass보다 1회 쿼리로 빠름 */
 export async function fetchWikidataPois(
   city: string,
-  theme: string,
+  themeId: string,
   center: { lat: number; lng: number },
   radiusKm = 18
 ): Promise<PlaceCandidate[]> {
-  const types = THEME_TYPES[theme];
+  const types = THEME_WIKIDATA_TYPES[themeId as keyof typeof THEME_WIKIDATA_TYPES];
   if (!types?.length) return [];
 
   const values = types.join(" ");
@@ -51,7 +43,11 @@ SELECT ?item ?itemLabel ?lat ?lon WHERE {
   BIND(geof:latitude(?coord) AS ?lat)
   BIND(geof:longitude(?coord) AS ?lon)
   FILTER(geof:distance("Point(${center.lng} ${center.lat})"^^geo:wktLiteral, ?coord, unit:Kilometer) < ${radiusKm})
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ko". }
+  FILTER NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q515 }
+  FILTER NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q486972 }
+  FILTER NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q15284 }
+  FILTER(BOUND(?itemLabel) && STRLEN(?itemLabel) > 2)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ko,ja,th,vi,zh". }
 }
 LIMIT 8`;
 
@@ -71,8 +67,8 @@ LIMIT 8`;
       places.push({
         id: slugifyPlaceId(city, title),
         title,
-        angle: theme,
-        why: `${city} 인근 Wikidata 공개 데이터 (${radiusKm}km 반경)`,
+        angle: themeId,
+        why: `${city} Wikidata (${radiusKm}km)`,
         source_urls: itemUrl ? [itemUrl] : [],
         lat,
         lng: lon,

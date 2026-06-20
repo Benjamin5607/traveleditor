@@ -103,6 +103,43 @@ function parseListingsSection(section: string, sectionName: string, max: number)
   return listings;
 }
 
+const THEME_WIKIVOYAGE_SECTIONS: Record<string, string[]> = {
+  peace_calm: ["See", "Do", "Drink"],
+  drink_craft: ["Drink", "Eat", "Do"],
+  yolo_night: ["Drink", "Do", "Buy"],
+  faith_heritage: ["See"],
+  nature_trail: ["See", "Do"],
+  art_culture: ["See", "Do"],
+  food_market: ["Eat", "Drink", "Buy"],
+  history_heritage: ["See"],
+  family_fun: ["See", "Do"],
+  wellness_spa: ["Do", "See"],
+  shopping_style: ["Buy", "See"],
+  photo_landmark: ["See", "Do"],
+};
+
+/** 테마에 맞는 Wikivoyage 섹션만 — Eat/시장은 에디터 큐레이션 우선 */
+export function parseVenuesForTheme(
+  extract: string,
+  themeId: string,
+  maxPerSection = 5
+): ParsedVenue[] {
+  const sections = THEME_WIKIVOYAGE_SECTIONS[themeId] ?? ["See", "Do", "Eat"];
+  const all: ParsedVenue[] = [];
+  const seen = new Set<string>();
+
+  for (const heading of sections) {
+    const text = sectionText(extract, heading);
+    if (!text) continue;
+    for (const item of parseListingsSection(text, heading, maxPerSection)) {
+      if (seen.has(item.name.toLowerCase())) continue;
+      seen.add(item.name.toLowerCase());
+      all.push(item);
+    }
+  }
+  return all;
+}
+
 /** Wikivoyage See/Do/Drink/Eat — 로컬 큐레이션 장소 */
 export function parseVenuesFromWikivoyage(extract: string, maxPerSection = 4): ParsedVenue[] {
   const sections = ["See", "Do", "Drink", "Eat", "Buy"];

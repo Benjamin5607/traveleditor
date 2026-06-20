@@ -1,6 +1,6 @@
 import { costsFromCountryCode } from "./liveCost";
-import { flightMidpoint, estimateFlightFromSeoul } from "./flightEstimates";
-import { applyCostMultipliers, getBudgetTheme } from "./budgetThemes";
+import { flightMidpoint, estimateFlight } from "./flightEstimates";
+import { applyCostMultipliers, getBudgetTheme, localizeBudgetTheme } from "./budgetThemes";
 import type { BudgetBreakdown, LodgingId, TransportId, TripPreferences } from "./tripTypes";
 import type { CityCostIndex, MarketDb } from "./travelData";
 import { normalizeCityName } from "./travelData";
@@ -57,11 +57,17 @@ export function estimateBudget(
 ): BudgetBreakdown {
   const baseCosts = getCityCosts(market, prefs.city, options?.countryCode, options?.liveCostHints);
   const costs = applyCostMultipliers(baseCosts, prefs.budgetTheme);
-  const budgetTheme = getBudgetTheme(prefs.budgetTheme);
+  const budgetTheme = localizeBudgetTheme(prefs.budgetTheme, prefs.locale);
   const nights = prefs.lodging === "none" ? 0 : prefs.nights;
   const days = Math.max(prefs.days, 1);
 
-  const flightInfo = estimateFlightFromSeoul(prefs.city, options?.cityCoords, market);
+  const flightInfo = estimateFlight(
+    prefs.originCity,
+    prefs.city,
+    options?.cityCoords,
+    market,
+    prefs.locale
+  );
   const flights = flightMidpoint(flightInfo);
   const lodging = lodgingRate(costs, prefs.lodging) * nights;
   const transport = transportRate(costs, prefs.transport) * days;
@@ -69,21 +75,37 @@ export function estimateBudget(
   const activities = (costs.activity ?? DEFAULT_COST.activity!) * Math.min(stopCount, days * 2);
   const total = flights + lodging + transport + meals + activities;
 
-  const notes = [
-    `예산 테마: ${budgetTheme.emoji} ${budgetTheme.name} — ${budgetTheme.tagline}`,
-    "항공권은 서울 출발 무료 추정(테이블·거리·권역) 중간값입니다.",
-    "숙박·교통·식비·체험비는 물가 티어 × 예산 테마 배율을 적용했습니다.",
-    "실제 예약 가격은 검색 링크에서 반드시 다시 확인하세요.",
-  ];
+  const notes =
+    prefs.locale === "en"
+      ? [
+          `Budget vibe: ${budgetTheme.emoji} ${budgetTheme.name} — ${budgetTheme.tagline}`,
+          `Flights: free estimate from ${prefs.originCity} (table, distance, region).`,
+          "Lodging, transport, meals, and activities use cost tier × budget theme multipliers.",
+          "Always confirm real prices in the booking links.",
+        ]
+      : [
+          `예산 테마: ${budgetTheme.emoji} ${budgetTheme.name} — ${budgetTheme.tagline}`,
+          `항공권은 ${prefs.originCity} 출발 무료 추정(테이블·거리·권역) 중간값입니다.`,
+          "숙박·교통·식비·체험비는 물가 티어 × 예산 테마 배율을 적용했습니다.",
+          "실제 예약 가격은 검색 링크에서 반드시 다시 확인하세요.",
+        ];
 
   if (options?.priceSource) {
     notes.push(options.priceSource);
   } else if (!market?.cost_index?.[prefs.city] && options?.countryCode) {
-    notes.push(`수집 JSON에 없어 ${options.countryCode.toUpperCase()} 국가 물가 티어를 적용했습니다.`);
+    notes.push(
+      prefs.locale === "en"
+        ? `No city row in JSON — applied ${options.countryCode.toUpperCase()} country cost tier.`
+        : `수집 JSON에 없어 ${options.countryCode.toUpperCase()} 국가 물가 티어를 적용했습니다.`
+    );
   }
 
   if (prefs.lodging === "none") {
-    notes.push("무박 일정이라 숙박비는 0원으로 계산했습니다.");
+    notes.push(
+      prefs.locale === "en"
+        ? "No overnight stay — lodging cost is 0."
+        : "무박 일정이라 숙박비는 0원으로 계산했습니다."
+    );
   }
 
   return {

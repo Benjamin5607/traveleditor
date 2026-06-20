@@ -1,3 +1,4 @@
+import { filterValidPlaceCandidates } from "./placeTitleFilter";
 import type { PlaceCandidate } from "./tripTypes";
 
 export type ThemeTravelRecommendation = {
@@ -85,7 +86,7 @@ export async function loadGeoCacheDb() {
 }
 
 export function toPlaceCandidates(city: string, items: ThemeTravelRecommendation[]): PlaceCandidate[] {
-  return items.map((item) => ({
+  const mapped = items.map((item) => ({
     id: slugifyPlaceId(city, item.title ?? city),
     title: item.title ?? city,
     angle: item.angle,
@@ -95,6 +96,7 @@ export function toPlaceCandidates(city: string, items: ThemeTravelRecommendation
     lat: item.lat,
     lng: item.lng,
   }));
+  return filterValidPlaceCandidates(mapped);
 }
 
 export async function getThemePlaces(city: string, theme: string): Promise<PlaceCandidate[]> {

@@ -20,7 +20,12 @@ export type BudgetThemeId =
   | "yolo_luxury"
   | "custom";
 
+import type { Locale } from "./i18n";
+
+export type { Locale };
+
 export type TripPreferences = {
+  originCity: string;
   city: string;
   theme: string;
   days: number;
@@ -29,6 +34,7 @@ export type TripPreferences = {
   lodging: LodgingId;
   budgetTheme: BudgetThemeId;
   budgetKrw: number;
+  locale: Locale;
 };
 
 export type AmenityStop = {
@@ -50,16 +56,41 @@ export type PlaceCandidate = {
   lat?: number;
   lng?: number;
   maps_url?: string;
+  /** EOSLS 품질 점수 (Wikivoyage·평판 신호·체인 제외 등) */
+  qualityScore?: number;
+};
+
+export type ItineraryBlockKind =
+  | "attraction"
+  | "breakfast"
+  | "lunch"
+  | "dinner"
+  | "cafe";
+
+export type TransitLeg = {
+  mode: "bus" | "subway" | "train" | "tram";
+  line?: string;
+  fromStop: string;
+  toStop: string;
+  distanceKm: number;
+  durationMinutes: number;
+  fareKrw: number;
+  note?: string;
 };
 
 export type ItineraryBlock = {
   time: string;
+  kind?: ItineraryBlockKind;
   place_id: string;
   place_title: string;
   activity: string;
   transport: TransportId;
   rationale?: string;
   amenities?: AmenityStop[];
+  maps_url?: string;
+  lat?: number;
+  lng?: number;
+  travel?: TransitLeg;
 };
 
 export type LodgingRecommendation = {

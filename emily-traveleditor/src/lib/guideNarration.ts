@@ -1,6 +1,6 @@
-import { getBudgetTheme } from "./budgetThemes";
-import { getEmilyTheme } from "./themes";
+import { localizeBudgetTheme } from "./budgetThemes";
 import { getPlaneModeForTheme } from "./planeData";
+import { getEmilyTheme, localizeTheme } from "./themes";
 import type { ItineraryDay, PlaceCandidate, TripPreferences } from "./tripTypes";
 import { resolveSearchLanguages } from "./multilingualSearch";
 
@@ -12,17 +12,104 @@ export type GuideNarration = {
   searchNote: string;
 };
 
+function planeDataLine(planeMode: ReturnType<typeof getPlaneModeForTheme>, langLabels: string, locale: "ko" | "en") {
+  if (planeMode === "halal") {
+    return locale === "en"
+      ? "Places prioritize the Halal Plane curated DB, supplemented by EOSLS (OSM, Nominatim, Photon, Wikivoyage, Wikidata)."
+      : "장소는 Halal Plane 큐레이션 DB를 우선하고, EOSLS(OpenStreetMap·Nominatim·Photon·Wikivoyage·Wikidata)로 보강했습니다.";
+  }
+  if (planeMode === "drunken") {
+    return locale === "en"
+      ? "Places prioritize the Drunken Plane curated DB, supplemented by EOSLS."
+      : "장소는 Drunken Plane 큐레이션 DB를 우선하고, EOSLS로 보강했습니다.";
+  }
+  return locale === "en"
+    ? `Places collected via EOSLS — OSM, Nominatim, Photon, Wikivoyage, Wikidata first. Search languages: ${langLabels}. Wikipedia is last resort.`
+    : `장소는 EOSLS(오픈소스 로컬 검색)로 수집 — OpenStreetMap·Nominatim·Photon·Wikivoyage·Wikidata 우선, ${langLabels} 검색어 적용. Wikipedia는 최후 폴백.`;
+}
+
 export function buildGuideNarration(
   prefs: TripPreferences,
   places: PlaceCandidate[],
   days: ItineraryDay[],
   countryCode?: string
 ): GuideNarration {
-  const travelTheme = getEmilyTheme(prefs.theme);
-  const budgetTheme = getBudgetTheme(prefs.budgetTheme);
+  const travelThemeMeta = getEmilyTheme(prefs.theme);
+  const travelTheme = localizeTheme(travelThemeMeta, prefs.locale);
+  const budgetTheme = localizeBudgetTheme(prefs.budgetTheme, prefs.locale);
   const planeMode = getPlaneModeForTheme(prefs.theme);
-  const langs = resolveSearchLanguages(countryCode);
+  const langs = resolveSearchLanguages(countryCode, prefs.locale);
   const langLabels = langs.map((l) => l.label).join(" · ");
+  const dataLine = planeDataLine(planeMode, langLabels, prefs.locale);
+
+  if (prefs.locale === "en") {
+    const planeWelcome =
+      planeMode === "halal"
+        ? "Amina prioritized Halal restaurants, mosques, and Muslim-friendly areas from Halal Plane."
+        : planeMode === "drunken"
+          ? "Emily picked bars, whisky spots, and nightlife from Drunken Plane first."
+          : "";
+
+    const welcome = [
+      `Welcome to ${prefs.city}.`,
+      planeWelcome,
+      `This guidebook follows 「${travelTheme.name}」 with ${budgetTheme.emoji} ${budgetTheme.name} budget vibe.`,
+      `${budgetTheme.tagline} — ${budgetTheme.description}`,
+      `Flying from ${prefs.originCity}.`,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    const philosophy = [
+      travelTheme.description,
+      `Required place types: ${travelTheme.requirements.join(", ")}.`,
+      `Meals: ${budgetTheme.mealGuide}`,
+      `Rest stops: ${budgetTheme.restroomGuide}`,
+      dataLine,
+    ].join(" ");
+
+    const dayIntros: Record<number, string> = {};
+    for (const day of days) {
+      const titles = day.blocks.map((b) => b.place_title).join(" → ");
+      const planeHint =
+        planeMode === "halal"
+          ? "Route keeps Halal meals and prayer points in mind."
+          : planeMode === "drunken"
+            ? "Day and night drink spots are woven together."
+            : "";
+      dayIntros[day.day] = [
+        `${day.label}: ${travelTheme.shortLabel} mood, ${day.blocks.length} stops.`,
+        planeHint,
+        titles ? `Route: ${titles}.` : "",
+        "Meal, cafe, and restroom options added per stop.",
+      ]
+        .filter(Boolean)
+        .join(" ");
+    }
+
+    const closing = [
+      `Enjoy ${prefs.city} with ${travelTheme.name}.`,
+      planeMode === "halal"
+        ? "Ask Amina about prayer times and Halal menus in Plane Explorer."
+        : planeMode === "drunken"
+          ? "Ask Emily about signature drinks and hidden bars in Plane Explorer."
+          : "",
+      "Verify flight airports and prices in search links — only verified IATA codes are shown.",
+      `${places.length} places curated for your theme.`,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return {
+      welcome,
+      philosophy,
+      dayIntros,
+      closing,
+      searchNote: planeMode
+        ? `Plane DB + EOSLS search languages: ${langLabels}`
+        : `EOSLS search languages: ${langLabels}`,
+    };
+  }
 
   const planeWelcome =
     planeMode === "halal"
@@ -36,19 +123,14 @@ export function buildGuideNarration(
     planeWelcome,
     `이 가이드북은 「${travelTheme.name}」 컨셉과 「${budgetTheme.name}」 ${budgetTheme.emoji} 예산 감성으로 짰습니다.`,
     `${budgetTheme.tagline} — ${budgetTheme.description}`,
+    `출발지: ${prefs.originCity}.`,
   ]
     .filter(Boolean)
     .join(" ");
 
-  const dataLine =
-    planeMode === "halal"
-      ? "장소는 Halal Plane 큐레이션 DB를 우선하고, EOSLS(OpenStreetMap·Nominatim·Photon·Wikivoyage·Wikidata)로 보강했습니다."
-      : planeMode === "drunken"
-        ? "장소는 Drunken Plane 큐레이션 DB를 우선하고, EOSLS로 보강했습니다."
-        : `장소는 EOSLS(오픈소스 로컬 검색)로 수집 — OpenStreetMap·Nominatim·Photon·Wikivoyage·Wikidata 우선, ${langLabels} 검색어 적용. Wikipedia는 최후 폴백.`;
-
   const philosophy = [
     travelTheme.description,
+    `포함 장소 유형: ${travelTheme.requirements.join(", ")}.`,
     `식사: ${budgetTheme.mealGuide}`,
     `휴게: ${budgetTheme.restroomGuide}`,
     dataLine,
@@ -74,17 +156,14 @@ export function buildGuideNarration(
   }
 
   const closing = [
-    `${prefs.city}에서 ${prefs.days}일, ${places.length}곳의 추천을 담았습니다.`,
+    `${prefs.city}에서 ${travelTheme.name} 여행을 즐기세요.`,
     planeMode === "halal"
       ? "Plane Explorer에서 아미나에게 기도 시간·할랄 메뉴를 더 물어보세요."
       : planeMode === "drunken"
         ? "Plane Explorer에서 Emily에게 시그니처 드링크와 숨은 바를 더 물어보세요. 😉"
         : "",
-    budgetTheme.id === "yolo_luxury"
-      ? "쓸 땐 확실히 쓰는 게 이 여행의 포인트예요. 링크에서 실제 가격을 꼭 확인하세요."
-      : budgetTheme.id === "miser_backpack"
-        ? "남는 돈은 다음 여행 통장에 넣어두세요. 공짜 뷰와 로컬 맛이 최고의 럭셔리입니다."
-        : "실속 있게 즐기고, 링크로 예약·지도를 한 번 더 확인하면 완벽해요.",
+    "항공은 IATA 등록 공항만 표시합니다. 실제 편·가격은 검색 링크에서 확인하세요.",
+    `테마에 맞게 ${places.length}곳을 골랐습니다.`,
   ]
     .filter(Boolean)
     .join(" ");
@@ -95,7 +174,7 @@ export function buildGuideNarration(
     dayIntros,
     closing,
     searchNote: planeMode
-      ? `Plane DB + 다국어 검색: ${langLabels} (국가 ${countryCode?.toUpperCase() ?? "미확인"})`
-      : `다국어 검색: ${langLabels} (국가 ${countryCode?.toUpperCase() ?? "미확인"})`,
+      ? `Plane DB + EOSLS 검색 언어: ${langLabels}`
+      : `EOSLS 검색 언어: ${langLabels}`,
   };
 }

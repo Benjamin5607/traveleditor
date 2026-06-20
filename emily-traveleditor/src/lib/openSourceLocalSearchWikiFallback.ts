@@ -1,4 +1,5 @@
 /** Wikipedia는 EOSLS 최후 폴백 — OSM 등으로 부족할 때만 */
+import { isGenericPlaceName } from "./placeNaming";
 import { fetchWikiSummaryLang, searchWikipediaLang } from "./multilingualSearch";
 import { buildMultilingualQueries } from "./multilingualSearch";
 import type { SearchSource } from "./openSourceLocalSearch";
@@ -28,6 +29,7 @@ export async function searchWikipediaFallback(
       if (seen.has(result.title.toLowerCase())) continue;
       const summary = await fetchWikiSummaryLang(result.lang, result.title);
       if (!summary) continue;
+      if (isGenericPlaceName(summary.title)) continue;
       seen.add(summary.title.toLowerCase());
       hits.push({
         title: summary.title,
