@@ -231,6 +231,11 @@ export default function Home() {
               <p className="text-sm font-bold text-zinc-400">{item.shortLabel}</p>
               <h3 className="mt-2 text-2xl font-black text-white">{item.name}</h3>
               <p className="mt-2 text-sm text-zinc-400">{item.description}</p>
+              {item.planeMode && (
+                <p className="mt-3 text-xs font-bold text-yellow-200/80">
+                  {item.planeMode === "halal" ? "🕌 Halal Plane 연동" : "🍸 Drunken Plane 연동"}
+                </p>
+              )}
             </button>
           ))}
         </section>
@@ -262,7 +267,7 @@ export default function Home() {
           </div>
         )}
 
-        {guidebook && <GuidebookView guidebook={guidebook} />}
+        {guidebook && <GuidebookView guidebook={guidebook} groqModelId={selectedWorker || undefined} />}
       </section>
     </main>
   );

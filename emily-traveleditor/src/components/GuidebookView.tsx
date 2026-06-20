@@ -1,12 +1,14 @@
 import { formatKrw } from "../lib/budget";
 import type { TravelGuidebook } from "../lib/tripTypes";
+import PlaneExplorer from "./PlaneExplorer";
 import RouteMap from "./RouteMap";
 
 type GuidebookViewProps = {
   guidebook: TravelGuidebook;
+  groqModelId?: string;
 };
 
-export default function GuidebookView({ guidebook }: GuidebookViewProps) {
+export default function GuidebookView({ guidebook, groqModelId }: GuidebookViewProps) {
   const {
     budget,
     bookingLinks,
@@ -23,7 +25,19 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
     budgetThemeLabel,
     dataSource,
     searchSourcesLabel,
+    planeMode,
+    planePool,
+    planePersona,
   } = guidebook;
+
+  const dataSourceLabel =
+    dataSource === "plane"
+      ? "Plane DB"
+      : dataSource === "plane+live"
+        ? "Plane + EOSLS"
+        : dataSource === "live"
+          ? "EOSLS 로컬 검색"
+          : "수집 JSON 기반";
 
   const AMENITY_LABEL = { meal: "🍽 식사", cafe: "☕ 카페", restroom: "🚻 화장실" } as const;
 
@@ -45,8 +59,19 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-yellow-200">My Travel Guidebook</p>
           <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-bold text-zinc-400">
-            {dataSource === "live" ? `EOSLS 로컬 검색` : "수집 JSON 기반"}
+            {dataSourceLabel}
           </span>
+          {planeMode && (
+            <span
+              className={`rounded-full border px-3 py-1 text-xs font-bold ${
+                planeMode === "halal"
+                  ? "border-sky-400/40 text-sky-300"
+                  : "border-fuchsia-400/40 text-fuchsia-300"
+              }`}
+            >
+              {planeMode === "halal" ? "🕌 Halal Plane" : "🍸 Drunken Plane"}
+            </span>
+          )}
           {searchSourcesLabel && (
             <span className="rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-bold text-emerald-300">
               {searchSourcesLabel}
@@ -78,6 +103,16 @@ export default function GuidebookView({ guidebook }: GuidebookViewProps) {
         <p className="mt-4 text-sm leading-7 text-zinc-400">{narration.philosophy}</p>
         <p className="mt-3 text-xs text-zinc-500">{narration.searchNote}</p>
       </section>
+
+      {planeMode && planePool && planePool.length > 0 && planePersona && (
+        <PlaneExplorer
+          mode={planeMode}
+          city={preferences.city}
+          places={planePool}
+          persona={planePersona}
+          modelId={groqModelId}
+        />
+      )}
 
       {/* 항공 — 구간·항공사·이유 */}
       <section className="rounded-[2rem] border border-white/10 bg-zinc-950/80 p-6">
