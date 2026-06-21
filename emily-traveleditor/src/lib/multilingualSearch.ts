@@ -36,6 +36,7 @@ const COUNTRY_TO_LANG: Record<string, string> = {
   nl: "nl",
   pl: "pl",
   tr: "tr",
+  kz: "ru",
   mx: "es",
   ar: "es",
   gb: "en",
