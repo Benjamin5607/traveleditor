@@ -1,4 +1,5 @@
 import type { GeoResult } from "./geoTypes";
+import { geocodeMatchesCityHint } from "./cityGeocoding";
 import { normalizeCityName } from "./travelData";
 
 const DATA_BASE = "/traveleditor/data";
@@ -68,13 +69,13 @@ export async function getCachedGeo(city: string): Promise<GeoResult | null> {
   const key = normalizeCityName(city);
   const staticCache = await loadStaticGeoCache();
   const fromStatic = staticCache[key] ?? staticCache[city];
-  if (fromStatic) return fromStatic;
+  if (fromStatic && geocodeMatchesCityHint(city, fromStatic)) return fromStatic;
 
   const fromIdb = await idbGet(key);
   if (fromIdb && Date.now() - fromIdb.savedAt < TTL_MS) {
     const { savedAt, ...geo } = fromIdb;
     void savedAt;
-    return geo;
+    if (geocodeMatchesCityHint(city, geo)) return geo;
   }
   return null;
 }
@@ -84,7 +85,7 @@ export async function saveCachedGeo(city: string, geo: GeoResult) {
   await idbSet(key, { ...geo, savedAt: Date.now() });
   if (typeof window !== "undefined") {
     try {
-      sessionStorage.setItem(`emily-live:city:${key}`, JSON.stringify(geo));
+      sessionStorage.setItem(`emily-live:city:v3:${key}`, JSON.stringify(geo));
     } catch {
       /* ignore */
     }

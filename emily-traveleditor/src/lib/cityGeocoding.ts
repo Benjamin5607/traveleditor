@@ -1,5 +1,7 @@
 /** 도시명 입력 스크립트·국가코드 기반 다국어 지오코딩 헬퍼 */
 
+import type { GeoResult } from "./geoTypes";
+
 export type CityHint = {
   canonical: string;
   countryCode: string;
@@ -218,6 +220,13 @@ export function geocodeQueryVariants(city: string, englishAlias?: string): strin
   }
 
   return [...new Set(variants.filter(Boolean))];
+}
+
+/** CITY_HINTS가 있으면 countryCode가 일치해야 유효한 지오코딩 */
+export function geocodeMatchesCityHint(city: string, geo: GeoResult): boolean {
+  const hint = lookupCityHint(city);
+  if (!hint?.countryCode || !geo.countryCode) return true;
+  return geo.countryCode.toLowerCase() === hint.countryCode.toLowerCase();
 }
 
 /** Photon/Nominatim 결과 — 도시·수도 우선 점수 */
