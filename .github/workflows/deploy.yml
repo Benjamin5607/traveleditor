@@ -20,6 +20,7 @@ jobs:
           cd emily-traveleditor
           npm install
           npm run build
+          touch out/.nojekyll
         env:
           # 시크릿의 키를 빌드 시 주입 (NEXT_PUBLIC 접두사 필수)
           NEXT_PUBLIC_GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
