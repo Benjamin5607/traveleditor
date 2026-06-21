@@ -55,7 +55,7 @@ type RawHit = {
 };
 
 function cacheKey(city: string, theme: string, cc?: string) {
-  return `emily-eosls-v11:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
+  return `emily-eosls-v12:${city}:${theme}:${cc ?? "xx"}`.toLowerCase();
 }
 
 function readCache(key: string): PlaceCandidate[] | null {
@@ -587,10 +587,12 @@ export async function searchSupplementaryPlaces(params: {
   voyageExtract?: string;
   themeId: string;
   locale?: Locale;
+  /** 품질 게이트 완화 — 마지막 수단 폴백 */
+  force?: boolean;
 }): Promise<PlaceCandidate[]> {
-  const { city, cityGeo, countryCode, voyageExtract, themeId, locale = "ko" } = params;
+  const { city, cityGeo, countryCode, voyageExtract, themeId, locale = "ko", force = false } = params;
   const themeMeta = getEmilyTheme(themeId);
-  if (isStrictTheme(themeMeta.id)) return [];
+  if (!force && isStrictTheme(themeMeta.id)) return [];
 
   const hits: RawHit[] = [];
   const bbox = overpassBboxString(city, cityGeo);

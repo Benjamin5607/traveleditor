@@ -1,4 +1,5 @@
 import { localizeBudgetTheme } from "./budgetThemes";
+import { resolveCanonicalCity } from "./cityGeocoding";
 import { buildBookingLinks, buildRouteMapUrl } from "./bookingLinks";
 import { estimateBudget } from "./budget";
 import { buildFlightDetail } from "./flightDetails";
@@ -115,7 +116,8 @@ function parsePlaceSource(place: PlaceCandidate): import("./placeQuality").Place
 function rankPlacesByQuality(
   places: PlaceCandidate[],
   themeId: string,
-  locale: "ko" | "en" = "ko"
+  locale: "ko" | "en" = "ko",
+  options?: { relaxed?: boolean }
 ): PlaceCandidate[] {
   const tid = themeId as import("./themes").ThemeId;
   return places
@@ -137,13 +139,16 @@ function rankPlacesByQuality(
       };
     })
     .filter((p) =>
-      passesQualityGate({
-        title: p.title,
-        why: p.why ?? "",
-        source: parsePlaceSource(p),
-        themeId: tid,
-        wikivoyageSection: p.angle?.match(/Wikivoyage (See|Do|Eat|Drink|Buy|Sleep)/i)?.[1],
-      })
+      passesQualityGate(
+        {
+          title: p.title,
+          why: p.why ?? "",
+          source: parsePlaceSource(p),
+          themeId: tid,
+          wikivoyageSection: p.angle?.match(/Wikivoyage (See|Do|Eat|Drink|Buy|Sleep)/i)?.[1],
+        },
+        { relaxed: options?.relaxed }
+      )
     )
     .sort((a, b) => (b.qualityScore ?? 0) - (a.qualityScore ?? 0));
 }
@@ -341,6 +346,13 @@ export async function buildTravelGuidebook(
   const themeDb = await loadThemeTravelDb();
   const marketDb = await loadMarketDb();
   const cityGeo = await geocodeCity(prefs.city);
+  if (!cityGeo) {
+    return {
+      error: t(prefs.locale, "error.geocodeFailed", { city: prefs.city }),
+    };
+  }
+
+  const searchCity = resolveCanonicalCity(prefs.city);
   const planeMode = getPlaneModeForTheme(prefs.theme);
   const planePersona = getPlanePersona(prefs.theme);
   let planePool: PlanePlaceRecord[] = [];
@@ -349,20 +361,20 @@ export async function buildTravelGuidebook(
     planePool = await fetchPlanePlacesForTrip(
       planeMode,
       prefs.theme,
-      prefs.city,
-      cityGeo ? { lat: cityGeo.lat, lng: cityGeo.lng, countryCode: cityGeo.countryCode } : undefined
+      searchCity,
+      { lat: cityGeo.lat, lng: cityGeo.lng, countryCode: cityGeo.countryCode }
     );
   }
 
-  const voyageExtract = await fetchWikivoyageExtract(prefs.city, cityGeo?.countryCode);
+  const voyageExtract = await fetchWikivoyageExtract(searchCity, cityGeo.countryCode);
   const themeMeta = getEmilyTheme(prefs.theme);
   const dbKey = themeDbKey(themeMeta);
-  const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, prefs.city);
+  const rawItems = findCityRecommendations(themeDb?.themes?.[dbKey]?.cities, searchCity);
   let dataSource: TravelGuidebook["dataSource"] = "static";
   let searchSourcesLabel: string | undefined;
   const minPlaces = minPlacesForTrip(prefs.days);
   let places = filterPlacesForTheme(
-    rankPlacesByQuality(toPlaceCandidates(prefs.city, rawItems), themeMeta.id, prefs.locale),
+    rankPlacesByQuality(toPlaceCandidates(searchCity, rawItems), themeMeta.id, prefs.locale),
     themeMeta.id
   );
 
@@ -370,7 +382,13 @@ export async function buildTravelGuidebook(
     places.length < Math.min(4, minPlaces) || (places[0]?.qualityScore ?? 0) < 55;
 
   if (places.length === 0 || staticWeak) {
-    const live = await fetchLivePlaces(prefs.city, themeMeta.id, cityGeo?.countryCode, prefs.locale);
+    const live = await fetchLivePlaces(
+      prefs.city,
+      themeMeta.id,
+      cityGeo.countryCode,
+      prefs.locale,
+      cityGeo
+    );
     const liveRanked = filterPlacesForTheme(
       rankPlacesByQuality(live.places, themeMeta.id, prefs.locale),
       themeMeta.id
@@ -394,10 +412,10 @@ export async function buildTravelGuidebook(
   }
 
   let themeOnlyCount = places.length;
-  if (!isStrictTheme(themeMeta.id) && cityGeo && places.length < minPlaces) {
+  if (!isStrictTheme(themeMeta.id) && places.length < minPlaces) {
     const extra = filterPlacesForTheme(
       await searchSupplementaryPlaces({
-        city: prefs.city,
+        city: searchCity,
         cityGeo,
         countryCode: cityGeo.countryCode,
         voyageExtract: voyageExtract?.extract,
@@ -425,17 +443,38 @@ export async function buildTravelGuidebook(
 
   const usedLive = dataSource === "live";
   if (planeMode && planePool.length > 0) {
-    const planePlaces = planeToPlaceCandidates(prefs.city, planePool, planeMode);
+    const planePlaces = planeToPlaceCandidates(searchCity, planePool, planeMode);
     places = mergePlaneIntoPlaces(planePlaces, places);
     const planeLabel = planeSourceLabel(planeMode, planePool.length);
     searchSourcesLabel = searchSourcesLabel ? `${planeLabel} · ${searchSourcesLabel}` : planeLabel;
     dataSource = usedLive ? "plane+live" : "plane";
   }
 
-  if (!cityGeo) {
-    return {
-      error: t(prefs.locale, "error.geocodeFailed", { city: prefs.city }),
-    };
+  if (places.length === 0) {
+    const relaxed = filterPlacesForTheme(
+      rankPlacesByQuality(
+        await searchSupplementaryPlaces({
+          city: searchCity,
+          cityGeo,
+          countryCode: cityGeo.countryCode,
+          voyageExtract: voyageExtract?.extract,
+          themeId: themeMeta.id,
+          locale: prefs.locale,
+          force: true,
+        }),
+        themeMeta.id,
+        prefs.locale,
+        { relaxed: true }
+      ),
+      themeMeta.id
+    );
+    if (relaxed.length > 0) {
+      places = relaxed;
+      dataSource = "live";
+      searchSourcesLabel =
+        searchSourcesLabel ??
+        (prefs.locale === "en" ? "Open map data (relaxed)" : "오픈 지도 데이터 (완화 검색)");
+    }
   }
 
   if (places.length === 0) {
@@ -445,8 +484,8 @@ export async function buildTravelGuidebook(
   }
 
   places = enrichPlacesWithMaps(
-    prefs.city,
-    await geocodePlaces(prefs.city, places, cityGeo)
+    searchCity,
+    await geocodePlaces(searchCity, places, cityGeo)
   );
   places = filterPlacesInMetro(places, prefs.city, cityGeo);
   places = filterValidPlaceCandidates(places, { requireCoords: true });

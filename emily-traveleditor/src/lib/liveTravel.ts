@@ -1,5 +1,6 @@
 import {
   detectInputLanguages,
+  geocodeMatchesCityHint,
   geocodeQueryVariants,
   getCityCountryHint,
   lookupCityHint,
@@ -63,8 +64,15 @@ function wikiParams(params: Record<string, string>) {
   return new URLSearchParams({ format: "json", origin: "*", ...params }).toString();
 }
 
+const GEO_CACHE_VERSION = "v3";
+
 function cacheKey(kind: string, value: string) {
-  return `emily-live:${kind}:${value.toLowerCase()}`;
+  return `emily-live:${kind}:${GEO_CACHE_VERSION}:${value.toLowerCase()}`;
+}
+
+function acceptCityGeocode(city: string, geo: GeoResult | null): geo is GeoResult {
+  if (!geo || Number.isNaN(geo.lat) || Number.isNaN(geo.lng)) return false;
+  return geocodeMatchesCityHint(city, geo);
 }
 
 function readCache<T>(key: string): T | null {
@@ -132,10 +140,9 @@ async function photonGeocode(
       if (typeof lat !== "number" || typeof lng !== "number") continue;
 
       const props = feature.properties ?? {};
-      if (near) {
-        const cc = props.countrycode?.toLowerCase();
-        if (near.countryCode && cc && cc !== near.countryCode.toLowerCase()) continue;
-      }
+      const cc = props.countrycode?.toLowerCase();
+      if (near?.countryCode && cc && cc !== near.countryCode.toLowerCase()) continue;
+      if (preferCountry && cc && cc !== preferCountry.toLowerCase()) continue;
 
       const score = scoreGeocodeCandidate(
         props.osm_value ?? props.type,
@@ -243,6 +250,8 @@ async function nominatimSearch(
   for (const row of results) {
     const lat = Number(row.lat);
     const lng = Number(row.lon);
+    const rowCc = row.address?.country_code?.toLowerCase();
+    if (preferCountry && rowCc && rowCc !== preferCountry.toLowerCase()) continue;
     if (near && !isWithinMetro(lat, lng, near.displayName?.split(",")[0] ?? "city", near)) continue;
 
     const score = scoreGeocodeCandidate(
@@ -281,10 +290,11 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
 
   const key = cacheKey("city", raw.toLowerCase());
   const sessionCached = readCache<GeoResult>(key);
-  if (sessionCached) return sessionCached;
+  if (acceptCityGeocode(raw, sessionCached)) return sessionCached;
 
-  const staticOrIdb = (await getCachedGeo(raw)) ?? (await getCachedGeo(resolveCityTitle(raw)));
-  if (staticOrIdb) {
+  const staticOrIdb =
+    (await getCachedGeo(raw)) ?? (await getCachedGeo(resolveCityTitle(raw)));
+  if (acceptCityGeocode(raw, staticOrIdb)) {
     writeCache(key, staticOrIdb);
     return staticOrIdb;
   }
@@ -296,7 +306,7 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
   for (const query of queries) {
     for (const lang of inputLangs) {
       const photon = await photonGeocode(query, undefined, lang, preferCountry);
-      if (photon && !Number.isNaN(photon.lat) && !Number.isNaN(photon.lng)) {
+      if (acceptCityGeocode(raw, photon)) {
         writeCache(key, photon);
         await saveCachedGeo(raw, photon);
         return photon;
@@ -306,7 +316,7 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
     const nominatim = await enqueueNominatim(() =>
       nominatimSearch(query, undefined, inputLangs, preferCountry)
     );
-    if (nominatim && !Number.isNaN(nominatim.lat) && !Number.isNaN(nominatim.lng)) {
+    if (acceptCityGeocode(raw, nominatim)) {
       writeCache(key, nominatim);
       await saveCachedGeo(raw, nominatim);
       return nominatim;
@@ -315,7 +325,7 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
     const wikiLangs = [...new Set([...inputLangs, "en"])];
     for (const lang of wikiLangs) {
       const wiki = await wikiCityGeo(query, lang);
-      if (wiki && !Number.isNaN(wiki.lat) && !Number.isNaN(wiki.lng)) {
+      if (acceptCityGeocode(raw, wiki)) {
         writeCache(key, wiki);
         await saveCachedGeo(raw, wiki);
         return wiki;
@@ -462,9 +472,11 @@ export async function fetchLivePlaces(
   city: string,
   theme: string,
   countryCode?: string,
-  uiLocale: "ko" | "en" = "ko"
+  uiLocale: "ko" | "en" = "ko",
+  knownCityGeo?: GeoResult | null
 ): Promise<LivePlacesResult> {
-  const cityGeo = await geocodeCity(city);
+  const searchCity = resolveCanonicalCity(city);
+  const cityGeo = knownCityGeo ?? (await geocodeCity(city));
   if (!cityGeo) {
     return {
       places: [],
@@ -473,9 +485,12 @@ export async function fetchLivePlaces(
     };
   }
 
-  const voyage = await fetchWikivoyageExtract(city, countryCode ?? cityGeo.countryCode);
+  const voyage = await fetchWikivoyageExtract(
+    searchCity,
+    countryCode ?? cityGeo.countryCode
+  );
   const { places, sourcesUsed } = await searchLocalPlaces({
-    city,
+    city: searchCity,
     theme,
     cityGeo,
     countryCode: countryCode ?? cityGeo.countryCode,
@@ -483,8 +498,8 @@ export async function fetchLivePlaces(
     uiLocale,
   });
 
-  const geocoded = await geocodePlaces(city, places, cityGeo);
-  const fenced = filterPlacesInMetro(geocoded, city, cityGeo);
+  const geocoded = await geocodePlaces(searchCity, places, cityGeo);
+  const fenced = filterPlacesInMetro(geocoded, searchCity, cityGeo);
 
   return {
     places: fenced,
