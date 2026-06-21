@@ -36,6 +36,7 @@ export const VERIFIED_IATA = new Set([
   "GRU", "GIG", "EZE", "SCL", "BOG", "LIM", "MEX", "CUN",
   "CAI", "JNB", "CPT", "NBO", "ADD", "CMN",
   "DPS", "PNH", "REP", "VTE", "RGN", "LPQ",
+  "NQZ", "ALA",
 ]);
 
 const CITY_ALIASES: Record<string, string> = {
@@ -99,6 +100,8 @@ const CITY_ALIASES: Record<string, string> = {
   luangprabang: "Luang Prabang", "luang prabang": "Luang Prabang",
   yangon: "Yangon", 양곤: "Yangon",
   vientiane: "Vientiane",
+  astana: "Astana", 아스타나: "Astana", nursultan: "Astana", "nur-sultan": "Astana", 누르술탄: "Astana",
+  almaty: "Almaty", 알마티: "Almaty",
 };
 
 /** IATA → 공항 메타 (좌표 포함) */
@@ -224,6 +227,8 @@ export const VERIFIED_AIRPORTS: Record<string, VerifiedAirport> = {
   VTE: { iata: "VTE", nameKo: "왓타이국제공항", nameEn: "Wattay International Airport", city: "Vientiane", cityKey: "vientiane", lat: 17.9883, lng: 102.5633, country: "LA" },
   RGN: { iata: "RGN", nameKo: "양곤국제공항", nameEn: "Yangon International Airport", city: "Yangon", cityKey: "yangon", lat: 16.9073, lng: 96.1332, country: "MM" },
   LPQ: { iata: "LPQ", nameKo: "루앙프라방국제공항", nameEn: "Luang Prabang International Airport", city: "Luang Prabang", cityKey: "luangprabang", lat: 19.8973, lng: 102.1608, country: "LA" },
+  NQZ: { iata: "NQZ", nameKo: "아스타나 나자르바예프국제공항", nameEn: "Nursultan Nazarbayev International Airport", city: "Astana", cityKey: "astana", lat: 51.0278, lng: 71.4611, country: "KZ" },
+  ALA: { iata: "ALA", nameKo: "알마티국제공항", nameEn: "Almaty International Airport", city: "Almaty", cityKey: "almaty", lat: 43.3521, lng: 77.0405, country: "KZ" },
 };
 
 /** @deprecated use VERIFIED_AIRPORTS — 하위 호환 */

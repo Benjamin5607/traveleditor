@@ -21,6 +21,8 @@ const CITY_TO_COUNTRY: Record<string, string> = {
   jeju: "Korea",
   gwangju: "Korea",
   daejeon: "Korea",
+  astana: "Kazakhstan",
+  almaty: "Kazakhstan",
   bangkok: "Thailand",
   chiangmai: "Thailand",
   phuket: "Thailand",
@@ -61,6 +63,7 @@ const CC_TO_COUNTRY: Record<string, string> = {
   fr: "France",
   de: "Germany",
   us: "USA",
+  kz: "Kazakhstan",
 };
 
 const CRAFT_RE =

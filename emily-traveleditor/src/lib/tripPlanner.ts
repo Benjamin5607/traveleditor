@@ -434,7 +434,7 @@ export async function buildTravelGuidebook(
 
   if (!cityGeo) {
     return {
-      error: t(prefs.locale, "error.noPlaces", { city: prefs.city }),
+      error: t(prefs.locale, "error.geocodeFailed", { city: prefs.city }),
     };
   }
 

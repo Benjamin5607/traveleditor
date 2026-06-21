@@ -1,6 +1,10 @@
 import {
   detectInputLanguages,
   geocodeQueryVariants,
+  getCityCountryHint,
+  lookupCityHint,
+  resolveCanonicalCity,
+  scoreGeocodeCandidate,
   wikivoyageLangsForCity,
   WIKIVOYAGE_LANGS,
 } from "./cityGeocoding";
@@ -40,6 +44,10 @@ const CITY_ALIASES: Record<string, string> = {
   newyork: "New York",
   "new york": "New York",
   losangeles: "Los Angeles",
+  astana: "Astana",
+  nursultan: "Astana",
+  "nur-sultan": "Astana",
+  almaty: "Almaty",
 };
 
 export type { GeoResult } from "./geoTypes";
@@ -82,11 +90,6 @@ function normalize(value: string) {
   return value.trim().toLowerCase().replace(/[\s-]/g, "");
 }
 
-function resolveCityTitle(city: string) {
-  const lower = city.trim().toLowerCase();
-  return CITY_ALIASES[lower] ?? CITY_ALIASES[normalize(city)] ?? city;
-}
-
 let nominatimQueue = Promise.resolve();
 
 function enqueueNominatim<T>(task: () => Promise<T>): Promise<T> {
@@ -98,13 +101,20 @@ function enqueueNominatim<T>(task: () => Promise<T>): Promise<T> {
   return run;
 }
 
+function resolveCityTitle(city: string) {
+  const lower = city.trim().toLowerCase();
+  const alias = CITY_ALIASES[lower] ?? CITY_ALIASES[normalize(city)];
+  return resolveCanonicalCity(city, alias);
+}
+
 async function photonGeocode(
   query: string,
   near?: GeoResult,
-  lang = "en"
+  lang = "en",
+  preferCountry?: string
 ): Promise<GeoResult | null> {
   try {
-    const params: Record<string, string> = { q: query, limit: "3", lang };
+    const params: Record<string, string> = { q: query, limit: "8", lang };
     if (near) {
       params.lat = String(near.lat);
       params.lon = String(near.lng);
@@ -114,28 +124,42 @@ async function photonGeocode(
     if (!response.ok) return null;
     const data = await response.json();
 
+    let best: GeoResult | null = null;
+    let bestScore = -1;
+
     for (const feature of data.features ?? []) {
       const [lng, lat] = feature.geometry?.coordinates ?? [];
       if (typeof lat !== "number" || typeof lng !== "number") continue;
 
+      const props = feature.properties ?? {};
       if (near) {
-        const cc = feature.properties?.countrycode?.toLowerCase();
+        const cc = props.countrycode?.toLowerCase();
         if (near.countryCode && cc && cc !== near.countryCode.toLowerCase()) continue;
       }
 
-      const extent = feature.properties?.extent as number[] | undefined;
+      const score = scoreGeocodeCandidate(
+        props.osm_value ?? props.type,
+        props.name,
+        query,
+        props.countrycode,
+        preferCountry
+      );
+      if (score <= bestScore) continue;
+
+      const extent = props.extent as number[] | undefined;
       const boundingBox: [number, number, number, number] | undefined =
         extent?.length === 4 ? [extent[1], extent[3], extent[0], extent[2]] : undefined;
 
-      return {
+      bestScore = score;
+      best = {
         lat,
         lng,
-        displayName: feature.properties?.name,
-        countryCode: feature.properties?.countrycode,
+        displayName: props.name,
+        countryCode: props.countrycode,
         boundingBox,
       };
     }
-    return null;
+    return best;
   } catch {
     return null;
   }
@@ -171,16 +195,22 @@ async function wikiCityGeo(title: string, lang = "en"): Promise<GeoResult | null
   }
 }
 
-async function nominatimSearch(query: string, near?: GeoResult, acceptLangs: string[] = ["en"]) {
+async function nominatimSearch(
+  query: string,
+  near?: GeoResult,
+  acceptLangs: string[] = ["en"],
+  preferCountry?: string
+) {
   const params: Record<string, string> = {
     q: query,
     format: "json",
-    limit: "3",
+    limit: "6",
     addressdetails: "1",
     "accept-language": acceptLangs.join(","),
   };
-  if (near?.countryCode) {
-    params.countrycodes = near.countryCode.toLowerCase();
+  const countryFilter = near?.countryCode ?? preferCountry;
+  if (countryFilter) {
+    params.countrycodes = countryFilter.toLowerCase();
   }
   if (near) {
     const [south, north, west, east] = metroBoundingBox("", near);
@@ -201,16 +231,33 @@ async function nominatimSearch(query: string, near?: GeoResult, acceptLangs: str
     lon: string;
     display_name?: string;
     boundingbox?: [string, string, string, string];
+    type?: string;
+    addresstype?: string;
+    importance?: number;
     address?: { country_code?: string };
   }>;
+
+  let best: GeoResult | null = null;
+  let bestScore = -1;
 
   for (const row of results) {
     const lat = Number(row.lat);
     const lng = Number(row.lon);
     if (near && !isWithinMetro(lat, lng, near.displayName?.split(",")[0] ?? "city", near)) continue;
 
+    const score = scoreGeocodeCandidate(
+      row.addresstype ?? row.type,
+      row.display_name?.split(",")[0],
+      query,
+      row.address?.country_code,
+      preferCountry,
+      row.importance ?? 0
+    );
+    if (score <= bestScore) continue;
+
     const bb = row.boundingbox;
-    return {
+    bestScore = score;
+    best = {
       lat,
       lng,
       displayName: row.display_name,
@@ -225,7 +272,7 @@ async function nominatimSearch(query: string, near?: GeoResult, acceptLangs: str
         : undefined,
     };
   }
-  return null;
+  return best;
 }
 
 export async function geocodeCity(city: string): Promise<GeoResult | null> {
@@ -244,10 +291,11 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
 
   const inputLangs = detectInputLanguages(raw);
   const queries = geocodeQueryVariants(raw, resolveCityTitle(raw));
+  const preferCountry = getCityCountryHint(raw) ?? lookupCityHint(raw)?.countryCode;
 
   for (const query of queries) {
     for (const lang of inputLangs) {
-      const photon = await photonGeocode(query, undefined, lang);
+      const photon = await photonGeocode(query, undefined, lang, preferCountry);
       if (photon && !Number.isNaN(photon.lat) && !Number.isNaN(photon.lng)) {
         writeCache(key, photon);
         await saveCachedGeo(raw, photon);
@@ -255,7 +303,9 @@ export async function geocodeCity(city: string): Promise<GeoResult | null> {
       }
     }
 
-    const nominatim = await enqueueNominatim(() => nominatimSearch(query, undefined, inputLangs));
+    const nominatim = await enqueueNominatim(() =>
+      nominatimSearch(query, undefined, inputLangs, preferCountry)
+    );
     if (nominatim && !Number.isNaN(nominatim.lat) && !Number.isNaN(nominatim.lng)) {
       writeCache(key, nominatim);
       await saveCachedGeo(raw, nominatim);
