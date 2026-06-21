@@ -141,7 +141,19 @@ async function photonGeocode(
   }
 }
 
+function wikiLangForTitle(lang: string, title: string): boolean {
+  if (lang === "en") {
+    return /[a-zA-Z]/.test(title) && !/[\uac00-\ud7af\u3040-\u30ff\u4e00-\u9fff\u0e00-\u0e7f]/.test(title);
+  }
+  if (lang === "ko") return /[\uac00-\ud7af]/.test(title);
+  if (lang === "ja") return /[\u3040-\u30ff]/.test(title);
+  if (lang === "th") return /[\u0e00-\u0e7f]/.test(title);
+  if (lang === "zh") return /[\u4e00-\u9fff]/.test(title) && !/[\u3040-\u30ff]/.test(title);
+  return true;
+}
+
 async function wikiCityGeo(title: string, lang = "en"): Promise<GeoResult | null> {
+  if (!wikiLangForTitle(lang, title)) return null;
   try {
     const base =
       lang === "en"

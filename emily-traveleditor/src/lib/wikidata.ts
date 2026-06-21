@@ -17,6 +17,7 @@ async function runSparql(query: string) {
     headers: {
       Accept: "application/sparql-results+json",
       "Content-Type": "application/x-www-form-urlencoded",
+      "User-Agent": "EmilyTravelEditor/1.0 (https://benjamin5607.github.io/traveleditor)",
     },
     body: `query=${encodeURIComponent(query)}`,
   });
