@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-26 02:31",
+  "last_updated": "2026-06-27 02:19",
   "cities": {
     "seoul": {
       "lat": 37.5666791,
@@ -57,8 +57,8 @@
       ]
     },
     "danang": {
-      "lat": 16.068,
-      "lng": 108.212,
+      "lat": 16.068501,
+      "lng": 108.2240242,
       "countryCode": "vn",
       "boundingBox": [
         14.9513535,

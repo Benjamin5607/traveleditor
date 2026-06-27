@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-26 02:31",
+  "last_updated": "2026-06-27 02:19",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -30,9 +30,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "Insa-dong",
-            "angle": "전통 차와 현대 미술이 조화된 공간",
-            "why": "인사동의 전통 차 집과 현대 미술 갤러리를 탐索하며 마음을 진정시세요",
+            "title": "인사동",
+            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
+            "why": "인사동의 전통적인 차와 현대적인 갤러리를 경험할 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -45,9 +45,9 @@
             "lng": 126.98618
           },
           {
-            "title": "Children's Grand Park, Seoul",
+            "title": "어린이대공원",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 평화롭게 하세요",
+            "why": "어린이대공원에서 자연과 함께 평화로운 산책을 즐길 수 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,9 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "Gotoh Museum",
-            "angle": "고대 일본 미술의 정취",
-            "why": "고토 미술관에서 고대 일본 미술을 감상하며 마음을 평화롭게 하세요",
+            "title": "고토 미술관",
+            "angle": "고토 미술관의 정원에서 평화로운 시간",
+            "why": "고토 미술관의 정원에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "Yumenoshima Tropical Greenhouse Dome",
-            "angle": "열대 식물의 아름다운 정원",
-            "why": "유메노시마 열대 식물 온실에서 아름다운 정원을 감상하세요",
+            "title": "유메노시마 열대 식물 온실",
+            "angle": "열대 식물 온실에서 평화로운 시간",
+            "why": "유메노시마 열대 식물 온실에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -94,9 +94,9 @@
         ],
         "Osaka": [
           {
-            "title": "Osaka Castle",
-            "angle": "일본의 역사와 문화",
-            "why": "오사카 성에서 일본의 역사와 문화를 배우며 마음을 평화롭게 하세요",
+            "title": "오사카 성",
+            "angle": "오사카 성의 정원에서 평화로운 시간",
+            "why": "오사카 성의 정원에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,14 +107,29 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "텐노지 구",
+            "angle": "텐노지 구의 전통적인 거리에서 평화로운 시간",
+            "why": "텐노지 구의 전통적인 거리에서 평화로운 시간을 보낼 수 있습니다.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "Ménagerie du Jardin des plantes",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
+            "title": "자르딘 데 플랑트",
+            "angle": "자르딘 데 플랑트의 식물원에서 평화로운 시간",
+            "why": "자르딘 데 플랑트의 식물원에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -148,9 +163,9 @@
         ],
         "Taipei": [
           {
-            "title": "Jiufen",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Jiufen, also spelled Jioufen or Chiufen, is a historic former gold mining town in Ruifang District, New Taipei City, Taiwan. It is notable for Jiufen Old Street, a narrow, winding ",
+            "title": "지우펀",
+            "angle": "지우펀의 전통적인 거리에서 평화로운 시간",
+            "why": "지우펀의 전통적인 거리에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -158,14 +173,14 @@
               "https://en.wikipedia.org/wiki/Jiufen"
             ],
             "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
           },
           {
-            "title": "Datong District, Taipei",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
+            "title": "다퉁 구",
+            "angle": "다퉁 구의 전통적인 거리에서 평화로운 시간",
+            "why": "다퉁 구의 전통적인 거리에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -176,26 +191,13 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.05972222,
             "lng": 121.51416667
-          },
-          {
-            "title": "Wanda–Zhonghe–Shulin line",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be comp",
-            "source_titles": [
-              "Wanda–Zhonghe–Shulin line"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Barcelona": [
           {
-            "title": "Mossèn Costa i Llobera Gardens",
-            "angle": "아름다운 식물의 정원",
-            "why": "모센 코스타 이 로베라 정원에서 아름다운 식물을 감상하세요",
+            "title": "모센 코스타 이 로베라 정원",
+            "angle": "모센 코스타 이 로베라 정원에서 평화로운 시간",
+            "why": "모센 코스타 이 로베라 정원에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -211,9 +213,24 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "Berlin Botanical Garden and Botanical Museum",
-            "angle": "다양한 식물의 정원",
-            "why": "베를린 식물원에서 다양한 식물을 감상하세요",
+            "title": "아시아 미술관",
+            "angle": "아시아 미술관의 정원에서 평화로운 시간",
+            "why": "아시아 미술관의 정원에서 평화로운 시간을 보낼 수 있습니다.",
+            "source_titles": [
+              "Museum of Asian Art"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
+            ],
+            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.5175,
+            "lng": 13.40277778
+          },
+          {
+            "title": "베를린 식물원",
+            "angle": "베를린 식물원에서 평화로운 시간",
+            "why": "베를린 식물원에서 평화로운 시간을 보낼 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -240,18 +257,109 @@
       "cities": {
         "Seoul": [],
         "Tokyo": [],
-        "Osaka": [],
-        "London": [],
+        "Osaka": [
+          {
+            "title": "Ardmore distillery",
+            "angle": "싱글 몰트 스코치 위스키를 생산하는 장소",
+            "why": "위스키 생산 과정을 경험할 수 있는 곳",
+            "source_titles": [
+              "Ardmore distillery"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Ardmore_distillery"
+            ],
+            "official_url": "http://www.ardmorewhisky.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 57.35111111,
+            "lng": -2.745
+          }
+        ],
+        "London": [
+          {
+            "title": "Aldborough Hatch",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a sem",
+            "source_titles": [
+              "Aldborough Hatch"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Aldborough_Hatch"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 51.583,
+            "lng": 0.101
+          }
+        ],
         "Paris": [],
         "DaNang": [],
         "Bangkok": [],
         "Singapore": [],
-        "Taipei": [],
-        "Barcelona": [],
-        "Rome": [],
+        "Taipei": [
+          {
+            "title": "Huashan 1914 Creative Park",
+            "angle": "다목적 공원으로 다양한 문화 행사 개최",
+            "why": "공원에서 다양한 문화 행사와 전시회를 즐길 수 있는 곳",
+            "source_titles": [
+              "Huashan 1914 Creative Park"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park"
+            ],
+            "official_url": "http://www.huashan1914.com/en/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.04444444,
+            "lng": 121.52944444
+          }
+        ],
+        "Barcelona": [
+          {
+            "title": "Kristen Babb-Sprague",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Cr",
+            "source_titles": [
+              "Kristen Babb-Sprague"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          }
+        ],
+        "Rome": [
+          {
+            "title": "Ferenc Máté",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Ferenc Máté grew up in Budapest. He escaped Hungary with his mother after the crushing of the 1956 revolution by Soviet tanks. He graduated from the University of British Columbia ",
+            "source_titles": [
+              "Ferenc Máté"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Ferenc_M%C3%A1t%C3%A9"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Porcellino",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "The Porcellino (transl. \"Piglet\") is the local Florentine nickname for the bronze fountain of a boar. The fountain figure was sculpted and cast by Baroque master Pietro Tacca (1577",
+            "source_titles": [
+              "Porcellino"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Porcellino"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 43.769886,
+            "lng": 11.254233
+          }
+        ],
         "Berlin": []
       },
-      "generated_by": "wikipedia-fallback"
+      "generated_by": "groq"
     },
     "오늘은 욜로": {
       "theme": "오늘은 욜로",
@@ -262,20 +370,145 @@
         "nightlife district"
       ],
       "cities": {
-        "Seoul": [],
-        "Tokyo": [],
+        "Seoul": [
+          {
+            "title": "Itaewon",
+            "angle": "멀티 이스닉 인구와 나이트 라이프가 유명",
+            "why": "이태원에서 밤을 즐겨보세요",
+            "source_titles": [
+              "Itaewon"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Itaewon"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 37.53333333,
+            "lng": 126.98333333
+          }
+        ],
+        "Tokyo": [
+          {
+            "title": "Roppongi",
+            "angle": "밤 생활과 나이트 클럽이 유명",
+            "why": "로っぽنگی에서 밤을 즐겨보세요",
+            "source_titles": [
+              "Roppongi"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Roppongi"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 35.66,
+            "lng": 139.73
+          }
+        ],
         "Osaka": [],
-        "London": [],
-        "Paris": [],
+        "London": [
+          {
+            "title": "Chinawhite (nightclub)",
+            "angle": "중국主题 나이트클럽",
+            "why": "중국主题의 나이트클럽에서 밤을 즐겨보세요",
+            "source_titles": [
+              "Chinawhite (nightclub)"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Chinawhite_(nightclub)"
+            ],
+            "official_url": "http://www.chinawhite.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 51.51027778,
+            "lng": -0.13638889
+          },
+          {
+            "title": "Milk & Honey (bar)",
+            "angle": "고급 칵테일 바",
+            "why": "고급 칵테일을 즐겨보세요",
+            "source_titles": [
+              "Milk & Honey (bar)"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Milk_%26_Honey_(bar)"
+            ],
+            "official_url": "http://www.mlkhny.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 51.5137,
+            "lng": -0.1366
+          }
+        ],
+        "Paris": [
+          {
+            "title": "Servair",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Servair is a French airline catering company. It is a majority-owned subsidiary of the Swiss catering company Gategroup (70%), with Air France being a reference shareholder. Servai",
+            "source_titles": [
+              "Servair"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Servair"
+            ],
+            "official_url": "http://www.servair.fr",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+          }
+        ],
         "DaNang": [],
-        "Bangkok": [],
+        "Bangkok": [
+          {
+            "title": "Nana Plaza",
+            "angle": "엔터테인먼트 컴플렉스",
+            "why": "나나 플라자에서 밤을 즐겨보세요",
+            "source_titles": [
+              "Nana Plaza"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Nana_Plaza"
+            ],
+            "official_url": "http://nanaplazabkk.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 13.74136111,
+            "lng": 100.55316667
+          }
+        ],
         "Singapore": [],
         "Taipei": [],
         "Barcelona": [],
-        "Rome": [],
-        "Berlin": []
+        "Rome": [
+          {
+            "title": "Jerry Thomas Speakeasy",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "The Jerry Thomas Speakeasy, also called the Jerry Thomas Project, is a drinking establishment in Campo de' Fiori, Rome. The bar was opened in 2010, by Leonardo Leuci. It is named a",
+            "source_titles": [
+              "Jerry Thomas Speakeasy"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Jerry_Thomas_Speakeasy"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 41.897935,
+            "lng": 12.467918
+          }
+        ],
+        "Berlin": [
+          {
+            "title": "Berghain",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Berghain is a nightclub in Berlin, Germany. It is named after its location near the border between Kreuzberg and Friedrichshain and is a short walk from Berlin Ostbahnhof main line",
+            "source_titles": [
+              "Berghain"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Berghain"
+            ],
+            "official_url": "http://www.berghain.de",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.51111111,
+            "lng": 13.44305556
+          }
+        ]
       },
-      "generated_by": "wikipedia-fallback"
+      "generated_by": "groq"
     },
     "신앙": {
       "theme": "신앙",
@@ -287,20 +520,211 @@
         "halal travel"
       ],
       "cities": {
-        "Seoul": [],
-        "Tokyo": [],
-        "Osaka": [],
-        "London": [],
-        "Paris": [],
+        "Seoul": [
+          {
+            "title": "명동성당",
+            "angle": "서울의 대표적인 천주교 성당",
+            "why": "서울의 주요 관광지 중 하나로 역사적인 의미가 있는 명동성당을 방문해보세요",
+            "source_titles": [
+              "Myeong-dong"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Myeong-dong"
+            ],
+            "official_url": "http://www.junggu.seoul.kr/content.do?cmsid=1432",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 37.5637,
+            "lng": 126.984
+          },
+          {
+            "title": "서울 코리아 寺",
+            "angle": "한국 서울에 위치한 후기성전",
+            "why": "한국 서울에 위치한 후기성전으로 역사적인 의미가 있는 寺를 방문해보세요",
+            "source_titles": [
+              "Seoul Korea Temple"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Seoul_Korea_Temple"
+            ],
+            "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 37.558957,
+            "lng": 126.931301
+          }
+        ],
+        "Tokyo": [
+          {
+            "title": "센소지",
+            "angle": "도쿄의 대표적인 불교 사원",
+            "why": "도쿄의 대표적인 불교 사원인 센소지를 방문해보세요",
+            "source_titles": [
+              "Sensō-ji"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Sens%C5%8D-ji"
+            ],
+            "official_url": "https://www.senso-ji.jp/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 35.71472222,
+            "lng": 139.79675
+          }
+        ],
+        "Osaka": [
+          {
+            "title": "코다이지 寺",
+            "angle": "오사카에 위치한 寺",
+            "why": "오사카에 위치한 寺로 역사적인 의미가 있는 코다이지 寺를 방문해보세요",
+            "source_titles": [
+              "Kōdai-in"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/K%C5%8Ddai-in"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
+          }
+        ],
+        "London": [
+          {
+            "title": "웨스트민스터 사원",
+            "angle": "런던의 대표적인 천주교 사원",
+            "why": "런던의 대표적인 천주교 사원인 웨스트민스터 사원을 방문해보세요",
+            "source_titles": [
+              "Westminster"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Westminster"
+            ],
+            "official_url": "http://www.westminster.gov.uk/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 51.49472222,
+            "lng": -0.13527778
+          }
+        ],
+        "Paris": [
+          {
+            "title": "파리 대모스크",
+            "angle": "파리의 대표적인 이슬람 사원",
+            "why": "파리의 대표적인 이슬람 사원인 파리 대모스크를 방문해보세요",
+            "source_titles": [
+              "Grand Mosque of Paris"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris"
+            ],
+            "official_url": "https://www.grandemosqueedeparis.fr",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.84194444,
+            "lng": 2.355
+          }
+        ],
         "DaNang": [],
-        "Bangkok": [],
-        "Singapore": [],
-        "Taipei": [],
-        "Barcelona": [],
-        "Rome": [],
-        "Berlin": []
+        "Bangkok": [
+          {
+            "title": "와트 아룬",
+            "angle": "방콕의 대표적인 불교 사원",
+            "why": "방콕의 대표적인 불교 사원인 와트 아룬을 방문해보세요",
+            "source_titles": [
+              "Wat Arun"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Wat_Arun"
+            ],
+            "official_url": "http://www.watarun.net/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 13.74361111,
+            "lng": 100.48888889
+          }
+        ],
+        "Singapore": [
+          {
+            "title": "마스지드 알 이슬라",
+            "angle": "싱가포르의 대표적인 이슬람 사원",
+            "why": "싱가포르의 대표적인 이슬람 사원인 마스지드 알 이슬라를 방문해보세요",
+            "source_titles": [
+              "Masjid Al Islah"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Masjid_Al_Islah"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 1.4013989,
+            "lng": 103.9015299
+          }
+        ],
+        "Taipei": [
+          {
+            "title": "베이とう 구",
+            "angle": "타이페이의 대표적인 지역",
+            "why": "타이페이의 대표적인 지역인 베이とう 구를 방문해보세요",
+            "source_titles": [
+              "Beitou District"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Beitou_District"
+            ],
+            "official_url": "https://btdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.1167,
+            "lng": 121.5
+          }
+        ],
+        "Barcelona": [
+          {
+            "title": "사그라다 파밀리아",
+            "angle": "바르셀로나의 대표적인 천주교 성당",
+            "why": "바르셀로나의 대표적인 천주교 성당인 사그라다 파밀리아를 방문해보세요",
+            "source_titles": [
+              "Sagrada Família"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
+            ],
+            "official_url": "https://sagradafamilia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.40369,
+            "lng": 2.17433
+          }
+        ],
+        "Rome": [
+          {
+            "title": "라테란 대성당",
+            "angle": "로마의 대표적인 천주교 성당",
+            "why": "로마의 대표적인 천주교 성당인 라테란 대성당을 방문해보세요",
+            "source_titles": [
+              "Archbasilica of Saint John Lateran"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran"
+            ],
+            "official_url": "https://www.basilicasangiovanni.va/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.88590556,
+            "lng": 12.50615556
+          }
+        ],
+        "Berlin": [
+          {
+            "title": "베를린 대성당",
+            "angle": "베를린의 대표적인 천주교 성당",
+            "why": "베를린의 대표적인 천주교 성당인 베를린 대성당을 방문해보세요",
+            "source_titles": [
+              "Zossen"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Zossen"
+            ],
+            "official_url": "https://www.zossen.de/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.21666667,
+            "lng": 13.44972222
+          }
+        ]
       },
-      "generated_by": "wikipedia-fallback"
+      "generated_by": "groq"
     }
   },
   "raw_sources": {
@@ -455,44 +879,413 @@
     "인생이 무료": {
       "Seoul": [],
       "Tokyo": [],
-      "Osaka": [],
-      "London": [],
+      "Osaka": [
+        {
+          "title": "Ardmore distillery",
+          "extract": "Ardmore distillery is a single malt Scotch whisky distillery, located in the village of Kennethmont, Scotland. The distillery is owned and operated by Suntory Global Spirits, a subsidiary of Suntory Holdings of Osaka, Japan.",
+          "url": "https://en.wikipedia.org/wiki/Ardmore_distillery",
+          "official_url": "http://www.ardmorewhisky.com/",
+          "lat": 57.35111111,
+          "lng": -2.745
+        }
+      ],
+      "London": [
+        {
+          "title": "Aldborough Hatch",
+          "extract": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a semi-rural locality situated to the east of Barkingside and Newbury Park.",
+          "url": "https://en.wikipedia.org/wiki/Aldborough_Hatch",
+          "official_url": "",
+          "lat": 51.583,
+          "lng": 0.101
+        }
+      ],
       "Paris": [],
       "DaNang": [],
       "Bangkok": [],
       "Singapore": [],
-      "Taipei": [],
-      "Barcelona": [],
-      "Rome": [],
+      "Taipei": [
+        {
+          "title": "Huashan 1914 Creative Park",
+          "extract": "The Huashan 1914 Creative Park is a multi-purpose park in Zhongzheng District, Taipei, Taiwan.",
+          "url": "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park",
+          "official_url": "http://www.huashan1914.com/en/",
+          "lat": 25.04444444,
+          "lng": 121.52944444
+        }
+      ],
+      "Barcelona": [
+        {
+          "title": "Kristen Babb-Sprague",
+          "extract": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Creek Aquanuts and was a 1992 Barcelona Olympic gold medalist in the solo event in synchronized swimming.",
+          "url": "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague",
+          "official_url": ""
+        }
+      ],
+      "Rome": [
+        {
+          "title": "Ferenc Máté",
+          "extract": "Ferenc Máté grew up in Budapest. He escaped Hungary with his mother after the crushing of the 1956 revolution by Soviet tanks. He graduated from the University of British Columbia and worked on a railroad extra-gang, on tugboats, and as a boat-builder. He then became a photographer, book editor, and writer. He has lived in Vancouver, Laguna Beach, Whistler Mountain, New York City, Paris, and Rome, and now resides on a wine estate in Tuscany with his wife, painter and winemaker Candace Máté, and their son, Peter.",
+          "url": "https://en.wikipedia.org/wiki/Ferenc_M%C3%A1t%C3%A9",
+          "official_url": ""
+        },
+        {
+          "title": "Porcellino",
+          "extract": "The Porcellino (transl. \"Piglet\") is the local Florentine nickname for the bronze fountain of a boar. The fountain figure was sculpted and cast by Baroque master Pietro Tacca (1577–1640) shortly before 1634, following a marble Italian copy of a Hellenistic marble original, at the time in the Grand Ducal collections and today on display in the classical section of the Uffizi Museum. The original, which was found in Rome and moved to Florence in the mid-16th century by the Medici, was associated from the time of its rediscovery with the Calydonian Boar of Greek myth.",
+          "url": "https://en.wikipedia.org/wiki/Porcellino",
+          "official_url": "",
+          "lat": 43.769886,
+          "lng": 11.254233
+        }
+      ],
       "Berlin": []
     },
     "오늘은 욜로": {
-      "Seoul": [],
-      "Tokyo": [],
+      "Seoul": [
+        {
+          "title": "Itaewon",
+          "extract": "Itaewon is a commercial area within the Itaewon-dong neighborhood of Yongsan District in Seoul, South Korea, known for its nightlife and multi-ethnic population.",
+          "url": "https://en.wikipedia.org/wiki/Itaewon",
+          "official_url": "",
+          "lat": 37.53333333,
+          "lng": 126.98333333
+        }
+      ],
+      "Tokyo": [
+        {
+          "title": "Roppongi",
+          "extract": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign embassies are located in or near Roppongi. The district is in central Tokyo, situated south of Akasaka and north of Azabu and is noted for its night life, attracting both local residents and visitors from abroad.",
+          "url": "https://en.wikipedia.org/wiki/Roppongi",
+          "official_url": "",
+          "lat": 35.66,
+          "lng": 139.73
+        }
+      ],
       "Osaka": [],
-      "London": [],
-      "Paris": [],
+      "London": [
+        {
+          "title": "Chinawhite (nightclub)",
+          "extract": "Chinawhite was a nightclub in central London. The original club was located in Air Street, between Piccadilly Circus and Soho, but the club closed in December 2008 due to the building being sold. It re-opened at a new location in London on 20 October 2009 at 4 Winsley Street, in Fitzrovia. In 2012 there was a partial re-brand and name change to \"Libertine by Chinawhite\". It is part of the wider Chinawhite group which owns and operates a selection of nightclubs, including in Manchester, Birmingham, and Newcastle.",
+          "url": "https://en.wikipedia.org/wiki/Chinawhite_(nightclub)",
+          "official_url": "http://www.chinawhite.com/",
+          "lat": 51.51027778,
+          "lng": -0.13638889
+        },
+        {
+          "title": "Milk & Honey (bar)",
+          "extract": "Milk & Honey was a cocktail bar originally founded in New York City on 31 December 1999, with another location in Soho, London, founded by Sasha Petraske. The New York location was first located on the Lower East Side and later moved to the Flatiron District.",
+          "url": "https://en.wikipedia.org/wiki/Milk_%26_Honey_(bar)",
+          "official_url": "http://www.mlkhny.com/",
+          "lat": 51.5137,
+          "lng": -0.1366
+        }
+      ],
+      "Paris": [
+        {
+          "title": "Servair",
+          "extract": "Servair is a French airline catering company. It is a majority-owned subsidiary of the Swiss catering company Gategroup (70%), with Air France being a reference shareholder. Servair has its head office at Paris-Charles de Gaulle Airport.",
+          "url": "https://en.wikipedia.org/wiki/Servair",
+          "official_url": "http://www.servair.fr"
+        }
+      ],
       "DaNang": [],
-      "Bangkok": [],
+      "Bangkok": [
+        {
+          "title": "Nana Plaza",
+          "extract": "Nana Plaza is an entertainment complex and red-light district in Bangkok, Thailand. Originally built as a shopping center, Nana Plaza occupies a three-story commercial building in the Khlong Toei District of Bangkok about 300 metres (330 yd) from the BTS Skytrain's Nana Station. It describes itself as the \"worlds largest adult playground\". Its name originates from the influential, property-holding Nana family, Lek Nana being the most prominent member.",
+          "url": "https://en.wikipedia.org/wiki/Nana_Plaza",
+          "official_url": "http://nanaplazabkk.com/",
+          "lat": 13.74136111,
+          "lng": 100.55316667
+        }
+      ],
       "Singapore": [],
       "Taipei": [],
       "Barcelona": [],
-      "Rome": [],
-      "Berlin": []
+      "Rome": [
+        {
+          "title": "Jerry Thomas Speakeasy",
+          "extract": "The Jerry Thomas Speakeasy, also called the Jerry Thomas Project, is a drinking establishment in Campo de' Fiori, Rome. The bar was opened in 2010, by Leonardo Leuci. It is named after the Nineteenth century American bartender Jerry Thomas, and themed after a speakeasy from the Prohibition era. The speakeasy is known for enforcing a list of rules, such as banning vodka from the premises, requiring patrons to have a paid membership, and having a password for entry that changes daily. It has been included on the list of The World's 50 Best Bars.",
+          "url": "https://en.wikipedia.org/wiki/Jerry_Thomas_Speakeasy",
+          "official_url": "",
+          "lat": 41.897935,
+          "lng": 12.467918
+        }
+      ],
+      "Berlin": [
+        {
+          "title": "Berghain",
+          "extract": "Berghain is a nightclub in Berlin, Germany. It is named after its location near the border between Kreuzberg and Friedrichshain and is a short walk from Berlin Ostbahnhof main line railway station. Founded in 2004 by friends Norbert Thormann and Michael Teufele, it has since become one of the world's most famous clubs and has been called the world capital of techno.",
+          "url": "https://en.wikipedia.org/wiki/Berghain",
+          "official_url": "http://www.berghain.de",
+          "lat": 52.51111111,
+          "lng": 13.44305556
+        }
+      ]
     },
     "신앙": {
-      "Seoul": [],
-      "Tokyo": [],
-      "Osaka": [],
-      "London": [],
-      "Paris": [],
+      "Seoul": [
+        {
+          "title": "Myeong-dong",
+          "extract": "Myeong-dong is a dong (neighborhood) in Jung District, Seoul, South Korea. It is between Chungmu-ro, Eulji-ro, and Namdaemun-ro.\nMyeongdong is known for being one of Seoul's main shopping, parade route, and tourism districts. In 2023, it was listed as the ninth most expensive shopping street in the world. The area is known for its two historically significant sites, namely the Myeongdong Cathedral and the Myeongdong Theater. Performances at Myeongdong Nanta Theater are popular.",
+          "url": "https://en.wikipedia.org/wiki/Myeong-dong",
+          "official_url": "http://www.junggu.seoul.kr/content.do?cmsid=1432",
+          "lat": 37.5637,
+          "lng": 126.984
+        },
+        {
+          "title": "Tourism in South Korea",
+          "extract": "Tourism in South Korea and its industry caters to both foreign and domestic tourists. The country has 16 World Heritage Sites, including Changdeokgung Palace, Namhansanseong and Hwaseong Fortress. Seoul is the principal tourist destination for visitors. Popular tourist destinations outside of the capital include the major coastal city of Busan, the Seorak-san national park, the historic city of Gyeongju and subtropical Jeju Island.",
+          "url": "https://en.wikipedia.org/wiki/Tourism_in_South_Korea",
+          "official_url": ""
+        },
+        {
+          "title": "Seoul Korea Temple",
+          "extract": "The Seoul Korea Temple is the 37th operating temple of the Church of Jesus Christ of Latter-day Saints. Located in Seoul, South Korea, the temple was announced on April 1, 1981, by church president Spencer W. Kimball. It was the first temple constructed on the Asian mainland and the fourth built in Asia overall. Ground was broken on May 9, 1983, under the direction of Marvin J. Ashton of the Quorum of the Twelve Apostles, and the temple was dedicated on December 14–15, 1985, by Gordon B. Hinckley in six sessions. During the public open house held in late 1985, more than 12,000 people toured the building.",
+          "url": "https://en.wikipedia.org/wiki/Seoul_Korea_Temple",
+          "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
+          "lat": 37.558957,
+          "lng": 126.931301
+        }
+      ],
+      "Tokyo": [
+        {
+          "title": "Sensō-ji",
+          "extract": "Sensō-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisattva of compassion. Structures in the temple complex include the main hall, a five-story pagoda and large gates. It is the most widely visited religious site in the world with over 30 million visitors annually. The temple is the 13th stop on the Bandō Sanjūsankasho pilgrimage route.",
+          "url": "https://en.wikipedia.org/wiki/Sens%C5%8D-ji",
+          "official_url": "https://www.senso-ji.jp/",
+          "lat": 35.71472222,
+          "lng": 139.79675
+        },
+        {
+          "title": "Asakusa",
+          "extract": "Asakusa  is a district in Taitō, Tokyo, Japan. It is known for Sensō-ji, a Buddhist temple dedicated to the bodhisattva Kannon. There are several other temples in Asakusa, as well as various festivals, such as Sanja Matsuri.",
+          "url": "https://en.wikipedia.org/wiki/Asakusa",
+          "official_url": "",
+          "lat": 35.71444444,
+          "lng": 139.79666667
+        }
+      ],
+      "Osaka": [
+        {
+          "title": "Tennōji-ku, Osaka",
+          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
+          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+          "lat": 34.65777778,
+          "lng": 135.51944444
+        },
+        {
+          "title": "Kōdai-in",
+          "extract": "Kōdai-in (高台院), formerly known as Nene (ねね), One (おね), Nei (ねい), was an aristocrat and Buddhist nun, founder of the temple Kōdai-ji in Kyoto, Japan. She was formerly the principal samurai wife of Toyotomi Hideyoshi under the name of Toyotomi Yoshiko . When she rose in higher political status, she took the title of \"Kita no mandokoro\". As the matriarch figure of the Toyotomi clan, she led all diplomatic affairs that had to do with the imperial court, and monitored the daimyos' families who were being held hostage at Osaka Castle.",
+          "url": "https://en.wikipedia.org/wiki/K%C5%8Ddai-in",
+          "official_url": ""
+        },
+        {
+          "title": "Mount Kōya",
+          "extract": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, the ecclesiastical headquarters of the Kōyasan sect of Shingon Buddhism.",
+          "url": "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya",
+          "official_url": "",
+          "lat": 34.2125,
+          "lng": 135.58638889
+        }
+      ],
+      "London": [
+        {
+          "title": "Westminster",
+          "extract": "Westminster is the main settlement of the City of Westminster in Central London, England. It extends from the River Thames to Oxford Street and has many famous landmarks, including the Palace of Westminster, Buckingham Palace, Westminster Abbey, Westminster Cathedral, Trafalgar Square and much of the West End cultural centre including the entertainment area of West End theatre.",
+          "url": "https://en.wikipedia.org/wiki/Westminster",
+          "official_url": "http://www.westminster.gov.uk/",
+          "lat": 51.49472222,
+          "lng": -0.13527778
+        },
+        {
+          "title": "City of Westminster",
+          "extract": "The City of Westminster is a London borough with city status in Greater London, England. It is the site of the United Kingdom's Houses of Parliament and much of the British government. It contains a large part of central London, including most of the West End, such as the major shopping areas around Oxford Street, Regent Street, Piccadilly and Bond Street, and the entertainment district of Soho. Many London landmarks are within the borough, including Buckingham Palace, Westminster Abbey, Whitehall, Westminster Cathedral, 10 Downing Street, and Trafalgar Square.",
+          "url": "https://en.wikipedia.org/wiki/City_of_Westminster",
+          "official_url": "https://www.westminster.gov.uk/",
+          "lat": 51.51222222,
+          "lng": -0.16333333
+        }
+      ],
+      "Paris": [
+        {
+          "title": "Grand Mosque of Paris",
+          "extract": "The Grand Mosque of Paris, also known as the Great Mosque of Paris or simply the Paris Mosque, located in the 5th arrondissement of Paris, is one of the largest mosques in France. It comprises prayer rooms, an outdoor garden, a small library, a gift shop, along with a cafe and restaurant. In all, the mosque plays an important role in promoting the visibility of Islam and Muslims in France. Completed in 1926, is the oldest mosque in metropolitan France.",
+          "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris",
+          "official_url": "https://www.grandemosqueedeparis.fr",
+          "lat": 48.84194444,
+          "lng": 2.355
+        },
+        {
+          "title": "Notre-Dame de Paris",
+          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
+          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
+          "official_url": "https://www.notredamedeparis.fr/",
+          "lat": 48.85305556,
+          "lng": 2.35
+        }
+      ],
       "DaNang": [],
-      "Bangkok": [],
-      "Singapore": [],
-      "Taipei": [],
-      "Barcelona": [],
-      "Rome": [],
-      "Berlin": []
+      "Bangkok": [
+        {
+          "title": "Khaosan Road",
+          "extract": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
+          "url": "https://en.wikipedia.org/wiki/Khaosan_Road",
+          "official_url": "",
+          "lat": 13.75888889,
+          "lng": 100.49722222
+        },
+        {
+          "title": "Wat Arun",
+          "extract": "Wat Arun Ratchawararam Ratchawaramahawihan or Wat Arun is a Buddhist temple (wat) in the Bangkok Yai district of Bangkok, Thailand. It is situated in Thonburi on the west bank of the Chao Phraya River. The temple derives its name from the Hindu god Aruṇa, often personified as the radiations of the rising sun. Built with a fusion of Indian influences, incorporating elements of both Hindu and Buddhist symbolism, as well as reflecting Siamese tradition and identity. Wat Arun is among the best known of Thailand's landmarks. Although the temple has existed since at least the 17th century, its distinctive prang (spire) was built in the early 19th century during the reigns of Rama II and Rama III.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Arun",
+          "official_url": "http://www.watarun.net/",
+          "lat": 13.74361111,
+          "lng": 100.48888889
+        },
+        {
+          "title": "Wat Champa",
+          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
+          "official_url": "",
+          "lat": 13.775,
+          "lng": 100.43416667
+        },
+        {
+          "title": "Assumption Cathedral, Bangkok",
+          "extract": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Archdiocese of Bangkok. The cathedral hosted both of the papal visits to Thailand: Pope John Paul II in 1984 and Pope Francis in 2019.",
+          "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok",
+          "official_url": "",
+          "lat": 13.723059,
+          "lng": 100.514924
+        }
+      ],
+      "Singapore": [
+        {
+          "title": "Masjid Al Islah",
+          "extract": "Masjid Al-Islah is a mosque located in Punggol within the North-East Region, Singapore. Built in 2015, it is the only mosque situated in the Punggol neighbourhood.",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Al_Islah",
+          "official_url": "",
+          "lat": 1.4013989,
+          "lng": 103.9015299
+        },
+        {
+          "title": "Masjid Al-Huda",
+          "extract": "Masjid Al-Huda is a mosque located along the Jalan Haji Alias road in Bukit Timah, Singapore. The mosque was completely rebuilt in 1966 from an older structure and is now located in the middle of a neighbourhood of landed terrace houses. It is one of two mosques situated in Bukit Timah, the other being Masjid Ba'alwie off Lewis Road.",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Al-Huda",
+          "official_url": "",
+          "lat": 1.3231395,
+          "lng": 103.7947971
+        },
+        {
+          "title": "Armenian Church, Singapore",
+          "extract": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in the Museum Planning Area, within the Central Area. The church was completed in 1835 and consecrated the next year. Originally a parish of the Armenian Apostolic Church, an Oriental Orthodox denomination, the last Armenian parish priest left in the late 1930s as Armenian population in Singapore dwindled. It was designated as a national monument in 1973. Armenian and Oriental Orthodox services are now regularly held at the church.",
+          "url": "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore",
+          "official_url": "https://www.armeniansinasia.org/",
+          "lat": 1.29305556,
+          "lng": 103.84930556
+        },
+        {
+          "title": "Tony Dumper",
+          "extract": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican priest in Malaysia and Singapore from 1949 until 1970, becoming Dean of St Andrews Cathedral, Singapore in 1964.",
+          "url": "https://en.wikipedia.org/wiki/Tony_Dumper",
+          "official_url": ""
+        }
+      ],
+      "Taipei": [
+        {
+          "title": "Taiwan High Speed Rail",
+          "extract": "Taiwan High Speed Rail (THSR) is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, from Taipei in the north to the southern city of Kaohsiung. Its construction was managed by a private company, Taiwan High Speed Rail Corporation (THSRC), which also operates the line. The total cost of the project was NT$513.3 billion in 1998. The system's technology is based primarily on Japan's Shinkansen.",
+          "url": "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail",
+          "official_url": "https://www.thsrc.com.tw/"
+        },
+        {
+          "title": "Beitou District",
+          "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
+          "url": "https://en.wikipedia.org/wiki/Beitou_District",
+          "official_url": "https://btdo.gov.taipei/",
+          "lat": 25.1167,
+          "lng": 121.5
+        }
+      ],
+      "Barcelona": [
+        {
+          "title": "Sagrada Família",
+          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. Parts of the Sagrada Família were declared as an UNESCO World Heritage Site in 2005, under \"Works of Antoni Gaudí\".",
+          "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
+          "official_url": "https://sagradafamilia.org/",
+          "lat": 41.40369,
+          "lng": 2.17433
+        },
+        {
+          "title": "Girona",
+          "extract": "Girona, historically also known as Gerona, is the capital city of the Province of Girona in the autonomous community of Catalonia, Spain, at the confluence of the Ter, Onyar, Galligants, and Güell rivers. The city had an official population of 106,476 in 2024, but the population of the Girona–Salt urban area is estimated to be about 156,400 (2020). Girona is also capital of the comarca of the Gironès and the vegueria of Girona. Since much of the old quarter of this ancient city has been preserved, Girona is a popular tourist destination. The city is located 99 km (62 mi) northeast of Barcelona.",
+          "url": "https://en.wikipedia.org/wiki/Girona",
+          "official_url": "http://www.girona.cat/",
+          "lat": 41.98444444,
+          "lng": 2.82111111
+        },
+        {
+          "title": "Tibidabo Funicular",
+          "extract": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with the summit of Tibidabo, where there is an amusement park and a church, the Temple Expiatori del Sagrat Cor.",
+          "url": "https://en.wikipedia.org/wiki/Tibidabo_Funicular",
+          "official_url": "",
+          "lat": 41.41644444,
+          "lng": 2.13108333
+        }
+      ],
+      "Rome": [
+        {
+          "title": "Archbasilica of Saint John Lateran",
+          "extract": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. It serves as the seat of the bishop of Rome and head of the worldwide Catholic Church: the pope. The only \"archbasilica\" in the world, it lies outside of Vatican City proper, which is located approximately four kilometres northwest. Nevertheless, as properties of the Holy See, the archbasilica and its adjoining edifices enjoy an extraterritorial status from Italy, pursuant to the terms of the Lateran Treaty of 1929. Dedicated to Christ the Saviour, in honor of John the Baptist and John the Evangelist, the place name",
+          "url": "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran",
+          "official_url": "https://www.basilicasangiovanni.va/",
+          "lat": 41.88590556,
+          "lng": 12.50615556
+        },
+        {
+          "title": "Trevi Fountain",
+          "extract": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86 ft) high and 49.15 metres (161.3 ft) wide, it is the largest Baroque fountain in the city and one of the most famous fountains in the world.",
+          "url": "https://en.wikipedia.org/wiki/Trevi_Fountain",
+          "official_url": "http://www.trevifountain.net/",
+          "lat": 41.90083333,
+          "lng": 12.48305556
+        },
+        {
+          "title": "Pantheon, Rome",
+          "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
+          "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
+          "official_url": "https://www.pantheonroma.com/",
+          "lat": 41.8986,
+          "lng": 12.4768
+        }
+      ],
+      "Berlin": [
+        {
+          "title": "Zossen",
+          "extract": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several smaller municipalities, which were grouped in 2003 to form the city.",
+          "url": "https://en.wikipedia.org/wiki/Zossen",
+          "official_url": "https://www.zossen.de/",
+          "lat": 52.21666667,
+          "lng": 13.44972222
+        },
+        {
+          "title": "Berlin",
+          "extract": "Berlin is the capital of Germany as well as its largest city by both area and population. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The city is also one of the states of Germany, being the third-smallest state in the country by area. Berlin is surrounded by the state of Brandenburg, bordering Brandenburg's capital Potsdam to the southwest. The urban area of Berlin has a population of over 5 million, making it the most populous in Germany. The Berlin-Brandenburg capital region has around 6 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest ",
+          "url": "https://en.wikipedia.org/wiki/Berlin",
+          "official_url": "https://www.berlin.de/",
+          "lat": 52.52,
+          "lng": 13.405
+        },
+        {
+          "title": "Berlin Tempelhof Airport",
+          "extract": "Berlin Tempelhof Airport was one of the first airports in Berlin, Germany. Situated in the south-central Berlin borough of Tempelhof-Schöneberg, the airport ceased operating in 2008 amid controversy. This left Tegel and Schönefeld as the two main airports serving the city for another twelve years until both were replaced by Berlin Brandenburg Airport in 2020.",
+          "url": "https://en.wikipedia.org/wiki/Berlin_Tempelhof_Airport",
+          "official_url": "http://www.thf-berlin.de",
+          "lat": 52.47361111,
+          "lng": 13.40166667
+        }
+      ]
     }
   }
 }
