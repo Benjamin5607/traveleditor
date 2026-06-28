@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-27 02:19",
+  "last_updated": "2026-06-28 02:41",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 정원에서 평화로운 시간",
-            "why": "고토 미술관의 정원에서 평화로운 시간을 보낼 수 있습니다.",
+            "angle": "고토 미술관의 고요한 정원",
+            "why": "고토 미술관의 고요한 정원에서 마음을 평화롭게 할 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -78,8 +78,8 @@
           },
           {
             "title": "유메노시마 열대 식물 온실",
-            "angle": "열대 식물 온실에서 평화로운 시간",
-            "why": "유메노시마 열대 식물 온실에서 평화로운 시간을 보낼 수 있습니다.",
+            "angle": "열대 식물 온실의 아름다운 정원",
+            "why": "유메노시마 열대 식물 온실에서 아름다운 정원을 감상할 수 있습니다.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -95,8 +95,8 @@
         "Osaka": [
           {
             "title": "오사카 성",
-            "angle": "오사카 성의 정원에서 평화로운 시간",
-            "why": "오사카 성의 정원에서 평화로운 시간을 보낼 수 있습니다.",
+            "angle": "오사카 성의 역사와 자연",
+            "why": "오사카 성에서 역사와 자연을 함께 경험할 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -109,9 +109,9 @@
             "lng": 135.52583333
           },
           {
-            "title": "텐노지 구",
-            "angle": "텐노지 구의 전통적인 거리에서 평화로운 시간",
-            "why": "텐노지 구의 전통적인 거리에서 평화로운 시간을 보낼 수 있습니다.",
+            "title": "텐노지구",
+            "angle": "텐노지구의 전통과 문화",
+            "why": "텐노지구에서 전통과 문화를 경험할 수 있습니다.",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -127,9 +127,9 @@
         "London": [],
         "Paris": [
           {
-            "title": "자르딘 데 플랑트",
-            "angle": "자르딘 데 플랑트의 식물원에서 평화로운 시간",
-            "why": "자르딘 데 플랑트의 식물원에서 평화로운 시간을 보낼 수 있습니다.",
+            "title": "자르뎅 데 플랑트",
+            "angle": "자르뎅 데 플랑트의 아름다운 정원",
+            "why": "자르뎅 데 플랑트에서 아름다운 정원을 감상할 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -164,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 전통적인 거리에서 평화로운 시간",
-            "why": "지우펀의 전통적인 거리에서 평화로운 시간을 보낼 수 있습니다.",
+            "angle": "지우펀의 전통적인 차와 아름다운 풍경",
+            "why": "지우펀에서 전통적인 차와 아름다운 풍경을 경험할 수 있습니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -178,9 +178,9 @@
             "lng": 121.843
           },
           {
-            "title": "다퉁 구",
-            "angle": "다퉁 구의 전통적인 거리에서 평화로운 시간",
-            "why": "다퉁 구의 전통적인 거리에서 평화로운 시간을 보낼 수 있습니다.",
+            "title": "다퉁구",
+            "angle": "다퉁구의 역사와 문화",
+            "why": "다퉁구에서 역사와 문화를 경험할 수 있습니다.",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -195,9 +195,9 @@
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로베라 정원",
-            "angle": "모센 코스타 이 로베라 정원에서 평화로운 시간",
-            "why": "모센 코스타 이 로베라 정원에서 평화로운 시간을 보낼 수 있습니다.",
+            "title": "모센 코스타 이 요베라 정원",
+            "angle": "모센 코스타 이 요베라 정원의 아름다운 식물",
+            "why": "모센 코스타 이 요베라 정원에서 아름다운 식물을 감상할 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -214,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아 미술관의 정원에서 평화로운 시간",
-            "why": "아시아 미술관의 정원에서 평화로운 시간을 보낼 수 있습니다.",
+            "angle": "아시아 미술관의 고요한 정원",
+            "why": "아시아 미술관에서 고요한 정원을 경험할 수 있습니다.",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -229,8 +229,8 @@
           },
           {
             "title": "베를린 식물원",
-            "angle": "베를린 식물원에서 평화로운 시간",
-            "why": "베를린 식물원에서 평화로운 시간을 보낼 수 있습니다.",
+            "angle": "베를린 식물원의 아름다운 정원",
+            "why": "베를린 식물원에서 아름다운 정원을 감상할 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -299,7 +299,7 @@
           {
             "title": "Huashan 1914 Creative Park",
             "angle": "다목적 공원으로 다양한 문화 행사 개최",
-            "why": "공원에서 다양한 문화 행사와 전시회를 즐길 수 있는 곳",
+            "why": "예술과 문화를 경험할 수 있는 공간",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -373,8 +373,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "멀티 이스닉 인구와 나이트 라이프가 유명",
-            "why": "이태원에서 밤을 즐겨보세요",
+            "angle": "야간생활과 다문화 인구로 유명한 지역",
+            "why": "서울의 대표적인 나이트라이프를 즐길 수 있는 곳",
             "source_titles": [
               "Itaewon"
             ],
@@ -390,8 +390,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "밤 생활과 나이트 클럽이 유명",
-            "why": "로っぽنگی에서 밤을 즐겨보세요",
+            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
+            "why": "도쿄의 대표적인 나이트라이프를 즐길 수 있는 곳",
             "source_titles": [
               "Roppongi"
             ],
@@ -408,8 +408,8 @@
         "London": [
           {
             "title": "Chinawhite (nightclub)",
-            "angle": "중국主题 나이트클럽",
-            "why": "중국主题의 나이트클럽에서 밤을 즐겨보세요",
+            "angle": "중앙 런던에 위치한 나이트클럽",
+            "why": "런던의 대표적인 나이트라이프를 즐길 수 있는 곳",
             "source_titles": [
               "Chinawhite (nightclub)"
             ],
@@ -423,8 +423,8 @@
           },
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급 칵테일 바",
-            "why": "고급 칵테일을 즐겨보세요",
+            "angle": "원래 뉴욕에 위치한 칵테일 바",
+            "why": "런던의 대표적인 칵테일 바",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -456,8 +456,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 컴플렉스",
-            "why": "나나 플라자에서 밤을 즐겨보세요",
+            "angle": "엔터테인먼트 콤플렉스 및 레드라이트 지구",
+            "why": "방콕의 대표적인 나이트라이프를 즐길 수 있는 곳",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -524,7 +524,7 @@
           {
             "title": "명동성당",
             "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 주요 관광지 중 하나로 역사적인 의미가 있는 명동성당을 방문해보세요",
+            "why": "서울의 중심가에 위치한 역사적인 천주교 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -537,9 +537,9 @@
             "lng": 126.984
           },
           {
-            "title": "서울 코리아 寺",
-            "angle": "한국 서울에 위치한 후기성전",
-            "why": "한국 서울에 위치한 후기성전으로 역사적인 의미가 있는 寺를 방문해보세요",
+            "title": "서울코리아 寺",
+            "angle": "서울의 모로몬교 寺",
+            "why": "모로몬교의 역사와 문화를 경험할 수 있는 寺",
             "source_titles": [
               "Seoul Korea Temple"
             ],
@@ -555,8 +555,8 @@
         "Tokyo": [
           {
             "title": "센소지",
-            "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄의 대표적인 불교 사원인 센소지를 방문해보세요",
+            "angle": "도쿄의 대표적인 불교 寺",
+            "why": "도쿄의 대표적인 불교 寺으로 많은 관광객이 방문",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -571,26 +571,26 @@
         ],
         "Osaka": [
           {
-            "title": "코다이지 寺",
-            "angle": "오사카에 위치한 寺",
-            "why": "오사카에 위치한 寺로 역사적인 의미가 있는 코다이지 寺를 방문해보세요",
+            "title": "코야산",
+            "angle": "오사카 근교의 불교 寺지",
+            "why": "오사카 근교의 역사적인 불교 寺지",
             "source_titles": [
-              "Kōdai-in"
+              "Mount Kōya"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/K%C5%8Ddai-in"
+              "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
             ],
             "official_url": "",
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
+            "lat": 34.2125,
+            "lng": 135.58638889
           }
         ],
         "London": [
           {
             "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 천주교 사원",
-            "why": "런던의 대표적인 천주교 사원인 웨스트민스터 사원을 방문해보세요",
+            "angle": "런던의 대표적인 성공회 사원",
+            "why": "런던의 대표적인 성공회 사원",
             "source_titles": [
               "Westminster"
             ],
@@ -607,7 +607,7 @@
           {
             "title": "파리 대모스크",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "파리의 대표적인 이슬람 사원인 파리 대모스크를 방문해보세요",
+            "why": "파리의 대표적인 이슬람 사원",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -625,7 +625,7 @@
           {
             "title": "와트 아룬",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "방콕의 대표적인 불교 사원인 와트 아룬을 방문해보세요",
+            "why": "방콕의 대표적인 불교 사원",
             "source_titles": [
               "Wat Arun"
             ],
@@ -636,13 +636,28 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 13.74361111,
             "lng": 100.48888889
+          },
+          {
+            "title": "아수ンプション 대성당",
+            "angle": "방콕의 대표적인 천주교 대성당",
+            "why": "방콕의 대표적인 천주교 대성당",
+            "source_titles": [
+              "Assumption Cathedral, Bangkok"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 13.723059,
+            "lng": 100.514924
           }
         ],
         "Singapore": [
           {
-            "title": "마스지드 알 이슬라",
+            "title": "마스지드 알이슬라",
             "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르의 대표적인 이슬람 사원인 마스지드 알 이슬라를 방문해보세요",
+            "why": "싱가포르의 대표적인 이슬람 사원",
             "source_titles": [
               "Masjid Al Islah"
             ],
@@ -653,13 +668,28 @@
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 1.4013989,
             "lng": 103.9015299
+          },
+          {
+            "title": "아르메니아 교회",
+            "angle": "싱가포르의 대표적인 아르메니아 교회",
+            "why": "싱가포르의 대표적인 아르메니아 교회",
+            "source_titles": [
+              "Armenian Church, Singapore"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
+            ],
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
           }
         ],
         "Taipei": [
           {
-            "title": "베이とう 구",
-            "angle": "타이페이의 대표적인 지역",
-            "why": "타이페이의 대표적인 지역인 베이とう 구를 방문해보세요",
+            "title": "베이とう 지구",
+            "angle": "타이페이의 대표적인 온천 지구",
+            "why": "타이페이의 대표적인 온천 지구",
             "source_titles": [
               "Beitou District"
             ],
@@ -675,8 +705,8 @@
         "Barcelona": [
           {
             "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 천주교 성당",
-            "why": "바르셀로나의 대표적인 천주교 성당인 사그라다 파밀리아를 방문해보세요",
+            "angle": "바르셀로나의 대표적인 가우디 건축물",
+            "why": "바르셀로나의 대표적인 가우디 건축물",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -692,8 +722,8 @@
         "Rome": [
           {
             "title": "라테란 대성당",
-            "angle": "로마의 대표적인 천주교 성당",
-            "why": "로마의 대표적인 천주교 성당인 라테란 대성당을 방문해보세요",
+            "angle": "로마의 대표적인 가톨릭 대성당",
+            "why": "로마의 대표적인 가톨릭 대성당",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -709,8 +739,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 천주교 성당",
-            "why": "베를린의 대표적인 천주교 성당인 베를린 대성당을 방문해보세요",
+            "angle": "베를린의 대표적인 개신교 대성당",
+            "why": "베를린의 대표적인 개신교 대성당",
             "source_titles": [
               "Zossen"
             ],
@@ -1097,14 +1127,6 @@
           "official_url": "http://www.westminster.gov.uk/",
           "lat": 51.49472222,
           "lng": -0.13527778
-        },
-        {
-          "title": "City of Westminster",
-          "extract": "The City of Westminster is a London borough with city status in Greater London, England. It is the site of the United Kingdom's Houses of Parliament and much of the British government. It contains a large part of central London, including most of the West End, such as the major shopping areas around Oxford Street, Regent Street, Piccadilly and Bond Street, and the entertainment district of Soho. Many London landmarks are within the borough, including Buckingham Palace, Westminster Abbey, Whitehall, Westminster Cathedral, 10 Downing Street, and Trafalgar Square.",
-          "url": "https://en.wikipedia.org/wiki/City_of_Westminster",
-          "official_url": "https://www.westminster.gov.uk/",
-          "lat": 51.51222222,
-          "lng": -0.16333333
         }
       ],
       "Paris": [
@@ -1115,14 +1137,6 @@
           "official_url": "https://www.grandemosqueedeparis.fr",
           "lat": 48.84194444,
           "lng": 2.355
-        },
-        {
-          "title": "Notre-Dame de Paris",
-          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
-          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
-          "official_url": "https://www.notredamedeparis.fr/",
-          "lat": 48.85305556,
-          "lng": 2.35
         }
       ],
       "DaNang": [],
@@ -1144,12 +1158,12 @@
           "lng": 100.48888889
         },
         {
-          "title": "Wat Champa",
-          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
-          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
+          "title": "Bang Lamphu",
+          "extract": "Bang Lamphu, also spelled Banglampoo or Banglamphu is a neighbourhood in Bangkok located in Phra Nakhon District. The history of the Bang Lamphu community dates to the establishment of the Rattanakosin Kingdom, or earlier. Bang Lamphu covers the area north of Phra Nakhon, both inside and outside Rattanakosin Island, stretching from Phra Athit to Samsen Roads, which lead toward Dusit District. Most of Bang Lamphu lies within Talat Yot Subdistrict, with parts extending into nearby subdistricts such as Chana Songkhram, Bowon Niwet, Ban Phan Thom, and up to Wat Sam Phraya.",
+          "url": "https://en.wikipedia.org/wiki/Bang_Lamphu",
           "official_url": "",
-          "lat": 13.775,
-          "lng": 100.43416667
+          "lat": 13.75248056,
+          "lng": 100.50113889
         },
         {
           "title": "Assumption Cathedral, Bangkok",
@@ -1186,10 +1200,12 @@
           "lng": 103.84930556
         },
         {
-          "title": "Tony Dumper",
-          "extract": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican priest in Malaysia and Singapore from 1949 until 1970, becoming Dean of St Andrews Cathedral, Singapore in 1964.",
-          "url": "https://en.wikipedia.org/wiki/Tony_Dumper",
-          "official_url": ""
+          "title": "Raffles Hotel",
+          "extract": "Raffles Hotel is a historic luxury hotel at 1 Beach Road, in Singapore. It was established by Armenian hoteliers, the Sarkies Brothers, in 1887. The hotel was named after British colonial official Stamford Raffles, the founder of modern Singapore. It was gazetted as a national monument of Singapore in 1987.",
+          "url": "https://en.wikipedia.org/wiki/Raffles_Hotel",
+          "official_url": "https://www.raffles.com/singapore/",
+          "lat": 1.29489,
+          "lng": 103.85448
         }
       ],
       "Taipei": [
@@ -1244,20 +1260,20 @@
           "lng": 12.50615556
         },
         {
-          "title": "Trevi Fountain",
-          "extract": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86 ft) high and 49.15 metres (161.3 ft) wide, it is the largest Baroque fountain in the city and one of the most famous fountains in the world.",
-          "url": "https://en.wikipedia.org/wiki/Trevi_Fountain",
-          "official_url": "http://www.trevifountain.net/",
-          "lat": 41.90083333,
-          "lng": 12.48305556
-        },
-        {
           "title": "Pantheon, Rome",
           "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Trevi Fountain",
+          "extract": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86 ft) high and 49.15 metres (161.3 ft) wide, it is the largest Baroque fountain in the city and one of the most famous fountains in the world.",
+          "url": "https://en.wikipedia.org/wiki/Trevi_Fountain",
+          "official_url": "http://www.trevifountain.net/",
+          "lat": 41.90083333,
+          "lng": 12.48305556
         }
       ],
       "Berlin": [
