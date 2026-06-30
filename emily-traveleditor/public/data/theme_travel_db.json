@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-29 02:37",
+  "last_updated": "2026-06-30 02:33",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -30,9 +30,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "Insa-dong",
-            "angle": "전통 차집과 현대 갤러리가 조화된 거리",
-            "why": "인사동의 전통과 현대가 조화된 거리를 산책하며 마음을 진정시킬 수 있습니다.",
+            "title": "인사동",
+            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
+            "why": "인사동의 전통적인 차와 현대적인 갤러리를 경험할 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -45,9 +45,9 @@
             "lng": 126.98618
           },
           {
-            "title": "Children's Grand Park, Seoul",
+            "title": "어린이대공원",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로에서 자연과 함께 마음을 진정시킬 수 있습니다.",
+            "why": "어린이대공원의 아름다운 정원과 산책로를 즐길 수 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,24 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "Yumenoshima Tropical Greenhouse Dome",
-            "angle": "열대 식물과 함께하는 평화로운 산책",
-            "why": "유메노시마 열대 온실 돔의 아름다운 식물들 속에서 마음을 진정시킬 수 있습니다.",
-            "source_titles": [
-              "Yumenoshima Tropical Greenhouse Dome"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
-            ],
-            "official_url": "https://www.yumenoshima.jp/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 35.651298,
-            "lng": 139.829307
-          },
-          {
-            "title": "Gotoh Museum",
-            "angle": "예술과 역사 속에서 평화 찾기",
-            "why": "고토 미술관의 아름다운 일본과 중국 예술 작품들을 감상하며 마음을 진정시킬 수 있습니다.",
+            "title": "고토 미술관",
+            "angle": "고토 미술관의 고요한 정원과 전통적인 일본 미술",
+            "why": "고토 미술관의 아름다운 정원과 전통적인 일본 미술을 감상할 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -90,13 +75,28 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.612195,
             "lng": 139.635294
+          },
+          {
+            "title": "유메노시마 열대 식물 온실",
+            "angle": "열대 식물과 함께하는 평화로운 산책",
+            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 평화로운 분위기를 즐길 수 있습니다.",
+            "source_titles": [
+              "Yumenoshima Tropical Greenhouse Dome"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Yumenoshima_Tropical_Greenhouse_Dome"
+            ],
+            "official_url": "https://www.yumenoshima.jp/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 35.651298,
+            "lng": 139.829307
           }
         ],
         "Osaka": [
           {
-            "title": "Osaka Castle",
-            "angle": "歴史와 평화의 공간",
-            "why": "오사카 성의 아름다운 정원과 역사적인 건축물들 속에서 마음을 진정시킬 수 있습니다.",
+            "title": "오사카 성",
+            "angle": "오사카 성의 역사와 전통",
+            "why": "오사카 성의 아름다운 정원과 역사적인 건축물을 감상할 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,14 +107,29 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "텐노지구",
+            "angle": "텐노지구의 전통적인 일본 문화",
+            "why": "텐노지구의 아름다운 정원과 전통적인 일본 문화를 경험할 수 있습니다.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "Ménagerie du Jardin des plantes",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
+            "title": "자르뎅 데 플란트",
+            "angle": "자르뎅 데 플란트의 아름다운 정원과 식물",
+            "why": "자르뎅 데 플란트의 아름다운 정원과 다양한 식물을 감상할 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -129,11 +144,105 @@
         ],
         "DaNang": [],
         "Bangkok": [],
-        "Singapore": [],
-        "Taipei": [],
-        "Barcelona": [],
+        "Singapore": [
+          {
+            "title": "Yue Hwa Building",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan a",
+            "source_titles": [
+              "Yue Hwa Building"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Yue_Hwa_Building"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 1.28488889,
+            "lng": 103.84344444
+          }
+        ],
+        "Taipei": [
+          {
+            "title": "지우펀",
+            "angle": "지우펀의 전통적인 차와 아름다운 풍경",
+            "why": "지우펀의 아름다운 풍경과 전통적인 차를 경험할 수 있습니다.",
+            "source_titles": [
+              "Jiufen"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Jiufen"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 25.107,
+            "lng": 121.843
+          },
+          {
+            "title": "다퉁구",
+            "angle": "다퉁구의 전통적인 일본 문화와 아름다운 정원",
+            "why": "다퉁구의 아름다운 정원과 전통적인 일본 문화를 경험할 수 있습니다.",
+            "source_titles": [
+              "Datong District, Taipei"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
+            ],
+            "official_url": "https://dtdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.05972222,
+            "lng": 121.51416667
+          }
+        ],
+        "Barcelona": [
+          {
+            "title": "모센 코스타 이 로브레라 정원",
+            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물과 평화로운 분위기",
+            "why": "모센 코스타 이 로브레라 정원의 아름다운 식물과 평화로운 분위기를 즐길 수 있습니다.",
+            "source_titles": [
+              "Mossèn Costa i Llobera Gardens"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Moss%C3%A8n_Costa_i_Llobera_Gardens"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 41.3689,
+            "lng": 2.1723
+          }
+        ],
         "Rome": [],
-        "Berlin": []
+        "Berlin": [
+          {
+            "title": "아시아 미술관",
+            "angle": "아시아 미술관의 아름다운 정원과 전통적인 아시아 미술",
+            "why": "아시아 미술관의 아름다운 정원과 전통적인 아시아 미술을 감상할 수 있습니다.",
+            "source_titles": [
+              "Museum of Asian Art"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
+            ],
+            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.5175,
+            "lng": 13.40277778
+          },
+          {
+            "title": "베를린 식물원",
+            "angle": "베를린 식물원의 아름다운 식물과 평화로운 분위기",
+            "why": "베를린 식물원의 아름다운 식물과 평화로운 분위기를 즐길 수 있습니다.",
+            "source_titles": [
+              "Berlin Botanical Garden and Botanical Museum"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Berlin_Botanical_Garden_and_Botanical_Museum"
+            ],
+            "official_url": "https://www.bgbm.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.455,
+            "lng": 13.3036
+          }
+        ]
       },
       "generated_by": "groq"
     },
@@ -148,18 +257,109 @@
       "cities": {
         "Seoul": [],
         "Tokyo": [],
-        "Osaka": [],
-        "London": [],
+        "Osaka": [
+          {
+            "title": "Ardmore distillery",
+            "angle": "싱글몰트 스코치 위스키 생산지",
+            "why": "스코틀랜드의 Kennethmont 마을에 위치한 싱글몰트 스코치 위스키 생산지",
+            "source_titles": [
+              "Ardmore distillery"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Ardmore_distillery"
+            ],
+            "official_url": "http://www.ardmorewhisky.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 57.35111111,
+            "lng": -2.745
+          }
+        ],
+        "London": [
+          {
+            "title": "Aldborough Hatch",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a sem",
+            "source_titles": [
+              "Aldborough Hatch"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Aldborough_Hatch"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 51.583,
+            "lng": 0.101
+          }
+        ],
         "Paris": [],
         "DaNang": [],
         "Bangkok": [],
         "Singapore": [],
-        "Taipei": [],
-        "Barcelona": [],
-        "Rome": [],
+        "Taipei": [
+          {
+            "title": "Huashan 1914 Creative Park",
+            "angle": "다목적 공원",
+            "why": "타이페이의 Zhongzheng 지구에 위치한 다목적 공원",
+            "source_titles": [
+              "Huashan 1914 Creative Park"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park"
+            ],
+            "official_url": "http://www.huashan1914.com/en/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.04444444,
+            "lng": 121.52944444
+          }
+        ],
+        "Barcelona": [
+          {
+            "title": "Kristen Babb-Sprague",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Cr",
+            "source_titles": [
+              "Kristen Babb-Sprague"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          }
+        ],
+        "Rome": [
+          {
+            "title": "Ferenc Máté",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Ferenc Máté grew up in Budapest. He escaped Hungary with his mother after the crushing of the 1956 revolution by Soviet tanks. He graduated from the University of British Columbia ",
+            "source_titles": [
+              "Ferenc Máté"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Ferenc_M%C3%A1t%C3%A9"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Porcellino",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "The Porcellino (transl. \"Piglet\") is the local Florentine nickname for the bronze fountain of a boar. The fountain figure was sculpted and cast by Baroque master Pietro Tacca (1577",
+            "source_titles": [
+              "Porcellino"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Porcellino"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 43.769886,
+            "lng": 11.254233
+          }
+        ],
         "Berlin": []
       },
-      "generated_by": "wikipedia-fallback"
+      "generated_by": "groq"
     },
     "오늘은 욜로": {
       "theme": "오늘은 욜로",
@@ -170,8 +370,40 @@
         "nightlife district"
       ],
       "cities": {
-        "Seoul": [],
-        "Tokyo": [],
+        "Seoul": [
+          {
+            "title": "Itaewon",
+            "angle": "다양한 나이트클럽과 바가 모여있는 지역",
+            "why": "서울의 대표적인 나이트라이프를 즐길 수 있는 곳",
+            "source_titles": [
+              "Itaewon"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Itaewon"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 37.53333333,
+            "lng": 126.98333333
+          }
+        ],
+        "Tokyo": [
+          {
+            "title": "Roppongi",
+            "angle": "고급스러운 상업 및 주거 지역과 나이트클럽이 있는 곳",
+            "why": "도쿄의 대표적인 나이트라이프를 즐길 수 있는 곳",
+            "source_titles": [
+              "Roppongi"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Roppongi"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 35.66,
+            "lng": 139.73
+          }
+        ],
         "Osaka": [],
         "London": [],
         "Paris": [],
@@ -183,7 +415,7 @@
         "Rome": [],
         "Berlin": []
       },
-      "generated_by": "wikipedia-fallback"
+      "generated_by": "groq"
     },
     "신앙": {
       "theme": "신앙",
@@ -288,29 +520,162 @@
       ],
       "DaNang": [],
       "Bangkok": [],
-      "Singapore": [],
-      "Taipei": [],
-      "Barcelona": [],
+      "Singapore": [
+        {
+          "title": "Yue Hwa Building",
+          "extract": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan and Maclaren in 1927, it was then the tallest building in Chinatown and was known as Nam Tin Building (南天大厦), owned by Lum Chang Holdings. The building housed the six-storey Great Southern Hotel, along with a few shops and cabarets that were popular among Chinese travellers. In 1993, Lum Chang Holdings sold the building to Hong Kong businessman Yu Kwok Chun, who converted it to the first Yue Hwa Chinese Products department store in Singapore in 1994. The renovation process, which conserved the exterior while adding ",
+          "url": "https://en.wikipedia.org/wiki/Yue_Hwa_Building",
+          "official_url": "",
+          "lat": 1.28488889,
+          "lng": 103.84344444
+        }
+      ],
+      "Taipei": [
+        {
+          "title": "Jiufen",
+          "extract": "Jiufen, also spelled Jioufen or Chiufen, is a historic former gold mining town in Ruifang District, New Taipei City, Taiwan. It is notable for Jiufen Old Street, a narrow, winding alleyway with shops, teahouses, and restaurants that offers tourists a view of traditional Taiwanese life. It has a population of approximately 1,600 residents.",
+          "url": "https://en.wikipedia.org/wiki/Jiufen",
+          "official_url": "",
+          "lat": 25.107,
+          "lng": 121.843
+        },
+        {
+          "title": "Datong District, Taipei",
+          "extract": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard and the Sun Yat-sen Freeway. The southern part of this district is known as Twatutia, one of the first settlements in what is now Taipei and once the commercial center. Taipei's commercial center has since shifted southeast to Zhongzheng, Da'an and Xinyi, and Datong is far less important economically. Some of the last vestiges of Twatutia's commercial importance is preserved on Dihua Street. The old town of Daronpon is in the northern part of the district.",
+          "url": "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei",
+          "official_url": "https://dtdo.gov.taipei/",
+          "lat": 25.05972222,
+          "lng": 121.51416667
+        },
+        {
+          "title": "Wanda–Zhonghe–Shulin line",
+          "extract": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
+          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line",
+          "official_url": ""
+        },
+        {
+          "title": "Zhongzheng District",
+          "extract": "Zhongzheng District is a district in Taipei, Taiwan. Taipei Main Station is located in the district. It is home to most of the national government buildings of Taiwan.",
+          "url": "https://en.wikipedia.org/wiki/Zhongzheng_District",
+          "official_url": "https://zzdo.gov.taipei",
+          "lat": 25.03166667,
+          "lng": 121.51638889
+        }
+      ],
+      "Barcelona": [
+        {
+          "title": "Mossèn Costa i Llobera Gardens",
+          "extract": "Mossèn Costa i Llobera Gardens is a botanical garden in the center of Barcelona, Catalonia, Spain. It is situated at the foot of Montjuïc facing the sea.",
+          "url": "https://en.wikipedia.org/wiki/Moss%C3%A8n_Costa_i_Llobera_Gardens",
+          "official_url": "",
+          "lat": 41.3689,
+          "lng": 2.1723
+        }
+      ],
       "Rome": [],
-      "Berlin": []
+      "Berlin": [
+        {
+          "title": "Museum of Asian Art",
+          "extract": "The Museum of Asian Art has been a part of the Humboldt Forum in Berlin since 2020. Before its relocation, the museum was sited in the neighborhood of the borough of Steglitz-Zehlendorf, Berlin, Germany. It is one of the Berlin State Museums and funded by the Prussian Cultural Heritage Foundation.",
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Asian_Art",
+          "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
+          "lat": 52.5175,
+          "lng": 13.40277778
+        },
+        {
+          "title": "Berlin Botanical Garden and Botanical Museum",
+          "extract": "The Berlin Botanic Garden and Botanical Museum is a botanical garden in the Lichterfelde locality of the borough of Steglitz-Zehlendorf, Berlin, Germany. Constructed between 1897 and 1910 under the guidance of architect Adolf Engler, it has an area of 42 hectares [ha] and over 20,000 different plant species. The garden is part of the Free University of Berlin and attracts about half a million visitors annually.",
+          "url": "https://en.wikipedia.org/wiki/Berlin_Botanical_Garden_and_Botanical_Museum",
+          "official_url": "https://www.bgbm.org/",
+          "lat": 52.455,
+          "lng": 13.3036
+        }
+      ]
     },
     "인생이 무료": {
       "Seoul": [],
       "Tokyo": [],
-      "Osaka": [],
-      "London": [],
+      "Osaka": [
+        {
+          "title": "Ardmore distillery",
+          "extract": "Ardmore distillery is a single malt Scotch whisky distillery, located in the village of Kennethmont, Scotland. The distillery is owned and operated by Suntory Global Spirits, a subsidiary of Suntory Holdings of Osaka, Japan.",
+          "url": "https://en.wikipedia.org/wiki/Ardmore_distillery",
+          "official_url": "http://www.ardmorewhisky.com/",
+          "lat": 57.35111111,
+          "lng": -2.745
+        }
+      ],
+      "London": [
+        {
+          "title": "Aldborough Hatch",
+          "extract": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a semi-rural locality situated to the east of Barkingside and Newbury Park.",
+          "url": "https://en.wikipedia.org/wiki/Aldborough_Hatch",
+          "official_url": "",
+          "lat": 51.583,
+          "lng": 0.101
+        }
+      ],
       "Paris": [],
       "DaNang": [],
       "Bangkok": [],
       "Singapore": [],
-      "Taipei": [],
-      "Barcelona": [],
-      "Rome": [],
+      "Taipei": [
+        {
+          "title": "Huashan 1914 Creative Park",
+          "extract": "The Huashan 1914 Creative Park is a multi-purpose park in Zhongzheng District, Taipei, Taiwan.",
+          "url": "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park",
+          "official_url": "http://www.huashan1914.com/en/",
+          "lat": 25.04444444,
+          "lng": 121.52944444
+        }
+      ],
+      "Barcelona": [
+        {
+          "title": "Kristen Babb-Sprague",
+          "extract": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Creek Aquanuts and was a 1992 Barcelona Olympic gold medalist in the solo event in synchronized swimming.",
+          "url": "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague",
+          "official_url": ""
+        }
+      ],
+      "Rome": [
+        {
+          "title": "Ferenc Máté",
+          "extract": "Ferenc Máté grew up in Budapest. He escaped Hungary with his mother after the crushing of the 1956 revolution by Soviet tanks. He graduated from the University of British Columbia and worked on a railroad extra-gang, on tugboats, and as a boat-builder. He then became a photographer, book editor, and writer. He has lived in Vancouver, Laguna Beach, Whistler Mountain, New York City, Paris, and Rome, and now resides on a wine estate in Tuscany with his wife, painter and winemaker Candace Máté, and their son, Peter.",
+          "url": "https://en.wikipedia.org/wiki/Ferenc_M%C3%A1t%C3%A9",
+          "official_url": ""
+        },
+        {
+          "title": "Porcellino",
+          "extract": "The Porcellino (transl. \"Piglet\") is the local Florentine nickname for the bronze fountain of a boar. The fountain figure was sculpted and cast by Baroque master Pietro Tacca (1577–1640) shortly before 1634, following a marble Italian copy of a Hellenistic marble original, at the time in the Grand Ducal collections and today on display in the classical section of the Uffizi Museum. The original, which was found in Rome and moved to Florence in the mid-16th century by the Medici, was associated from the time of its rediscovery with the Calydonian Boar of Greek myth.",
+          "url": "https://en.wikipedia.org/wiki/Porcellino",
+          "official_url": "",
+          "lat": 43.769886,
+          "lng": 11.254233
+        }
+      ],
       "Berlin": []
     },
     "오늘은 욜로": {
-      "Seoul": [],
-      "Tokyo": [],
+      "Seoul": [
+        {
+          "title": "Itaewon",
+          "extract": "Itaewon is a commercial area within the Itaewon-dong neighborhood of Yongsan District in Seoul, South Korea, known for its nightlife and multi-ethnic population.",
+          "url": "https://en.wikipedia.org/wiki/Itaewon",
+          "official_url": "",
+          "lat": 37.53333333,
+          "lng": 126.98333333
+        }
+      ],
+      "Tokyo": [
+        {
+          "title": "Roppongi",
+          "extract": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign embassies are located in or near Roppongi. The district is in central Tokyo, situated south of Akasaka and north of Azabu and is noted for its night life, attracting both local residents and visitors from abroad.",
+          "url": "https://en.wikipedia.org/wiki/Roppongi",
+          "official_url": "",
+          "lat": 35.66,
+          "lng": 139.73
+        }
+      ],
       "Osaka": [],
       "London": [],
       "Paris": [],
