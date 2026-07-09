@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-08 01:51",
+  "last_updated": "2026-07-09 02:04",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차집과 현대 갤러리가 조화된 공간",
-            "why": "인사동의 전통적인 분위기와 차를 즐길 수 있는 곳",
+            "angle": "전통 차와 현대 미술이 조화되는 인사동의 거리",
+            "why": "인사동의 전통 차집과 현대 미술관을 돌아보며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "식물원과 산책로가 있는 어린이대공원에서 마음을 진정시킬 수 있는 공간",
+            "angle": "자연과 함께하는 어린이대공원의 산책로",
+            "why": "어린이대공원의 식물원과 산책로에서 자연과 함께 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 고요한 정원과 전시회",
-            "why": "고토 미술관의 정원과 전시회에서 마음을 진정시킬 수 있는 공간",
+            "angle": "고토 미술관의 정원과 전통 일본 미술",
+            "why": "고토 미술관의 정원과 전통 일본 미술을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -78,8 +78,8 @@
           },
           {
             "title": "유메노시마 열대 식물 온실",
-            "angle": "열대 식물과 함께하는 평화로운 산책",
-            "why": "유메노시마 열대 식물 온실에서 다양한 식물을 감상할 수 있는 공간",
+            "angle": "유메노시마 열대 식물 온실의 아름다운 식물들",
+            "why": "유메노시마 열대 식물 온실의 아름다운 식물들을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -96,7 +96,7 @@
           {
             "title": "오사카 성",
             "angle": "오사카 성의 역사와 전통",
-            "why": "오사카 성의 역사와 전통을 감상할 수 있는 공간",
+            "why": "오사카 성의 역사와 전통을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -109,9 +109,9 @@
             "lng": 135.52583333
           },
           {
-            "title": "텐노지구",
-            "angle": "오사카의 전통과 문화",
-            "why": "텐노지구의 전통적인 분위기와 문화를 감상할 수 있는 공간",
+            "title": "텐노지 구",
+            "angle": "텐노지 구의 전통과 문화",
+            "why": "텐노지 구의 전통과 문화를 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -128,8 +128,8 @@
         "Paris": [
           {
             "title": "자르뎅 데 플란트",
-            "angle": "자르뎅 데 플란트의 식물과 동물",
-            "why": "자르뎅 데 플란트의 식물과 동물을 감상할 수 있는 공간",
+            "angle": "자르뎅 데 플란트의 아름다운 식물들",
+            "why": "자르뎅 데 플란트의 아름다운 식물들을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -164,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 전통적인 분위기",
-            "why": "지우펀의 전통적인 분위기와 차를 즐길 수 있는 공간",
+            "angle": "지우펀의 전통과 아름다운 풍경",
+            "why": "지우펀의 전통과 아름다운 풍경을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -178,9 +178,9 @@
             "lng": 121.843
           },
           {
-            "title": "다툰구",
-            "angle": "다툰구의 역사와 문화",
-            "why": "다툰구의 역사와 문화를 감상할 수 있는 공간",
+            "title": "다퉁 구",
+            "angle": "다퉁 구의 전통과 문화",
+            "why": "다퉁 구의 전통과 문화를 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -195,9 +195,9 @@
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로브레라 정원",
-            "angle": "모센 코스타 이 로브레라 정원의 식물",
-            "why": "모센 코스타 이 로브레라 정원의 식물을 감상할 수 있는 공간",
+            "title": "모센 코스타 이 로베라 정원",
+            "angle": "모센 코스타 이 로베라 정원의 아름다운 식물들",
+            "why": "모센 코스타 이 로베라 정원의 아름다운 식물들을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -214,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아 미술관의 전통과 문화",
-            "why": "아시아 미술관의 전통적인 분위기와 문화를 감상할 수 있는 공간",
+            "angle": "아시아 미술관의 아름다운 전통 미술",
+            "why": "아시아 미술관의 아름다운 전통 미술을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -229,8 +229,8 @@
           },
           {
             "title": "베를린 식물원",
-            "angle": "베를린 식물원의 식물",
-            "why": "베를린 식물원의 식물을 감상할 수 있는 공간",
+            "angle": "베를린 식물원의 아름다운 식물들",
+            "why": "베를린 식물원의 아름다운 식물들을 감상하며 마음의 평화를 찾을 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -260,8 +260,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글 몰트 스코치 위스키 생산지",
-            "why": "일본 오사카에 본사를 둔 선토리 홀딩스의 자회사 선토리 글로벌 스피리츠가 운영하는 스코틀랜드의 싱글 몰트 스코치 위스키 증류소",
+            "angle": "싱글 몰트 스코치 위스키를 생산하는 디스틸러리",
+            "why": "일본 오사카에 본사를 둔 선토리 홀딩스의 자회사인 선토리 글로벌 스피리츠가 운영하는 스코틀랜드의 싱글 몰트 스코치 위스키 디스틸러리",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -373,7 +373,7 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간 생활과 다문화 인구로 유명한 지역",
+            "angle": "야간 생활과 다국적 인구로 유명한 지역",
             "why": "서울의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Itaewon"
@@ -390,7 +390,7 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 지역과 나이트클럽으로 유명",
+            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
             "why": "도쿄의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Roppongi"
@@ -441,7 +441,7 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 콤플렉스 및 레드라이트 지역",
+            "angle": "엔터테인먼트 복합 단지 및 레드라이트 지구",
             "why": "방콕의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Nana Plaza"
@@ -458,23 +458,7 @@
         "Singapore": [],
         "Taipei": [],
         "Barcelona": [],
-        "Rome": [
-          {
-            "title": "Jerry Thomas Speakeasy",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "The Jerry Thomas Speakeasy, also called the Jerry Thomas Project, is a drinking establishment in Campo de' Fiori, Rome. The bar was opened in 2010, by Leonardo Leuci. It is named a",
-            "source_titles": [
-              "Jerry Thomas Speakeasy"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Jerry_Thomas_Speakeasy"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 41.897935,
-            "lng": 12.467918
-          }
-        ],
+        "Rome": [],
         "Berlin": []
       },
       "generated_by": "groq"
@@ -771,16 +755,7 @@
       "Singapore": [],
       "Taipei": [],
       "Barcelona": [],
-      "Rome": [
-        {
-          "title": "Jerry Thomas Speakeasy",
-          "extract": "The Jerry Thomas Speakeasy, also called the Jerry Thomas Project, is a drinking establishment in Campo de' Fiori, Rome. The bar was opened in 2010, by Leonardo Leuci. It is named after the Nineteenth century American bartender Jerry Thomas, and themed after a speakeasy from the Prohibition era. The speakeasy is known for enforcing a list of rules, such as banning vodka from the premises, requiring patrons to have a paid membership, and having a password for entry that changes daily. It has been included on the list of The World's 50 Best Bars.",
-          "url": "https://en.wikipedia.org/wiki/Jerry_Thomas_Speakeasy",
-          "official_url": "",
-          "lat": 41.897935,
-          "lng": 12.467918
-        }
-      ],
+      "Rome": [],
       "Berlin": []
     },
     "신앙": {
