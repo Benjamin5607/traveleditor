@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-14 01:34",
+  "last_updated": "2026-07-15 01:31",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -30,9 +30,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "인사동",
-            "angle": "전통 차와 현대 미술이 어우러진 거리",
-            "why": "인사동의 전통 차집과 현대 미술 갤러리를 탐험하세요",
+            "title": "Insa-dong",
+            "angle": "전통 차와 현대 미술이 조화로운 곳",
+            "why": "인사동의 전통 차집과 현대 미술 갤러리를 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -45,9 +45,9 @@
             "lng": 126.98618
           },
           {
-            "title": "어린이대공원",
+            "title": "Children's Grand Park, Seoul",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로를 즐기세요",
+            "why": "어린이대공원의 아름다운 정원과 산책로를 따라 자연과 함께 평화로운 시간을 보내세요.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,9 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "고토 미술관",
-            "angle": "고토 미술관의 고요한 정원과 전통 일본 미술",
-            "why": "고토 미술관의 아름다운 정원과 전통 일본 미술을 감상하세요",
+            "title": "Gotoh Museum",
+            "angle": "고대 예술과 자연의 조화",
+            "why": "고토 미술관에서 고대 일본과 중국의 예술을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "유메노시마 열대식물 온실",
-            "angle": "유메노시마 열대식물 온실의 아름다운 식물들",
-            "why": "유메노시마 열대식물 온실의 다양한 식물들을 감상하세요",
+            "title": "Yumenoshima Tropical Greenhouse Dome",
+            "angle": "열대 정원의 아름다움",
+            "why": "유메노시마 열대 온실 돔에서 아름다운 열대 식물들을 감상하며 평화로운 시간을 보내세요.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -94,9 +94,9 @@
         ],
         "Osaka": [
           {
-            "title": "오사카 성",
-            "angle": "오사카 성의 역사와 전통",
-            "why": "오사카 성의 역사와 전통을 탐험하세요",
+            "title": "Osaka Castle",
+            "angle": "歴史와 자연의 조화",
+            "why": "오사카 성에서 일본의 역사와 아름다운 정원을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,29 +107,14 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
-          },
-          {
-            "title": "텐노지 구",
-            "angle": "텐노지 구의 전통과 문화",
-            "why": "텐노지 구의 전통과 문화를 탐험하세요",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "자르딘 데 플랑트",
-            "angle": "자르딘 데 플랑트의 아름다운 식물들",
-            "why": "자르딘 데 플랑트의 다양한 식물들을 감상하세요",
+            "title": "Ménagerie du Jardin des plantes",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -163,9 +148,9 @@
         ],
         "Taipei": [
           {
-            "title": "지우펀",
-            "angle": "지우펀의 전통과 문화",
-            "why": "지우펀의 전통과 문화를 탐험하세요",
+            "title": "Jiufen",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Jiufen, also spelled Jioufen or Chiufen, is a historic former gold mining town in Ruifang District, New Taipei City, Taiwan. It is notable for Jiufen Old Street, a narrow, winding ",
             "source_titles": [
               "Jiufen"
             ],
@@ -173,14 +158,14 @@
               "https://en.wikipedia.org/wiki/Jiufen"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
           },
           {
-            "title": "다퉁 구",
-            "angle": "다퉁 구의 역사와 문화",
-            "why": "다퉁 구의 역사와 문화를 탐험하세요",
+            "title": "Datong District, Taipei",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -191,13 +176,26 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.05972222,
             "lng": 121.51416667
+          },
+          {
+            "title": "Wanda–Zhonghe–Shulin line",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be comp",
+            "source_titles": [
+              "Wanda–Zhonghe–Shulin line"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로브레라 정원",
-            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물들",
-            "why": "모센 코스타 이 로브레라 정원의 다양한 식물들을 감상하세요",
+            "title": "Mossèn Costa i Llobera Gardens",
+            "angle": "아름다운 정원",
+            "why": "모센 코스타 이 로베라 정원에서 아름다운 식물들과 평화로운 시간을 보내세요.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -213,24 +211,9 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "아시아 미술관",
-            "angle": "아시아 미술관의 아름다운 전통 미술",
-            "why": "아시아 미술관의 다양한 전통 미술을 감상하세요",
-            "source_titles": [
-              "Museum of Asian Art"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
-            ],
-            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.5175,
-            "lng": 13.40277778
-          },
-          {
-            "title": "베를린 식물원",
-            "angle": "베를린 식물원의 아름다운 식물들",
-            "why": "베를린 식물원의 다양한 식물들을 감상하세요",
+            "title": "Berlin Botanical Garden and Botanical Museum",
+            "angle": "아름다운 식물과 자연",
+            "why": "베를린 식물원과 식물학 박물관에서 아름다운 식물들과 평화로운 시간을 보내세요.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -260,8 +243,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글몰트 스코치 위스키를 생산하는 장소",
-            "why": "위스키 생산 과정을 경험할 수 있는 곳",
+            "angle": "싱글몰트 스코치 위스키 생산지",
+            "why": "일본 오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 디스틸러리",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -298,8 +281,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "다목적 공원으로 다양한 문화 행사와 전시회가 열리는 곳",
-            "why": "예술과 문화를 경험할 수 있는 공간",
+            "angle": "다목적 공원",
+            "why": "타이페이의 문화 예술 공간",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -373,8 +356,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간생활과 다국적 인구로 유명한 지역",
-            "why": "서울의 대표적인 나이트라이프 지역",
+            "angle": "다양한 국적의 사람들과 밤의 에너지가 넘치는 곳",
+            "why": "이태원에서 밤을 즐기며 다양한 문화를 경험할 수 있습니다.",
             "source_titles": [
               "Itaewon"
             ],
@@ -390,8 +373,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
-            "why": "도쿄의 대표적인 나이트라이프 지역",
+            "angle": "고급스러운 상업 및 주거 지역과 나이트클럽",
+            "why": "로っぽنگی에서 럭셔리한 밤의 즐거움을 만끽할 수 있습니다.",
             "source_titles": [
               "Roppongi"
             ],
@@ -408,8 +391,8 @@
         "London": [
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급 칵테일 바",
-            "why": "런던의 대표적인 스피커시 바",
+            "angle": "고급스러운 칵테일 바",
+            "why": "밀크 앤 허니에서 고급스러운 칵테일을 즐길 수 있습니다.",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -441,8 +424,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 컴플렉스 및 레드라이트 지역",
-            "why": "방콕의 대표적인 나이트라이프 지역",
+            "angle": "세계 최대의 어덜트 엔터테인먼트 콤플렉스",
+            "why": "나나 플라자에서 밤의 에너지를 느껴보세요.",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -507,9 +490,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "명동성당",
-            "angle": "서울의 대표적인 성당",
-            "why": "서울의 중심가에 위치한 역사적인 성당",
+            "title": "Myeong-dong Cathedral",
+            "angle": "서울의 대표적인 카톨릭 성당",
+            "why": "서울의 주요 쇼핑 및 관광지로 유명한 명동에 위치한 카톨릭 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -524,9 +507,9 @@
         ],
         "Tokyo": [
           {
-            "title": "센소지",
+            "title": "Sensō-ji",
             "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄에서 가장 오래된 불교 사원",
+            "why": "도쿄 아사쿠사에 위치한 일본에서 가장 오래된 불교 사원",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -541,26 +524,26 @@
         ],
         "Osaka": [
           {
-            "title": "코야산",
-            "angle": "오사카 근교의 불교 사원",
-            "why": "오사카에서 가까운 불교 사원",
+            "title": "Shitennō-ji",
+            "angle": "오사카의 대표적인 불교 사원",
+            "why": "오사카의 천왕寺구에 위치한 일본에서 가장 오래된 불교 사원",
             "source_titles": [
-              "Mount Kōya"
+              "Tennōji-ku, Osaka"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 34.2125,
-            "lng": 135.58638889
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [
           {
-            "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성당",
-            "why": "영국 왕실의 중요한 행사들이 열리는 성당",
+            "title": "Westminster Abbey",
+            "angle": "런던의 대표적인 성공회 성당",
+            "why": "영국 왕실의 즉위식과 결혼식이 열리는 런던의 대표적인 성공회 성당",
             "source_titles": [
               "Westminster"
             ],
@@ -575,9 +558,9 @@
         ],
         "Paris": [
           {
-            "title": "파리 대모스크",
+            "title": "Grand Mosque of Paris",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "파리에서 가장 큰 이슬람 사원",
+            "why": "파리 5구에 위치한 프랑스에서 가장 큰 이슬람 사원",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -593,9 +576,9 @@
         "DaNang": [],
         "Bangkok": [
           {
-            "title": "와트 아룬",
+            "title": "Wat Arun",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "태국의 대표적인 불교 사원",
+            "why": "방콕의 대표적인 불교 사원으로 아름다운 태양의 신을 모시는 사원",
             "source_titles": [
               "Wat Arun"
             ],
@@ -610,9 +593,9 @@
         ],
         "Singapore": [
           {
-            "title": "마스지드 알 이슬라",
+            "title": "Masjid Al Islah",
             "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르에서 가장 큰 이슬람 사원",
+            "why": "싱가포르의 대표적인 이슬람 사원으로 푸ン골 지역에 위치",
             "source_titles": [
               "Masjid Al Islah"
             ],
@@ -627,26 +610,24 @@
         ],
         "Taipei": [
           {
-            "title": "베이とう 구",
+            "title": "Longshan Temple",
             "angle": "타이페이의 대표적인 불교 사원",
-            "why": "타이페이에서 가장 큰 불교 사원",
+            "why": "타이페이의 대표적인 불교 사원으로 타이페이의 문화와 역사를 경험할 수 있는 곳",
             "source_titles": [
-              "Beitou District"
+              "Taiwan High Speed Rail"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Beitou_District"
+              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
             ],
-            "official_url": "https://btdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.1167,
-            "lng": 121.5
+            "official_url": "https://www.thsrc.com.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "Barcelona": [
           {
-            "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 성당",
-            "why": "바르셀로나에서 가장 유명한 성당",
+            "title": "Sagrada Família",
+            "angle": "바르셀로나의 대표적인 카톨릭 성당",
+            "why": "바르셀로나의 대표적인 카톨릭 성당으로 유네스코 세계문화유산",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -661,9 +642,9 @@
         ],
         "Rome": [
           {
-            "title": "라테란 대성당",
-            "angle": "로마의 대표적인 성당",
-            "why": "로마에서 가장 큰 성당",
+            "title": "Archbasilica of Saint John Lateran",
+            "angle": "로마의 대표적인 카톨릭 성당",
+            "why": "로마의 대표적인 카톨릭 성당으로 로마 가톨릭교회의 어머니 성당",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -678,9 +659,9 @@
         ],
         "Berlin": [
           {
-            "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 성당",
-            "why": "베를린에서 가장 큰 성당",
+            "title": "Berlin Cathedral",
+            "angle": "베를린의 대표적인 개신교 성당",
+            "why": "베를린의 대표적인 개신교 성당으로 베를린의 문화와 역사를 경험할 수 있는 곳",
             "source_titles": [
               "Zossen"
             ],
@@ -1069,14 +1050,6 @@
           "official_url": "https://www.grandemosqueedeparis.fr",
           "lat": 48.84194444,
           "lng": 2.355
-        },
-        {
-          "title": "Notre-Dame de Paris",
-          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
-          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
-          "official_url": "https://www.notredamedeparis.fr/",
-          "lat": 48.85305556,
-          "lng": 2.35
         }
       ],
       "DaNang": [],
@@ -1098,12 +1071,12 @@
           "lng": 100.48888889
         },
         {
-          "title": "Don Mueang International Airport",
-          "extract": "Don Mueang International Airport — known as Bangkok International Airport before 2006 — is one of two international airports serving Bangkok, the capital of Thailand, the other being Suvarnabhumi Airport (BKK).",
-          "url": "https://en.wikipedia.org/wiki/Don_Mueang_International_Airport",
-          "official_url": "https://donmueang.airportthai.co.th/",
-          "lat": 13.9125,
-          "lng": 100.60666667
+          "title": "Wat Champa",
+          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
+          "official_url": "",
+          "lat": 13.775,
+          "lng": 100.43416667
         },
         {
           "title": "Assumption Cathedral, Bangkok",
@@ -1174,12 +1147,12 @@
           "lng": 2.17433
         },
         {
-          "title": "Barcelona",
-          "extract": "Barcelona is a city on the northeastern coast of Spain. It is the capital and largest city of the autonomous community of Catalonia, as well as the second-most populous municipality of Spain after Madrid. With a population of 1.7 million within city limits, its urban area extends to numerous neighbouring municipalities within the province of Barcelona and is home to around 5.7 million people, making it the fifth most populous urban area of the European Union after Paris, the Ruhr area, Madrid, and Milan. It is one of the largest metropolises on the Mediterranean Sea, located on the coast between the mouths of the rivers Llobregat and Besòs, and bounded to the west by the Serra de Collserola ",
-          "url": "https://en.wikipedia.org/wiki/Barcelona",
-          "official_url": "https://barcelona.cat",
-          "lat": 41.38333333,
-          "lng": 2.18333333
+          "title": "Girona",
+          "extract": "Girona, historically also known as Gerona, is the capital city of the Province of Girona in the autonomous community of Catalonia, Spain, at the confluence of the Ter, Onyar, Galligants, and Güell rivers. The city had an official population of 106,476 in 2024, but the population of the Girona–Salt urban area is estimated to be about 156,400 (2020). Girona is also capital of the comarca of the Gironès and the vegueria of Girona. Since much of the old quarter of this ancient city has been preserved, Girona is a popular tourist destination. The city is located 99 km (62 mi) northeast of Barcelona.",
+          "url": "https://en.wikipedia.org/wiki/Girona",
+          "official_url": "http://www.girona.cat/",
+          "lat": 41.98444444,
+          "lng": 2.82111111
         },
         {
           "title": "Tibidabo Funicular",
@@ -1206,14 +1179,6 @@
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
-        },
-        {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
         }
       ],
       "Berlin": [
