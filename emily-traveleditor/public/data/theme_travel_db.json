@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-18 01:44",
+  "last_updated": "2026-07-19 01:54",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "일본과 중국의 고대 미술을 감상할 수 있는 공간",
-            "why": "고토 미술관에서 일본과 중국의 고대 미술을 감상할 수 있습니다.",
+            "angle": "고토 미술관의 고요한 정원과 전통적인 일본 미술",
+            "why": "고토 미술관의 아름다운 정원과 전통적인 일본 미술을 감상할 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -78,8 +78,8 @@
           },
           {
             "title": "유메노시마 열대 식물 온실",
-            "angle": "다양한 열대 식물을 감상할 수 있는 온실",
-            "why": "유메노시마 열대 식물 온실에서 다양한 열대 식물을 감상할 수 있습니다.",
+            "angle": "열대 식물과 함께하는 평화로운 산책",
+            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 평화로운 분위기를 즐길 수 있습니다.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -95,8 +95,8 @@
         "Osaka": [
           {
             "title": "오사카 성",
-            "angle": "일본의 역사와 문화를 경험할 수 있는 성",
-            "why": "오사카 성에서 일본의 역사와 문화를 경험할 수 있습니다.",
+            "angle": "오사카 성의 역사와 전통",
+            "why": "오사카 성의 아름다운 정원과 역사적인 건축물을 감상할 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -110,8 +110,8 @@
           },
           {
             "title": "텐노지 구",
-            "angle": "오사카의 전통과 문화를 경험할 수 있는 지역",
-            "why": "텐노지 구에서 오사카의 전통과 문화를 경험할 수 있습니다.",
+            "angle": "텐노지 구의 전통적인 일본 문화",
+            "why": "텐노지 구의 전통적인 일본 문화와 역사적인 건축물을 경험할 수 있습니다.",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -127,9 +127,9 @@
         "London": [],
         "Paris": [
           {
-            "title": "자르뎅 데 플랑트",
-            "angle": "파리의 아름다운 식물원",
-            "why": "자르뎅 데 플랑트에서 다양한 식물을 감상할 수 있습니다.",
+            "title": "자르딘 데 플랑트",
+            "angle": "자르딘 데 플랑트의 아름다운 정원과 식물",
+            "why": "자르딘 데 플랑트의 아름다운 정원과 다양한 식물을 감상할 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -164,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "전통적인 차와 아름다운 풍경",
-            "why": "지우펀에서 전통적인 차와 아름다운 풍경을 감상할 수 있습니다.",
+            "angle": "지우펀의 전통적인 가옥과 차 문화",
+            "why": "지우펀의 아름다운 전통적인 가옥과 차 문화를 경험할 수 있습니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -179,8 +179,8 @@
           },
           {
             "title": "다퉁 구",
-            "angle": "타이페이의 전통과 문화",
-            "why": "다퉁 구에서 타이페이의 전통과 문화를 경험할 수 있습니다.",
+            "angle": "다퉁 구의 역사적인 건축물과 문화",
+            "why": "다퉁 구의 역사적인 건축물과 문화를 경험할 수 있습니다.",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -195,9 +195,9 @@
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로브레라 정원",
-            "angle": "바르셀로나의 아름다운 식물원",
-            "why": "모센 코스타 이 로브레라 정원에서 다양한 식물을 감상할 수 있습니다.",
+            "title": "모센 코스타 이 요베라 정원",
+            "angle": "모센 코스타 이 요베라 정원의 아름다운 식물과 평화로운 분위기",
+            "why": "모센 코스타 이 요베라 정원의 아름다운 식물과 평화로운 분위기를 즐길 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -214,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아의 다양한 미술을 감상할 수 있는 공간",
-            "why": "아시아 미술관에서 아시아의 다양한 미술을 감상할 수 있습니다.",
+            "angle": "아시아 미술관의 아름다운 전통적인 미술과 문화",
+            "why": "아시아 미술관의 아름다운 전통적인 미술과 문화를 감상할 수 있습니다.",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -229,8 +229,8 @@
           },
           {
             "title": "베를린 식물원",
-            "angle": "다양한 식물을 감상할 수 있는 식물원",
-            "why": "베를린 식물원에서 다양한 식물을 감상할 수 있습니다.",
+            "angle": "베를린 식물원의 아름다운 식물과 평화로운 분위기",
+            "why": "베를린 식물원의 아름다운 식물과 평화로운 분위기를 즐길 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -260,8 +260,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글 몰트 스코치 위스키 생산지",
-            "why": "일본 오사카에 본사를 둔 선터리 홀딩스의 자회사 선터리 글로벌 스피리츠가 운영하는 스코틀랜드의 싱글 몰트 스코치 위스키 생산지",
+            "angle": "싱글 몰트 스코치 위스키를 생산하는 장소",
+            "why": "위스키 생산 과정을 경험할 수 있는 곳",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -298,8 +298,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "다목적 공원 및 문화 공간",
-            "why": "타이페이의 중정 구에 위치한 다목적 공원 및 문화 공간",
+            "angle": "다양한 문화 예술을 경험할 수 있는 공간",
+            "why": "크래프트 비어와 함께 예술을 즐길 수 있는 곳",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -373,7 +373,7 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간생활과 다문화 인구로 유명한 지역",
+            "angle": "야간 생활과 다문화 인구로 유명한 지역",
             "why": "서울의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Itaewon"
@@ -390,7 +390,7 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 지역과 나이트클럽",
+            "angle": "고급 상업 및 주거 지역, 나이트클럽",
             "why": "도쿄의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Roppongi"
@@ -441,7 +441,7 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 복합단지 및 레드라이트 지구",
+            "angle": "엔터테인먼트 콤플렉스 및 레드라이트 디스트릭트",
             "why": "방콕의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Nana Plaza"
@@ -507,9 +507,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "명동성당",
+            "title": "명동 성당",
             "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 주요 쇼핑 및 관광지 중 하나",
+            "why": "서울의 중심가에 위치한 역사적인 천주교 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -525,8 +525,8 @@
         "Tokyo": [
           {
             "title": "센소지",
-            "angle": "도쿄에서 가장 오래된 불교 사원",
-            "why": "도쿄의 대표적인 관광지",
+            "angle": "도쿄의 대표적인 불교 사원",
+            "why": "도쿄에서 가장 오래된 불교 사원",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -543,7 +543,7 @@
           {
             "title": "코야산",
             "angle": "오사카 근교의 불교 사원",
-            "why": "오사카의 대표적인 종교 유적지",
+            "why": "오사카 근교의 역사적인 불교 사원",
             "source_titles": [
               "Mount Kōya"
             ],
@@ -560,7 +560,7 @@
           {
             "title": "웨스트민스터 사원",
             "angle": "런던의 대표적인 성공회 사원",
-            "why": "런던의 주요 관광지",
+            "why": "런던의 역사적인 성공회 사원",
             "source_titles": [
               "Westminster"
             ],
@@ -577,7 +577,7 @@
           {
             "title": "파리 대모스크",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "파리의 주요 관광지",
+            "why": "파리의 역사적인 이슬람 사원",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -595,7 +595,7 @@
           {
             "title": "와트 아룬",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "방콕의 주요 관광지",
+            "why": "방콕의 역사적인 불교 사원",
             "source_titles": [
               "Wat Arun"
             ],
@@ -610,26 +610,26 @@
         ],
         "Singapore": [
           {
-            "title": "마스지드 알 이슬라",
-            "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르의 주요 관광지",
+            "title": "아르메니아 교회",
+            "angle": "싱가포르의 대표적인 기독교 교회",
+            "why": "싱가포르의 역사적인 기독교 교회",
             "source_titles": [
-              "Masjid Al Islah"
+              "Armenian Church, Singapore"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Masjid_Al_Islah"
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 1.4013989,
-            "lng": 103.9015299
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
           }
         ],
         "Taipei": [
           {
             "title": "베이とう 구",
             "angle": "타이페이의 대표적인 불교 사원",
-            "why": "타이페이의 주요 관광지",
+            "why": "타이페이의 역사적인 불교 사원",
             "source_titles": [
               "Beitou District"
             ],
@@ -646,7 +646,7 @@
           {
             "title": "사그라다 파밀리아",
             "angle": "바르셀로나의 대표적인 가톨릭 성당",
-            "why": "바르셀로나의 주요 관광지",
+            "why": "바르셀로나의 역사적인 가톨릭 성당",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -661,9 +661,9 @@
         ],
         "Rome": [
           {
-            "title": "라테란 대성당",
-            "angle": "로마의 대표적인 가톨릭 성당",
-            "why": "로마의 주요 관광지",
+            "title": "산 조반니 인 라테라노 대성당",
+            "angle": "로마의 대표적인 가톨릭 대성당",
+            "why": "로마의 역사적인 가톨릭 대성당",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -679,8 +679,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 개신교 성당",
-            "why": "베를린의 주요 관광지",
+            "angle": "베를린의 대표적인 개신교 대성당",
+            "why": "베를린의 역사적인 개신교 대성당",
             "source_titles": [
               "Zossen"
             ],
@@ -1200,20 +1200,20 @@
           "lng": 12.50615556
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
-        },
-        {
           "title": "Pantheon, Rome",
           "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "official_url": "",
+          "lat": 41.899,
+          "lng": 12.4731
         }
       ],
       "Berlin": [
