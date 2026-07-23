@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-22 01:49",
+  "last_updated": "2026-07-23 01:55",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
-            "why": "인사동의 전통적인 차와 현대적인 갤러리를 경험할 수 있는 공간",
+            "angle": "전통 차집과 현대 갤러리가 조화된 인사동의 거리",
+            "why": "인사동의 전통 차집과 현대 갤러리를 탐험하며 마음을 진정시세요",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로를 즐길 수 있는 공간",
+            "angle": "자연과 함께하는 어린이대공원의 산책로",
+            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 진정시세요",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 고요한 정원과 전통적인 일본 미술",
-            "why": "고토 미술관의 아름다운 정원과 전통적인 일본 미술을 경험할 수 있는 공간",
+            "angle": "고토 미술관의 정물과 차를 즐기는 공간",
+            "why": "고토 미술관의 아름다운 정원과 전통 차를 즐기며 마음을 진정시세요",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "유메노시마 열대 식물 온실",
-            "angle": "열대 식물과 함께하는 평화로운 산책",
-            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 공간",
+            "title": "유메노시마 열대식물 온실",
+            "angle": "유메노시마 열대식물 온실의 아름다운 정원",
+            "why": "유메노시마 열대식물 온실의 아름다운 정원에서 마음을 진정시세요",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -95,8 +95,8 @@
         "Osaka": [
           {
             "title": "오사카 성",
-            "angle": "오사카 성의 역사와 전통",
-            "why": "오사카 성의 역사와 전통을 경험할 수 있는 공간",
+            "angle": "오사카 성의 아름다운 정원과 산책로",
+            "why": "오사카 성의 아름다운 정원과 산책로에서 마음을 진정시세요",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -110,8 +110,8 @@
           },
           {
             "title": "텐노지 구",
-            "angle": "텐노지 구의 전통적인 일본 문화",
-            "why": "텐노지 구의 전통적인 일본 문화와 역사적인 건축물을 경험할 수 있는 공간",
+            "angle": "텐노지 구의 전통 차집과 현대 갤러리",
+            "why": "텐노지 구의 전통 차집과 현대 갤러리를 탐험하며 마음을 진정시세요",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -127,9 +127,9 @@
         "London": [],
         "Paris": [
           {
-            "title": "자르뎅 데 플랑트",
-            "angle": "자르뎅 데 플랑트의 아름다운 정원과 식물",
-            "why": "자르뎅 데 플랑트의 아름다운 정원과 다양한 식물을 경험할 수 있는 공간",
+            "title": "자르뎅 데 플란트",
+            "angle": "자르뎅 데 플란트의 아름다운 정원과 산책로",
+            "why": "자르뎅 데 플란트의 아름다운 정원과 산책로에서 마음을 진정시세요",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -164,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 전통적인 가옥과 차 문화",
-            "why": "지우펀의 전통적인 가옥과 차 문화를 경험할 수 있는 공간",
+            "angle": "지우펀의 전통 차집과 아름다운 해안 산책로",
+            "why": "지우펀의 전통 차집과 아름다운 해안 산책로에서 마음을 진정시세요",
             "source_titles": [
               "Jiufen"
             ],
@@ -179,8 +179,8 @@
           },
           {
             "title": "다퉁 구",
-            "angle": "다퉁 구의 역사와 문화",
-            "why": "다퉁 구의 역사와 문화를 경험할 수 있는 공간",
+            "angle": "다퉁 구의 전통 차집과 현대 갤러리",
+            "why": "다퉁 구의 전통 차집과 현대 갤러리를 탐험하며 마음을 진정시세요",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -195,9 +195,9 @@
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로브레라 정원",
-            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물과 평화로운 분위기",
-            "why": "모센 코스타 이 로브레라 정원의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 공간",
+            "title": "모센 코스타 이 요베라 정원",
+            "angle": "모센 코스타 이 요베라 정원의 아름다운 식물과 산책로",
+            "why": "모센 코스타 이 요베라 정원의 아름다운 식물과 산책로에서 마음을 진정시세요",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -214,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아 미술관의 아시아 문화와 미술",
-            "why": "아시아 미술관의 아시아 문화와 미술을 경험할 수 있는 공간",
+            "angle": "아시아 미술관의 아름다운 정원과 전통 차",
+            "why": "아시아 미술관의 아름다운 정원과 전통 차를 즐기며 마음을 진정시세요",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -229,8 +229,8 @@
           },
           {
             "title": "베를린 식물원",
-            "angle": "베를린 식물원의 아름다운 식물과 평화로운 분위기",
-            "why": "베를린 식물원의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 공간",
+            "angle": "베를린 식물원의 아름다운 정원과 산책로",
+            "why": "베를린 식물원의 아름다운 정원과 산책로에서 마음을 진정시세요",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -257,153 +257,6 @@
       "cities": {
         "Seoul": [],
         "Tokyo": [],
-        "Osaka": [
-          {
-            "title": "Ardmore distillery",
-            "angle": "싱글 몰트 스코치 위스키를 생산하는 증류소",
-            "why": "일본 오사카에 본사를 둔 선터리 홀딩스의 자회사인 선터리 글로벌 스피리츠가 소유하고 운영하는 스코틀랜드의 싱글 몰트 스코치 위스키 증류소",
-            "source_titles": [
-              "Ardmore distillery"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Ardmore_distillery"
-            ],
-            "official_url": "http://www.ardmorewhisky.com/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 57.35111111,
-            "lng": -2.745
-          }
-        ],
-        "London": [
-          {
-            "title": "Aldborough Hatch",
-            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
-            "why": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a sem",
-            "source_titles": [
-              "Aldborough Hatch"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Aldborough_Hatch"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 51.583,
-            "lng": 0.101
-          }
-        ],
-        "Paris": [],
-        "DaNang": [],
-        "Bangkok": [],
-        "Singapore": [],
-        "Taipei": [
-          {
-            "title": "Huashan 1914 Creative Park",
-            "angle": "다목적 공원으로 다양한 문화 예술 활동을 즐길 수 있는 공간",
-            "why": "타이페이의 중정 구에 위치한 다목적 공원으로 다양한 문화 예술 활동을 즐길 수 있는 공간",
-            "source_titles": [
-              "Huashan 1914 Creative Park"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park"
-            ],
-            "official_url": "http://www.huashan1914.com/en/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.04444444,
-            "lng": 121.52944444
-          }
-        ],
-        "Barcelona": [
-          {
-            "title": "Kristen Babb-Sprague",
-            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
-            "why": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Cr",
-            "source_titles": [
-              "Kristen Babb-Sprague"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          }
-        ],
-        "Rome": [
-          {
-            "title": "Ferenc Máté",
-            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
-            "why": "Ferenc Máté grew up in Budapest. He escaped Hungary with his mother after the crushing of the 1956 revolution by Soviet tanks. He graduated from the University of British Columbia ",
-            "source_titles": [
-              "Ferenc Máté"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Ferenc_M%C3%A1t%C3%A9"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Porcellino",
-            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
-            "why": "The Porcellino (transl. \"Piglet\") is the local Florentine nickname for the bronze fountain of a boar. The fountain figure was sculpted and cast by Baroque master Pietro Tacca (1577",
-            "source_titles": [
-              "Porcellino"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Porcellino"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 43.769886,
-            "lng": 11.254233
-          }
-        ],
-        "Berlin": []
-      },
-      "generated_by": "groq"
-    },
-    "오늘은 욜로": {
-      "theme": "오늘은 욜로",
-      "keywords": [
-        "nightclub",
-        "speakeasy bar",
-        "concept bar",
-        "nightlife district"
-      ],
-      "cities": {
-        "Seoul": [
-          {
-            "title": "Itaewon",
-            "angle": "다양한 국적의 사람들과 밤을 즐길 수 있는 곳",
-            "why": "서울의 대표적인 밤문화 지역",
-            "source_titles": [
-              "Itaewon"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Itaewon"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 37.53333333,
-            "lng": 126.98333333
-          }
-        ],
-        "Tokyo": [
-          {
-            "title": "Roppongi",
-            "angle": "고급스러운 상업 및 주거 지역과 나이트클럽",
-            "why": "도쿄의 대표적인 밤문화 지역",
-            "source_titles": [
-              "Roppongi"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Roppongi"
-            ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 35.66,
-            "lng": 139.73
-          }
-        ],
         "Osaka": [],
         "London": [],
         "Paris": [],
@@ -415,7 +268,31 @@
         "Rome": [],
         "Berlin": []
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
+    },
+    "오늘은 욜로": {
+      "theme": "오늘은 욜로",
+      "keywords": [
+        "nightclub",
+        "speakeasy bar",
+        "concept bar",
+        "nightlife district"
+      ],
+      "cities": {
+        "Seoul": [],
+        "Tokyo": [],
+        "Osaka": [],
+        "London": [],
+        "Paris": [],
+        "DaNang": [],
+        "Bangkok": [],
+        "Singapore": [],
+        "Taipei": [],
+        "Barcelona": [],
+        "Rome": [],
+        "Berlin": []
+      },
+      "generated_by": "wikipedia-fallback"
     },
     "신앙": {
       "theme": "신앙",
@@ -595,87 +472,20 @@
     "인생이 무료": {
       "Seoul": [],
       "Tokyo": [],
-      "Osaka": [
-        {
-          "title": "Ardmore distillery",
-          "extract": "Ardmore distillery is a single malt Scotch whisky distillery, located in the village of Kennethmont, Scotland. The distillery is owned and operated by Suntory Global Spirits, a subsidiary of Suntory Holdings of Osaka, Japan.",
-          "url": "https://en.wikipedia.org/wiki/Ardmore_distillery",
-          "official_url": "http://www.ardmorewhisky.com/",
-          "lat": 57.35111111,
-          "lng": -2.745
-        }
-      ],
-      "London": [
-        {
-          "title": "Aldborough Hatch",
-          "extract": "Aldborough Hatch is an area in Ilford in east London, England, within the London Borough of Redbridge. It is located 11.1 miles (18 km) east-northeast of Charing Cross. It is a semi-rural locality situated to the east of Barkingside and Newbury Park.",
-          "url": "https://en.wikipedia.org/wiki/Aldborough_Hatch",
-          "official_url": "",
-          "lat": 51.583,
-          "lng": 0.101
-        }
-      ],
+      "Osaka": [],
+      "London": [],
       "Paris": [],
       "DaNang": [],
       "Bangkok": [],
       "Singapore": [],
-      "Taipei": [
-        {
-          "title": "Huashan 1914 Creative Park",
-          "extract": "The Huashan 1914 Creative Park is a multi-purpose park in Zhongzheng District, Taipei, Taiwan.",
-          "url": "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park",
-          "official_url": "http://www.huashan1914.com/en/",
-          "lat": 25.04444444,
-          "lng": 121.52944444
-        }
-      ],
-      "Barcelona": [
-        {
-          "title": "Kristen Babb-Sprague",
-          "extract": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Creek Aquanuts and was a 1992 Barcelona Olympic gold medalist in the solo event in synchronized swimming.",
-          "url": "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague",
-          "official_url": ""
-        }
-      ],
-      "Rome": [
-        {
-          "title": "Ferenc Máté",
-          "extract": "Ferenc Máté grew up in Budapest. He escaped Hungary with his mother after the crushing of the 1956 revolution by Soviet tanks. He graduated from the University of British Columbia and worked on a railroad extra-gang, on tugboats, and as a boat-builder. He then became a photographer, book editor, and writer. He has lived in Vancouver, Laguna Beach, Whistler Mountain, New York City, Paris, and Rome, and now resides on a wine estate in Tuscany with his wife, painter and winemaker Candace Máté, and their son, Peter.",
-          "url": "https://en.wikipedia.org/wiki/Ferenc_M%C3%A1t%C3%A9",
-          "official_url": ""
-        },
-        {
-          "title": "Porcellino",
-          "extract": "The Porcellino (transl. \"Piglet\") is the local Florentine nickname for the bronze fountain of a boar. The fountain figure was sculpted and cast by Baroque master Pietro Tacca (1577–1640) shortly before 1634, following a marble Italian copy of a Hellenistic marble original, at the time in the Grand Ducal collections and today on display in the classical section of the Uffizi Museum. The original, which was found in Rome and moved to Florence in the mid-16th century by the Medici, was associated from the time of its rediscovery with the Calydonian Boar of Greek myth.",
-          "url": "https://en.wikipedia.org/wiki/Porcellino",
-          "official_url": "",
-          "lat": 43.769886,
-          "lng": 11.254233
-        }
-      ],
+      "Taipei": [],
+      "Barcelona": [],
+      "Rome": [],
       "Berlin": []
     },
     "오늘은 욜로": {
-      "Seoul": [
-        {
-          "title": "Itaewon",
-          "extract": "Itaewon is a commercial area within the Itaewon-dong neighborhood of Yongsan District in Seoul, South Korea, known for its nightlife and multi-ethnic population.",
-          "url": "https://en.wikipedia.org/wiki/Itaewon",
-          "official_url": "",
-          "lat": 37.53333333,
-          "lng": 126.98333333
-        }
-      ],
-      "Tokyo": [
-        {
-          "title": "Roppongi",
-          "extract": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign embassies are located in or near Roppongi. The district is in central Tokyo, situated south of Akasaka and north of Azabu and is noted for its night life, attracting both local residents and visitors from abroad.",
-          "url": "https://en.wikipedia.org/wiki/Roppongi",
-          "official_url": "",
-          "lat": 35.66,
-          "lng": 139.73
-        }
-      ],
+      "Seoul": [],
+      "Tokyo": [],
       "Osaka": [],
       "London": [],
       "Paris": [],
