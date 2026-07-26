@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-25 01:53",
+  "last_updated": "2026-07-26 01:57",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차와 현대 미술이 조화된 인사동의 차고를 산책하며 마음의 평화를 찾을 수 있습니다.",
-            "why": "인사동의 차고에서 다양한 차를 맛보며 전통과 현대가 조화된 분위기를 즐길 수 있습니다.",
+            "angle": "전통 차와 현대 미술이 조화되는 공간",
+            "why": "인사동의 전통 차 집과 현대 미술 갤러리를 탐험하세요",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "어린이대공원의 아름다운 정원과 산책로에서 자연과 함께 마음의 평화를 찾을 수 있습니다.",
-            "why": "어린이대공원에서 다양한 식물과 동물을 관찰하며 자연의 아름다움을 감상할 수 있습니다.",
+            "angle": "자연과 함께하는 평화로운 산책",
+            "why": "어린이대공원의 아름다운 정원과 산책로를 즐기세요",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 아름다운 정원과 전통 일본 미술을 감상하며 마음의 평화를 찾을 수 있습니다.",
-            "why": "고토 미술관에서 다양한 일본 미술과 문화를 경험하며 일본의 전통과 아름다움을 이해할 수 있습니다.",
+            "angle": "고토 미술관의 아름다운 정원과 전통 일본 미술",
+            "why": "고토 미술관의 아름다운 정원과 전통 일본 미술을 감상하세요",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "유메노시마 열대식물 온실",
-            "angle": "유메노시마 열대식물 온실의 아름다운 식물과 열대 기후에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "유메노시마 열대식물 온실에서 다양한 열대 식물을 관찰하며 자연의 아름다움을 감상할 수 있습니다.",
+            "title": "유메노시마 열대 식물 온실",
+            "angle": "아름다운 열대 식물과 평화로운 산책",
+            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 평화로운 산책로를 즐기세요",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -95,8 +95,8 @@
         "Osaka": [
           {
             "title": "오사카 성",
-            "angle": "오사카 성의 아름다운 정원과 역사적인 건축물에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "오사카 성에서 다양한 일본 역사와 문화를 경험하며 일본의 전통과 아름다움을 이해할 수 있습니다.",
+            "angle": "오사카 성의 아름다운 정원과 역사",
+            "why": "오사카 성의 아름다운 정원과 역사적인 건축물을 탐험하세요",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,14 +107,29 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "텐노지 구",
+            "angle": "텐노지 구의 전통 일본 문화와 음식",
+            "why": "텐노지 구의 전통 일본 문화와 음식을 경험하세요",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "자르딘 데 플랑트",
-            "angle": "자르딘 데 플랑트의 아름다운 정원과 식물에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "자르딘 데 플랑트에서 다양한 식물을 관찰하며 자연의 아름다움을 감상할 수 있습니다.",
+            "title": "자르뎅 데 플란트",
+            "angle": "자르뎅 데 플란트의 아름다운 정원과 식물",
+            "why": "자르뎅 데 플란트의 아름다운 정원과 식물을 감상하세요",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -149,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 아름다운 전통 가옥과 차고에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "지우펀에서 다양한 전통 차와 음식을 맛보며 타이페이의 전통과 문화를 경험할 수 있습니다.",
+            "angle": "지우펀의 전통 타이완 문화와 음식",
+            "why": "지우펀의 전통 타이완 문화와 음식을 경험하세요",
             "source_titles": [
               "Jiufen"
             ],
@@ -161,13 +176,28 @@
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
+          },
+          {
+            "title": "다툰 구",
+            "angle": "다툰 구의 전통 타이완 문화와 역사",
+            "why": "다툰 구의 전통 타이완 문화와 역사적인 건축물을 탐험하세요",
+            "source_titles": [
+              "Datong District, Taipei"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
+            ],
+            "official_url": "https://dtdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.05972222,
+            "lng": 121.51416667
           }
         ],
         "Barcelona": [
           {
             "title": "모센 코스타 이 로브레라 정원",
-            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물과 조경에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "모센 코스타 이 로브레라 정원에서 다양한 식물을 관찰하며 자연의 아름다움을 감상할 수 있습니다.",
+            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물과 평화로운 산책",
+            "why": "모센 코스타 이 로브레라 정원의 아름다운 식물과 평화로운 산책로를 즐기세요",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -184,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아 미술관의 아름다운 전통 미술과 문화에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "아시아 미술관에서 다양한 아시아 미술과 문화를 경험하며 아시아의 전통과 아름다움을 이해할 수 있습니다.",
+            "angle": "아시아 미술관의 아름다운 전통 아시아 미술과 문화",
+            "why": "아시아 미술관의 아름다운 전통 아시아 미술과 문화를 감상하세요",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -199,8 +229,8 @@
           },
           {
             "title": "베를린 식물원 및 식물학 박물관",
-            "angle": "베를린 식물원 및 식물학 박물관의 아름다운 식물과 정원에서 마음의 평화를 찾을 수 있습니다.",
-            "why": "베를린 식물원 및 식물학 박물관에서 다양한 식물을 관찰하며 자연의 아름다움을 감상할 수 있습니다.",
+            "angle": "베를린 식물원 및 식물학 박물관의 아름다운 식물과 평화로운 산책",
+            "why": "베를린 식물원 및 식물학 박물관의 아름다운 식물과 평화로운 산책로를 즐기세요",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -230,8 +260,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글몰트 스코치 위스키 생산지",
-            "why": "일본 오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 디스틸러리",
+            "angle": "싱글 몰트 스카치 위스키 생산지",
+            "why": "일본 오사카에 본사를 둔 선터리 홀딩스의 자회사인 선터리 글로벌 스피리츠가 소유하고 운영하는 위스키 디스틸러리",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -269,7 +299,7 @@
           {
             "title": "Huashan 1914 Creative Park",
             "angle": "다목적 공원 및 문화 공간",
-            "why": "타이페이의 문화 예술 공간으로 다양한 전시회와 공연이 열리는 곳",
+            "why": "타이페이의 중정 구에 위치한 다목적 공원",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -343,8 +373,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간생활과 다문화 인구로 유명한 지역",
-            "why": "서울의 대표적인 나이트라이프 지역",
+            "angle": "멀티 이스닉 인구로 유명한 이태원은 서울의 나이트 라이프를 대표한다.",
+            "why": "이태원에서 다양한 음식과 나이트 라이프를 즐길 수 있다.",
             "source_titles": [
               "Itaewon"
             ],
@@ -360,8 +390,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
-            "why": "도쿄의 대표적인 나이트라이프 지역",
+            "angle": "로펑기는 도쿄의 나이트 라이프와 클럽을 대표하는 지역이다.",
+            "why": "로펑기에서 다양한 클럽과 바를 즐길 수 있다.",
             "source_titles": [
               "Roppongi"
             ],
@@ -378,8 +408,8 @@
         "London": [
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급 칵테일 바",
-            "why": "런던의 대표적인 스피커시 바",
+            "angle": "런던의 소호에 위치한 밀크 앤 허니는 유명한 칵테일 바이다.",
+            "why": "밀크 앤 허니에서 다양한 칵테일을 즐길 수 있다.",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -411,8 +441,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 컴플렉스 및 레드라이트 디스트릭트",
-            "why": "방콕의 대표적인 나이트라이프 지역",
+            "angle": "나나 플라자는 방콕의 대표적인 엔터테인먼트 콤플렉스이다.",
+            "why": "나나 플라자에서 다양한 엔터테인먼트를 즐길 수 있다.",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -477,9 +507,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "명동성당",
-            "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 중심가에 위치한 역사적인 천주교 성당",
+            "title": "명동 성당",
+            "angle": "서울의 대표적인 카톨릭 성당",
+            "why": "서울의 주요 쇼핑 및 관광 지구인 명동에 위치한 역사적인 카톨릭 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -496,7 +526,7 @@
           {
             "title": "센소지",
             "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄에서 가장 오래된 불교 사원",
+            "why": "도쿄에서 가장 오래된 불교 사원으로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -511,26 +541,26 @@
         ],
         "Osaka": [
           {
-            "title": "코야산",
-            "angle": "오사카 근교의 불교 사원",
-            "why": "오사카 근교의 역사적인 불교 사원",
+            "title": "시텐노지",
+            "angle": "오사카의 대표적인 불교 사원",
+            "why": "오사카에서 가장 오래된 불교 사원으로, 관광객들이 많이 찾는 곳",
             "source_titles": [
-              "Mount Kōya"
+              "Tennōji-ku, Osaka"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 34.2125,
-            "lng": 135.58638889
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [
           {
             "title": "웨스트민스터 사원",
             "angle": "런던의 대표적인 성공회 사원",
-            "why": "영국 왕실의 공식 예배 장소",
+            "why": "영국에서 가장 유명한 사원 중 하나로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Westminster"
             ],
@@ -547,7 +577,7 @@
           {
             "title": "파리 대모스크",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "파리에서 가장 큰 이슬람 사원",
+            "why": "파리에서 가장 큰 이슬람 사원으로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -565,7 +595,7 @@
           {
             "title": "와트 아룬",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "방콕에서 가장 유명한 불교 사원",
+            "why": "방콕에서 가장 유명한 사원 중 하나로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Wat Arun"
             ],
@@ -582,7 +612,7 @@
           {
             "title": "마스지드 알 이슬라",
             "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르에서 가장 큰 이슬람 사원",
+            "why": "싱가포르에서 가장 큰 이슬람 사원 중 하나로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Masjid Al Islah"
             ],
@@ -598,8 +628,8 @@
         "Taipei": [
           {
             "title": "베이とう 구",
-            "angle": "타이페이의 대표적인 불교 사원",
-            "why": "타이페이에서 가장 유명한 불교 사원",
+            "angle": "타이페이의 대표적인 온천 지구",
+            "why": "타이페이에서 가장 유명한 온천 지구로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Beitou District"
             ],
@@ -615,8 +645,8 @@
         "Barcelona": [
           {
             "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 가톨릭 성당",
-            "why": "바르셀로나에서 가장 유명한 가톨릭 성당",
+            "angle": "바르셀로나의 대표적인 카톨릭 성당",
+            "why": "바르셀로나에서 가장 유명한 성당 중 하나로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -631,9 +661,9 @@
         ],
         "Rome": [
           {
-            "title": "산 조반니 인 라테라노 대성당",
-            "angle": "로마의 대표적인 가톨릭 대성당",
-            "why": "로마에서 가장 큰 가톨릭 대성당",
+            "title": "라테란 대성당",
+            "angle": "로마의 대표적인 카톨릭 성당",
+            "why": "로마에서 가장 유명한 성당 중 하나로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -649,8 +679,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 개신교 대성당",
-            "why": "베를린에서 가장 큰 개신교 대성당",
+            "angle": "베를린의 대표적인 개신교 성당",
+            "why": "베를린에서 가장 유명한 성당 중 하나로, 관광객들이 많이 찾는 곳",
             "source_titles": [
               "Zossen"
             ],
@@ -991,20 +1021,20 @@
       ],
       "Osaka": [
         {
-          "title": "Mount Kōya",
-          "extract": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, the ecclesiastical headquarters of the Kōyasan sect of Shingon Buddhism.",
-          "url": "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya",
-          "official_url": "",
-          "lat": 34.2125,
-          "lng": 135.58638889
-        },
-        {
           "title": "Tennōji-ku, Osaka",
           "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
           "lng": 135.51944444
+        },
+        {
+          "title": "Mount Kōya",
+          "extract": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, the ecclesiastical headquarters of the Kōyasan sect of Shingon Buddhism.",
+          "url": "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya",
+          "official_url": "",
+          "lat": 34.2125,
+          "lng": 135.58638889
         },
         {
           "title": "Kōdai-in",
@@ -1052,20 +1082,20 @@
       "DaNang": [],
       "Bangkok": [
         {
-          "title": "Khaosan Road",
-          "extract": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
-          "url": "https://en.wikipedia.org/wiki/Khaosan_Road",
-          "official_url": "",
-          "lat": 13.75888889,
-          "lng": 100.49722222
-        },
-        {
           "title": "Wat Arun",
           "extract": "Wat Arun Ratchawararam Ratchawaramahawihan or Wat Arun is a Buddhist temple (wat) in the Bangkok Yai district of Bangkok, Thailand. It is situated in Thonburi on the west bank of the Chao Phraya River. The temple derives its name from the Hindu god Aruṇa, often personified as the radiations of the rising sun. Built with a fusion of Indian influences, incorporating elements of both Hindu and Buddhist symbolism, as well as reflecting Siamese tradition and identity. Wat Arun is among the best known of Thailand's landmarks. Although the temple has existed since at least the 17th century, its distinctive prang (spire) was built in the early 19th century during the reigns of Rama II and Rama III.",
           "url": "https://en.wikipedia.org/wiki/Wat_Arun",
           "official_url": "http://www.watarun.net/",
           "lat": 13.74361111,
           "lng": 100.48888889
+        },
+        {
+          "title": "Khaosan Road",
+          "extract": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
+          "url": "https://en.wikipedia.org/wiki/Khaosan_Road",
+          "official_url": "",
+          "lat": 13.75888889,
+          "lng": 100.49722222
         },
         {
           "title": "Bang Lamphu",
@@ -1162,20 +1192,20 @@
           "lng": 12.50615556
         },
         {
-          "title": "Pantheon, Rome",
-          "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
-          "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
-          "official_url": "https://www.pantheonroma.com/",
-          "lat": 41.8986,
-          "lng": 12.4768
-        },
-        {
           "title": "Piazza Navona",
           "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
           "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
           "official_url": "",
           "lat": 41.899,
           "lng": 12.4731
+        },
+        {
+          "title": "Pantheon, Rome",
+          "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
+          "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
+          "official_url": "https://www.pantheonroma.com/",
+          "lat": 41.8986,
+          "lng": 12.4768
         }
       ],
       "Berlin": [
