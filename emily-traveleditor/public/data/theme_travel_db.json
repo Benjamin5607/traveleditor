@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-28 01:49",
+  "last_updated": "2026-07-29 01:49",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차房과 현대 갤러리가 조화된 인사동의 거리",
-            "why": "인사동의 전통 차房과 현대 갤러리를 탐索하며 마음을 진정시세요",
+            "angle": "전통 차 집과 현대 갤러리가 조화된 공간",
+            "why": "인사동의 전통적인 분위기와 현대적인 갤러리를 감상할 수 있는 곳",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "자연과 함께하는 어린이대공원의 산책로",
-            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 평화롭게 하세요",
+            "angle": "자연과 함께하는 평화로운 산책",
+            "why": "어린이대공원의 아름다운 정원과 산책로를 즐길 수 있는 곳",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 고요한 정원",
-            "why": "고토 미술관의 아름다운 정원과 전시회에서 마음을 평화롭게 하세요",
+            "angle": "고토 미술관의 고요한 정원과 전통적인 일본 미술",
+            "why": "고토 미술관의 아름다운 정원과 전통적인 일본 미술을 감상할 수 있는 곳",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -78,8 +78,8 @@
           },
           {
             "title": "유메노시마 열대 식물 온실",
-            "angle": "유메노시마 열대 식물 온실의 아름다운 식물들",
-            "why": "유메노시마 열대 식물 온실의 다양한 식물들로 마음을 평화롭게 하세요",
+            "angle": "아름다운 열대 식물과 평화로운 분위기",
+            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 곳",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -95,8 +95,8 @@
         "Osaka": [
           {
             "title": "오사카 성",
-            "angle": "오사카 성의 아름다운 정원",
-            "why": "오사카 성의 아름다운 정원과 전시회에서 마음을 평화롭게 하세요",
+            "angle": "오사카 성의 역사와 아름다운 정원",
+            "why": "오사카 성의 역사와 아름다운 정원을 감상할 수 있는 곳",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,14 +107,29 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "텐노지 구",
+            "angle": "텐노지 구의 전통적인 분위기와 아름다운 정원",
+            "why": "텐노지 구의 전통적인 분위기와 아름다운 정원을 감상할 수 있는 곳",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "자르뎅 데 플랑트",
-            "angle": "자르뎅 데 플랑트의 아름다운 식물들",
-            "why": "자르뎅 데 플랑트의 다양한 식물들로 마음을 평화롭게 하세요",
+            "title": "자르댕 데 플란트",
+            "angle": "자르댕 데 플란트의 아름다운 정원과 평화로운 분위기",
+            "why": "자르댕 데 플란트의 아름다운 정원과 평화로운 분위기를 즐길 수 있는 곳",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -149,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 아름다운 전통 가옥",
-            "why": "지우펀의 아름다운 전통 가옥과 차房에서 마음을 평화롭게 하세요",
+            "angle": "지우펀의 아름다운 오래된 거리와 전통적인 분위기",
+            "why": "지우펀의 아름다운 오래된 거리와 전통적인 분위기를 감상할 수 있는 곳",
             "source_titles": [
               "Jiufen"
             ],
@@ -161,13 +176,28 @@
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
+          },
+          {
+            "title": "다퉁 구",
+            "angle": "다퉁 구의 전통적인 분위기와 아름다운 정원",
+            "why": "다퉁 구의 전통적인 분위기와 아름다운 정원을 감상할 수 있는 곳",
+            "source_titles": [
+              "Datong District, Taipei"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
+            ],
+            "official_url": "https://dtdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.05972222,
+            "lng": 121.51416667
           }
         ],
         "Barcelona": [
           {
             "title": "모센 코스타 이 요베라 정원",
-            "angle": "모센 코스타 이 요베라 정원의 아름다운 식물들",
-            "why": "모센 코스타 이 요베라 정원의 다양한 식물들로 마음을 평화롭게 하세요",
+            "angle": "모센 코스타 이 요베라 정원의 아름다운 식물과 평화로운 분위기",
+            "why": "모센 코스타 이 요베라 정원의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 곳",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -184,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아 미술관의 아름다운 전시회",
-            "why": "아시아 미술관의 다양한 전시회로 마음을 평화롭게 하세요",
+            "angle": "아시아 미술관의 아름다운 전통적인 일본 미술과 평화로운 분위기",
+            "why": "아시아 미술관의 아름다운 전통적인 일본 미술과 평화로운 분위기를 감상할 수 있는 곳",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -198,9 +228,9 @@
             "lng": 13.40277778
           },
           {
-            "title": "베를린 식물원",
-            "angle": "베를린 식물원의 아름다운 식물들",
-            "why": "베를린 식물원의 다양한 식물들로 마음을 평화롭게 하세요",
+            "title": "베를린 식물원과 식물학 박물관",
+            "angle": "베를린 식물원과 식물학 박물관의 아름다운 식물과 평화로운 분위기",
+            "why": "베를린 식물원과 식물학 박물관의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 곳",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -231,7 +261,7 @@
           {
             "title": "Ardmore distillery",
             "angle": "싱글 몰트 스코치 위스키 생산지",
-            "why": "일본 오사카에 본사를 둔 선터리 글로벌 스피리츠의 위스키 생산지",
+            "why": "일본 오사카에 본사를 둔 선토리 글로벌 스피리츠의 위스키 생산지",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -268,8 +298,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "크래프트 비어와 예술이 있는 공간",
-            "why": "다양한 예술과 문화를 즐길 수 있는 공간",
+            "angle": "다목적 공원",
+            "why": "공원 내 다양한 문화 행사 및 전시회",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -343,8 +373,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "다양한 나이트클럽과 바가 있는 밤의 도시",
-            "why": "이태원에서 밤을 즐기며 다양한 문화를 경험할 수 있습니다.",
+            "angle": "야간생활과 다문화 인구로 유명한 지역",
+            "why": "서울의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Itaewon"
             ],
@@ -360,8 +390,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급스러운 나이트클럽과 바가 많은 지역",
-            "why": "로っぽنگی에서 밤을 즐기며 고급스러운 분위기를 경험할 수 있습니다.",
+            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
+            "why": "도쿄의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Roppongi"
             ],
@@ -378,8 +408,8 @@
         "London": [
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급스러운 칵테일 바",
-            "why": "밀크 앤 허니에서 고급스러운 칵테일을 즐길 수 있습니다.",
+            "angle": "고급 칵테일 바",
+            "why": "런던의 대표적인 스피커시 바",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -411,8 +441,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "대형 엔터테인먼트 복합 단지",
-            "why": "나나 플라자에서 다양한 엔터테인먼트를 즐길 수 있습니다.",
+            "angle": "엔터테인먼트 컴플렉스와 레드라이트 지역",
+            "why": "방콕의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -478,8 +508,8 @@
         "Seoul": [
           {
             "title": "명동성당",
-            "angle": "서울의 대표적인 성당",
-            "why": "서울의 중심가에 위치한 역사적인 성당",
+            "angle": "서울의 대표적인 천주교 성당",
+            "why": "서울의 중심가에 위치한 역사적인 천주교 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -529,8 +559,8 @@
         "London": [
           {
             "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성당",
-            "why": "영국에서 가장 유명한 성당",
+            "angle": "런던의 대표적인 성공회 사원",
+            "why": "영국의 대표적인 성공회 사원",
             "source_titles": [
               "Westminster"
             ],
@@ -546,8 +576,8 @@
         "Paris": [
           {
             "title": "파리 대모스크",
-            "angle": "파리의 대표적인 모스크",
-            "why": "프랑스에서 가장 큰 모스크",
+            "angle": "파리의 대표적인 이슬람 사원",
+            "why": "프랑스에서 가장 큰 이슬람 사원",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -580,43 +610,41 @@
         ],
         "Singapore": [
           {
-            "title": "마스지드 알 이슬라",
-            "angle": "싱가포르의 대표적인 모스크",
-            "why": "싱가포르에서 가장 큰 모스크",
+            "title": "아르메니아 교회",
+            "angle": "싱가포르의 대표적인 기독교 교회",
+            "why": "싱가포르에서 가장 오래된 기독교 교회",
             "source_titles": [
-              "Masjid Al Islah"
+              "Armenian Church, Singapore"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Masjid_Al_Islah"
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 1.4013989,
-            "lng": 103.9015299
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
           }
         ],
         "Taipei": [
           {
-            "title": "베이とう 구",
-            "angle": "타이페이의 대표적인 사원",
-            "why": "타이페이에서 가장 오래된 사원",
+            "title": "롱산 사원",
+            "angle": "타이페이의 대표적인 불교 사원",
+            "why": "타이페이에서 가장 인기있는 불교 사원",
             "source_titles": [
-              "Beitou District"
+              "Taiwan High Speed Rail"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Beitou_District"
+              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
             ],
-            "official_url": "https://btdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.1167,
-            "lng": 121.5
+            "official_url": "https://www.thsrc.com.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           }
         ],
         "Barcelona": [
           {
             "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 성당",
-            "why": "세계에서 가장 유명한 성당",
+            "angle": "바르셀로나의 대표적인 가톨릭 성당",
+            "why": "바르셀로나에서 가장 유명한 가톨릭 성당",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -631,9 +659,9 @@
         ],
         "Rome": [
           {
-            "title": "라테란 대성당",
-            "angle": "로마의 대표적인 성당",
-            "why": "세계에서 가장 오래된 성당",
+            "title": "세인트 존 라테란 대성당",
+            "angle": "로마의 대표적인 가톨릭 대성당",
+            "why": "로마에서 가장 중요한 가톨릭 대성당",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -649,8 +677,8 @@
         "Berlin": [
           {
             "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 성당",
-            "why": "독일에서 가장 유명한 성당",
+            "angle": "베를린의 대표적인 개신교 대성당",
+            "why": "베를린에서 가장 유명한 개신교 대성당",
             "source_titles": [
               "Zossen"
             ],
@@ -1078,9 +1106,9 @@
       ],
       "Singapore": [
         {
-          "title": "Masjid Al Islah",
+          "title": "Masjid Al-Islah",
           "extract": "Masjid Al-Islah is a mosque located in Punggol within the North-East Region, Singapore. Built in 2015, it is the only mosque situated in the Punggol neighbourhood.",
-          "url": "https://en.wikipedia.org/wiki/Masjid_Al_Islah",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Al-Islah",
           "official_url": "",
           "lat": 1.4013989,
           "lng": 103.9015299
@@ -1154,20 +1182,20 @@
           "lng": 12.50615556
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
-        },
-        {
           "title": "Pantheon, Rome",
           "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "official_url": "",
+          "lat": 41.899,
+          "lng": 12.4731
         }
       ],
       "Berlin": [
@@ -1181,7 +1209,7 @@
         },
         {
           "title": "Berlin",
-          "extract": "Berlin is the capital of Germany as well as its largest city by both area and population. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The city is also one of the states of Germany, being the third-smallest state in the country by area. Berlin is surrounded by the state of Brandenburg, bordering Brandenburg's capital Potsdam to the southwest. The urban area of Berlin has a population of over 5 million, making it the most populous in Germany. The Berlin-Brandenburg capital region has around 6 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest ",
+          "extract": "Berlin is the capital and largest city of Germany. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The city is also one of the states of Germany, being the third-smallest state in the country by area. Berlin is surrounded by the state of Brandenburg, bordering Brandenburg's capital Potsdam to the southwest. The urban area of Berlin has a population of over 5 million, making it the most populous in Germany. The Berlin-Brandenburg capital region has around 6 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest metropolitan region by GDP in the Europ",
           "url": "https://en.wikipedia.org/wiki/Berlin",
           "official_url": "https://www.berlin.de/",
           "lat": 52.52,
