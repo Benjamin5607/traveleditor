@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-05 01:48",
+  "last_updated": "2026-08-06 01:46",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차집과 현대 갤러리가 조화된 인사동의 거리",
-            "why": "인사동의 차집에서 전통 차를 마시며 마음을 진정시세요",
+            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
+            "why": "인사동의 전통적인 차와 현대적인 갤러리를 경험할 수 있는 곳",
             "source_titles": [
               "Insa-dong"
             ],
@@ -46,8 +46,8 @@
           },
           {
             "title": "어린이대공원",
-            "angle": "자연과 함께하는 어린이대공원의 산책로",
-            "why": "어린이대공원의 식물원과 산책로에서 마음을 진정시세요",
+            "angle": "자연과 함께하는 평화로운 산책",
+            "why": "어린이대공원의 아름다운 정원과 산책로를 즐길 수 있는 곳",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "고토 미술관의 정원과 전통 일본 미술",
-            "why": "고토 미술관의 정원과 전통 일본 미술을 감상하세요",
+            "angle": "고토 미술관의 고요한 정원과 전통적인 일본 미술",
+            "why": "고토 미술관의 아름다운 정원과 전통적인 일본 미술을 경험할 수 있는 곳",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "유메노시마 열대식물 온실",
-            "angle": "유메노시마 열대식물 온실의 아름다운 식물들",
-            "why": "유메노시마 열대식물 온실의 다양한 식물들을 감상하세요",
+            "title": "유메노시마 열대 식물 온실",
+            "angle": "열대 식물의 아름다운 정원",
+            "why": "유메노시마 열대 식물 온실의 아름다운 정원을 경험할 수 있는 곳",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -96,7 +96,7 @@
           {
             "title": "오사카 성",
             "angle": "오사카 성의 역사와 아름다운 정원",
-            "why": "오사카 성의 역사와 아름다운 정원을 감상하세요",
+            "why": "오사카 성의 역사와 아름다운 정원을 경험할 수 있는 곳",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -109,9 +109,9 @@
             "lng": 135.52583333
           },
           {
-            "title": "텐노지구",
-            "angle": "텐노지구의 전통 일본 문화와 음식",
-            "why": "텐노지구의 전통 일본 문화와 음식을 경험하세요",
+            "title": "텐노지 구",
+            "angle": "텐노지 구의 전통적인 일본 문화",
+            "why": "텐노지 구의 전통적인 일본 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -127,9 +127,9 @@
         "London": [],
         "Paris": [
           {
-            "title": "자르딘 데 플란트",
-            "angle": "자르딘 데 플란트의 아름다운 식물원과 동물원",
-            "why": "자르딘 데 플란트의 식물원과 동물원을 감상하세요",
+            "title": "자르뎅 데 플란트",
+            "angle": "자르뎅 데 플란트의 아름다운 정원",
+            "why": "자르뎅 데 플란트의 아름다운 정원을 경험할 수 있는 곳",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -164,8 +164,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "지우펀의 전통 타이페이 문화와 음식",
-            "why": "지우펀의 전통 타이페이 문화와 음식을 경험하세요",
+            "angle": "지우펀의 전통적인 차와 아름다운 풍경",
+            "why": "지우펀의 전통적인 차와 아름다운 풍경을 경험할 수 있는 곳",
             "source_titles": [
               "Jiufen"
             ],
@@ -178,9 +178,9 @@
             "lng": 121.843
           },
           {
-            "title": "다퉁구",
-            "angle": "다퉁구의 역사와 문화",
-            "why": "다퉁구의 역사와 문화를 경험하세요",
+            "title": "다툰 구",
+            "angle": "다툰 구의 전통적인 타이페이 문화",
+            "why": "다툰 구의 전통적인 타이페이 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -196,8 +196,8 @@
         "Barcelona": [
           {
             "title": "모센 코스타 이 로브레라 정원",
-            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물들",
-            "why": "모센 코스타 이 로브레라 정원의 다양한 식물들을 감상하세요",
+            "angle": "모센 코스타 이 로브레라 정원의 아름다운 식물",
+            "why": "모센 코스타 이 로브레라 정원의 아름다운 식물을 경험할 수 있는 곳",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -214,8 +214,8 @@
         "Berlin": [
           {
             "title": "아시아 미술관",
-            "angle": "아시아 미술관의 아름다운 전통 미술",
-            "why": "아시아 미술관의 전통 미술을 감상하세요",
+            "angle": "아시아 미술관의 아름다운 정원과 전통적인 아시아 미술",
+            "why": "아시아 미술관의 아름다운 정원과 전통적인 아시아 미술을 경험할 수 있는 곳",
             "source_titles": [
               "Museum of Asian Art"
             ],
@@ -229,8 +229,8 @@
           },
           {
             "title": "베를린 식물원",
-            "angle": "베를린 식물원의 아름다운 식물들",
-            "why": "베를린 식물원의 다양한 식물들을 감상하세요",
+            "angle": "베를린 식물원의 아름다운 정원",
+            "why": "베를린 식물원의 아름다운 정원을 경험할 수 있는 곳",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -261,7 +261,7 @@
           {
             "title": "Ardmore distillery",
             "angle": "싱글 몰트 스코치 위스키 생산지",
-            "why": "위스키 생산 과정을 경험할 수 있는 곳",
+            "why": "일본 오사카에 본사를 둔 선터리 홀딩스의 자회사 선터리 글로벌 스피리츠가 운영하는 스코틀랜드의 싱글 몰트 스코치 위스키 증류소",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -298,8 +298,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "다목적 공원",
-            "why": "예술과 문화를 경험할 수 있는 곳",
+            "angle": "다목적 공원으로 다양한 문화 예술 활동",
+            "why": "타이페이의 중정 구에 위치한 다목적 공원",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -373,8 +373,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "멀티 이스닉 인구와 나이트 라이프가 유명",
-            "why": "다양한 음식과 나이트 라이프를 즐길 수 있는 곳",
+            "angle": "야간생활과 다민족 인구로 유명한 지역",
+            "why": "서울의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Itaewon"
             ],
@@ -390,8 +390,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "나이트 클럽과 외국 대사관이 많은 지역",
-            "why": "밤 늦게까지 즐길 수 있는 나이트 라이프를 제공",
+            "angle": "클럽과 나이트라이프로 유명한 지역",
+            "why": "도쿄의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Roppongi"
             ],
@@ -409,7 +409,7 @@
           {
             "title": "Milk & Honey (bar)",
             "angle": "고급 칵테일 바",
-            "why": "고품질의 칵테일을 즐길 수 있는 곳",
+            "why": "런던의 대표적인 스피커시 바",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -441,8 +441,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 콤플렉스",
-            "why": "다양한 엔터테인먼트를 즐길 수 있는 곳",
+            "angle": "엔터테인먼트 복합 단지",
+            "why": "방콕의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -478,8 +478,8 @@
         "Berlin": [
           {
             "title": "Berghain",
-            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
-            "why": "Berghain is a nightclub in Berlin, Germany. It is named after its location near the border between Kreuzberg and Friedrichshain and is a short walk from Berlin Ostbahnhof main line",
+            "angle": "테크노 클럽",
+            "why": "베를린의 대표적인 나이트라이프 지역",
             "source_titles": [
               "Berghain"
             ],
@@ -508,7 +508,7 @@
         "Seoul": [
           {
             "title": "명동성당",
-            "angle": "서울의 대표적인 성당",
+            "angle": "서울의 대표적인 카톨릭 성당",
             "why": "서울의 중심가에 위치한 역사적인 성당",
             "source_titles": [
               "Myeong-dong"
@@ -526,7 +526,7 @@
           {
             "title": "센소지",
             "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄에서 가장 오래된 사원",
+            "why": "도쿄에서 가장 오래된 불교 사원",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -541,26 +541,26 @@
         ],
         "Osaka": [
           {
-            "title": "코야산",
-            "angle": "오사카 근교의 불교 사원",
-            "why": "오사카에서 가까운 불교 사원",
+            "title": "시텐노지",
+            "angle": "오사카의 대표적인 불교 사원",
+            "why": "오사카에서 가장 오래된 불교 사원",
             "source_titles": [
-              "Mount Kōya"
+              "Tennōji-ku, Osaka"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 34.2125,
-            "lng": 135.58638889
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [
           {
             "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성당",
-            "why": "영국 왕실의 중요한 행사들이 열리는 성당",
+            "angle": "런던의 대표적인 성공회 사원",
+            "why": "영국 왕실의 중요한 행사들이 열리는 사원",
             "source_titles": [
               "Westminster"
             ],
@@ -576,8 +576,8 @@
         "Paris": [
           {
             "title": "파리 대모스크",
-            "angle": "파리의 대표적인 모스크",
-            "why": "프랑스에서 가장 큰 모스크",
+            "angle": "파리의 대표적인 이슬람 사원",
+            "why": "파리에서 가장 큰 이슬람 사원",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -594,8 +594,8 @@
         "Bangkok": [
           {
             "title": "와트 아룬",
-            "angle": "방콕의 대표적인 사원",
-            "why": "태국의 대표적인 사원",
+            "angle": "방콕의 대표적인 불교 사원",
+            "why": "방콕에서 가장 아름다운 사원",
             "source_titles": [
               "Wat Arun"
             ],
@@ -610,89 +610,25 @@
         ],
         "Singapore": [
           {
-            "title": "아르메니아 교회",
-            "angle": "싱가포르의 대표적인 교회",
-            "why": "싱가포르에서 가장 오래된 교회",
+            "title": "마스지드 알이슬라",
+            "angle": "싱가포르의 대표적인 이슬람 사원",
+            "why": "싱가포르에서 가장 새로운 이슬람 사원",
             "source_titles": [
-              "Armenian Church, Singapore"
+              "Masjid Al-Islah"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
+              "https://en.wikipedia.org/wiki/Masjid_Al-Islah"
             ],
-            "official_url": "https://www.armeniansinasia.org/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 1.29305556,
-            "lng": 103.84930556
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 1.4013989,
+            "lng": 103.9015299
           }
         ],
-        "Taipei": [
-          {
-            "title": "베이とう 구",
-            "angle": "타이페이의 대표적인 사원",
-            "why": "타이페이에서 가장 오래된 사원",
-            "source_titles": [
-              "Beitou District"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Beitou_District"
-            ],
-            "official_url": "https://btdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.1167,
-            "lng": 121.5
-          }
-        ],
-        "Barcelona": [
-          {
-            "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 성당",
-            "why": "바르셀로나에서 가장 유명한 건축물",
-            "source_titles": [
-              "Sagrada Família"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
-            ],
-            "official_url": "https://sagradafamilia.org/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 41.40369,
-            "lng": 2.17433
-          }
-        ],
-        "Rome": [
-          {
-            "title": "산 조반니 인 라테라노 대성당",
-            "angle": "로마의 대표적인 대성당",
-            "why": "로마 가톨릭교회의 중심지",
-            "source_titles": [
-              "Archbasilica of Saint John Lateran"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran"
-            ],
-            "official_url": "https://www.basilicasangiovanni.va/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 41.88590556,
-            "lng": 12.50615556
-          }
-        ],
-        "Berlin": [
-          {
-            "title": "베를린 대성당",
-            "angle": "베를린의 대표적인 대성당",
-            "why": "베를린에서 가장 유명한 건축물",
-            "source_titles": [
-              "Zossen"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Zossen"
-            ],
-            "official_url": "https://www.zossen.de/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.21666667,
-            "lng": 13.44972222
-          }
-        ]
+        "Taipei": [],
+        "Barcelona": [],
+        "Rome": [],
+        "Berlin": []
       },
       "generated_by": "groq"
     }
@@ -1021,20 +957,20 @@
       ],
       "Osaka": [
         {
-          "title": "Mount Kōya",
-          "extract": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, the ecclesiastical headquarters of the Kōyasan sect of Shingon Buddhism.",
-          "url": "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya",
-          "official_url": "",
-          "lat": 34.2125,
-          "lng": 135.58638889
-        },
-        {
           "title": "Tennōji-ku, Osaka",
           "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
           "lng": 135.51944444
+        },
+        {
+          "title": "Mount Kōya",
+          "extract": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, the ecclesiastical headquarters of the Kōyasan sect of Shingon Buddhism.",
+          "url": "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya",
+          "official_url": "",
+          "lat": 34.2125,
+          "lng": 135.58638889
         },
         {
           "title": "Kōdai-in",
@@ -1090,12 +1026,12 @@
           "lng": 100.48888889
         },
         {
-          "title": "Bang Lamphu",
-          "extract": "Bang Lamphu, also spelled Banglampoo or Banglamphu is a neighbourhood in Bangkok located in Phra Nakhon District. The history of the Bang Lamphu community dates to the establishment of the Rattanakosin Kingdom, or earlier. Bang Lamphu covers the area north of Phra Nakhon, both inside and outside Rattanakosin Island, stretching from Phra Athit to Samsen Roads, which lead toward Dusit District. Most of Bang Lamphu lies within Talat Yot Subdistrict, with parts extending into nearby subdistricts such as Chana Songkhram, Bowon Niwet, Ban Phan Thom, and up to Wat Sam Phraya.",
-          "url": "https://en.wikipedia.org/wiki/Bang_Lamphu",
+          "title": "Wat Champa",
+          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
           "official_url": "",
-          "lat": 13.75248056,
-          "lng": 100.50113889
+          "lat": 13.775,
+          "lng": 100.43416667
         },
         {
           "title": "Assumption Cathedral, Bangkok",
@@ -1132,100 +1068,10 @@
           "lng": 103.85448
         }
       ],
-      "Taipei": [
-        {
-          "title": "Taiwan High Speed Rail",
-          "extract": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, from Taipei in the north to the southern city of Kaohsiung. Its construction was managed by a private company, Taiwan High Speed Rail Corporation (THSRC), which also operates the line. The total cost of the project was NT$513.3 billion in 1998. The system's technology is based primarily on Japan's Shinkansen.",
-          "url": "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail",
-          "official_url": "https://www.thsrc.com.tw/"
-        },
-        {
-          "title": "Beitou District",
-          "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
-          "url": "https://en.wikipedia.org/wiki/Beitou_District",
-          "official_url": "https://btdo.gov.taipei/",
-          "lat": 25.1167,
-          "lng": 121.5
-        }
-      ],
-      "Barcelona": [
-        {
-          "title": "Sagrada Família",
-          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. Parts of the Sagrada Família were declared as a UNESCO World Heritage Site in 2005, under \"Works of Antoni Gaudí\".",
-          "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
-          "official_url": "https://sagradafamilia.org/",
-          "lat": 41.40369,
-          "lng": 2.17433
-        },
-        {
-          "title": "Girona",
-          "extract": "Girona, historically also known as Gerona, is the capital city of the Province of Girona in the autonomous community of Catalonia, Spain, at the confluence of the Ter, Onyar, Galligants, and Güell rivers. The city had an official population of 106,476 in 2024, but the population of the Girona–Salt urban area is estimated to be about 156,400 (2020). Girona is also capital of the comarca of the Gironès and the vegueria of Girona. Since much of the old quarter of this ancient city has been preserved, Girona is a popular tourist destination. The city is located 99 km (62 mi) northeast of Barcelona.",
-          "url": "https://en.wikipedia.org/wiki/Girona",
-          "official_url": "http://www.girona.cat/",
-          "lat": 41.98444444,
-          "lng": 2.82111111
-        },
-        {
-          "title": "Tibidabo Funicular",
-          "extract": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with the summit of Tibidabo, where there is an amusement park and a church, the Temple Expiatori del Sagrat Cor.",
-          "url": "https://en.wikipedia.org/wiki/Tibidabo_Funicular",
-          "official_url": "",
-          "lat": 41.41644444,
-          "lng": 2.13108333
-        }
-      ],
-      "Rome": [
-        {
-          "title": "Archbasilica of Saint John Lateran",
-          "extract": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. It serves as the seat of the bishop of Rome and head of the worldwide Catholic Church: the pope. The only \"archbasilica\" in the world, it lies outside of Vatican City proper, which is located approximately four kilometres northwest. Nevertheless, as properties of the Holy See, the archbasilica and its adjoining edifices enjoy an extraterritorial status from Italy, pursuant to the terms of the Lateran Treaty of 1929. Dedicated to Christ the Saviour, in honor of John the Baptist and John the Evangelist, the place name",
-          "url": "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran",
-          "official_url": "https://www.basilicasangiovanni.va/",
-          "lat": 41.88590556,
-          "lng": 12.50615556
-        },
-        {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
-        },
-        {
-          "title": "Pantheon, Rome",
-          "extract": "The Pantheon is an ancient 2nd century Roman temple and, since AD 609, a Catholic church called the Basilica of St. Mary and the Martyrs in Rome, Italy. It is perhaps the most famous, and architecturally most influential, rotunda.",
-          "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
-          "official_url": "https://www.pantheonroma.com/",
-          "lat": 41.8986,
-          "lng": 12.4768
-        }
-      ],
-      "Berlin": [
-        {
-          "title": "Zossen",
-          "extract": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several smaller municipalities, which were grouped in 2003 to form the city.",
-          "url": "https://en.wikipedia.org/wiki/Zossen",
-          "official_url": "https://www.zossen.de/",
-          "lat": 52.21666667,
-          "lng": 13.44972222
-        },
-        {
-          "title": "Berlin",
-          "extract": "Berlin is the capital and largest city of Germany. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The city is also one of the states of Germany, being the third-smallest state in the country by area. Berlin is surrounded by the state of Brandenburg, bordering Brandenburg's capital Potsdam to the southwest. The urban area of Berlin has a population of over 5 million, making it the most populous in Germany. The Berlin-Brandenburg capital region has around 6 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest metropolitan region by GDP in the Europ",
-          "url": "https://en.wikipedia.org/wiki/Berlin",
-          "official_url": "https://www.berlin.de/",
-          "lat": 52.52,
-          "lng": 13.405
-        },
-        {
-          "title": "Berlin Tempelhof Airport",
-          "extract": "Berlin Tempelhof Airport was one of the first airports in Berlin, Germany. Situated in the south-central Berlin borough of Tempelhof-Schöneberg, the airport ceased operating in 2008 amid controversy. This left Tegel and Schönefeld as the two main airports serving the city for another twelve years until both were replaced by Berlin Brandenburg Airport in 2020.",
-          "url": "https://en.wikipedia.org/wiki/Berlin_Tempelhof_Airport",
-          "official_url": "http://www.thf-berlin.de",
-          "lat": 52.47361111,
-          "lng": 13.40166667
-        }
-      ]
+      "Taipei": [],
+      "Barcelona": [],
+      "Rome": [],
+      "Berlin": []
     }
   }
 }
