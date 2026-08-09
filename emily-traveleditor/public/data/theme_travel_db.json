@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-08 01:00",
+  "last_updated": "2026-08-09 01:04",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -30,9 +30,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "인사동",
-            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
-            "why": "인사동의 전통적인 차와 현대적인 갤러리를 경험할 수 있는 곳",
+            "title": "Insa-dong",
+            "angle": "전통 차와 현대 미술이 조화된 공간",
+            "why": "인사동의 전통 차집과 갤러리를漫步하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -45,9 +45,9 @@
             "lng": 126.98618
           },
           {
-            "title": "어린이대공원",
+            "title": "Children's Grand Park, Seoul",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로를 즐길 수 있는 곳",
+            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 편안하게 할 수 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,9 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "고토 미술관",
-            "angle": "고토 미술관의 고요한 정원과 전통적인 일본 미술",
-            "why": "고토 미술관의 아름다운 정원과 전통적인 일본 미술을 감상할 수 있는 곳",
+            "title": "Gotoh Museum",
+            "angle": "고대 일본 미술의 정취",
+            "why": "고토 미술관에서 일본의 고대 미술을 감상하며 마음을 평온하게 할 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "유메노시마 열대 식물 온실",
-            "angle": "아름다운 열대 식물과 평화로운 분위기",
-            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 곳",
+            "title": "Yumenoshima Tropical Greenhouse Dome",
+            "angle": "열대 식물의 아름다움",
+            "why": "유메노시마 열대 식물 온실에서 다양한 열대 식물을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -94,9 +94,9 @@
         ],
         "Osaka": [
           {
-            "title": "오사카 성",
-            "angle": "오사카 성의 역사와 전통",
-            "why": "오사카 성의 역사와 전통을 경험할 수 있는 곳",
+            "title": "Osaka Castle",
+            "angle": "일본의 역사와 문화",
+            "why": "오사카 성에서 일본의 역사와 문화를 배우며 마음을 넓히실 수 있습니다.",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,29 +107,14 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
-          },
-          {
-            "title": "텐노지구",
-            "angle": "오사카의 전통적인 분위기와 차",
-            "why": "텐노지구의 전통적인 분위기와 차를 경험할 수 있는 곳",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "자르딘 데 플란트",
-            "angle": "자르딘 데 플란트의 아름다운 정원과 식물",
-            "why": "자르딘 데 플란트의 아름다운 정원과 식물을 감상할 수 있는 곳",
+            "title": "Ménagerie du Jardin des plantes",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -163,41 +148,26 @@
         ],
         "Taipei": [
           {
-            "title": "지우펀",
-            "angle": "지우펀의 전통적인 차와 아름다운 풍경",
-            "why": "지우펀의 전통적인 차와 아름다운 풍경을 경험할 수 있는 곳",
+            "title": "Fushan Botanical Garden",
+            "angle": "자연의 아름다움",
+            "why": "푸산 식물원에서 다양한 식물을 감상하며 마음을 평온하게 할 수 있습니다.",
             "source_titles": [
-              "Jiufen"
+              "Fushan Botanical Garden"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Jiufen"
+              "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden"
             ],
-            "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
-            "lat": 25.107,
-            "lng": 121.843
-          },
-          {
-            "title": "다퉁구",
-            "angle": "다퉁구의 전통적인 분위기와 차",
-            "why": "다퉁구의 전통적인 분위기와 차를 경험할 수 있는 곳",
-            "source_titles": [
-              "Datong District, Taipei"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
-            ],
-            "official_url": "https://dtdo.gov.taipei/",
+            "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.05972222,
-            "lng": 121.51416667
+            "lat": 24.75969444,
+            "lng": 121.59030556
           }
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 요베라 정원",
-            "angle": "모센 코스타 이 요베라 정원의 아름다운 식물과 평화로운 분위기",
-            "why": "모센 코스타 이 요베라 정원의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 곳",
+            "title": "Mossèn Costa i Llobera Gardens",
+            "angle": "식물의 아름다움",
+            "why": "모센 코스타 이 요베라 정원에서 다양한 식물을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -213,24 +183,9 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "아시아 미술관",
-            "angle": "아시아 미술관의 아름다운 정원과 전통적인 미술",
-            "why": "아시아 미술관의 아름다운 정원과 전통적인 미술을 감상할 수 있는 곳",
-            "source_titles": [
-              "Museum of Asian Art"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
-            ],
-            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.5175,
-            "lng": 13.40277778
-          },
-          {
-            "title": "베를린 식물원",
-            "angle": "베를린 식물원의 아름다운 식물과 평화로운 분위기",
-            "why": "베를린 식물원의 아름다운 식물과 평화로운 분위기를 즐길 수 있는 곳",
+            "title": "Berlin Botanical Garden and Botanical Museum",
+            "angle": "자연의 아름다움",
+            "why": "베를린 식물원과 식물학 박물관에서 다양한 식물을 감상하며 마음을 평온하게 할 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -261,7 +216,7 @@
           {
             "title": "Ardmore distillery",
             "angle": "싱글 몰트 스코치 위스키를 생산하는 장소",
-            "why": "위스키 생산 공정을 경험할 수 있는 곳",
+            "why": "위스키 생산 과정을 경험할 수 있는 곳",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -298,8 +253,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "다양한 문화 예술 공연이 열리는 장소",
-            "why": "예술과 문화를 경험할 수 있는 곳",
+            "angle": "다목적 공원으로 다양한 문화 행사 개최",
+            "why": "공원에서 다양한 문화 행사와 전시회를 즐길 수 있는 곳",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -373,8 +328,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "다양한 국적의 사람들과 밤을 즐길 수 있는 장소",
-            "why": "이태원에서 밤을 즐기면 다양한 문화를 경험할 수 있습니다.",
+            "angle": "멀티 이스닉 인구로 유명한 이태원은 서울의 대표적인 나이트 라이프를 즐길 수 있는 곳입니다.",
+            "why": "이태원에서 다양한 음식과 문화를 경험하고 밤을 즐길 수 있습니다.",
             "source_titles": [
               "Itaewon"
             ],
@@ -390,8 +345,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급스러운 상업 및 주거 지역과 나이트 클럽",
-            "why": "로っぽنگی에서 밤을 즐기면 고급스러운 분위기를 느끼실 수 있습니다.",
+            "angle": "로펑기는 도쿄의 대표적인 나이트 라이프를 즐길 수 있는 곳입니다.",
+            "why": "로펑기에서 다양한 클럽과 바를 즐길 수 있습니다.",
             "source_titles": [
               "Roppongi"
             ],
@@ -408,8 +363,8 @@
         "London": [
           {
             "title": "Chinawhite (nightclub)",
-            "angle": "중앙 런던의 나이트 클럽",
-            "why": "차이나화이트에서 밤을 즐기면 런던의 나이트 라이프를 경험할 수 있습니다.",
+            "angle": "런던의 대표적인 나이트클럽 중 하나입니다.",
+            "why": "다양한 음악과 이벤트를 즐길 수 있습니다.",
             "source_titles": [
               "Chinawhite (nightclub)"
             ],
@@ -423,8 +378,8 @@
           },
           {
             "title": "Milk & Honey (bar)",
-            "angle": "СО호의 칵테일 바",
-            "why": "밀크 앤 허니에서 밤을 즐기면 다양한 칵테일을 맛보실 수 있습니다.",
+            "angle": "런던의 대표적인 바 중 하나입니다.",
+            "why": "고품질의 칵테일을 즐길 수 있습니다.",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -456,8 +411,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 콤플렉스 및 레드 라이트 지구",
-            "why": "나나 플라자에서 밤을 즐기면 방콕의 나이트 라이프를 경험할 수 있습니다.",
+            "angle": "방콕의 대표적인 나이트 라이프를 즐길 수 있는 곳입니다.",
+            "why": "다양한 바와 클럽을 즐길 수 있습니다.",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -522,9 +477,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "명동성당",
-            "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 중심에 위치한 역사적인 천주교 성당",
+            "title": "Myeong-dong Cathedral",
+            "angle": "서울의 대표적인 카톨릭 성당",
+            "why": "서울의 중심가에 위치한 역사적인 카톨릭 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -535,13 +490,28 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 37.5637,
             "lng": 126.984
+          },
+          {
+            "title": "Seoul Korea Temple",
+            "angle": "서울의 모름니 교회",
+            "why": "서울에 위치한 모름니 교회의 사원",
+            "source_titles": [
+              "Seoul Korea Temple"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Seoul_Korea_Temple"
+            ],
+            "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 37.558957,
+            "lng": 126.931301
           }
         ],
         "Tokyo": [
           {
-            "title": "센소지",
+            "title": "Sensō-ji",
             "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄에서 가장 오래된 불교 사원",
+            "why": "도쿄의 아사쿠사에 위치한 역사적인 불교 사원",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -556,9 +526,9 @@
         ],
         "Osaka": [
           {
-            "title": "시텐노지",
+            "title": "Shitennō-ji",
             "angle": "오사카의 대표적인 불교 사원",
-            "why": "일본에서 가장 오래된 불교 사원",
+            "why": "오사카의 덴노지구에 위치한 역사적인 불교 사원",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -573,9 +543,9 @@
         ],
         "London": [
           {
-            "title": "웨스트민스터 사원",
-            "angle": "런던의 대표적인 성공회 사원",
-            "why": "영국에서 가장 유명한 사원",
+            "title": "Westminster Abbey",
+            "angle": "런던의 대표적인 성공회 성당",
+            "why": "런던의 웨스트민스터에 위치한 역사적인 성공회 성당",
             "source_titles": [
               "Westminster"
             ],
@@ -590,9 +560,9 @@
         ],
         "Paris": [
           {
-            "title": "파리 대모스크",
+            "title": "Grand Mosque of Paris",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "프랑스에서 가장 큰 이슬람 사원",
+            "why": "파리의 5구에 위치한 역사적인 이슬람 사원",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -608,9 +578,9 @@
         "DaNang": [],
         "Bangkok": [
           {
-            "title": "와트 아룬",
+            "title": "Wat Arun",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "태국의 대표적인 불교 사원",
+            "why": "방콕의 타린 찬 지역에 위치한 역사적인 불교 사원",
             "source_titles": [
               "Wat Arun"
             ],
@@ -625,9 +595,9 @@
         ],
         "Singapore": [
           {
-            "title": "마스지드 알이슬라",
+            "title": "Masjid Al-Islah",
             "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르에서 가장 큰 이슬람 사원",
+            "why": "싱가포르의 퐁골 지역에 위치한 현대적인 이슬람 사원",
             "source_titles": [
               "Masjid Al-Islah"
             ],
@@ -672,9 +642,9 @@
         ],
         "Barcelona": [
           {
-            "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 가톨릭 성당",
-            "why": "세계에서 가장 유명한 가톨릭 성당",
+            "title": "Sagrada Família",
+            "angle": "바르셀로나의 대표적인 카톨릭 성당",
+            "why": "바르셀로나의 에식스암플 구에 위치한 역사적인 카톨릭 성당",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -689,9 +659,9 @@
         ],
         "Rome": [
           {
-            "title": "산 조반니 인 라테라노 대성당",
-            "angle": "로마의 대표적인 가톨릭 대성당",
-            "why": "로마 가톨릭교회의 중심",
+            "title": "Archbasilica of Saint John Lateran",
+            "angle": "로마의 대표적인 카톨릭 성당",
+            "why": "로마의 라테란에 위치한 역사적인 카톨릭 성당",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -719,21 +689,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 52.21666667,
             "lng": 13.44972222
-          },
-          {
-            "title": "Berlin",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Berlin is the capital and largest city of Germany. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The city is",
-            "source_titles": [
-              "Berlin"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Berlin"
-            ],
-            "official_url": "https://www.berlin.de/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.52,
-            "lng": 13.405
           },
           {
             "title": "Berlin Tempelhof Airport",
@@ -866,12 +821,12 @@
           "official_url": ""
         },
         {
-          "title": "Zhongzheng District",
-          "extract": "Zhongzheng District is a district in Taipei, Taiwan. Taipei Main Station is located in the district. It is home to most of the national government buildings of Taiwan.",
-          "url": "https://en.wikipedia.org/wiki/Zhongzheng_District",
-          "official_url": "https://zzdo.gov.taipei",
-          "lat": 25.03166667,
-          "lng": 121.51638889
+          "title": "Fushan Botanical Garden",
+          "extract": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
+          "url": "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden",
+          "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
+          "lat": 24.75969444,
+          "lng": 121.59030556
         }
       ],
       "Barcelona": [
@@ -1065,6 +1020,14 @@
           "extract": "Tourism in South Korea and its industry caters to both foreign and domestic tourists. The country has 16 World Heritage Sites, including Changdeokgung Palace, Namhansanseong and Hwaseong Fortress. Seoul is the principal tourist destination for visitors. Popular tourist destinations outside of the capital include the major coastal city of Busan, the Seorak-san national park, the historic city of Gyeongju and subtropical Jeju Island.",
           "url": "https://en.wikipedia.org/wiki/Tourism_in_South_Korea",
           "official_url": ""
+        },
+        {
+          "title": "Seoul Korea Temple",
+          "extract": "The Seoul Korea Temple is the 37th operating temple of the Church of Jesus Christ of Latter-day Saints. Located in Seoul, South Korea, the temple was announced on April 1, 1981, by church president Spencer W. Kimball. It was the first temple constructed on the Asian mainland and the fourth built in Asia overall. Ground was broken on May 9, 1983, under the direction of Marvin J. Ashton of the Quorum of the Twelve Apostles, and the temple was dedicated on December 14–15, 1985, by Gordon B. Hinckley in six sessions. During the public open house held in late 1985, more than 12,000 people toured the building.",
+          "url": "https://en.wikipedia.org/wiki/Seoul_Korea_Temple",
+          "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
+          "lat": 37.558957,
+          "lng": 126.931301
         }
       ],
       "Tokyo": [
@@ -1224,12 +1187,10 @@
           "lng": 2.17433
         },
         {
-          "title": "Girona",
-          "extract": "Girona, historically also known as Gerona, is the capital city of the Province of Girona in the autonomous community of Catalonia, Spain, at the confluence of the Ter, Onyar, Galligants, and Güell rivers. The city had an official population of 106,476 in 2024, but the population of the Girona–Salt urban area is estimated to be about 156,400 (2020). Girona is also capital of the comarca of the Gironès and the vegueria of Girona. Since much of the old quarter of this ancient city has been preserved, Girona is a popular tourist destination. The city is located 99 km (62 mi) northeast of Barcelona.",
-          "url": "https://en.wikipedia.org/wiki/Girona",
-          "official_url": "http://www.girona.cat/",
-          "lat": 41.98444444,
-          "lng": 2.82111111
+          "title": "Eulalia of Barcelona",
+          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
+          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
+          "official_url": ""
         },
         {
           "title": "Tibidabo Funicular",
@@ -1250,12 +1211,12 @@
           "lng": 12.50615556
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "title": "Pantheon, Rome",
+          "extract": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs. It is perhaps the most famous, and architecturally most influential, rotunda.",
+          "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
+          "official_url": "https://www.pantheonroma.com/",
+          "lat": 41.8986,
+          "lng": 12.4768
         }
       ],
       "Berlin": [
@@ -1266,14 +1227,6 @@
           "official_url": "https://www.zossen.de/",
           "lat": 52.21666667,
           "lng": 13.44972222
-        },
-        {
-          "title": "Berlin",
-          "extract": "Berlin is the capital and largest city of Germany. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The city is also one of the states of Germany, being the third-smallest state in the country by area. Berlin is surrounded by the state of Brandenburg, bordering Brandenburg's capital Potsdam to the southwest. The urban area of Berlin has a population of over 5 million, making it the most populous in Germany. The Berlin-Brandenburg capital region has around 6 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest metropolitan region by GDP in the Europ",
-          "url": "https://en.wikipedia.org/wiki/Berlin",
-          "official_url": "https://www.berlin.de/",
-          "lat": 52.52,
-          "lng": 13.405
         },
         {
           "title": "Berlin Tempelhof Airport",
