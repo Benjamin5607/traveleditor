@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-12 01:11",
+  "last_updated": "2026-08-13 01:12",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -31,8 +31,8 @@
         "Seoul": [
           {
             "title": "인사동",
-            "angle": "전통 차와 현대 미술이 어우러진 곳",
-            "why": "인사동의 전통 차와 현대 미술을 감상하며 마음을 진정할 수 있습니다.",
+            "angle": "전통 차와 현대적인 갤러리가 조화된 공간",
+            "why": "인사동의 전통적인 차와 현대적인 갤러리를 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Insa-dong"
             ],
@@ -47,7 +47,7 @@
           {
             "title": "어린이대공원",
             "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 진정할 수 있습니다.",
+            "why": "어린이대공원의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -63,8 +63,8 @@
         "Tokyo": [
           {
             "title": "고토 미술관",
-            "angle": "일본과 중국의 고대 미술을 감상하며 마음을 진정",
-            "why": "고토 미술관의 일본과 중국의 고대 미술을 감상하며 마음을 진정할 수 있습니다.",
+            "angle": "고토 미술관의 정물과 차",
+            "why": "고토 미술관의 아름다운 정물과 차를 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -78,8 +78,8 @@
           },
           {
             "title": "유메노시마 열대 식물 온실",
-            "angle": "아름다운 식물과 함께하는 평화로운 산책",
-            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 함께 마음을 진정할 수 있습니다.",
+            "angle": "열대 식물과 함께하는 평화로운 산책",
+            "why": "유메노시마 열대 식물 온실의 아름다운 식물과 산책로에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -94,9 +94,9 @@
         ],
         "Osaka": [
           {
-            "title": "오사카 성",
-            "angle": "일본의 역사와 문화를 감상하며 마음을 진정",
-            "why": "오사카 성의 일본의 역사와 문화를 감상하며 마음을 진정할 수 있습니다.",
+            "title": "Osaka Castle",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Osaka Castle  is a Japanese castle in Chūō-ku, Osaka, Japan. The castle is one of Japan's most famous landmarks and played a major role in the unification of Japan during the sixte",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,14 +107,44 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "Hakata Station",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
+            "source_titles": [
+              "Hakata Station"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Hakata_Station"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 33.589803,
+            "lng": 130.420681
+          },
+          {
+            "title": "Tennōji-ku, Osaka",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
             "title": "자르뎅 데 플란트",
-            "angle": "아름다운 식물과 함께하는 평화로운 산책",
-            "why": "자르뎅 데 플란트의 아름다운 식물과 함께 마음을 진정할 수 있습니다.",
+            "angle": "자르뎅 데 플란트의 아름다운 정원",
+            "why": "자르뎅 데 플란트의 아름다운 정원과 식물에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -130,9 +160,9 @@
         "DaNang": [],
         "Bangkok": [
           {
-            "title": "시 나콘 크웬 칸 공원 및 식물원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "시 나콘 크웬 칸 공원 및 식물원의 아름다운 정원과 산책로에서 마음을 진정할 수 있습니다.",
+            "title": "시 나콘 크루안 칸 공원 및 식물원",
+            "angle": "시 나콘 크루안 칸 공원의 아름다운 정원",
+            "why": "시 나콘 크루안 칸 공원의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Si Nakhon Khuean Khan Park and Botanical Garden"
             ],
@@ -165,8 +195,8 @@
         "Taipei": [
           {
             "title": "지우펀",
-            "angle": "전통적인 가옥과 차를 마시며 마음을 진정",
-            "why": "지우펀의 전통적인 가옥과 차를 마시며 마음을 진정할 수 있습니다.",
+            "angle": "지우펀의 전통적인 차와 아름다운 풍경",
+            "why": "지우펀의 전통적인 차와 아름다운 풍경을 감상하며 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Jiufen"
             ],
@@ -180,8 +210,8 @@
           },
           {
             "title": "푸산 식물원",
-            "angle": "아름다운 식물과 함께하는 평화로운 산책",
-            "why": "푸산 식물원의 아름다운 식물과 함께 마음을 진정할 수 있습니다.",
+            "angle": "푸산 식물원의 아름다운 정원",
+            "why": "푸산 식물원의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Fushan Botanical Garden"
             ],
@@ -196,9 +226,9 @@
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로베라 정원",
-            "angle": "아름다운 식물과 함께하는 평화로운 산책",
-            "why": "모센 코스타 이 로베라 정원의 아름다운 식물과 함께 마음을 진정할 수 있습니다.",
+            "title": "모센 코스타 이 요베라 가든",
+            "angle": "모센 코스타 이 요베라 가든의 아름다운 정원",
+            "why": "모센 코스타 이 요베라 가든의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -215,8 +245,8 @@
         "Berlin": [
           {
             "title": "베를린 식물원",
-            "angle": "아름다운 식물과 함께하는 평화로운 산책",
-            "why": "베를린 식물원의 아름다운 식물과 함께 마음을 진정할 수 있습니다.",
+            "angle": "베를린 식물원의 아름다운 정원",
+            "why": "베를린 식물원의 아름다운 정원과 산책로에서 마음을 진정시킬 수 있습니다.",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -247,7 +277,7 @@
           {
             "title": "Ardmore distillery",
             "angle": "싱글 몰트 스코치 위스키 생산지",
-            "why": "일본 오사카에 본사를 둔 선토리 글로벌 스피리츠의 위스키 생산지",
+            "why": "일본 오사카에 본사를 둔 선터리 홀딩스의 자회사 선터리 글로벌 스피리츠가 운영하는 스코틀랜드의 싱글 몰트 스코치 위스키 증류소",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -285,7 +315,7 @@
           {
             "title": "Huashan 1914 Creative Park",
             "angle": "다목적 공원",
-            "why": "타이페이의 문화 예술 공간",
+            "why": "대만 타이페이의 중정 구에 위치한 다목적 공원",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -359,8 +389,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "다양한 국적의 사람들과 밤을 즐길 수 있는 곳",
-            "why": "이태원은 서울의 대표적인 밤문화 지역입니다.",
+            "angle": "다양한 국적의 사람들과 밤을 즐길 수 있는 이태원",
+            "why": "이태원에서 밤을 즐기며 다양한 문화를 경험해 보세요",
             "source_titles": [
               "Itaewon"
             ],
@@ -376,8 +406,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급스러운 상업 및 주거 지역과 나이트클럽",
-            "why": "로пп롱기는 도쿄의 대표적인 밤문화 지역입니다.",
+            "angle": "로펑기에서 즐기는 밤의 에너지",
+            "why": "로펑기에서 밤을 즐기며 다양한 경험을 해보세요",
             "source_titles": [
               "Roppongi"
             ],
@@ -394,8 +424,8 @@
         "London": [
           {
             "title": "Chinawhite (nightclub)",
-            "angle": "중국 문화와 현대적인 나이트클럽",
-            "why": "차이너화이트는 런던의 유명한 나이트클럽입니다.",
+            "angle": "중국 화이트 나이트클럽에서 밤을 즐기다",
+            "why": "중국 화이트 나이트클럽에서 밤을 즐기며 런던의 나이트 라이프를 경험해 보세요",
             "source_titles": [
               "Chinawhite (nightclub)"
             ],
@@ -409,8 +439,8 @@
           },
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급스러운 칵테일 바",
-            "why": "밀크 앤 허니는 런던의 유명한 칵테일 바입니다.",
+            "angle": "밀크 앤 허니 바에서 즐기는 밤",
+            "why": "밀크 앤 허니 바에서 밤을 즐기며 런던의 나이트 라이프를 경험해 보세요",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -442,8 +472,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "세계 최대의 어덜트 엔터테인먼트 콤플렉스",
-            "why": "나나 플라자는 방콕의 대표적인 밤문화 지역입니다.",
+            "angle": "나나 플라자에서 즐기는 밤의 에너지",
+            "why": "나나 플라자에서 밤을 즐기며 방콕의 나이트 라이프를 경험해 보세요",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -508,9 +538,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "Myeong-dong Cathedral",
-            "angle": "서울의 대표적인 카톨릭 성당",
-            "why": "서울의 중심가에 위치한 역사적인 카톨릭 성당",
+            "title": "명동성당",
+            "angle": "서울의 대표적인 천주교 성당",
+            "why": "서울의 중심가에 위치한 역사적인 천주교 성당",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -523,9 +553,9 @@
             "lng": 126.984
           },
           {
-            "title": "Seoul Korea Temple",
-            "angle": "서울의 모르몬 교회 성전",
-            "why": "서울에 위치한 모르몬 교회 성전",
+            "title": "서울코리아템플",
+            "angle": "한국에서 최초로 세워진 몰몬교 성전",
+            "why": "몰몬교의 역사와 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Seoul Korea Temple"
             ],
@@ -540,9 +570,9 @@
         ],
         "Tokyo": [
           {
-            "title": "Sensō-ji",
+            "title": "센소지",
             "angle": "도쿄의 대표적인 불교 사원",
-            "why": "도쿄의 아사쿠사에 위치한 역사적인 불교 사원",
+            "why": "도쿄에서 가장 오래된 불교 사원",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -557,26 +587,26 @@
         ],
         "Osaka": [
           {
-            "title": "Shitennō-ji",
-            "angle": "오사카의 대표적인 불교 사원",
-            "why": "오사카의 덴노지 구에 위치한 역사적인 불교 사원",
+            "title": "코야산",
+            "angle": "일본의 대표적인 불교 사원",
+            "why": "일본의 불교 문화를 경험할 수 있는 곳",
             "source_titles": [
-              "Tennōji-ku, Osaka"
+              "Mount Kōya"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+              "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
             ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 34.2125,
+            "lng": 135.58638889
           }
         ],
         "London": [
           {
-            "title": "Westminster Abbey",
-            "angle": "런던의 대표적인 성공회 성당",
-            "why": "런던의 웨스트민스터에 위치한 역사적인 성공회 성당",
+            "title": "웨스트민스터 사원",
+            "angle": "영국의 대표적인 성공회 사원",
+            "why": "영국의 역사와 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Westminster"
             ],
@@ -591,9 +621,9 @@
         ],
         "Paris": [
           {
-            "title": "Grand Mosque of Paris",
+            "title": "파리 대모스크",
             "angle": "파리의 대표적인 이슬람 사원",
-            "why": "파리의 5번가에 위치한 역사적인 이슬람 사원",
+            "why": "파리의 이슬람 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -604,14 +634,29 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 48.84194444,
             "lng": 2.355
+          },
+          {
+            "title": "노트르담 대성당",
+            "angle": "파리의 대표적인 천주교 성당",
+            "why": "파리의 역사와 문화를 경험할 수 있는 곳",
+            "source_titles": [
+              "Notre-Dame de Paris"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+            ],
+            "official_url": "https://www.notredamedeparis.fr/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.85305556,
+            "lng": 2.35
           }
         ],
         "DaNang": [],
         "Bangkok": [
           {
-            "title": "Wat Arun",
+            "title": "와트 아룬",
             "angle": "방콕의 대표적인 불교 사원",
-            "why": "방콕의 타린 차나에 위치한 역사적인 불교 사원",
+            "why": "방콕의 불교 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Wat Arun"
             ],
@@ -622,13 +667,28 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 13.74361111,
             "lng": 100.48888889
+          },
+          {
+            "title": "아수ンプション 대성당",
+            "angle": "방콕의 대표적인 천주교 성당",
+            "why": "방콕의 역사와 문화를 경험할 수 있는 곳",
+            "source_titles": [
+              "Assumption Cathedral, Bangkok"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok"
+            ],
+            "official_url": "",
+            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "lat": 13.723059,
+            "lng": 100.514924
           }
         ],
         "Singapore": [
           {
-            "title": "Masjid Al-Islah",
+            "title": "마스지드 알이슬라",
             "angle": "싱가포르의 대표적인 이슬람 사원",
-            "why": "싱가포르의 퐁골에 위치한 현대적인 이슬람 사원",
+            "why": "싱가포르의 이슬람 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Masjid Al-Islah"
             ],
@@ -639,28 +699,45 @@
             "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
             "lat": 1.4013989,
             "lng": 103.9015299
+          },
+          {
+            "title": "아르메니아 교회",
+            "angle": "싱가포르의 대표적인 기독교 교회",
+            "why": "싱가포르의 기독교 문화를 경험할 수 있는 곳",
+            "source_titles": [
+              "Armenian Church, Singapore"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
+            ],
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
           }
         ],
         "Taipei": [
           {
-            "title": "Longshan Temple",
+            "title": "베이とう 지구",
             "angle": "타이페이의 대표적인 불교 사원",
-            "why": "타이페이의 완화 구에 위치한 역사적인 불교 사원",
+            "why": "타이페이의 불교 문화를 경험할 수 있는 곳",
             "source_titles": [
-              "Taiwan High Speed Rail"
+              "Beitou District"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
+              "https://en.wikipedia.org/wiki/Beitou_District"
             ],
-            "official_url": "https://www.thsrc.com.tw/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+            "official_url": "https://btdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.1167,
+            "lng": 121.5
           }
         ],
         "Barcelona": [
           {
-            "title": "Sagrada Família",
-            "angle": "바르셀로나의 대표적인 카톨릭 성당",
-            "why": "바르셀로나의 에이샘플 구에 위치한 역사적인 카톨릭 성당",
+            "title": "사그라다 파밀리아",
+            "angle": "바르셀로나의 대표적인 천주교 성당",
+            "why": "바르셀로나의 역사와 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -675,9 +752,9 @@
         ],
         "Rome": [
           {
-            "title": "Archbasilica of Saint John Lateran",
-            "angle": "로마의 대표적인 카톨릭 성당",
-            "why": "로마의 몬티 구에 위치한 역사적인 카톨릭 성당",
+            "title": "산 조반니 인 라테라노 대성당",
+            "angle": "로마의 대표적인 천주교 성당",
+            "why": "로마의 역사와 문화를 경험할 수 있는 곳",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -688,23 +765,38 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.88590556,
             "lng": 12.50615556
+          },
+          {
+            "title": "판테온",
+            "angle": "로마의 대표적인 고대 사원",
+            "why": "로마의 역사와 문화를 경험할 수 있는 곳",
+            "source_titles": [
+              "Pantheon, Rome"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
+            ],
+            "official_url": "https://www.pantheonroma.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.8986,
+            "lng": 12.4768
           }
         ],
         "Berlin": [
           {
-            "title": "Berlin Cathedral",
-            "angle": "베를린의 대표적인 개신교 대성당",
-            "why": "베를린의 미테 구에 위치한 역사적인 개신교 대성당",
+            "title": "베를린 템펠호프 공항",
+            "angle": "베를린의 대표적인 공항",
+            "why": "베를린의 역사와 문화를 경험할 수 있는 곳",
             "source_titles": [
-              "Zossen"
+              "Berlin Tempelhof Airport"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Zossen"
+              "https://en.wikipedia.org/wiki/Berlin_Tempelhof_Airport"
             ],
-            "official_url": "https://www.zossen.de/",
+            "official_url": "http://www.thf-berlin.de",
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.21666667,
-            "lng": 13.44972222
+            "lat": 52.47361111,
+            "lng": 13.40166667
           }
         ]
       },
@@ -1102,6 +1194,14 @@
           "lng": 2.355
         },
         {
+          "title": "Notre-Dame de Paris",
+          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
+          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
+          "official_url": "https://www.notredamedeparis.fr/",
+          "lat": 48.85305556,
+          "lng": 2.35
+        },
+        {
           "title": "Parc des Buttes Chaumont",
           "extract": "The Parc des Buttes Chaumont is a public park situated in northeastern Paris, France, in the 19th arrondissement. Occupying 24.7 hectares, it is the fifth-largest park in Paris, after the Bois de Vincennes, Bois de Boulogne, Parc de la Villette and Tuileries Garden.",
           "url": "https://en.wikipedia.org/wiki/Parc_des_Buttes_Chaumont",
@@ -1183,6 +1283,14 @@
           "official_url": "https://btdo.gov.taipei/",
           "lat": 25.1167,
           "lng": 121.5
+        },
+        {
+          "title": "Datong District, Taipei",
+          "extract": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard and the Sun Yat-sen Freeway. The southern part of this district is known as Twatutia, one of the first settlements in what is now Taipei and once the commercial center. Taipei's commercial center has since shifted southeast to Zhongzheng, Da'an and Xinyi, and Datong is far less important economically. Some of the last vestiges of Twatutia's commercial importance is preserved on Dihua Street. The old town of Daronpon is in the northern part of the district.",
+          "url": "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei",
+          "official_url": "https://dtdo.gov.taipei/",
+          "lat": 25.05972222,
+          "lng": 121.51416667
         }
       ],
       "Barcelona": [
