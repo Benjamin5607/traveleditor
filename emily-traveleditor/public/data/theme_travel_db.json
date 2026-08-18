@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-17 00:45",
+  "last_updated": "2026-08-18 00:45",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -30,9 +30,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "인사동",
-            "angle": "전통 차와 현대 미술이 조화된 공간",
-            "why": "인사동의 전통 차집과 현대 미술 갤러리를 탐방하며 마음을 진정시세요",
+            "title": "Insa-dong",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Insa-dong (Korean: 인사동) is a dong, or neighborhood, in Jongno District, Seoul, South Korea. Its main street is Insadong-gil, which is connected to a number of alleys that lead deep",
             "source_titles": [
               "Insa-dong"
             ],
@@ -40,14 +40,14 @@
               "https://en.wikipedia.org/wiki/Insa-dong"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 37.572972,
             "lng": 126.98618
           },
           {
-            "title": "어린이대공원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "어린이대공원의 아름다운 정원과 산책로를 따라 마음을 진정시세요",
+            "title": "Children's Grand Park, Seoul",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Children's Grand Park (Korean: 어린이대공원) or Seoul Children's Grand Park is a park complex in Gwangjin District, Seoul, South Korea. Facilities at Children's Grand Park include hills ",
             "source_titles": [
               "Children's Grand Park, Seoul"
             ],
@@ -62,9 +62,9 @@
         ],
         "Tokyo": [
           {
-            "title": "고토 미술관",
-            "angle": "일본과 중국의 고대 미술을 감상하며 마음을 진정시키기",
-            "why": "고토 미술관의 다양한 전시를 통해 일본과 중국의 문화를 이해하고 마음을 평안하게 하세요",
+            "title": "Gotoh Museum",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Gotoh Museum  is a private museum in the Kaminoge district of Setagaya on the southwest periphery of Tokyo, Japan. It was opened in 1960, displaying the private collection of K",
             "source_titles": [
               "Gotoh Museum"
             ],
@@ -77,9 +77,9 @@
             "lng": 139.635294
           },
           {
-            "title": "유메노시마 열대 식물 온실",
-            "angle": "아름다운 식물과 함께하는 평화로운 시간",
-            "why": "유메노시마 열대 식물 온실의 다양한 식물을 감상하며 마음을 진정시세요",
+            "title": "Yumenoshima Tropical Greenhouse Dome",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Yumenoshima Tropical Greenhouse Dome , also sometimes called the Yumenoshima Tropical Plant Dome, is a botanical garden located at 3-2, Yumenoshima, Kōtō, Tokyo, Japan. It is o",
             "source_titles": [
               "Yumenoshima Tropical Greenhouse Dome"
             ],
@@ -94,9 +94,9 @@
         ],
         "Osaka": [
           {
-            "title": "오사카 성",
-            "angle": "일본의 역사와 문화를 이해하며 마음을 평안하게 하기",
-            "why": "오사카 성의 역사와 문화를 배우고 마음을 진정시세요",
+            "title": "Osaka Castle",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Osaka Castle  is a Japanese castle in Chūō-ku, Osaka, Japan. The castle is one of Japan's most famous landmarks and played a major role in the unification of Japan during the sixte",
             "source_titles": [
               "Osaka Castle"
             ],
@@ -107,14 +107,44 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.68722222,
             "lng": 135.52583333
+          },
+          {
+            "title": "Hakata Station",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
+            "source_titles": [
+              "Hakata Station"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Hakata_Station"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 33.589803,
+            "lng": 130.420681
+          },
+          {
+            "title": "Tennōji-ku, Osaka",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
         "Paris": [
           {
-            "title": "자르딘 데 플란트 동물원",
-            "angle": "자연과 동물과 함께하는 평화로운 시간",
-            "why": "자르딘 데 플란트 동물원의 아름다운 정원과 동물을 감상하며 마음을 진정시세요",
+            "title": "Ménagerie du Jardin des plantes",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
             "source_titles": [
               "Ménagerie du Jardin des plantes"
             ],
@@ -130,9 +160,9 @@
         "DaNang": [],
         "Bangkok": [
           {
-            "title": "시 나콘 쿠안 칸 공원 및 식물원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "시 나콘 쿠안 칸 공원 및 식물원의 아름다운 정원과 산책로를 따라 마음을 진정시세요",
+            "title": "Si Nakhon Khuean Khan Park and Botanical Garden",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Si Nakhon Khuean Khan Park and Botanical Garden is a 148 rai (23.7 ha) public park and botanical garden in Bang Kachao, Samut Prakan Province, Thailand. The park has a 2.2 kilometr",
             "source_titles": [
               "Si Nakhon Khuean Khan Park and Botanical Garden"
             ],
@@ -140,7 +170,7 @@
               "https://en.wikipedia.org/wiki/Si_Nakhon_Khuean_Khan_Park_and_Botanical_Garden"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 13.6975,
             "lng": 100.565
           }
@@ -164,9 +194,9 @@
         ],
         "Taipei": [
           {
-            "title": "지우펜",
-            "angle": "전통적인 차와 함께하는 평화로운 시간",
-            "why": "지우펜의 전통적인 차집과 아름다운 풍경을 감상하며 마음을 진정시세요",
+            "title": "Jiufen",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Jiufen, also spelled Jioufen or Chiufen, is a historic former gold mining town in Ruifang District, New Taipei City, Taiwan. It is notable for Jiufen Old Street, a narrow, winding ",
             "source_titles": [
               "Jiufen"
             ],
@@ -174,31 +204,44 @@
               "https://en.wikipedia.org/wiki/Jiufen"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 25.107,
             "lng": 121.843
           },
           {
-            "title": "푸산 식물원",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "푸산 식물원의 아름다운 정원과 산책로를 따라 마음을 진정시세요",
+            "title": "Datong District, Taipei",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
             "source_titles": [
-              "Fushan Botanical Garden"
+              "Datong District, Taipei"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden"
+              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
             ],
-            "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
+            "official_url": "https://dtdo.gov.taipei/",
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 24.75969444,
-            "lng": 121.59030556
+            "lat": 25.05972222,
+            "lng": 121.51416667
+          },
+          {
+            "title": "Wanda–Zhonghe–Shulin line",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be comp",
+            "source_titles": [
+              "Wanda–Zhonghe–Shulin line"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Barcelona": [
           {
-            "title": "모센 코스타 이 로브레라 정원",
-            "angle": "아름다운 식물과 함께하는 평화로운 시간",
-            "why": "모센 코스타 이 로브레라 정원의 다양한 식물을 감상하며 마음을 진정시세요",
+            "title": "Mossèn Costa i Llobera Gardens",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Mossèn Costa i Llobera Gardens is a botanical garden in the center of Barcelona, Catalonia, Spain. It is situated at the foot of Montjuïc facing the sea.",
             "source_titles": [
               "Mossèn Costa i Llobera Gardens"
             ],
@@ -206,7 +249,7 @@
               "https://en.wikipedia.org/wiki/Moss%C3%A8n_Costa_i_Llobera_Gardens"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 41.3689,
             "lng": 2.1723
           }
@@ -214,9 +257,24 @@
         "Rome": [],
         "Berlin": [
           {
-            "title": "베를린 식물원 및 식물학 박물관",
-            "angle": "자연과 함께하는 평화로운 산책",
-            "why": "베를린 식물원 및 식물학 박물관의 아름다운 정원과 산책로를 따라 마음을 진정시세요",
+            "title": "Museum of Asian Art",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Museum of Asian Art has been a part of the Humboldt Forum in Berlin since 2020. Before its relocation, the museum was sited in the neighborhood of the borough of Steglitz-Zehle",
+            "source_titles": [
+              "Museum of Asian Art"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Museum_of_Asian_Art"
+            ],
+            "official_url": "https://www.smb.museum/museen-einrichtungen/museum-fuer-asiatische-kunst",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.5175,
+            "lng": 13.40277778
+          },
+          {
+            "title": "Berlin Botanical Garden and Botanical Museum",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Berlin Botanic Garden and Botanical Museum is a botanical garden in the Lichterfelde locality of the borough of Steglitz-Zehlendorf, Berlin, Germany. Constructed between 1897 a",
             "source_titles": [
               "Berlin Botanical Garden and Botanical Museum"
             ],
@@ -230,7 +288,7 @@
           }
         ]
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
     },
     "인생이 무료": {
       "theme": "인생이 무료",
@@ -246,8 +304,8 @@
         "Osaka": [
           {
             "title": "Ardmore distillery",
-            "angle": "싱글 몰트 스코치 위스키를 생산하는 장소",
-            "why": "위스키 생산 과정을 경험할 수 있는 곳",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Ardmore distillery is a single malt Scotch whisky distillery, located in the village of Kennethmont, Scotland. The distillery is owned and operated by Suntory Global Spirits, a sub",
             "source_titles": [
               "Ardmore distillery"
             ],
@@ -284,8 +342,8 @@
         "Taipei": [
           {
             "title": "Huashan 1914 Creative Park",
-            "angle": "다목적 공원으로 다양한 문화 행사를 개최",
-            "why": "공원에서 다양한 문화 행사와 전시를 즐길 수 있는 곳",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "The Huashan 1914 Creative Park is a multi-purpose park in Zhongzheng District, Taipei, Taiwan.",
             "source_titles": [
               "Huashan 1914 Creative Park"
             ],
@@ -345,7 +403,7 @@
         ],
         "Berlin": []
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
     },
     "오늘은 욜로": {
       "theme": "오늘은 욜로",
@@ -359,8 +417,8 @@
         "Seoul": [
           {
             "title": "Itaewon",
-            "angle": "야간생활과 다문화 인구로 유명한 지역",
-            "why": "서울의 대표적인 나이트라이프를 즐길 수 있는 곳",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Itaewon is a commercial area within the Itaewon-dong neighborhood of Yongsan District in Seoul, South Korea, known for its nightlife and multi-ethnic population.",
             "source_titles": [
               "Itaewon"
             ],
@@ -368,7 +426,7 @@
               "https://en.wikipedia.org/wiki/Itaewon"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 37.53333333,
             "lng": 126.98333333
           }
@@ -376,8 +434,8 @@
         "Tokyo": [
           {
             "title": "Roppongi",
-            "angle": "고급 상업 및 주거 단지와 나이트클럽으로 유명한 지역",
-            "why": "도쿄의 대표적인 나이트라이프를 즐길 수 있는 곳",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Roppongi is a district of Minato, Tokyo, Japan, famous for the Roppongi Hills development area, an upscale commercial and residential complex, and night club scene. Several foreign",
             "source_titles": [
               "Roppongi"
             ],
@@ -385,7 +443,7 @@
               "https://en.wikipedia.org/wiki/Roppongi"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 35.66,
             "lng": 139.73
           }
@@ -394,8 +452,8 @@
         "London": [
           {
             "title": "Chinawhite (nightclub)",
-            "angle": "중국 문화를 테마로 한 나이트클럽",
-            "why": "런던의 대표적인 나이트라이프를 즐길 수 있는 곳",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Chinawhite was a nightclub in central London. The original club was located in Air Street, between Piccadilly Circus and Soho, but the club closed in December 2008 due to the build",
             "source_titles": [
               "Chinawhite (nightclub)"
             ],
@@ -409,8 +467,8 @@
           },
           {
             "title": "Milk & Honey (bar)",
-            "angle": "고급 칵테일 바",
-            "why": "런던의 대표적인 바를 즐길 수 있는 곳",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Milk & Honey was a cocktail bar originally founded in New York City on 31 December 1999, with another location in Soho, London, founded by Sasha Petraske. The New York location was",
             "source_titles": [
               "Milk & Honey (bar)"
             ],
@@ -442,8 +500,8 @@
         "Bangkok": [
           {
             "title": "Nana Plaza",
-            "angle": "엔터테인먼트 복합 단지 및 성인 엔터테인먼트 지역",
-            "why": "방콕의 대표적인 나이트라이프를 즐길 수 있는 곳",
+            "angle": "클럽, 스픽이지 바, 특이한 콘셉트 바처럼 밤의 에너지가 강한 장소",
+            "why": "Nana Plaza is an entertainment complex and red-light district in Bangkok, Thailand. Originally built as a shopping center, Nana Plaza occupies a three-story commercial building in ",
             "source_titles": [
               "Nana Plaza"
             ],
@@ -494,7 +552,7 @@
           }
         ]
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
     },
     "신앙": {
       "theme": "신앙",
@@ -508,9 +566,9 @@
       "cities": {
         "Seoul": [
           {
-            "title": "명동 성당",
-            "angle": "서울의 대표적인 천주교 성당",
-            "why": "서울의 중심가에 위치한 역사적인 천주교 성당",
+            "title": "Myeong-dong",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Myeong-dong is a dong (neighborhood) in Jung District, Seoul, South Korea. It is between Chungmu-ro, Eulji-ro, and Namdaemun-ro.\nMyeongdong is known for being one of Seoul's main s",
             "source_titles": [
               "Myeong-dong"
             ],
@@ -523,9 +581,22 @@
             "lng": 126.984
           },
           {
-            "title": "서울 코리아 寺",
-            "angle": "서울의 모로몬교 寺",
-            "why": "서울에 위치한 모로몬교의 寺",
+            "title": "Tourism in South Korea",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Tourism in South Korea and its industry caters to both foreign and domestic tourists. The country has 16 World Heritage Sites, including Changdeokgung Palace, Namhansanseong and Hw",
+            "source_titles": [
+              "Tourism in South Korea"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tourism_in_South_Korea"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Seoul Korea Temple",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Seoul Korea Temple is the 37th operating temple of the Church of Jesus Christ of Latter-day Saints. Located in Seoul, South Korea, the temple was announced on April 1, 1981, by",
             "source_titles": [
               "Seoul Korea Temple"
             ],
@@ -540,9 +611,9 @@
         ],
         "Tokyo": [
           {
-            "title": "센소지",
-            "angle": "도쿄의 대표적인 불교 寺",
-            "why": "도쿄의 아사쿠사에 위치한 역사적인 불교 寺",
+            "title": "Sensō-ji",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Sensō-ji , is an ancient Buddhist temple in Asakusa, Tokyo, Japan. It is Tokyo's oldest-established temple, and one of its most significant. It is dedicated to Kannon, the bodhisat",
             "source_titles": [
               "Sensō-ji"
             ],
@@ -553,13 +624,43 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.71472222,
             "lng": 139.79675
+          },
+          {
+            "title": "Asakusa",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Asakusa  is a district in Taitō, Tokyo, Japan. It is known for Sensō-ji, a Buddhist temple dedicated to the bodhisattva Kannon. There are several other temples in Asakusa, as well ",
+            "source_titles": [
+              "Asakusa"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Asakusa"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 35.71444444,
+            "lng": 139.79666667
           }
         ],
         "Osaka": [
           {
-            "title": "코야산",
-            "angle": "오사카 근교의 불교 유적지",
-            "why": "오사카 근교에 위치한 역사적인 불교 유적지",
+            "title": "Tennōji-ku, Osaka",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
+          },
+          {
+            "title": "Mount Kōya",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, ",
             "source_titles": [
               "Mount Kōya"
             ],
@@ -567,16 +668,44 @@
               "https://en.wikipedia.org/wiki/Mount_K%C5%8Dya"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 34.2125,
             "lng": 135.58638889
+          },
+          {
+            "title": "Kōdai-in",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Kōdai-in (高台院), formerly known as Nene (ねね), One (おね), Nei (ねい), was an aristocrat and Buddhist nun, founder of the temple Kōdai-ji in Kyoto, Japan. She was formerly the principal ",
+            "source_titles": [
+              "Kōdai-in"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/K%C5%8Ddai-in"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "London": [
           {
-            "title": "세인트 폴 대성당",
-            "angle": "런던의 대표적인 성당",
-            "why": "런던의 중심가에 위치한 역사적인 성당",
+            "title": "Westminster",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Westminster is the main settlement of the City of Westminster in Central London, England. It extends from the River Thames to Oxford Street and has many famous landmarks, including",
+            "source_titles": [
+              "Westminster"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Westminster"
+            ],
+            "official_url": "http://www.westminster.gov.uk/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 51.49472222,
+            "lng": -0.13527778
+          },
+          {
+            "title": "St Paul's Cathedral",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "St Paul's Cathedral, formally the Cathedral Church of St Paul in London, is an Anglican cathedral in London, England, the seat of the Bishop of London. The cathedral serves as the ",
             "source_titles": [
               "St Paul's Cathedral"
             ],
@@ -591,9 +720,9 @@
         ],
         "Paris": [
           {
-            "title": "파리 대모스크",
-            "angle": "파리의 대표적인 모스크",
-            "why": "파리에 위치한 역사적인 모스크",
+            "title": "Grand Mosque of Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Grand Mosque of Paris, also known as the Great Mosque of Paris or simply the Paris Mosque, located in the 5th arrondissement of Paris, is one of the largest mosques in France. ",
             "source_titles": [
               "Grand Mosque of Paris"
             ],
@@ -604,14 +733,59 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 48.84194444,
             "lng": 2.355
+          },
+          {
+            "title": "Notre-Dame de Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral",
+            "source_titles": [
+              "Notre-Dame de Paris"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+            ],
+            "official_url": "https://www.notredamedeparis.fr/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.85305556,
+            "lng": 2.35
+          },
+          {
+            "title": "Parc des Buttes Chaumont",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Parc des Buttes Chaumont is a public park situated in northeastern Paris, France, in the 19th arrondissement. Occupying 24.7 hectares, it is the fifth-largest park in Paris, af",
+            "source_titles": [
+              "Parc des Buttes Chaumont"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Parc_des_Buttes_Chaumont"
+            ],
+            "official_url": "https://www.paris.fr/lieux/parc-des-buttes-chaumont-1757",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.88027778,
+            "lng": 2.38277778
           }
         ],
         "DaNang": [],
         "Bangkok": [
           {
-            "title": "와트 아룬",
-            "angle": "방콕의 대표적인 불교 寺",
-            "why": "방콕의 차오 프라야 강변에 위치한 역사적인 불교 寺",
+            "title": "Khaosan Road",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in",
+            "source_titles": [
+              "Khaosan Road"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Khaosan_Road"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 13.75888889,
+            "lng": 100.49722222
+          },
+          {
+            "title": "Wat Arun",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Wat Arun Ratchawararam Ratchawaramahawihan or Wat Arun is a Buddhist temple (wat) in the Bangkok Yai district of Bangkok, Thailand. It is situated in Thonburi on the west bank of t",
             "source_titles": [
               "Wat Arun"
             ],
@@ -622,13 +796,28 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 13.74361111,
             "lng": 100.48888889
+          },
+          {
+            "title": "Wat Champa",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+            "source_titles": [
+              "Wat Champa"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Wat_Champa"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 13.775,
+            "lng": 100.43416667
           }
         ],
         "Singapore": [
           {
-            "title": "마스지드 알이슬라",
-            "angle": "싱가포르의 대표적인 모스크",
-            "why": "싱가포르의 퐁골에 위치한 모스크",
+            "title": "Masjid Al-Islah",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Masjid Al-Islah is a mosque located in Punggol within the North-East Region, Singapore. Built in 2015, it is the only mosque situated in the Punggol neighbourhood.",
             "source_titles": [
               "Masjid Al-Islah"
             ],
@@ -636,16 +825,72 @@
               "https://en.wikipedia.org/wiki/Masjid_Al-Islah"
             ],
             "official_url": "",
-            "reservation_hint": "공식 예약 링크가 확인되지 않아 출처 링크를 먼저 확인하세요.",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 1.4013989,
             "lng": 103.9015299
+          },
+          {
+            "title": "Armenian Church, Singapore",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in t",
+            "source_titles": [
+              "Armenian Church, Singapore"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
+            ],
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
+          },
+          {
+            "title": "Tony Dumper",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican pries",
+            "source_titles": [
+              "Tony Dumper"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tony_Dumper"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Taipei": [
           {
-            "title": "대동 지구",
-            "angle": "타이페이의 역사적인 지구",
-            "why": "타이페이의 대동 지구에 위치한 역사적인 장소",
+            "title": "Taiwan High Speed Rail",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, fro",
+            "source_titles": [
+              "Taiwan High Speed Rail"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
+            ],
+            "official_url": "https://www.thsrc.com.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+          },
+          {
+            "title": "Beitou District",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
+            "source_titles": [
+              "Beitou District"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Beitou_District"
+            ],
+            "official_url": "https://btdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.1167,
+            "lng": 121.5
+          },
+          {
+            "title": "Datong District, Taipei",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
             "source_titles": [
               "Datong District, Taipei"
             ],
@@ -660,9 +905,9 @@
         ],
         "Barcelona": [
           {
-            "title": "사그라다 파밀리아",
-            "angle": "바르셀로나의 대표적인 성당",
-            "why": "바르셀로나의 중심가에 위치한 역사적인 성당",
+            "title": "Sagrada Família",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Desig",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -673,13 +918,41 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.40369,
             "lng": 2.17433
+          },
+          {
+            "title": "Eulalia of Barcelona",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
+            "source_titles": [
+              "Eulalia of Barcelona"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Tibidabo Funicular",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with",
+            "source_titles": [
+              "Tibidabo Funicular"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tibidabo_Funicular"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 41.41644444,
+            "lng": 2.13108333
           }
         ],
         "Rome": [
           {
-            "title": "라테란 대성당",
-            "angle": "로마의 대표적인 성당",
-            "why": "로마의 중심가에 위치한 역사적인 성당",
+            "title": "Archbasilica of Saint John Lateran",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. I",
             "source_titles": [
               "Archbasilica of Saint John Lateran"
             ],
@@ -690,13 +963,58 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.88590556,
             "lng": 12.50615556
+          },
+          {
+            "title": "Pantheon, Rome",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called th",
+            "source_titles": [
+              "Pantheon, Rome"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
+            ],
+            "official_url": "https://www.pantheonroma.com/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.8986,
+            "lng": 12.4768
+          },
+          {
+            "title": "Via Veneto",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most famous, elegant, and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Vene",
+            "source_titles": [
+              "Via Veneto"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Via_Veneto"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 41.9061,
+            "lng": 12.4897
           }
         ],
         "Berlin": [
           {
-            "title": "베를린 템펠호프 공항",
-            "angle": "베를린의 역사적인 공항",
-            "why": "베를린의 중심가에 위치한 역사적인 공항",
+            "title": "Zossen",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several small",
+            "source_titles": [
+              "Zossen"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Zossen"
+            ],
+            "official_url": "https://www.zossen.de/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.21666667,
+            "lng": 13.44972222
+          },
+          {
+            "title": "Berlin Tempelhof Airport",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Berlin Tempelhof Airport was one of the first airports in Berlin, Germany. Situated in the south-central Berlin borough of Tempelhof-Schöneberg, the airport ceased operating in 200",
             "source_titles": [
               "Berlin Tempelhof Airport"
             ],
@@ -710,7 +1028,7 @@
           }
         ]
       },
-      "generated_by": "groq"
+      "generated_by": "wikipedia-fallback"
     }
   },
   "raw_sources": {
@@ -1253,12 +1571,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "title": "Via Veneto",
+          "extract": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most famous, elegant, and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Veneto (1918), a decisive Italian victory of World War I. Federico Fellini's 1960 film La Dolce Vita was mostly centered on the Via Veneto area.",
+          "url": "https://en.wikipedia.org/wiki/Via_Veneto",
           "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "lat": 41.9061,
+          "lng": 12.4897
         }
       ],
       "Berlin": [
