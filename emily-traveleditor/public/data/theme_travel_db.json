@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-20 00:44",
+  "last_updated": "2026-08-21 00:47",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -1476,6 +1476,12 @@
           "title": "Tony Dumper",
           "extract": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican priest in Malaysia and Singapore from 1949 until 1970, becoming Dean of St Andrews Cathedral, Singapore in 1964.",
           "url": "https://en.wikipedia.org/wiki/Tony_Dumper",
+          "official_url": ""
+        },
+        {
+          "title": "The Church of Jesus Christ of Latter-day Saints in Singapore",
+          "extract": "The Church of Jesus Christ of Latter-day Saints in Singapore refers to the Church of Jesus Christ of Latter-day Saints and its members in Singapore.",
+          "url": "https://en.wikipedia.org/wiki/The_Church_of_Jesus_Christ_of_Latter-day_Saints_in_Singapore",
           "official_url": ""
         }
       ],
