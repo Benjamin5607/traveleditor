@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-21 00:47",
+  "last_updated": "2026-08-22 00:44",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -860,81 +860,8 @@
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
-        "Taipei": [
-          {
-            "title": "Taiwan High Speed Rail",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, fro",
-            "source_titles": [
-              "Taiwan High Speed Rail"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
-            ],
-            "official_url": "https://www.thsrc.com.tw/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
-          },
-          {
-            "title": "Beitou District",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
-            "source_titles": [
-              "Beitou District"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Beitou_District"
-            ],
-            "official_url": "https://btdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.1167,
-            "lng": 121.5
-          }
-        ],
-        "Barcelona": [
-          {
-            "title": "Sagrada Família",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Desig",
-            "source_titles": [
-              "Sagrada Família"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
-            ],
-            "official_url": "https://sagradafamilia.org/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 41.40369,
-            "lng": 2.17433
-          },
-          {
-            "title": "Eulalia of Barcelona",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
-            "source_titles": [
-              "Eulalia of Barcelona"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
-            "title": "Tibidabo Funicular",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with",
-            "source_titles": [
-              "Tibidabo Funicular"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tibidabo_Funicular"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 41.41644444,
-            "lng": 2.13108333
-          }
-        ],
+        "Taipei": [],
+        "Barcelona": [],
         "Rome": [
           {
             "title": "Archbasilica of Saint John Lateran",
@@ -950,6 +877,19 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.88590556,
             "lng": 12.50615556
+          },
+          {
+            "title": "Timeline of Italian architecture",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman archite",
+            "source_titles": [
+              "Timeline of Italian architecture"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           },
           {
             "title": "Pantheon, Rome",
@@ -1485,46 +1425,8 @@
           "official_url": ""
         }
       ],
-      "Taipei": [
-        {
-          "title": "Taiwan High Speed Rail",
-          "extract": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, from Taipei in the north to the southern city of Kaohsiung. Its construction was managed by a private company, Taiwan High Speed Rail Corporation (THSRC), which also operates the line. The total cost of the project was NT$513.3 billion in 1998. The system's technology is based primarily on Japan's Shinkansen.",
-          "url": "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail",
-          "official_url": "https://www.thsrc.com.tw/"
-        },
-        {
-          "title": "Beitou District",
-          "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
-          "url": "https://en.wikipedia.org/wiki/Beitou_District",
-          "official_url": "https://btdo.gov.taipei/",
-          "lat": 25.1167,
-          "lng": 121.5
-        }
-      ],
-      "Barcelona": [
-        {
-          "title": "Sagrada Família",
-          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. Parts of the Sagrada Família were declared as a UNESCO World Heritage Site in 2005, under \"Works of Antoni Gaudí\".",
-          "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
-          "official_url": "https://sagradafamilia.org/",
-          "lat": 41.40369,
-          "lng": 2.17433
-        },
-        {
-          "title": "Eulalia of Barcelona",
-          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
-          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
-          "official_url": ""
-        },
-        {
-          "title": "Tibidabo Funicular",
-          "extract": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with the summit of Tibidabo, where there is an amusement park and a church, the Temple Expiatori del Sagrat Cor.",
-          "url": "https://en.wikipedia.org/wiki/Tibidabo_Funicular",
-          "official_url": "",
-          "lat": 41.41644444,
-          "lng": 2.13108333
-        }
-      ],
+      "Taipei": [],
+      "Barcelona": [],
       "Rome": [
         {
           "title": "Archbasilica of Saint John Lateran",
@@ -1535,12 +1437,26 @@
           "lng": 12.50615556
         },
         {
+          "title": "Timeline of Italian architecture",
+          "extract": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman architecture to Romanesque, Gothic, Renaissance, Baroque, Rococo, Neoclassical, Art Nouveau, Fascist, and Italian modern and contemporary architecture.",
+          "url": "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture",
+          "official_url": ""
+        },
+        {
           "title": "Pantheon, Rome",
           "extract": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs. It is perhaps the most famous, and architecturally most influential, rotunda.",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Trevi Fountain",
+          "extract": "The Trevi Fountain is an 18th-century fountain in the Trevi district in Rome, Italy, designed by Italian architect Nicola Salvi and completed by Giuseppe Pannini in 1762. Standing 26.3 metres (86 ft) high and 49.15 metres (161.3 ft) wide, it is the largest Baroque fountain in the world and one of the most famous fountains in the world.",
+          "url": "https://en.wikipedia.org/wiki/Trevi_Fountain",
+          "official_url": "http://www.trevifountain.net/",
+          "lat": 41.90083333,
+          "lng": 12.48305556
         }
       ],
       "Berlin": [
