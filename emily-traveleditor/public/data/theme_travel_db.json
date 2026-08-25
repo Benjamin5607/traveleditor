@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-24 00:46",
+  "last_updated": "2026-08-25 00:50",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -980,6 +980,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.8986,
             "lng": 12.4768
+          },
+          {
+            "title": "Via Veneto",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most famous, elegant, and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Vene",
+            "source_titles": [
+              "Via Veneto"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Via_Veneto"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 41.9061,
+            "lng": 12.4897
           }
         ],
         "Berlin": [
@@ -1492,12 +1507,6 @@
           "extract": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican priest in Malaysia and Singapore from 1949 until 1970, becoming Dean of St Andrews Cathedral, Singapore in 1964.",
           "url": "https://en.wikipedia.org/wiki/Tony_Dumper",
           "official_url": ""
-        },
-        {
-          "title": "The Church of Jesus Christ of Latter-day Saints in Singapore",
-          "extract": "The Church of Jesus Christ of Latter-day Saints in Singapore refers to the Church of Jesus Christ of Latter-day Saints and its members in Singapore.",
-          "url": "https://en.wikipedia.org/wiki/The_Church_of_Jesus_Christ_of_Latter-day_Saints_in_Singapore",
-          "official_url": ""
         }
       ],
       "Taipei": [
@@ -1564,6 +1573,14 @@
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Via Veneto",
+          "extract": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most famous, elegant, and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Veneto (1918), a decisive Italian victory of World War I. Federico Fellini's 1960 film La Dolce Vita was mostly centered on the Via Veneto area.",
+          "url": "https://en.wikipedia.org/wiki/Via_Veneto",
+          "official_url": "",
+          "lat": 41.9061,
+          "lng": 12.4897
         }
       ],
       "Berlin": [
