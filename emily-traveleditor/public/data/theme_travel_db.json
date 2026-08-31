@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-30 02:38",
+  "last_updated": "2026-08-31 02:31",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -901,21 +901,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.1167,
             "lng": 121.5
-          },
-          {
-            "title": "Datong District, Taipei",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
-            "source_titles": [
-              "Datong District, Taipei"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
-            ],
-            "official_url": "https://dtdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.05972222,
-            "lng": 121.51416667
           }
         ],
         "Barcelona": [
@@ -993,6 +978,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.8986,
             "lng": 12.4768
+          },
+          {
+            "title": "Parco degli Acquedotti",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Parco degli Acquedotti is a public park to the southeast of Rome, Italy. It is part of the Appian Way Regional Park and is of approximately 240 ha.",
+            "source_titles": [
+              "Parco degli Acquedotti"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Parco_degli_Acquedotti"
+            ],
+            "official_url": "http://www.parcoappiaantica.it/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.847,
+            "lng": 12.562
           }
         ],
         "Berlin": [
@@ -1312,7 +1312,7 @@
       "Bangkok": [
         {
           "title": "Nana Plaza",
-          "extract": "Nana Plaza is an entertainment complex and red-light district in Bangkok, Thailand. Originally built as a shopping center, Nana Plaza occupies a three-story commercial building in the Khlong Toei District of Bangkok about 300 metres (330 yd) from the BTS Skytrain's Nana Station. It describes itself as the \"worlds largest adult playground\". Its name originates from the influential, property-holding Nana family, Lek Nana being the most prominent member.",
+          "extract": "Nana Plaza is an entertainment complex and red-light district in Bangkok, Thailand. Originally built as a shopping center, Nana Plaza occupies a three-story commercial building in the Khlong Toei District of Bangkok about 300 metres (330 yd) from the BTS Skytrain's Nana Station. It describes itself as the \"world's largest adult playground\". Its name originates from the influential, property-holding Nana family, Lek Nana being the most prominent member.",
           "url": "https://en.wikipedia.org/wiki/Nana_Plaza",
           "official_url": "http://nanaplazabkk.com/",
           "lat": 13.74136111,
@@ -1527,14 +1527,6 @@
           "official_url": "https://btdo.gov.taipei/",
           "lat": 25.1167,
           "lng": 121.5
-        },
-        {
-          "title": "Datong District, Taipei",
-          "extract": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard and the Sun Yat-sen Freeway. The southern part of this district is known as Twatutia, one of the first settlements in what is now Taipei and once the commercial center. Taipei's commercial center has since shifted southeast to Zhongzheng, Da'an and Xinyi, and Datong is far less important economically. Some of the last vestiges of Twatutia's commercial importance is preserved on Dihua Street. The old town of Daronpon is in the northern part of the district.",
-          "url": "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei",
-          "official_url": "https://dtdo.gov.taipei/",
-          "lat": 25.05972222,
-          "lng": 121.51416667
         }
       ],
       "Barcelona": [
@@ -1577,6 +1569,14 @@
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
+        },
+        {
+          "title": "Parco degli Acquedotti",
+          "extract": "The Parco degli Acquedotti is a public park to the southeast of Rome, Italy. It is part of the Appian Way Regional Park and is of approximately 240 ha.",
+          "url": "https://en.wikipedia.org/wiki/Parco_degli_Acquedotti",
+          "official_url": "http://www.parcoappiaantica.it/",
+          "lat": 41.847,
+          "lng": 12.562
         }
       ],
       "Berlin": [
