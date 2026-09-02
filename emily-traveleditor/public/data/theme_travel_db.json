@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-01 02:46",
+  "last_updated": "2026-09-02 02:08",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -124,21 +124,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Hakata Station",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
-            "source_titles": [
-              "Hakata Station"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Hakata_Station"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 33.589803,
-            "lng": 130.420681
-          },
-          {
             "title": "Tennōji-ku, Osaka",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
@@ -152,6 +137,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.65777778,
             "lng": 135.51944444
+          },
+          {
+            "title": "Hakata Station",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
+            "source_titles": [
+              "Hakata Station"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Hakata_Station"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 33.589803,
+            "lng": 130.420681
           }
         ],
         "London": [],
@@ -800,19 +800,19 @@
             "lng": 100.48888889
           },
           {
-            "title": "Wat Champa",
+            "title": "Assumption Cathedral, Bangkok",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+            "why": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Ar",
             "source_titles": [
-              "Wat Champa"
+              "Assumption Cathedral, Bangkok"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Wat_Champa"
+              "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok"
             ],
             "official_url": "",
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.775,
-            "lng": 100.43416667
+            "lat": 13.723059,
+            "lng": 100.514924
           }
         ],
         "Singapore": [
@@ -832,6 +832,21 @@
             "lng": 103.9015299
           },
           {
+            "title": "Masjid Abdul Aleem Siddique",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdu",
+            "source_titles": [
+              "Masjid Abdul Aleem Siddique"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 1.3131814,
+            "lng": 103.9126872
+          },
+          {
             "title": "Armenian Church, Singapore",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in t",
@@ -845,19 +860,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 1.29305556,
             "lng": 103.84930556
-          },
-          {
-            "title": "Tony Dumper",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican pries",
-            "source_titles": [
-              "Tony Dumper"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tony_Dumper"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Taipei": [
@@ -890,22 +892,35 @@
             "lng": 121.5
           },
           {
-            "title": "Datong District, Taipei",
+            "title": "Longshan Temple Underground Shopping Mall",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
+            "why": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected wi",
             "source_titles": [
-              "Datong District, Taipei"
+              "Longshan Temple Underground Shopping Mall"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
+              "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall"
             ],
-            "official_url": "https://dtdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.05972222,
-            "lng": 121.51416667
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 25.03886614,
+            "lng": 121.50000458
           }
         ],
         "Barcelona": [
+          {
+            "title": "Eulalia of Barcelona",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
+            "source_titles": [
+              "Eulalia of Barcelona"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
           {
             "title": "Sagrada Família",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -920,19 +935,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.40369,
             "lng": 2.17433
-          },
-          {
-            "title": "Eulalia of Barcelona",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
-            "source_titles": [
-              "Eulalia of Barcelona"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           },
           {
             "title": "Tibidabo Funicular",
@@ -967,6 +969,19 @@
             "lng": 12.50615556
           },
           {
+            "title": "Timeline of Italian architecture",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman archite",
+            "source_titles": [
+              "Timeline of Italian architecture"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
             "title": "Pantheon, Rome",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called th",
@@ -980,21 +995,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.8986,
             "lng": 12.4768
-          },
-          {
-            "title": "Via Veneto",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most famous, elegant, and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Vene",
-            "source_titles": [
-              "Via Veneto"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Via_Veneto"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 41.9061,
-            "lng": 12.4897
           }
         ],
         "Berlin": [
@@ -1089,20 +1089,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Hakata Station",
-          "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
-          "url": "https://en.wikipedia.org/wiki/Hakata_Station",
-          "official_url": "",
-          "lat": 33.589803,
-          "lng": 130.420681
-        },
-        {
           "title": "Tennōji-ku, Osaka",
           "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
           "lng": 135.51944444
+        },
+        {
+          "title": "Hakata Station",
+          "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
+          "url": "https://en.wikipedia.org/wiki/Hakata_Station",
+          "official_url": "",
+          "lat": 33.589803,
+          "lng": 130.420681
         }
       ],
       "London": [],
@@ -1469,14 +1469,6 @@
           "lng": 100.48888889
         },
         {
-          "title": "Wat Champa",
-          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
-          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
-          "official_url": "",
-          "lat": 13.775,
-          "lng": 100.43416667
-        },
-        {
           "title": "Assumption Cathedral, Bangkok",
           "extract": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Archdiocese of Bangkok. The cathedral hosted both of the papal visits to Thailand: Pope John Paul II in 1984 and Pope Francis in 2019.",
           "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok",
@@ -1495,6 +1487,14 @@
           "lng": 103.9015299
         },
         {
+          "title": "Masjid Abdul Aleem Siddique",
+          "extract": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdul Aleem Siddiqi, a Muslim missionary and the founder of Jamiyah Singapore who propagated Islam in the Malay Peninsula in the 1950s.",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique",
+          "official_url": "",
+          "lat": 1.3131814,
+          "lng": 103.9126872
+        },
+        {
           "title": "Armenian Church, Singapore",
           "extract": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in the Museum Planning Area, within the Central Area. The church was completed in 1835 and consecrated the next year. Originally a parish of the Armenian Apostolic Church, an Oriental Orthodox denomination, the last Armenian parish priest left in the late 1930s as Armenian population in Singapore dwindled. It was designated as a national monument in 1973. Armenian and Oriental Orthodox services are now regularly held at the church.",
           "url": "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore",
@@ -1506,6 +1506,12 @@
           "title": "Tony Dumper",
           "extract": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican priest in Malaysia and Singapore from 1949 until 1970, becoming Dean of St Andrews Cathedral, Singapore in 1964.",
           "url": "https://en.wikipedia.org/wiki/Tony_Dumper",
+          "official_url": ""
+        },
+        {
+          "title": "The Church of Jesus Christ of Latter-day Saints in Singapore",
+          "extract": "The Church of Jesus Christ of Latter-day Saints in Singapore refers to the Church of Jesus Christ of Latter-day Saints and its members in Singapore.",
+          "url": "https://en.wikipedia.org/wiki/The_Church_of_Jesus_Christ_of_Latter-day_Saints_in_Singapore",
           "official_url": ""
         }
       ],
@@ -1525,15 +1531,21 @@
           "lng": 121.5
         },
         {
-          "title": "Datong District, Taipei",
-          "extract": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard and the Sun Yat-sen Freeway. The southern part of this district is known as Twatutia, one of the first settlements in what is now Taipei and once the commercial center. Taipei's commercial center has since shifted southeast to Zhongzheng, Da'an and Xinyi, and Datong is far less important economically. Some of the last vestiges of Twatutia's commercial importance is preserved on Dihua Street. The old town of Daronpon is in the northern part of the district.",
-          "url": "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei",
-          "official_url": "https://dtdo.gov.taipei/",
-          "lat": 25.05972222,
-          "lng": 121.51416667
+          "title": "Longshan Temple Underground Shopping Mall",
+          "extract": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected with Longshan Temple metro station. There are a total of 7 entrances to access the shopping mall from the ground floor. The mall has four levels. Level B1 is a famous fortune-telling street, where some stores also sell lucky charms and daily necessities; level B2 sells a variety of commodities, such as exquisite cultural goods and snacks, souvenirs, etc. Levels B3 and B4 are used as a public parking lot.",
+          "url": "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall",
+          "official_url": "",
+          "lat": 25.03886614,
+          "lng": 121.50000458
         }
       ],
       "Barcelona": [
+        {
+          "title": "Eulalia of Barcelona",
+          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
+          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
+          "official_url": ""
+        },
         {
           "title": "Sagrada Família",
           "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\".",
@@ -1541,12 +1553,6 @@
           "official_url": "https://sagradafamilia.org/",
           "lat": 41.40369,
           "lng": 2.17433
-        },
-        {
-          "title": "Eulalia of Barcelona",
-          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
-          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
-          "official_url": ""
         },
         {
           "title": "Tibidabo Funicular",
@@ -1567,20 +1573,18 @@
           "lng": 12.50615556
         },
         {
+          "title": "Timeline of Italian architecture",
+          "extract": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman architecture to Romanesque, Gothic, Renaissance, Baroque, Rococo, Neoclassical, Art Nouveau, Fascist, and Italian modern and contemporary architecture.",
+          "url": "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture",
+          "official_url": ""
+        },
+        {
           "title": "Pantheon, Rome",
           "extract": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs. It is perhaps the most famous, and architecturally most influential, rotunda.",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
           "official_url": "https://www.pantheonroma.com/",
           "lat": 41.8986,
           "lng": 12.4768
-        },
-        {
-          "title": "Via Veneto",
-          "extract": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most famous, elegant, and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Veneto (1918), a decisive Italian victory of World War I. Federico Fellini's 1960 film La Dolce Vita was mostly centered on the Via Veneto area.",
-          "url": "https://en.wikipedia.org/wiki/Via_Veneto",
-          "official_url": "",
-          "lat": 41.9061,
-          "lng": 12.4897
         }
       ],
       "Berlin": [
