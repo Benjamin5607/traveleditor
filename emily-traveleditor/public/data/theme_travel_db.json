@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-04 02:08",
+  "last_updated": "2026-09-05 02:11",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -754,7 +754,7 @@
           {
             "title": "Notre-Dame de Paris",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral",
+            "why": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral and basilica on the Île de la Cité, in the 4th arrondissement of Paris, France. It is ",
             "source_titles": [
               "Notre-Dame de Paris"
             ],
@@ -905,21 +905,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.1167,
             "lng": 121.5
-          },
-          {
-            "title": "Longshan Temple Underground Shopping Mall",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected wi",
-            "source_titles": [
-              "Longshan Temple Underground Shopping Mall"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 25.03886614,
-            "lng": 121.50000458
           }
         ],
         "Barcelona": [
@@ -1466,7 +1451,7 @@
         },
         {
           "title": "Notre-Dame de Paris",
-          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
+          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral and basilica on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
           "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
           "official_url": "https://www.notredamedeparis.fr/",
           "lat": 48.85305556,
@@ -1560,14 +1545,6 @@
           "official_url": "https://btdo.gov.taipei/",
           "lat": 25.1167,
           "lng": 121.5
-        },
-        {
-          "title": "Longshan Temple Underground Shopping Mall",
-          "extract": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected with Longshan Temple metro station. There are a total of 7 entrances to access the shopping mall from the ground floor. The mall has four levels. Level B1 is a famous fortune-telling street, where some stores also sell lucky charms and daily necessities; level B2 sells a variety of commodities, such as exquisite cultural goods and snacks, souvenirs, etc. Levels B3 and B4 are used as a public parking lot.",
-          "url": "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall",
-          "official_url": "",
-          "lat": 25.03886614,
-          "lng": 121.50000458
         }
       ],
       "Barcelona": [
