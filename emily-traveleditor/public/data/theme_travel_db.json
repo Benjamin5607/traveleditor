@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-07 02:02",
+  "last_updated": "2026-09-08 02:13",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -1391,14 +1391,6 @@
           "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
           "lat": 37.558957,
           "lng": 126.931301
-        },
-        {
-          "title": "Bongeunsa",
-          "extract": "Bongeunsa is a Korean Buddhist temple located in Samseong-dong, Gangnam District, Seoul, South Korea. It was founded in 794 during the reign of King Wonseong by State Preceptor Yeonhoe, then the highest ranking monk of Silla. The temple was originally named Gyeonseongsa. It is located on the slope of Sudo Mountain, across the street from the COEX Mall.",
-          "url": "https://en.wikipedia.org/wiki/Bongeunsa",
-          "official_url": "http://www.bongeunsa.org:90/",
-          "lat": 37.51555556,
-          "lng": 127.05722222
         }
       ],
       "Tokyo": [
