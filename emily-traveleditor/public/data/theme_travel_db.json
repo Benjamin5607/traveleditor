@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-08 02:13",
+  "last_updated": "2026-09-09 02:18",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -815,19 +815,19 @@
             "lng": 100.48888889
           },
           {
-            "title": "Assumption Cathedral, Bangkok",
+            "title": "Wat Champa",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Ar",
+            "why": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
             "source_titles": [
-              "Assumption Cathedral, Bangkok"
+              "Wat Champa"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok"
+              "https://en.wikipedia.org/wiki/Wat_Champa"
             ],
             "official_url": "",
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.723059,
-            "lng": 100.514924
+            "lat": 13.775,
+            "lng": 100.43416667
           }
         ],
         "Singapore": [
@@ -892,21 +892,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
-            "title": "Taipei Grand Mosque",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and",
-            "source_titles": [
-              "Taipei Grand Mosque"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque"
-            ],
-            "official_url": "http://www.taipeimosque.org.tw/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.02805556,
-            "lng": 121.53416667
-          },
-          {
             "title": "Beitou District",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
@@ -920,6 +905,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.1167,
             "lng": 121.5
+          },
+          {
+            "title": "Longshan Temple Underground Shopping Mall",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected wi",
+            "source_titles": [
+              "Longshan Temple Underground Shopping Mall"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 25.03886614,
+            "lng": 121.50000458
           }
         ],
         "Barcelona": [
@@ -1492,6 +1492,14 @@
           "lng": 100.48888889
         },
         {
+          "title": "Wat Champa",
+          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
+          "official_url": "",
+          "lat": 13.775,
+          "lng": 100.43416667
+        },
+        {
           "title": "Assumption Cathedral, Bangkok",
           "extract": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Archdiocese of Bangkok. The cathedral hosted both of the papal visits to Thailand: Pope John Paul II in 1984 and Pope Francis in 2019.",
           "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok",
@@ -1544,14 +1552,6 @@
           "extract": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, from Taipei in the north to the southern city of Kaohsiung. Its construction was managed by a private company, Taiwan High Speed Rail Corporation (THSRC), which also operates the line. The total cost of the project was NT$513.3 billion in 1998. The system's technology is based primarily on Japan's Shinkansen.",
           "url": "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail",
           "official_url": "https://www.thsrc.com.tw/"
-        },
-        {
-          "title": "Taipei Grand Mosque",
-          "extract": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and oldest mosque in Taiwan and its most important Islamic structure.",
-          "url": "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque",
-          "official_url": "http://www.taipeimosque.org.tw/",
-          "lat": 25.02805556,
-          "lng": 121.53416667
         },
         {
           "title": "Beitou District",
