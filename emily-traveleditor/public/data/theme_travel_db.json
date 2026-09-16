@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-15 02:38",
+  "last_updated": "2026-09-16 02:29",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -124,21 +124,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Tennōji-ku, Osaka",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
-          },
-          {
             "title": "Hakata Station",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
@@ -152,6 +137,21 @@
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 33.589803,
             "lng": 130.420681
+          },
+          {
+            "title": "Tennōji-ku, Osaka",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
@@ -984,6 +984,19 @@
             "lng": 12.50615556
           },
           {
+            "title": "Timeline of Italian architecture",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman archite",
+            "source_titles": [
+              "Timeline of Italian architecture"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
             "title": "Pantheon, Rome",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called th",
@@ -993,7 +1006,7 @@
             "source_urls": [
               "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
             ],
-            "official_url": "https://www.pantheonroma.com/",
+            "official_url": "http://www.polomusealelazio.beniculturali.it/index.php?it/232/pantheon",
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.8986,
             "lng": 12.4768
@@ -1091,20 +1104,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Tennōji-ku, Osaka",
-          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
-          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-          "lat": 34.65777778,
-          "lng": 135.51944444
-        },
-        {
           "title": "Hakata Station",
           "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
           "url": "https://en.wikipedia.org/wiki/Hakata_Station",
           "official_url": "",
           "lat": 33.589803,
           "lng": 130.420681
+        },
+        {
+          "title": "Tennōji-ku, Osaka",
+          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
+          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+          "lat": 34.65777778,
+          "lng": 135.51944444
         }
       ],
       "London": [],
@@ -1378,14 +1391,6 @@
           "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
           "lat": 37.558957,
           "lng": 126.931301
-        },
-        {
-          "title": "Bongeunsa",
-          "extract": "Bongeunsa is a Korean Buddhist temple located in Samseong-dong, Gangnam District, Seoul, South Korea. It was founded in 794 during the reign of King Wonseong by State Preceptor Yeonhoe, then the highest ranking monk of Silla. The temple was originally named Gyeonseongsa. It is located on the slope of Sudo Mountain, across the street from the COEX Mall.",
-          "url": "https://en.wikipedia.org/wiki/Bongeunsa",
-          "official_url": "http://www.bongeunsa.org:90/",
-          "lat": 37.51555556,
-          "lng": 127.05722222
         }
       ],
       "Tokyo": [
@@ -1591,10 +1596,16 @@
           "lng": 12.50615556
         },
         {
+          "title": "Timeline of Italian architecture",
+          "extract": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman architecture to Romanesque, Gothic, Renaissance, Baroque, Rococo, Neoclassical, Art Nouveau, Fascist, and Italian modern and contemporary architecture.",
+          "url": "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture",
+          "official_url": ""
+        },
+        {
           "title": "Pantheon, Rome",
           "extract": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs. It is perhaps the most famous, and architecturally most influential, rotunda.",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
-          "official_url": "https://www.pantheonroma.com/",
+          "official_url": "http://www.polomusealelazio.beniculturali.it/index.php?it/232/pantheon",
           "lat": 41.8986,
           "lng": 12.4768
         }
