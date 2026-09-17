@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-16 02:29",
+  "last_updated": "2026-09-17 02:34",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -815,19 +815,19 @@
             "lng": 100.48888889
           },
           {
-            "title": "Assumption Cathedral, Bangkok",
+            "title": "Wat Champa",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Ar",
+            "why": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
             "source_titles": [
-              "Assumption Cathedral, Bangkok"
+              "Wat Champa"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok"
+              "https://en.wikipedia.org/wiki/Wat_Champa"
             ],
             "official_url": "",
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.723059,
-            "lng": 100.514924
+            "lat": 13.775,
+            "lng": 100.43416667
           }
         ],
         "Singapore": [
@@ -924,19 +924,6 @@
         ],
         "Barcelona": [
           {
-            "title": "Eulalia of Barcelona",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
-            "source_titles": [
-              "Eulalia of Barcelona"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
             "title": "Sagrada Família",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Desig",
@@ -950,6 +937,19 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.40369,
             "lng": 2.17433
+          },
+          {
+            "title": "Eulalia of Barcelona",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
+            "source_titles": [
+              "Eulalia of Barcelona"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           },
           {
             "title": "Tibidabo Funicular",
@@ -1492,6 +1492,14 @@
           "lng": 100.48888889
         },
         {
+          "title": "Wat Champa",
+          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
+          "official_url": "",
+          "lat": 13.775,
+          "lng": 100.43416667
+        },
+        {
           "title": "Assumption Cathedral, Bangkok",
           "extract": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Archdiocese of Bangkok. The cathedral hosted both of the papal visits to Thailand: Pope John Paul II in 1984 and Pope Francis in 2019.",
           "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok",
@@ -1564,18 +1572,18 @@
       ],
       "Barcelona": [
         {
-          "title": "Eulalia of Barcelona",
-          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
-          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
-          "official_url": ""
-        },
-        {
           "title": "Sagrada Família",
           "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\".",
           "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
           "official_url": "https://sagradafamilia.org/",
           "lat": 41.40369,
           "lng": 2.17433
+        },
+        {
+          "title": "Eulalia of Barcelona",
+          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
+          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
+          "official_url": ""
         },
         {
           "title": "Tibidabo Funicular",
