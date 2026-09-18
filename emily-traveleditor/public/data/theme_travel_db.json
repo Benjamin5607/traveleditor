@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-17 02:34",
+  "last_updated": "2026-09-18 02:22",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -892,6 +892,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
+            "title": "Taipei Grand Mosque",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and",
+            "source_titles": [
+              "Taipei Grand Mosque"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque"
+            ],
+            "official_url": "http://www.taipeimosque.org.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.02805556,
+            "lng": 121.53416667
+          },
+          {
             "title": "Beitou District",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
@@ -905,24 +920,22 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.1167,
             "lng": 121.5
-          },
-          {
-            "title": "Longshan Temple Underground Shopping Mall",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected wi",
-            "source_titles": [
-              "Longshan Temple Underground Shopping Mall"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 25.03886614,
-            "lng": 121.50000458
           }
         ],
         "Barcelona": [
+          {
+            "title": "Eulalia of Barcelona",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
+            "source_titles": [
+              "Eulalia of Barcelona"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
           {
             "title": "Sagrada Família",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -937,19 +950,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.40369,
             "lng": 2.17433
-          },
-          {
-            "title": "Eulalia of Barcelona",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
-            "source_titles": [
-              "Eulalia of Barcelona"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           },
           {
             "title": "Tibidabo Funicular",
@@ -1554,6 +1554,14 @@
           "official_url": "https://www.thsrc.com.tw/"
         },
         {
+          "title": "Taipei Grand Mosque",
+          "extract": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and oldest mosque in Taiwan and its most important Islamic structure.",
+          "url": "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque",
+          "official_url": "http://www.taipeimosque.org.tw/",
+          "lat": 25.02805556,
+          "lng": 121.53416667
+        },
+        {
           "title": "Beitou District",
           "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
           "url": "https://en.wikipedia.org/wiki/Beitou_District",
@@ -1572,18 +1580,18 @@
       ],
       "Barcelona": [
         {
+          "title": "Eulalia of Barcelona",
+          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
+          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
+          "official_url": ""
+        },
+        {
           "title": "Sagrada Família",
           "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church under construction in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\".",
           "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
           "official_url": "https://sagradafamilia.org/",
           "lat": 41.40369,
           "lng": 2.17433
-        },
-        {
-          "title": "Eulalia of Barcelona",
-          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
-          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
-          "official_url": ""
         },
         {
           "title": "Tibidabo Funicular",
