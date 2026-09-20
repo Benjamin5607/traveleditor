@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-19 02:22",
+  "last_updated": "2026-09-20 02:33",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -969,19 +969,6 @@
             "lng": 12.50615556
           },
           {
-            "title": "Timeline of Italian architecture",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman archite",
-            "source_titles": [
-              "Timeline of Italian architecture"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
-          },
-          {
             "title": "Pantheon, Rome",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called th",
@@ -1579,12 +1566,6 @@
           "official_url": "https://www.basilicasangiovanni.va/",
           "lat": 41.88590556,
           "lng": 12.50615556
-        },
-        {
-          "title": "Timeline of Italian architecture",
-          "extract": "This timeline shows the periods of various architectural styles in the architecture of Italy. Italy's architecture spans almost 3,500 years, from Etruscan and Ancient Roman architecture to Romanesque, Gothic, Renaissance, Baroque, Rococo, Neoclassical, Art Nouveau, Fascist, and Italian modern and contemporary architecture.",
-          "url": "https://en.wikipedia.org/wiki/Timeline_of_Italian_architecture",
-          "official_url": ""
         },
         {
           "title": "Pantheon, Rome",
