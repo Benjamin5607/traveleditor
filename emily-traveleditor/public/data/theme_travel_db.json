@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-26 02:41",
+  "last_updated": "2026-09-27 02:39",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -847,6 +847,21 @@
             "lng": 103.9015299
           },
           {
+            "title": "Masjid Abdul Aleem Siddique",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdu",
+            "source_titles": [
+              "Masjid Abdul Aleem Siddique"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 1.3131814,
+            "lng": 103.9126872
+          },
+          {
             "title": "Armenian Church, Singapore",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in t",
@@ -860,19 +875,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 1.29305556,
             "lng": 103.84930556
-          },
-          {
-            "title": "Tony Dumper",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican pries",
-            "source_titles": [
-              "Tony Dumper"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tony_Dumper"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Taipei": [
@@ -1516,6 +1518,14 @@
           "lng": 103.9015299
         },
         {
+          "title": "Masjid Abdul Aleem Siddique",
+          "extract": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdul Aleem Siddiqi, a Muslim missionary and the founder of Jamiyah Singapore who propagated Islam in the Malay Peninsula in the 1950s.",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique",
+          "official_url": "",
+          "lat": 1.3131814,
+          "lng": 103.9126872
+        },
+        {
           "title": "Armenian Church, Singapore",
           "extract": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in the Museum Planning Area, within the Central Area. The church was completed in 1835 and consecrated the next year. Originally a parish of the Armenian Apostolic Church, an Oriental Orthodox denomination, the last Armenian parish priest left in the late 1930s as Armenian population in Singapore dwindled. It was designated as a national monument in 1973. Armenian and Oriental Orthodox services are now regularly held at the church.",
           "url": "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore",
@@ -1608,12 +1618,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Largo di Torre Argentina",
-          "extract": "Largo di Torre Argentina is a large open space in Rome, Italy, with four Roman Republican temples and the remains of Pompey's Theatre. It is in the ancient Campus Martius. This was one of the places that the ancient \"Argentario\"—the silver/money men, the bankers—used to conduct their trade.",
-          "url": "https://en.wikipedia.org/wiki/Largo_di_Torre_Argentina",
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
           "official_url": "",
-          "lat": 41.89527778,
-          "lng": 12.47694444
+          "lat": 41.899,
+          "lng": 12.4731
         }
       ],
       "Berlin": [
