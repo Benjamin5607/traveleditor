@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-27 02:39",
+  "last_updated": "2026-09-28 02:43",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -124,21 +124,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Hakata Station",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
-            "source_titles": [
-              "Hakata Station"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Hakata_Station"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 33.589803,
-            "lng": 130.420681
-          },
-          {
             "title": "Tennōji-ku, Osaka",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
@@ -152,6 +137,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.65777778,
             "lng": 135.51944444
+          },
+          {
+            "title": "Hakata Station",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
+            "source_titles": [
+              "Hakata Station"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Hakata_Station"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 33.589803,
+            "lng": 130.420681
           }
         ],
         "London": [],
@@ -254,17 +254,19 @@
             "lng": 121.51416667
           },
           {
-            "title": "Wanda–Zhonghe–Shulin line",
+            "title": "Fushan Botanical Garden",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be comp",
+            "why": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
             "source_titles": [
-              "Wanda–Zhonghe–Shulin line"
+              "Fushan Botanical Garden"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line"
+              "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden"
             ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+            "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 24.75969444,
+            "lng": 121.59030556
           }
         ],
         "Barcelona": [
@@ -815,19 +817,19 @@
             "lng": 100.48888889
           },
           {
-            "title": "Wat Champa",
+            "title": "Assumption Cathedral, Bangkok",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+            "why": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Ar",
             "source_titles": [
-              "Wat Champa"
+              "Assumption Cathedral, Bangkok"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Wat_Champa"
+              "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok"
             ],
             "official_url": "",
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.775,
-            "lng": 100.43416667
+            "lat": 13.723059,
+            "lng": 100.514924
           }
         ],
         "Singapore": [
@@ -892,6 +894,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
+            "title": "Taipei Grand Mosque",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and",
+            "source_titles": [
+              "Taipei Grand Mosque"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque"
+            ],
+            "official_url": "http://www.taipeimosque.org.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.02805556,
+            "lng": 121.53416667
+          },
+          {
             "title": "Beitou District",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
@@ -905,21 +922,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 25.1167,
             "lng": 121.5
-          },
-          {
-            "title": "Longshan Temple Underground Shopping Mall",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Longshan Temple Underground Shopping Mall is an underground shopping center located in Wanhua District, Taipei, Taiwan. It is located directly below Bangka Park and is connected wi",
-            "source_titles": [
-              "Longshan Temple Underground Shopping Mall"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Longshan_Temple_Underground_Shopping_Mall"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 25.03886614,
-            "lng": 121.50000458
           }
         ],
         "Barcelona": [
@@ -969,19 +971,6 @@
         ],
         "Rome": [
           {
-            "title": "Via Francigena",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Swit",
-            "source_titles": [
-              "Via Francigena"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Via_Francigena"
-            ],
-            "official_url": "https://www.viefrancigene.org",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
-          },
-          {
             "title": "Archbasilica of Saint John Lateran",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. I",
@@ -995,6 +984,19 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.88590556,
             "lng": 12.50615556
+          },
+          {
+            "title": "Via Francigena",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Swit",
+            "source_titles": [
+              "Via Francigena"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Via_Francigena"
+            ],
+            "official_url": "https://www.viefrancigene.org",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
             "title": "Pantheon, Rome",
@@ -1104,20 +1106,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Hakata Station",
-          "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
-          "url": "https://en.wikipedia.org/wiki/Hakata_Station",
-          "official_url": "",
-          "lat": 33.589803,
-          "lng": 130.420681
-        },
-        {
           "title": "Tennōji-ku, Osaka",
           "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
           "lng": 135.51944444
+        },
+        {
+          "title": "Hakata Station",
+          "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
+          "url": "https://en.wikipedia.org/wiki/Hakata_Station",
+          "official_url": "",
+          "lat": 33.589803,
+          "lng": 130.420681
         }
       ],
       "London": [],
@@ -1178,18 +1180,18 @@
           "lng": 121.51416667
         },
         {
-          "title": "Wanda–Zhonghe–Shulin line",
-          "extract": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
-          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line",
-          "official_url": ""
-        },
-        {
           "title": "Fushan Botanical Garden",
           "extract": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
           "url": "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden",
           "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
           "lat": 24.75969444,
           "lng": 121.59030556
+        },
+        {
+          "title": "Wanda–Zhonghe–Shulin line",
+          "extract": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
+          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line",
+          "official_url": ""
         }
       ],
       "Barcelona": [
@@ -1391,6 +1393,14 @@
           "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
           "lat": 37.558957,
           "lng": 126.931301
+        },
+        {
+          "title": "Bongeunsa",
+          "extract": "Bongeunsa is a Korean Buddhist temple located in Samseong-dong, Gangnam District, Seoul, South Korea. It was founded in 794 during the reign of King Wonseong by State Preceptor Yeonhoe, then the highest ranking monk of Silla. The temple was originally named Gyeonseongsa. It is located on the slope of Sudo Mountain, across the street from the COEX Mall.",
+          "url": "https://en.wikipedia.org/wiki/Bongeunsa",
+          "official_url": "http://www.bongeunsa.org:90/",
+          "lat": 37.51555556,
+          "lng": 127.05722222
         }
       ],
       "Tokyo": [
@@ -1492,14 +1502,6 @@
           "lng": 100.48888889
         },
         {
-          "title": "Wat Champa",
-          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
-          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
-          "official_url": "",
-          "lat": 13.775,
-          "lng": 100.43416667
-        },
-        {
           "title": "Assumption Cathedral, Bangkok",
           "extract": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Archdiocese of Bangkok. The cathedral hosted both of the papal visits to Thailand: Pope John Paul II in 1984 and Pope Francis in 2019.",
           "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok",
@@ -1554,6 +1556,14 @@
           "official_url": "https://www.thsrc.com.tw/"
         },
         {
+          "title": "Taipei Grand Mosque",
+          "extract": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and oldest mosque in Taiwan and its most important Islamic structure.",
+          "url": "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque",
+          "official_url": "http://www.taipeimosque.org.tw/",
+          "lat": 25.02805556,
+          "lng": 121.53416667
+        },
+        {
           "title": "Beitou District",
           "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
           "url": "https://en.wikipedia.org/wiki/Beitou_District",
@@ -1596,18 +1606,18 @@
       ],
       "Rome": [
         {
-          "title": "Via Francigena",
-          "extract": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Switzerland, to Rome and then to Apulia, Italy, where there were ports of embarkation for the Holy Land. It was known in Italy as the Via Francigena or the Via Romea Francigena. In medieval times it was an important road and pilgrimage route for those wishing to visit the Holy See and the tombs of the apostles Peter and Paul.",
-          "url": "https://en.wikipedia.org/wiki/Via_Francigena",
-          "official_url": "https://www.viefrancigene.org"
-        },
-        {
           "title": "Archbasilica of Saint John Lateran",
           "extract": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. It serves as the seat of the bishop of Rome and head of the worldwide Catholic Church: the pope. The only \"archbasilica\" in the world, it lies outside of Vatican City proper, which is located approximately four kilometres northwest. Nevertheless, as properties of the Holy See, the archbasilica and its adjoining edifices enjoy an extraterritorial status from Italy, pursuant to the terms of the Lateran Treaty of 1929. Dedicated to Christ the Saviour, in honor of John the Baptist and John the Evangelist, the place name",
           "url": "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran",
           "official_url": "https://www.basilicasangiovanni.va/",
           "lat": 41.88590556,
           "lng": 12.50615556
+        },
+        {
+          "title": "Via Francigena",
+          "extract": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Switzerland, to Rome and then to Apulia, Italy, where there were ports of embarkation for the Holy Land. It was known in Italy as the Via Francigena or the Via Romea Francigena. In medieval times it was an important road and pilgrimage route for those wishing to visit the Holy See and the tombs of the apostles Peter and Paul. The route was documented by Archbishop Sigeric on his return journey from Rome to Canterbury in around 990. Today, pilgrims still travel the route on foot, on horseback or by bicycle.",
+          "url": "https://en.wikipedia.org/wiki/Via_Francigena",
+          "official_url": "https://www.viefrancigene.org"
         },
         {
           "title": "Pantheon, Rome",
@@ -1618,12 +1628,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "title": "Largo di Torre Argentina",
+          "extract": "Largo di Torre Argentina is a large open space in Rome, Italy, with four Roman Republican temples and the remains of Pompey's Theatre. It is in the ancient Campus Martius. This was one of the places that the ancient \"Argentario\"—the silver/money men, the bankers—used to conduct their trade.",
+          "url": "https://en.wikipedia.org/wiki/Largo_di_Torre_Argentina",
           "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "lat": 41.89527778,
+          "lng": 12.47694444
         }
       ],
       "Berlin": [
