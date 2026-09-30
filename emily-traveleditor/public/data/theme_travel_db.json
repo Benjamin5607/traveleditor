@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-29 03:27",
+  "last_updated": "2026-09-30 03:08",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -892,6 +892,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
+            "title": "Taipei Grand Mosque",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and",
+            "source_titles": [
+              "Taipei Grand Mosque"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque"
+            ],
+            "official_url": "http://www.taipeimosque.org.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.02805556,
+            "lng": 121.53416667
+          },
+          {
             "title": "Beitou District",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
@@ -954,6 +969,19 @@
         ],
         "Rome": [
           {
+            "title": "Via Francigena",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Swit",
+            "source_titles": [
+              "Via Francigena"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Via_Francigena"
+            ],
+            "official_url": "https://www.viefrancigene.org",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+          },
+          {
             "title": "Archbasilica of Saint John Lateran",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. I",
@@ -967,19 +995,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 41.88590556,
             "lng": 12.50615556
-          },
-          {
-            "title": "Via Francigena",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Swit",
-            "source_titles": [
-              "Via Francigena"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Via_Francigena"
-            ],
-            "official_url": "https://www.viefrancigene.org",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
             "title": "Pantheon, Rome",
@@ -1531,6 +1546,14 @@
           "official_url": "https://www.thsrc.com.tw/"
         },
         {
+          "title": "Taipei Grand Mosque",
+          "extract": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and oldest mosque in Taiwan and its most important Islamic structure.",
+          "url": "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque",
+          "official_url": "http://www.taipeimosque.org.tw/",
+          "lat": 25.02805556,
+          "lng": 121.53416667
+        },
+        {
           "title": "Beitou District",
           "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
           "url": "https://en.wikipedia.org/wiki/Beitou_District",
@@ -1565,18 +1588,18 @@
       ],
       "Rome": [
         {
+          "title": "Via Francigena",
+          "extract": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Switzerland, to Rome and then to Apulia, Italy, where there were ports of embarkation for the Holy Land. It was known in Italy as the Via Francigena or the Via Romea Francigena. In medieval times it was an important road and pilgrimage route for those wishing to visit the Holy See and the tombs of the apostles Peter and Paul. The route was documented by Archbishop Sigeric on his return journey from Rome to Canterbury in around 990. Today, pilgrims still travel the route on foot, on horseback or by bicycle.",
+          "url": "https://en.wikipedia.org/wiki/Via_Francigena",
+          "official_url": "https://www.viefrancigene.org"
+        },
+        {
           "title": "Archbasilica of Saint John Lateran",
           "extract": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. It serves as the seat of the bishop of Rome and head of the worldwide Catholic Church: the pope. The only \"archbasilica\" in the world, it lies outside of Vatican City proper, which is located approximately four kilometres northwest. Nevertheless, as properties of the Holy See, the archbasilica and its adjoining edifices enjoy an extraterritorial status from Italy, pursuant to the terms of the Lateran Treaty of 1929. Dedicated to Christ the Saviour, in honor of John the Baptist and John the Evangelist, the place name",
           "url": "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran",
           "official_url": "https://www.basilicasangiovanni.va/",
           "lat": 41.88590556,
           "lng": 12.50615556
-        },
-        {
-          "title": "Via Francigena",
-          "extract": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Switzerland, to Rome and then to Apulia, Italy, where there were ports of embarkation for the Holy Land. It was known in Italy as the Via Francigena or the Via Romea Francigena. In medieval times it was an important road and pilgrimage route for those wishing to visit the Holy See and the tombs of the apostles Peter and Paul. The route was documented by Archbishop Sigeric on his return journey from Rome to Canterbury in around 990. Today, pilgrims still travel the route on foot, on horseback or by bicycle.",
-          "url": "https://en.wikipedia.org/wiki/Via_Francigena",
-          "official_url": "https://www.viefrancigene.org"
         },
         {
           "title": "Pantheon, Rome",
@@ -1587,12 +1610,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Via Veneto",
-          "extract": "Via Vittorio Veneto, colloquially called Via Veneto, is one of the most well-known and expensive streets of Rome, Italy. The street is named after the Battle of Vittorio Veneto (1918), a decisive Italian victory of World War I. Federico Fellini's 1960 film La Dolce Vita was mostly centered on the Via Veneto area.",
-          "url": "https://en.wikipedia.org/wiki/Via_Veneto",
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
           "official_url": "",
-          "lat": 41.9061,
-          "lng": 12.4897
+          "lat": 41.899,
+          "lng": 12.4731
         }
       ],
       "Berlin": [
