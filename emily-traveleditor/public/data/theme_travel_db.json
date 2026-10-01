@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-30 03:08",
+  "last_updated": "2026-10-01 03:17",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -90,21 +90,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.651298,
             "lng": 139.829307
-          },
-          {
-            "title": "Itabashi",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Itabashi  is a special ward in the Tokyo Metropolis in Japan. In English, it is called Itabashi City. Itabashi has sister-city relations with Burlington, Ontario, in Canada; Shijin",
-            "source_titles": [
-              "Itabashi"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Itabashi"
-            ],
-            "official_url": "http://www.city.itabashi.tokyo.jp/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 35.76666667,
-            "lng": 139.68333333
           }
         ],
         "Osaka": [
@@ -892,21 +877,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
-            "title": "Taipei Grand Mosque",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and",
-            "source_titles": [
-              "Taipei Grand Mosque"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque"
-            ],
-            "official_url": "http://www.taipeimosque.org.tw/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.02805556,
-            "lng": 121.53416667
-          },
-          {
             "title": "Beitou District",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
@@ -1084,14 +1054,6 @@
           "official_url": "https://www.yumenoshima.jp/",
           "lat": 35.651298,
           "lng": 139.829307
-        },
-        {
-          "title": "Itabashi",
-          "extract": "Itabashi  is a special ward in the Tokyo Metropolis in Japan. In English, it is called Itabashi City. Itabashi has sister-city relations with Burlington, Ontario, in Canada; Shijingshan District of Beijing in the People's Republic of China; and Bologna in Italy.",
-          "url": "https://en.wikipedia.org/wiki/Itabashi",
-          "official_url": "http://www.city.itabashi.tokyo.jp/",
-          "lat": 35.76666667,
-          "lng": 139.68333333
         }
       ],
       "Osaka": [
@@ -1546,14 +1508,6 @@
           "official_url": "https://www.thsrc.com.tw/"
         },
         {
-          "title": "Taipei Grand Mosque",
-          "extract": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and oldest mosque in Taiwan and its most important Islamic structure.",
-          "url": "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque",
-          "official_url": "http://www.taipeimosque.org.tw/",
-          "lat": 25.02805556,
-          "lng": 121.53416667
-        },
-        {
           "title": "Beitou District",
           "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
           "url": "https://en.wikipedia.org/wiki/Beitou_District",
@@ -1610,12 +1564,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "title": "Parco degli Acquedotti",
+          "extract": "The Parco degli Acquedotti is a public park to the southeast of Rome, Italy. It is part of the Appian Way Regional Park and is of approximately 240 ha.",
+          "url": "https://en.wikipedia.org/wiki/Parco_degli_Acquedotti",
+          "official_url": "http://www.parcoappiaantica.it/",
+          "lat": 41.847,
+          "lng": 12.562
         }
       ],
       "Berlin": [
