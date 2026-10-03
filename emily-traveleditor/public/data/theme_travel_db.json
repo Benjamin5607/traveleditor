@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-02 03:16",
+  "last_updated": "2026-10-03 03:02",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
