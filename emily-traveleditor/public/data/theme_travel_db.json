@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-04 03:28",
+  "last_updated": "2026-10-05 03:07",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -109,21 +109,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Hakata Station",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
-            "source_titles": [
-              "Hakata Station"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Hakata_Station"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 33.589803,
-            "lng": 130.420681
-          },
-          {
             "title": "Tennōji-ku, Osaka",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
@@ -137,6 +122,21 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 34.65777778,
             "lng": 135.51944444
+          },
+          {
+            "title": "Hakata Station",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
+            "source_titles": [
+              "Hakata Station"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Hakata_Station"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 33.589803,
+            "lng": 130.420681
           }
         ],
         "London": [],
@@ -190,7 +190,23 @@
             "lng": 100.565
           }
         ],
-        "Singapore": [],
+        "Singapore": [
+          {
+            "title": "Yue Hwa Building",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan a",
+            "source_titles": [
+              "Yue Hwa Building"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Yue_Hwa_Building"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 1.28488889,
+            "lng": 103.84344444
+          }
+        ],
         "Taipei": [],
         "Barcelona": [],
         "Rome": [],
@@ -320,20 +336,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Hakata Station",
-          "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
-          "url": "https://en.wikipedia.org/wiki/Hakata_Station",
-          "official_url": "",
-          "lat": 33.589803,
-          "lng": 130.420681
-        },
-        {
           "title": "Tennōji-ku, Osaka",
           "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
           "lng": 135.51944444
+        },
+        {
+          "title": "Hakata Station",
+          "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
+          "url": "https://en.wikipedia.org/wiki/Hakata_Station",
+          "official_url": "",
+          "lat": 33.589803,
+          "lng": 130.420681
         }
       ],
       "London": [],
@@ -366,7 +382,16 @@
           "lng": 100.565
         }
       ],
-      "Singapore": [],
+      "Singapore": [
+        {
+          "title": "Yue Hwa Building",
+          "extract": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan and Maclaren in 1927, it was then the tallest building in Chinatown and was known as Nam Tin Building (南天大厦), owned by Lum Chang Holdings. The building housed the six-storey Great Southern Hotel, along with a few shops and cabarets that were popular among Chinese travellers. In 1993, Lum Chang Holdings sold the building to Hong Kong businessman Yu Kwok Chun, who converted it to the first Yue Hwa Chinese Products department store in Singapore in 1994. The renovation process, which conserved the exterior while adding ",
+          "url": "https://en.wikipedia.org/wiki/Yue_Hwa_Building",
+          "official_url": "",
+          "lat": 1.28488889,
+          "lng": 103.84344444
+        }
+      ],
       "Taipei": [],
       "Barcelona": [],
       "Rome": [],
