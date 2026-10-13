@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-12 03:25",
+  "last_updated": "2026-10-13 04:41",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -239,19 +239,17 @@
             "lng": 121.51416667
           },
           {
-            "title": "Fushan Botanical Garden",
+            "title": "Wanda–Zhonghe–Shulin line",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
+            "why": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be comp",
             "source_titles": [
-              "Fushan Botanical Garden"
+              "Wanda–Zhonghe–Shulin line"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden"
+              "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line"
             ],
-            "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 24.75969444,
-            "lng": 121.59030556
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Barcelona": [
@@ -356,8 +354,38 @@
         "DaNang": [],
         "Bangkok": [],
         "Singapore": [],
-        "Taipei": [],
-        "Barcelona": [],
+        "Taipei": [
+          {
+            "title": "Huashan 1914 Creative Park",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "The Huashan 1914 Creative Park is a multi-purpose park in Zhongzheng District, Taipei, Taiwan.",
+            "source_titles": [
+              "Huashan 1914 Creative Park"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park"
+            ],
+            "official_url": "https://www.huashan1914.com/w/huashan1914/index",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.04444444,
+            "lng": 121.52944444
+          }
+        ],
+        "Barcelona": [
+          {
+            "title": "Kristen Babb-Sprague",
+            "angle": "와이너리, 위스키 디스틸러리, 비어 브류어리처럼 술과 생산지를 경험하는 장소",
+            "why": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Cr",
+            "source_titles": [
+              "Kristen Babb-Sprague"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          }
+        ],
         "Rome": [
           {
             "title": "Ferenc Máté",
@@ -675,16 +703,317 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 51.49472222,
             "lng": -0.13527778
+          },
+          {
+            "title": "St Paul's Cathedral",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "St Paul's Cathedral, formally the Cathedral Church of St Paul in London, is an Anglican cathedral in London, England, the seat of the bishop of London. The cathedral serves as the ",
+            "source_titles": [
+              "St Paul's Cathedral"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/St_Paul's_Cathedral"
+            ],
+            "official_url": "http://www.stpauls.co.uk/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 51.5138,
+            "lng": -0.0983
           }
         ],
-        "Paris": [],
+        "Paris": [
+          {
+            "title": "Grand Mosque of Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Grand Mosque of Paris, also known as the Great Mosque of Paris or simply the Paris Mosque, located in the 5th arrondissement of Paris, is one of the largest mosques in France. ",
+            "source_titles": [
+              "Grand Mosque of Paris"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris"
+            ],
+            "official_url": "https://www.grandemosqueedeparis.fr",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.84194444,
+            "lng": 2.355
+          },
+          {
+            "title": "Notre-Dame de Paris",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral and basilica on the Île de la Cité, in the 4th arrondissement of Paris, France. It is ",
+            "source_titles": [
+              "Notre-Dame de Paris"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+            ],
+            "official_url": "https://www.notredamedeparis.fr/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.85305556,
+            "lng": 2.35
+          },
+          {
+            "title": "Parc des Buttes Chaumont",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Parc des Buttes Chaumont is a public park situated in northeastern Paris, France, in the 19th arrondissement. Occupying 24.7 hectares, it is the fifth-largest park in Paris, af",
+            "source_titles": [
+              "Parc des Buttes Chaumont"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Parc_des_Buttes_Chaumont"
+            ],
+            "official_url": "https://www.paris.fr/lieux/parc-des-buttes-chaumont-1757",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 48.88027778,
+            "lng": 2.38277778
+          }
+        ],
         "DaNang": [],
-        "Bangkok": [],
-        "Singapore": [],
-        "Taipei": [],
-        "Barcelona": [],
-        "Rome": [],
-        "Berlin": []
+        "Bangkok": [
+          {
+            "title": "Khaosan Road",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in",
+            "source_titles": [
+              "Khaosan Road"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Khaosan_Road"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 13.75888889,
+            "lng": 100.49722222
+          },
+          {
+            "title": "Wat Arun",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Wat Arun Ratchawararam Ratchawaramahawihan or Wat Arun is a Buddhist temple (wat) in the Bangkok Yai district of Bangkok, Thailand. It is situated in Thonburi on the west bank of t",
+            "source_titles": [
+              "Wat Arun"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Wat_Arun"
+            ],
+            "official_url": "http://www.watarun.net/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 13.74361111,
+            "lng": 100.48888889
+          },
+          {
+            "title": "Wat Champa",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+            "source_titles": [
+              "Wat Champa"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Wat_Champa"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 13.775,
+            "lng": 100.43416667
+          }
+        ],
+        "Singapore": [
+          {
+            "title": "Masjid Al-Islah",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Masjid Al-Islah is a mosque located in Punggol within the North-East Region, Singapore. Built in 2015, it is the only mosque situated in the Punggol neighbourhood.",
+            "source_titles": [
+              "Masjid Al-Islah"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Masjid_Al-Islah"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 1.4013989,
+            "lng": 103.9015299
+          },
+          {
+            "title": "Masjid Abdul Aleem Siddique",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdu",
+            "source_titles": [
+              "Masjid Abdul Aleem Siddique"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 1.3131814,
+            "lng": 103.9126872
+          },
+          {
+            "title": "Armenian Church, Singapore",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in t",
+            "source_titles": [
+              "Armenian Church, Singapore"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore"
+            ],
+            "official_url": "https://www.armeniansinasia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 1.29305556,
+            "lng": 103.84930556
+          }
+        ],
+        "Taipei": [
+          {
+            "title": "Taiwan High Speed Rail",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, fro",
+            "source_titles": [
+              "Taiwan High Speed Rail"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail"
+            ],
+            "official_url": "https://www.thsrc.com.tw/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+          },
+          {
+            "title": "Beitou District",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
+            "source_titles": [
+              "Beitou District"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Beitou_District"
+            ],
+            "official_url": "https://btdo.gov.taipei/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 25.1167,
+            "lng": 121.5
+          }
+        ],
+        "Barcelona": [
+          {
+            "title": "Eulalia of Barcelona",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Bar",
+            "source_titles": [
+              "Eulalia of Barcelona"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Sagrada Família",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan ",
+            "source_titles": [
+              "Sagrada Família"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
+            ],
+            "official_url": "https://sagradafamilia.org/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.40369,
+            "lng": 2.17433
+          },
+          {
+            "title": "Tibidabo Funicular",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with",
+            "source_titles": [
+              "Tibidabo Funicular"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tibidabo_Funicular"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 41.41644444,
+            "lng": 2.13108333
+          }
+        ],
+        "Rome": [
+          {
+            "title": "Via Francigena",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Swit",
+            "source_titles": [
+              "Via Francigena"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Via_Francigena"
+            ],
+            "official_url": "https://www.viefrancigene.org",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
+          },
+          {
+            "title": "Archbasilica of Saint John Lateran",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. I",
+            "source_titles": [
+              "Archbasilica of Saint John Lateran"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran"
+            ],
+            "official_url": "https://www.basilicasangiovanni.va/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.88590556,
+            "lng": 12.50615556
+          },
+          {
+            "title": "Pantheon, Rome",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called th",
+            "source_titles": [
+              "Pantheon, Rome"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
+            ],
+            "official_url": "http://www.polomusealelazio.beniculturali.it/index.php?it/232/pantheon",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 41.8986,
+            "lng": 12.4768
+          }
+        ],
+        "Berlin": [
+          {
+            "title": "Zossen",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several small",
+            "source_titles": [
+              "Zossen"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Zossen"
+            ],
+            "official_url": "https://www.zossen.de/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.21666667,
+            "lng": 13.44972222
+          },
+          {
+            "title": "Berlin Tempelhof Airport",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Berlin Tempelhof Airport was one of the first airports in Berlin, Germany. Situated in the south-central Berlin borough of Tempelhof-Schöneberg, the airport ceased operating in 200",
+            "source_titles": [
+              "Berlin Tempelhof Airport"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Berlin_Tempelhof_Airport"
+            ],
+            "official_url": "http://www.thf-berlin.de",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 52.47361111,
+            "lng": 13.40166667
+          }
+        ]
       },
       "generated_by": "wikipedia-fallback"
     }
@@ -811,18 +1140,18 @@
           "lng": 121.51416667
         },
         {
+          "title": "Wanda–Zhonghe–Shulin line",
+          "extract": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
+          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line",
+          "official_url": ""
+        },
+        {
           "title": "Fushan Botanical Garden",
           "extract": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
           "url": "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden",
           "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
           "lat": 24.75969444,
           "lng": 121.59030556
-        },
-        {
-          "title": "Wanda–Zhonghe–Shulin line",
-          "extract": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
-          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_line",
-          "official_url": ""
         }
       ],
       "Barcelona": [
@@ -882,8 +1211,24 @@
       "DaNang": [],
       "Bangkok": [],
       "Singapore": [],
-      "Taipei": [],
-      "Barcelona": [],
+      "Taipei": [
+        {
+          "title": "Huashan 1914 Creative Park",
+          "extract": "The Huashan 1914 Creative Park is a multi-purpose park in Zhongzheng District, Taipei, Taiwan.",
+          "url": "https://en.wikipedia.org/wiki/Huashan_1914_Creative_Park",
+          "official_url": "https://www.huashan1914.com/w/huashan1914/index",
+          "lat": 25.04444444,
+          "lng": 121.52944444
+        }
+      ],
+      "Barcelona": [
+        {
+          "title": "Kristen Babb-Sprague",
+          "extract": "Kristen Elizabeth Babb, also known by her married name Kristen Elizabeth Babb-Sprague after February 1991, is an American former synchronized swimmer who competed for the Walnut Creek Aquanuts and was a 1992 Barcelona Olympic gold medalist in the solo event in synchronized swimming.",
+          "url": "https://en.wikipedia.org/wiki/Kristen_Babb-Sprague",
+          "official_url": ""
+        }
+      ],
       "Rome": [
         {
           "title": "Ferenc Máté",
@@ -1008,14 +1353,6 @@
           "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
           "lat": 37.558957,
           "lng": 126.931301
-        },
-        {
-          "title": "Bongeunsa",
-          "extract": "Bongeunsa is a Korean Buddhist temple located in Samseong-dong, Gangnam District, Seoul, South Korea. It was founded in 794 during the reign of King Wonseong by State Preceptor Yeonhoe, then the highest ranking monk of Silla. The temple was originally named Gyeonseongsa. It is located on the slope of Sudo Mountain, across the street from the COEX Mall.",
-          "url": "https://en.wikipedia.org/wiki/Bongeunsa",
-          "official_url": "http://www.bongeunsa.org:90/",
-          "lat": 37.51555556,
-          "lng": 127.05722222
         }
       ],
       "Tokyo": [
@@ -1062,16 +1399,205 @@
           "official_url": "http://www.westminster.gov.uk/",
           "lat": 51.49472222,
           "lng": -0.13527778
+        },
+        {
+          "title": "St Paul's Cathedral",
+          "extract": "St Paul's Cathedral, formally the Cathedral Church of St Paul in London, is an Anglican cathedral in London, England, the seat of the bishop of London. The cathedral serves as the mother church of the Diocese of London in the Church of England. It is on Ludgate Hill at the highest point of the City of London. Its dedication in honour of Paul the Apostle dates back to the original cathedral church on this site, founded in AD 604. The high-domed present structure, which was completed in 1710, is a Grade I listed building that was designed in the English Baroque style by Sir Christopher Wren. The cathedral's reconstruction was part of a major rebuilding programme initiated in the aftermath of t",
+          "url": "https://en.wikipedia.org/wiki/St_Paul's_Cathedral",
+          "official_url": "http://www.stpauls.co.uk/",
+          "lat": 51.5138,
+          "lng": -0.0983
         }
       ],
-      "Paris": [],
+      "Paris": [
+        {
+          "title": "Grand Mosque of Paris",
+          "extract": "The Grand Mosque of Paris, also known as the Great Mosque of Paris or simply the Paris Mosque, located in the 5th arrondissement of Paris, is one of the largest mosques in France. It comprises prayer rooms, an outdoor garden, a small library, a gift shop, along with a cafe and restaurant. In all, the mosque plays an important role in promoting the visibility of Islam and Muslims in France. Completed in 1926, is the oldest mosque in metropolitan France.",
+          "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Paris",
+          "official_url": "https://www.grandemosqueedeparis.fr",
+          "lat": 48.84194444,
+          "lng": 2.355
+        },
+        {
+          "title": "Notre-Dame de Paris",
+          "extract": "Notre-Dame de Paris, often referred to simply as Notre-Dame, is a medieval Catholic cathedral and basilica on the Île de la Cité, in the 4th arrondissement of Paris, France. It is the cathedral church of the Roman Catholic Archdiocese of Paris.",
+          "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris",
+          "official_url": "https://www.notredamedeparis.fr/",
+          "lat": 48.85305556,
+          "lng": 2.35
+        },
+        {
+          "title": "Parc des Buttes Chaumont",
+          "extract": "The Parc des Buttes Chaumont is a public park situated in northeastern Paris, France, in the 19th arrondissement. Occupying 24.7 hectares, it is the fifth-largest park in Paris, after the Bois de Vincennes, Bois de Boulogne, Parc de la Villette and Tuileries Garden.",
+          "url": "https://en.wikipedia.org/wiki/Parc_des_Buttes_Chaumont",
+          "official_url": "https://www.paris.fr/lieux/parc-des-buttes-chaumont-1757",
+          "lat": 48.88027778,
+          "lng": 2.38277778
+        }
+      ],
       "DaNang": [],
-      "Bangkok": [],
-      "Singapore": [],
-      "Taipei": [],
-      "Barcelona": [],
-      "Rome": [],
-      "Berlin": []
+      "Bangkok": [
+        {
+          "title": "Khaosan Road",
+          "extract": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
+          "url": "https://en.wikipedia.org/wiki/Khaosan_Road",
+          "official_url": "",
+          "lat": 13.75888889,
+          "lng": 100.49722222
+        },
+        {
+          "title": "Wat Arun",
+          "extract": "Wat Arun Ratchawararam Ratchawaramahawihan or Wat Arun is a Buddhist temple (wat) in the Bangkok Yai district of Bangkok, Thailand. It is situated in Thonburi on the west bank of the Chao Phraya River. The temple derives its name from the Hindu god Aruṇa, often personified as the rays of the rising sun. Built with a fusion of Indian influences, incorporating elements of both Hindu and Buddhist symbolism, as well as reflecting Siamese tradition and identity. Wat Arun is among the best known of Thailand's landmarks. Although the temple has existed since at least the 17th century, its distinctive prang (spire) was built in the early 19th century during the reigns of Rama II and Rama III.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Arun",
+          "official_url": "http://www.watarun.net/",
+          "lat": 13.74361111,
+          "lng": 100.48888889
+        },
+        {
+          "title": "Wat Champa",
+          "extract": "Wat Champa is an ancient Thai Buddhist temple in Bang Ramat Sub-District, Taling Chan District, Bangkok's Thonburi side.",
+          "url": "https://en.wikipedia.org/wiki/Wat_Champa",
+          "official_url": "",
+          "lat": 13.775,
+          "lng": 100.43416667
+        },
+        {
+          "title": "Assumption Cathedral, Bangkok",
+          "extract": "The Assumption Cathedral is the principal Catholic church of Thailand, located at 23 Oriental Avenue, New Road, in the Bang Rak District of Bangkok. It is the main church of the Archdiocese of Bangkok. The cathedral hosted both of the papal visits to Thailand: Pope John Paul II in 1984 and Pope Francis in 2019.",
+          "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral%2C_Bangkok",
+          "official_url": "",
+          "lat": 13.723059,
+          "lng": 100.514924
+        }
+      ],
+      "Singapore": [
+        {
+          "title": "Masjid Al-Islah",
+          "extract": "Masjid Al-Islah is a mosque located in Punggol within the North-East Region, Singapore. Built in 2015, it is the only mosque situated in the Punggol neighbourhood.",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Al-Islah",
+          "official_url": "",
+          "lat": 1.4013989,
+          "lng": 103.9015299
+        },
+        {
+          "title": "Masjid Abdul Aleem Siddique",
+          "extract": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdul Aleem Siddiqi, a Muslim missionary and the founder of Jamiyah Singapore who propagated Islam in the Malay Peninsula in the 1950s.",
+          "url": "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique",
+          "official_url": "",
+          "lat": 1.3131814,
+          "lng": 103.9126872
+        },
+        {
+          "title": "Armenian Church, Singapore",
+          "extract": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in the Museum Planning Area, within the Central Area. The church was completed in 1835 and consecrated the next year. Originally a parish of the Armenian Apostolic Church, an Oriental Orthodox denomination, the last Armenian parish priest left in the late 1930s as the Armenian population in Singapore dwindled. It was designated as a national monument in 1973. Armenian and Oriental Orthodox services are now regularly held at the church.",
+          "url": "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore",
+          "official_url": "https://www.armeniansinasia.org/",
+          "lat": 1.29305556,
+          "lng": 103.84930556
+        },
+        {
+          "title": "Tony Dumper",
+          "extract": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican priest in Malaysia and Singapore from 1949 until 1970, becoming Dean of St Andrews Cathedral, Singapore in 1964.",
+          "url": "https://en.wikipedia.org/wiki/Tony_Dumper",
+          "official_url": ""
+        },
+        {
+          "title": "The Church of Jesus Christ of Latter-day Saints in Singapore",
+          "extract": "The Church of Jesus Christ of Latter-day Saints in Singapore refers to the Church of Jesus Christ of Latter-day Saints and its members in Singapore.",
+          "url": "https://en.wikipedia.org/wiki/The_Church_of_Jesus_Christ_of_Latter-day_Saints_in_Singapore",
+          "official_url": ""
+        }
+      ],
+      "Taipei": [
+        {
+          "title": "Taiwan High Speed Rail",
+          "extract": "Taiwan High Speed Rail is a high-speed railway network in Taiwan, which consists of a single line that runs approximately 350 km (217 mi) along the western coast of the island, from Taipei in the north to the southern city of Kaohsiung. Its construction was managed by a private company, Taiwan High Speed Rail Corporation (THSRC), which also operates the line. The total cost of the project was NT$513.3 billion in 1998. The system's technology is based primarily on Japan's Shinkansen.",
+          "url": "https://en.wikipedia.org/wiki/Taiwan_High_Speed_Rail",
+          "official_url": "https://www.thsrc.com.tw/"
+        },
+        {
+          "title": "Beitou District",
+          "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
+          "url": "https://en.wikipedia.org/wiki/Beitou_District",
+          "official_url": "https://btdo.gov.taipei/",
+          "lat": 25.1167,
+          "lng": 121.5
+        }
+      ],
+      "Barcelona": [
+        {
+          "title": "Eulalia of Barcelona",
+          "extract": "Eulalia was a 13-year-old Roman Christian virgin who was martyred in Barcelona during the persecution of Christians in the reign of emperor Diocletian. She is a patron saint of Barcelona. There is some dispute as to whether she is the same person as Eulalia of Mérida, whose story is similar.",
+          "url": "https://en.wikipedia.org/wiki/Eulalia_of_Barcelona",
+          "official_url": ""
+        },
+        {
+          "title": "Sagrada Família",
+          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\".",
+          "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
+          "official_url": "https://sagradafamilia.org/",
+          "lat": 41.40369,
+          "lng": 2.17433
+        },
+        {
+          "title": "Tibidabo Funicular",
+          "extract": "The Tibidabo Funicular is a funicular railway in the city of Barcelona, in Catalonia, Spain. The line connects Plaça del Doctor Andreu, the upper terminus of the Tramvia Blau, with the summit of Tibidabo, where there is an amusement park and a church, the Temple Expiatori del Sagrat Cor.",
+          "url": "https://en.wikipedia.org/wiki/Tibidabo_Funicular",
+          "official_url": "",
+          "lat": 41.41644444,
+          "lng": 2.13108333
+        }
+      ],
+      "Rome": [
+        {
+          "title": "Via Francigena",
+          "extract": "The Via Francigena, also known as Francisca or Romea, is an ancient itinerary and pilgrimage route running from the cathedral city of Canterbury in England, through France and Switzerland, to Rome and then to Apulia, Italy, where there were ports of embarkation for the Holy Land. It was known in Italy as the Via Francigena or the Via Romea Francigena. In medieval times it was an important road and pilgrimage route for those wishing to visit the Holy See and the tombs of the apostles Peter and Paul. The route was documented by Archbishop Sigeric on his return journey from Rome to Canterbury in around 990. Today, pilgrims still travel the route on foot, on horseback or by bicycle.",
+          "url": "https://en.wikipedia.org/wiki/Via_Francigena",
+          "official_url": "https://www.viefrancigene.org"
+        },
+        {
+          "title": "Archbasilica of Saint John Lateran",
+          "extract": "The Archbasilica of Saint John Lateran, commonly known as the Lateran Basilica or Saint John Lateran, is the Catholic cathedral of the Diocese of Rome in the city of Rome, Italy. It serves as the seat of the bishop of Rome and head of the worldwide Catholic Church: the pope. The only \"archbasilica\" in the world, it lies outside of Vatican City proper, which is located approximately four kilometres northwest. Nevertheless, as properties of the Holy See, the archbasilica and its adjoining edifices enjoy an extraterritorial status from Italy, pursuant to the terms of the Lateran Treaty of 1929. Dedicated to Christ the Saviour, in honor of John the Baptist and John the Evangelist, the place name",
+          "url": "https://en.wikipedia.org/wiki/Archbasilica_of_Saint_John_Lateran",
+          "official_url": "https://www.basilicasangiovanni.va/",
+          "lat": 41.88590556,
+          "lng": 12.50615556
+        },
+        {
+          "title": "Pantheon, Rome",
+          "extract": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs.",
+          "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
+          "official_url": "http://www.polomusealelazio.beniculturali.it/index.php?it/232/pantheon",
+          "lat": 41.8986,
+          "lng": 12.4768
+        },
+        {
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "official_url": "",
+          "lat": 41.899,
+          "lng": 12.4731
+        }
+      ],
+      "Berlin": [
+        {
+          "title": "Zossen",
+          "extract": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several smaller municipalities, which were grouped in 2003 to form the city.",
+          "url": "https://en.wikipedia.org/wiki/Zossen",
+          "official_url": "https://www.zossen.de/",
+          "lat": 52.21666667,
+          "lng": 13.44972222
+        },
+        {
+          "title": "Berlin Tempelhof Airport",
+          "extract": "Berlin Tempelhof Airport was one of the first airports in Berlin, Germany. Situated in the south-central Berlin borough of Tempelhof-Schöneberg, the airport ceased operating in 2008 amid controversy. This left Tegel and Schönefeld as the two main airports serving the city for another twelve years until both were replaced by Berlin Brandenburg Airport in 2020.",
+          "url": "https://en.wikipedia.org/wiki/Berlin_Tempelhof_Airport",
+          "official_url": "http://www.thf-berlin.de",
+          "lat": 52.47361111,
+          "lng": 13.40166667
+        }
+      ]
     }
   }
 }
