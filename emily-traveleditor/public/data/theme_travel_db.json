@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-13 04:41",
+  "last_updated": "2026-10-14 02:50",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -109,21 +109,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Tennōji-ku, Osaka",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
-          },
-          {
             "title": "Hakata Station",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
@@ -137,6 +122,21 @@
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 33.589803,
             "lng": 130.420681
+          },
+          {
+            "title": "Tennōji-ku, Osaka",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
@@ -224,21 +224,6 @@
             "lng": 121.843
           },
           {
-            "title": "Datong District, Taipei",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
-            "source_titles": [
-              "Datong District, Taipei"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
-            ],
-            "official_url": "https://dtdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.05972222,
-            "lng": 121.51416667
-          },
-          {
             "title": "Wanda–Zhonghe–Shulin line",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "The Wanda–Zhonghe–Shulin line is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be comp",
@@ -250,6 +235,21 @@
             ],
             "official_url": "",
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
+          },
+          {
+            "title": "Fushan Botanical Garden",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
+            "source_titles": [
+              "Fushan Botanical Garden"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden"
+            ],
+            "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 24.75969444,
+            "lng": 121.59030556
           }
         ],
         "Barcelona": [
@@ -772,7 +772,7 @@
           {
             "title": "Khaosan Road",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in",
+            "why": "Khaosan Road or Khao San Road is a 410 m (1,350 ft)-long street in central Bangkok, Thailand, constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra ",
             "source_titles": [
               "Khaosan Road"
             ],
@@ -1066,20 +1066,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Tennōji-ku, Osaka",
-          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
-          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-          "lat": 34.65777778,
-          "lng": 135.51944444
-        },
-        {
           "title": "Hakata Station",
           "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
           "url": "https://en.wikipedia.org/wiki/Hakata_Station",
           "official_url": "",
           "lat": 33.589803,
           "lng": 130.420681
+        },
+        {
+          "title": "Tennōji-ku, Osaka",
+          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
+          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+          "lat": 34.65777778,
+          "lng": 135.51944444
         }
       ],
       "London": [],
@@ -1130,14 +1130,6 @@
           "official_url": "",
           "lat": 25.107,
           "lng": 121.843
-        },
-        {
-          "title": "Datong District, Taipei",
-          "extract": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard and the Sun Yat-sen Freeway. The southern part of this district is known as Twatutia, one of the first settlements in what is now Taipei and once the commercial center. Taipei's commercial center has since shifted southeast to Zhongzheng, Da'an and Xinyi, and Datong is far less important economically. Some of the last vestiges of Twatutia's commercial importance is preserved on Dihua Street. The old town of Daronpon is in the northern part of the district.",
-          "url": "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei",
-          "official_url": "https://dtdo.gov.taipei/",
-          "lat": 25.05972222,
-          "lng": 121.51416667
         },
         {
           "title": "Wanda–Zhonghe–Shulin line",
@@ -1353,6 +1345,14 @@
           "official_url": "https://www.churchofjesuschrist.org/temples/details/seoul-korea-temple?lang=eng",
           "lat": 37.558957,
           "lng": 126.931301
+        },
+        {
+          "title": "Bongeunsa",
+          "extract": "Bongeunsa is a Korean Buddhist temple located in Samseong-dong, Gangnam District, Seoul, South Korea. It was founded in 794 during the reign of King Wonseong by State Preceptor Yeonhoe, then the highest ranking monk of Silla. The temple was originally named Gyeonseongsa. It is located on the slope of Sudo Mountain, across the street from the COEX Mall.",
+          "url": "https://en.wikipedia.org/wiki/Bongeunsa",
+          "official_url": "http://www.bongeunsa.org:90/",
+          "lat": 37.51555556,
+          "lng": 127.05722222
         }
       ],
       "Tokyo": [
@@ -1439,7 +1439,7 @@
       "Bangkok": [
         {
           "title": "Khaosan Road",
-          "extract": "Khaosan Road or Khao San Road is a short street in central Bangkok, Thailand. It is 410 metres (1,350 ft) in length and was constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
+          "extract": "Khaosan Road or Khao San Road is a 410 m (1,350 ft)-long street in central Bangkok, Thailand, constructed in 1892 during the reign of Rama V. It is in the Bang Lamphu area of Phra Nakhon District about 1 km (0.62 mi) north of the Grand Palace and Wat Phra Kaew.",
           "url": "https://en.wikipedia.org/wiki/Khaosan_Road",
           "official_url": "",
           "lat": 13.75888889,
