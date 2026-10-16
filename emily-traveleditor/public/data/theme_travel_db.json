@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 02:29",
+  "last_updated": "2026-10-16 02:22",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -109,21 +109,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Tennōji-ku, Osaka",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
-          },
-          {
             "title": "Hakata Station",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
@@ -137,6 +122,21 @@
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 33.589803,
             "lng": 130.420681
+          },
+          {
+            "title": "Tennōji-ku, Osaka",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
@@ -877,21 +877,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요."
           },
           {
-            "title": "Taipei Grand Mosque",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and",
-            "source_titles": [
-              "Taipei Grand Mosque"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque"
-            ],
-            "official_url": "http://www.taipeimosque.org.tw/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.02805556,
-            "lng": 121.53416667
-          },
-          {
             "title": "Beitou District",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word K",
@@ -1081,20 +1066,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Tennōji-ku, Osaka",
-          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
-          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-          "lat": 34.65777778,
-          "lng": 135.51944444
-        },
-        {
           "title": "Hakata Station",
           "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
           "url": "https://en.wikipedia.org/wiki/Hakata_Station",
           "official_url": "",
           "lat": 33.589803,
           "lng": 130.420681
+        },
+        {
+          "title": "Tennōji-ku, Osaka",
+          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
+          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+          "lat": 34.65777778,
+          "lng": 135.51944444
         }
       ],
       "London": [],
@@ -1531,14 +1516,6 @@
           "official_url": "https://www.thsrc.com.tw/"
         },
         {
-          "title": "Taipei Grand Mosque",
-          "extract": "The Taipei Grand Mosque, abbreviated as TGM, and also known as the Taipei Zheng He Mosque is a mosque located in the Da'an District of Taipei City, in Taiwan. It is the largest and oldest mosque in Taiwan and its most important Islamic structure.",
-          "url": "https://en.wikipedia.org/wiki/Taipei_Grand_Mosque",
-          "official_url": "http://www.taipeimosque.org.tw/",
-          "lat": 25.02805556,
-          "lng": 121.53416667
-        },
-        {
           "title": "Beitou District",
           "extract": "Beitou District is the northernmost of the twelve districts of Taipei City, Taiwan. The historical spelling of the district is Peitou. The name originates from the Ketagalan word Kipatauw, meaning witch. Beitou is the most mountainous and highest of Taipei's districts, encompassing a meadow with rivers running through the valley which have abundant steam rising from them; the result of geothermal warming. The valley is often surrounded by mist shrouding the trees and grass. Beitou is famous for its hot springs. In March 2012, it was named one of the Top 10 Small Tourist Towns by the Tourism Bureau of Taiwan.",
           "url": "https://en.wikipedia.org/wiki/Beitou_District",
@@ -1595,12 +1572,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "title": "Largo di Torre Argentina",
+          "extract": "Largo di Torre Argentina is a large open space in Rome, Italy, with four Roman Republican temples and the remains of Pompey's Theatre. It is in the ancient Campus Martius. This was one of the places that the ancient \"Argentario\"—the silver/money men, the bankers—used to conduct their trade.",
+          "url": "https://en.wikipedia.org/wiki/Largo_di_Torre_Argentina",
           "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "lat": 41.89527778,
+          "lng": 12.47694444
         }
       ],
       "Berlin": [
