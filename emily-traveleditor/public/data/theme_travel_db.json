@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 02:22",
+  "last_updated": "2026-10-17 02:15",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -126,7 +126,7 @@
           {
             "title": "Tennōji-ku, Osaka",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "why": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -660,7 +660,7 @@
           {
             "title": "Tennōji-ku, Osaka",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "why": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
             "source_titles": [
               "Tennōji-ku, Osaka"
             ],
@@ -909,7 +909,7 @@
           {
             "title": "Sagrada Família",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan ",
+            "why": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic Basilica in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catala",
             "source_titles": [
               "Sagrada Família"
             ],
@@ -1075,7 +1075,7 @@
         },
         {
           "title": "Tennōji-ku, Osaka",
-          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "extract": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
@@ -1376,7 +1376,7 @@
       "Osaka": [
         {
           "title": "Tennōji-ku, Osaka",
-          "extract": "Tennōji  is one of 24 wards of Osaka, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "extract": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
           "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
@@ -1533,7 +1533,7 @@
         },
         {
           "title": "Sagrada Família",
-          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\".",
+          "extract": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic Basilica in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\".",
           "url": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia",
           "official_url": "https://sagradafamilia.org/",
           "lat": 41.40369,
@@ -1572,12 +1572,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Largo di Torre Argentina",
-          "extract": "Largo di Torre Argentina is a large open space in Rome, Italy, with four Roman Republican temples and the remains of Pompey's Theatre. It is in the ancient Campus Martius. This was one of the places that the ancient \"Argentario\"—the silver/money men, the bankers—used to conduct their trade.",
-          "url": "https://en.wikipedia.org/wiki/Largo_di_Torre_Argentina",
+          "title": "Piazza Navona",
+          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
+          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
           "official_url": "",
-          "lat": 41.89527778,
-          "lng": 12.47694444
+          "lat": 41.899,
+          "lng": 12.4731
         }
       ],
       "Berlin": [
