@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 02:15",
+  "last_updated": "2026-10-18 02:17",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -832,21 +832,6 @@
             "lng": 103.9015299
           },
           {
-            "title": "Masjid Abdul Aleem Siddique",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdu",
-            "source_titles": [
-              "Masjid Abdul Aleem Siddique"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 1.3131814,
-            "lng": 103.9126872
-          },
-          {
             "title": "Armenian Church, Singapore",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in t",
@@ -860,6 +845,19 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 1.29305556,
             "lng": 103.84930556
+          },
+          {
+            "title": "Tony Dumper",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican pries",
+            "source_titles": [
+              "Tony Dumper"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tony_Dumper"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Taipei": [
@@ -983,21 +981,6 @@
           }
         ],
         "Berlin": [
-          {
-            "title": "Zossen",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several small",
-            "source_titles": [
-              "Zossen"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Zossen"
-            ],
-            "official_url": "https://www.zossen.de/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 52.21666667,
-            "lng": 13.44972222
-          },
           {
             "title": "Berlin Tempelhof Airport",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
@@ -1480,14 +1463,6 @@
           "lng": 103.9015299
         },
         {
-          "title": "Masjid Abdul Aleem Siddique",
-          "extract": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdul Aleem Siddiqi, a Muslim missionary and the founder of Jamiyah Singapore who propagated Islam in the Malay Peninsula in the 1950s.",
-          "url": "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique",
-          "official_url": "",
-          "lat": 1.3131814,
-          "lng": 103.9126872
-        },
-        {
           "title": "Armenian Church, Singapore",
           "extract": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in the Museum Planning Area, within the Central Area. The church was completed in 1835 and consecrated the next year. Originally a parish of the Armenian Apostolic Church, an Oriental Orthodox denomination, the last Armenian parish priest left in the late 1930s as the Armenian population in Singapore dwindled. It was designated as a national monument in 1973. Armenian and Oriental Orthodox services are now regularly held at the church.",
           "url": "https://en.wikipedia.org/wiki/Armenian_Church%2C_Singapore",
@@ -1581,14 +1556,6 @@
         }
       ],
       "Berlin": [
-        {
-          "title": "Zossen",
-          "extract": "Zossen is a German town in the district of Teltow-Fläming in Brandenburg, about 30 kilometres (20 mi) south of Berlin, and next to the B96 highway. Zossen consists of several smaller municipalities, which were grouped in 2003 to form the city.",
-          "url": "https://en.wikipedia.org/wiki/Zossen",
-          "official_url": "https://www.zossen.de/",
-          "lat": 52.21666667,
-          "lng": 13.44972222
-        },
         {
           "title": "Berlin Tempelhof Airport",
           "extract": "Berlin Tempelhof Airport was one of the first airports in Berlin, Germany. Situated in the south-central Berlin borough of Tempelhof-Schöneberg, the airport ceased operating in 2008 amid controversy. This left Tegel and Schönefeld as the two main airports serving the city for another twelve years until both were replaced by Berlin Brandenburg Airport in 2020.",
