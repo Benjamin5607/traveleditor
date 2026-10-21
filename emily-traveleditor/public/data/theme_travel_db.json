@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 02:44",
+  "last_updated": "2026-10-21 02:38",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -90,21 +90,6 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 35.651298,
             "lng": 139.829307
-          },
-          {
-            "title": "Itabashi",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Itabashi  is a special ward in the Tokyo Metropolis in Japan. In English, it is called Itabashi City. Itabashi has sister-city relations with Burlington, Ontario, in Canada; Shijin",
-            "source_titles": [
-              "Itabashi"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Itabashi"
-            ],
-            "official_url": "http://www.city.itabashi.tokyo.jp/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 35.76666667,
-            "lng": 139.68333333
           }
         ],
         "Osaka": [
@@ -688,6 +673,21 @@
             "lng": 135.51944444
           },
           {
+            "title": "Kansai region",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "The Kansai region , a.k.a. Kinki region , is a region of Japan that lies in the southern-central portion of Japan's main island, Honshū. The region consists of the prefectures of H",
+            "source_titles": [
+              "Kansai region"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Kansai_region"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
+            "lat": 35,
+            "lng": 135
+          },
+          {
             "title": "Mount Kōya",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "Mount Kōya  is a large temple settlement in Wakayama Prefecture, Japan to the south of Osaka. In the strictest sense, Mount Kōya is the mountain name (sangō) of Kongōbu-ji Temple, ",
@@ -1069,14 +1069,6 @@
           "official_url": "https://www.yumenoshima.jp/",
           "lat": 35.651298,
           "lng": 139.829307
-        },
-        {
-          "title": "Itabashi",
-          "extract": "Itabashi  is a special ward in the Tokyo Metropolis in Japan. In English, it is called Itabashi City. Itabashi has sister-city relations with Burlington, Ontario, in Canada; Shijingshan District of Beijing in the People's Republic of China; and Bologna in Italy.",
-          "url": "https://en.wikipedia.org/wiki/Itabashi",
-          "official_url": "http://www.city.itabashi.tokyo.jp/",
-          "lat": 35.76666667,
-          "lng": 139.68333333
         }
       ],
       "Osaka": [
@@ -1404,6 +1396,14 @@
           "official_url": "https://www.city.osaka.lg.jp/tennoji/",
           "lat": 34.65777778,
           "lng": 135.51944444
+        },
+        {
+          "title": "Kansai region",
+          "extract": "The Kansai region , a.k.a. Kinki region , is a region of Japan that lies in the southern-central portion of Japan's main island, Honshū. The region consists of the prefectures of Hyōgo, Kyoto, Mie, Nara, Osaka, Shiga, and Wakayama.",
+          "url": "https://en.wikipedia.org/wiki/Kansai_region",
+          "official_url": "",
+          "lat": 35,
+          "lng": 135
         },
         {
           "title": "Mount Kōya",
