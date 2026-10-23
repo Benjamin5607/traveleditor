@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 02:37",
+  "last_updated": "2026-10-23 02:42",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -142,14 +142,14 @@
         "London": [],
         "Paris": [
           {
-            "title": "Ménagerie du Jardin des plantes",
+            "title": "Ménagerie du Jardin des Plantes",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zo",
             "source_titles": [
-              "Ménagerie du Jardin des plantes"
+              "Ménagerie du Jardin des Plantes"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_plantes"
+              "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_Plantes"
             ],
             "official_url": "http://www.mnhn.fr/fr/visitez/lieux/menagerie-zoo-jardin-plantes",
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
@@ -1100,9 +1100,9 @@
       "London": [],
       "Paris": [
         {
-          "title": "Ménagerie du Jardin des plantes",
+          "title": "Ménagerie du Jardin des Plantes",
           "extract": "The Ménagerie du Jardin des Plantes is a zoo in Paris, France, belonging to the botanical garden Jardin des Plantes. Founded in 1794, largely with animals brought from the royal zoo of the Palace of Versailles, abandoned because of the French Revolution, it is the second oldest zoological garden in the world. Today, the zoo contains many rare smaller and medium-sized mammals, and a variety of birds and reptiles.",
-          "url": "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_plantes",
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9nagerie_du_Jardin_des_Plantes",
           "official_url": "http://www.mnhn.fr/fr/visitez/lieux/menagerie-zoo-jardin-plantes",
           "lat": 48.84472222,
           "lng": 2.35972222
