@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 02:38",
+  "last_updated": "2026-10-25 02:26",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -984,7 +984,7 @@
           {
             "title": "Pantheon, Rome",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called th",
+            "why": "The Pantheon is an ancient Polytheist temple in Rome, Italy, originally built under Roman emperor Augustus and reconstructed under Hadrian (117–138).",
             "source_titles": [
               "Pantheon, Rome"
             ],
@@ -1588,19 +1588,19 @@
         },
         {
           "title": "Pantheon, Rome",
-          "extract": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs.",
+          "extract": "The Pantheon is an ancient Polytheist temple in Rome, Italy, originally built under Roman emperor Augustus and reconstructed under Hadrian (117–138).",
           "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome",
           "official_url": "http://www.polomusealelazio.beniculturali.it/index.php?it/232/pantheon",
           "lat": 41.8986,
           "lng": 12.4768
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
+          "title": "Largo di Torre Argentina",
+          "extract": "Largo di Torre Argentina is a large open space in Rome, Italy, with four Roman Republican temples and the remains of Pompey's Theatre. It is in the ancient Campus Martius. This was one of the places that the ancient \"Argentario\"—the silver/money men, the bankers—used to conduct their trade.",
+          "url": "https://en.wikipedia.org/wiki/Largo_di_Torre_Argentina",
           "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "lat": 41.89527778,
+          "lng": 12.47694444
         }
       ],
       "Berlin": [
