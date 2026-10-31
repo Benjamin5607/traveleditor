@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 03:42",
+  "last_updated": "2026-10-31 03:24",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -109,21 +109,6 @@
             "lng": 135.52583333
           },
           {
-            "title": "Tennōji-ku, Osaka",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-            "source_titles": [
-              "Tennōji-ku, Osaka"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
-            ],
-            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 34.65777778,
-            "lng": 135.51944444
-          },
-          {
             "title": "Hakata Station",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
             "why": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for tr",
@@ -137,6 +122,21 @@
             "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
             "lat": 33.589803,
             "lng": 130.420681
+          },
+          {
+            "title": "Tennōji-ku, Osaka",
+            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
+            "why": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+            "source_titles": [
+              "Tennōji-ku, Osaka"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka"
+            ],
+            "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
+            "lat": 34.65777778,
+            "lng": 135.51944444
           }
         ],
         "London": [],
@@ -1066,20 +1066,20 @@
           "lng": 135.52583333
         },
         {
-          "title": "Tennōji-ku, Osaka",
-          "extract": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
-          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
-          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
-          "lat": 34.65777778,
-          "lng": 135.51944444
-        },
-        {
           "title": "Hakata Station",
           "extract": "Hakata Station  is a major railway station in Hakata-ku, Fukuoka, Japan. It is the largest and busiest railway terminal in Kyushu, and is a gateway to other cities in Kyushu for travelers coming from Honshu by rail travel. The San'yō Shinkansen from Osaka ends at this station.",
           "url": "https://en.wikipedia.org/wiki/Hakata_Station",
           "official_url": "",
           "lat": 33.589803,
           "lng": 130.420681
+        },
+        {
+          "title": "Tennōji-ku, Osaka",
+          "extract": "Tennōji Ward is one of 24 wards of Osaka, Osaka Prefecture, Japan. It is named after the Shitennō-ji, the temple of the Four Heavenly Kings, which is located in the ward.",
+          "url": "https://en.wikipedia.org/wiki/Tenn%C5%8Dji-ku%2C_Osaka",
+          "official_url": "https://www.city.osaka.lg.jp/tennoji/",
+          "lat": 34.65777778,
+          "lng": 135.51944444
         }
       ],
       "London": [],
