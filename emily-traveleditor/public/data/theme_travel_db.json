@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 03:25",
+  "last_updated": "2026-11-02 03:33",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -1580,12 +1580,12 @@
           "lng": 12.4768
         },
         {
-          "title": "Piazza Navona",
-          "extract": "Piazza Navona is a public open space in Rome, Italy. It is built on the site of the 1st century AD Stadium of Domitian and follows the form of the open space of the stadium in an elongated oval. The ancient Romans went there to watch the agones (\"games\"), and hence it was known as \"Circus Agonalis\".",
-          "url": "https://en.wikipedia.org/wiki/Piazza_Navona",
-          "official_url": "",
-          "lat": 41.899,
-          "lng": 12.4731
+          "title": "Villa Ada",
+          "extract": "Villa Ada is a park in Rome, Italy, with a surface of 180 hectares It is the second largest in the city after Villa Doria Pamphili. It is located in the northeastern part of the city.",
+          "url": "https://en.wikipedia.org/wiki/Villa_Ada",
+          "official_url": "https://www.sovraintendenzaroma.it/i_luoghi/ville_e_parchi_storici/ville_dei_nobili/villa_ada_savoia",
+          "lat": 41.932039,
+          "lng": 12.501497
         }
       ],
       "Berlin": [
