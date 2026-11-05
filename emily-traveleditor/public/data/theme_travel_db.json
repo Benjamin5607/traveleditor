@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 03:59",
+  "last_updated": "2026-11-05 04:20",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -158,87 +158,9 @@
           }
         ],
         "DaNang": [],
-        "Bangkok": [
-          {
-            "title": "Bang Kachao",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Bang Kachao, is an artificial island formed by a bend in the Chao Phraya River and a canal at its western end. The entire area is also known as the Green Lung. It lies south of the",
-            "source_titles": [
-              "Bang Kachao"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Bang_Kachao"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.6807,
-            "lng": 100.5663
-          },
-          {
-            "title": "Si Nakhon Khuean Khan Park and Botanical Garden",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Si Nakhon Khuean Khan Park and Botanical Garden is a 148 rai (23.7 ha) public park and botanical garden in Bang Kachao, Samut Prakan Province, Thailand. The park has a 2.2 kilometr",
-            "source_titles": [
-              "Si Nakhon Khuean Khan Park and Botanical Garden"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Si_Nakhon_Khuean_Khan_Park_and_Botanical_Garden"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 13.6975,
-            "lng": 100.565
-          }
-        ],
-        "Singapore": [
-          {
-            "title": "Yue Hwa Building",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan a",
-            "source_titles": [
-              "Yue Hwa Building"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Yue_Hwa_Building"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 1.28488889,
-            "lng": 103.84344444
-          }
-        ],
-        "Taipei": [
-          {
-            "title": "Jiufen",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Jiufen, also spelled Jioufen or Chiufen, is a historic former gold mining town in Ruifang District, New Taipei City, Taiwan. It is notable for Jiufen Old Street, a narrow, winding ",
-            "source_titles": [
-              "Jiufen"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Jiufen"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 25.107,
-            "lng": 121.843
-          },
-          {
-            "title": "Datong District, Taipei",
-            "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard a",
-            "source_titles": [
-              "Datong District, Taipei"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei"
-            ],
-            "official_url": "https://dtdo.gov.taipei/",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 25.05972222,
-            "lng": 121.51416667
-          }
-        ],
+        "Bangkok": [],
+        "Singapore": [],
+        "Taipei": [],
         "Barcelona": [],
         "Rome": [],
         "Berlin": []
@@ -395,52 +317,9 @@
         }
       ],
       "DaNang": [],
-      "Bangkok": [
-        {
-          "title": "Bang Kachao",
-          "extract": "Bang Kachao, is an artificial island formed by a bend in the Chao Phraya River and a canal at its western end. The entire area is also known as the Green Lung. It lies south of the Thai capital Bangkok in Phra Pradaeng District of Samut Prakan Province. The island, covering 16 square kilometres (6.2 sq mi) or 12,000 rai has been traditionally agricultural with only a relatively small population. It is sometimes referred to as the \"green lung\" of Bangkok\". In 2006, Bang Kachao was named \"best urban oasis\" by Time in its \"Best of Asia\" series and is frequented by nature lovers and cyclists.",
-          "url": "https://en.wikipedia.org/wiki/Bang_Kachao",
-          "official_url": "",
-          "lat": 13.6807,
-          "lng": 100.5663
-        },
-        {
-          "title": "Si Nakhon Khuean Khan Park and Botanical Garden",
-          "extract": "Si Nakhon Khuean Khan Park and Botanical Garden is a 148 rai (23.7 ha) public park and botanical garden in Bang Kachao, Samut Prakan Province, Thailand. The park has a 2.2 kilometres (1.4 mi) bike lane and is a popular cycling and birdwatching location. This park is famously known as the “lung of the city” because of the ecological significance of the area around Bangkok. In order to conserve this important green area sustainably, the government of Thailand declared the area environmentally protected as well as accessible for public use.",
-          "url": "https://en.wikipedia.org/wiki/Si_Nakhon_Khuean_Khan_Park_and_Botanical_Garden",
-          "official_url": "",
-          "lat": 13.6975,
-          "lng": 100.565
-        }
-      ],
-      "Singapore": [
-        {
-          "title": "Yue Hwa Building",
-          "extract": "Yue Hwa Building is a historic building located at the junction of Eu Tong Sen Street and Upper Cross Street in Chinatown, Singapore, next to Chinatown MRT station. Built by Swan and Maclaren in 1927, it was then the tallest building in Chinatown and was known as Nam Tin Building (南天大厦), owned by Lum Chang Holdings. The building housed the six-storey Great Southern Hotel, along with a few shops and cabarets that were popular among Chinese travellers. In 1993, Lum Chang Holdings sold the building to Hong Kong businessman Yu Kwok Chun, who converted it to the first Yue Hwa Chinese Products department store in Singapore in 1994. The renovation process, which conserved the exterior while adding ",
-          "url": "https://en.wikipedia.org/wiki/Yue_Hwa_Building",
-          "official_url": "",
-          "lat": 1.28488889,
-          "lng": 103.84344444
-        }
-      ],
-      "Taipei": [
-        {
-          "title": "Jiufen",
-          "extract": "Jiufen, also spelled Jioufen or Chiufen, is a historic former gold mining town in Ruifang District, New Taipei City, Taiwan. It is notable for Jiufen Old Street, a narrow, winding alleyway with shops, teahouses, and restaurants that offers tourists a view of traditional Taiwanese life. It has a population of approximately 1,600 residents.",
-          "url": "https://en.wikipedia.org/wiki/Jiufen",
-          "official_url": "",
-          "lat": 25.107,
-          "lng": 121.843
-        },
-        {
-          "title": "Datong District, Taipei",
-          "extract": "Datong District or Tatung is a district of Taipei City, Taiwan. It is located between the Taipei Metro Red Line and eastern shore of the Tamsui River, and between Civic Boulevard and the Sun Yat-sen Freeway. The southern part of this district is known as Twatutia, one of the first settlements in what is now Taipei and once the commercial center. Taipei's commercial center has since shifted southeast to Zhongzheng, Da'an and Xinyi, and Datong is far less important economically. Some of the last vestiges of Twatutia's commercial importance is preserved on Dihua Street. The old town of Daronpon is in the northern part of the district.",
-          "url": "https://en.wikipedia.org/wiki/Datong_District%2C_Taipei",
-          "official_url": "https://dtdo.gov.taipei/",
-          "lat": 25.05972222,
-          "lng": 121.51416667
-        }
-      ],
+      "Bangkok": [],
+      "Singapore": [],
+      "Taipei": [],
       "Barcelona": [],
       "Rome": [],
       "Berlin": []
