@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 03:51",
+  "last_updated": "2026-11-08 03:32",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -847,21 +847,6 @@
             "lng": 103.9015299
           },
           {
-            "title": "Masjid Abdul Aleem Siddique",
-            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
-            "why": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdu",
-            "source_titles": [
-              "Masjid Abdul Aleem Siddique"
-            ],
-            "source_urls": [
-              "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique"
-            ],
-            "official_url": "",
-            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요.",
-            "lat": 1.3131814,
-            "lng": 103.9126872
-          },
-          {
             "title": "Armenian Church, Singapore",
             "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
             "why": "The Armenian Church of Saint Gregory the Illuminator, referred to locally as the Armenian Church, is the oldest surviving Christian church in Singapore, located at Hill Street in t",
@@ -875,6 +860,19 @@
             "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
             "lat": 1.29305556,
             "lng": 103.84930556
+          },
+          {
+            "title": "Tony Dumper",
+            "angle": "할랄 투어, 종교 유적지, 사원, 성당, 모스크처럼 믿음과 문화가 만나는 장소",
+            "why": "Anthony Charles Dumper was the suffragan Bishop of Dudley from 1977 until 1993 and the first area bishop under the Worcester diocese area scheme from 1993. He was an Anglican pries",
+            "source_titles": [
+              "Tony Dumper"
+            ],
+            "source_urls": [
+              "https://en.wikipedia.org/wiki/Tony_Dumper"
+            ],
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Taipei": [
@@ -1501,14 +1499,6 @@
           "official_url": "",
           "lat": 1.4013989,
           "lng": 103.9015299
-        },
-        {
-          "title": "Masjid Abdul Aleem Siddique",
-          "extract": "Masjid Abdul Aleem Siddique is a mosque located in the Telok Kurau residential enclave between Geylang and Katong, Singapore. Built in 1957, the mosque is named after Muhammad Abdul Aleem Siddiqi, a Muslim missionary and the founder of Jamiyah Singapore who propagated Islam in the Malay Peninsula in the 1950s.",
-          "url": "https://en.wikipedia.org/wiki/Masjid_Abdul_Aleem_Siddique",
-          "official_url": "",
-          "lat": 1.3131814,
-          "lng": 103.9126872
         },
         {
           "title": "Armenian Church, Singapore",
