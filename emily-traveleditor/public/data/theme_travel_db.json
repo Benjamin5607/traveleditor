@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 04:12",
+  "last_updated": "2026-11-15 03:58",
   "source": {
     "crawl": "Wikivoyage city extracts plus Wikipedia search and summary APIs",
     "enrichment": "Groq chat completions when GROQ_API_KEY is available",
@@ -254,19 +254,17 @@
             "lng": 121.51416667
           },
           {
-            "title": "Fushan Botanical Garden",
+            "title": "Wanda–Zhonghe–Shulin Line",
             "angle": "차, 커피, 고요한 산책처럼 마음이 진정되는 장소",
-            "why": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
+            "why": "The Wanda–Zhonghe–Shulin Line, also known as Light Green Line, is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit",
             "source_titles": [
-              "Fushan Botanical Garden"
+              "Wanda–Zhonghe–Shulin Line"
             ],
             "source_urls": [
-              "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden"
+              "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_Line"
             ],
-            "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
-            "reservation_hint": "공식 사이트에서 운영시간과 예약 가능 여부를 확인하세요.",
-            "lat": 24.75969444,
-            "lng": 121.59030556
+            "official_url": "",
+            "reservation_hint": "출처 링크에서 운영 정보를 먼저 확인하세요."
           }
         ],
         "Barcelona": [
@@ -1165,18 +1163,18 @@
           "lng": 121.51416667
         },
         {
+          "title": "Wanda–Zhonghe–Shulin Line",
+          "extract": "The Wanda–Zhonghe–Shulin Line, also known as Light Green Line, is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin Line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
+          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_Line",
+          "official_url": ""
+        },
+        {
           "title": "Fushan Botanical Garden",
           "extract": "The Fushan Botanical Garden is a botanical garden in Yuanshan Township, Yilan County and Wulai District, New Taipei in Taiwan. It is managed by Taiwan Forestry Research Institute.",
           "url": "https://en.wikipedia.org/wiki/Fushan_Botanical_Garden",
           "official_url": "https://fushan.tfri.gov.tw/en/index.aspx",
           "lat": 24.75969444,
           "lng": 121.59030556
-        },
-        {
-          "title": "Wanda–Zhonghe–Shulin Line",
-          "extract": "The Wanda–Zhonghe–Shulin Line, also known as Light Green Line, is a metro line under construction in Taipei. It is managed by the Taipei City Government Department of Rapid Transit Systems and scheduled to be complete in 2027. Following the Taipei Metro's color coding scheme, the Wanda-Zhonghe-Shulin Line will be light green, coding the line as LG. When Phase I is completed, the line is expected to carry 270,000 riders per day, and passengers will be able to travel between the terminus at Zhonghe Senior High School and Taipei Main Station in 25 minutes.",
-          "url": "https://en.wikipedia.org/wiki/Wanda%E2%80%93Zhonghe%E2%80%93Shulin_Line",
-          "official_url": ""
         }
       ],
       "Barcelona": [
